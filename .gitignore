@@ -18,7 +18,7 @@ bootstrap/cache/
 .rocketeer/
 
 bin/
-storage/
+/storage/*.key
 tests/_output/*
 .phpstorm.meta.php
 _ide_helper.php
