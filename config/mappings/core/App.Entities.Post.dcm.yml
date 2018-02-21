@@ -2,12 +2,6 @@ App\Entities\Post:
     type: entity
     table: posts
     repositoryClass: App\Repositories\PostRepository
-
-    uniqueConstraints:
-      uniq_posts_uuid:
-          columns: [ uuid ]
-
-
     id:
       id:
           type: integer
@@ -21,10 +15,11 @@ App\Entities\Post:
         type: string
         length: 255
 
+      isActive:
+        type: boolean
+
       createdAt:
         type: datetime
-        options:
-          default: Carbon\Carbon
 
       updatedAt:
         type: datetime
