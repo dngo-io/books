@@ -1,0 +1,19 @@
+App\Entities\Category:
+      type: entity
+      table: categories
+      repositoryClass: App\Repositories\CategoryRepository
+
+      id:
+        id:
+            type: integer
+            generator:
+                strategy: auto
+            options:
+                unsigned: true
+      fields:
+          name:
+            type: string
+            length: 255
+          slug:
+            type: string
+            length: 255

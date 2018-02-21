@@ -1,0 +1,48 @@
+App\Entities\Post:
+    type: entity
+    table: posts
+    repositoryClass: App\Repositories\PostRepository
+
+    uniqueConstraints:
+      uniq_posts_uuid:
+          columns: [ uuid ]
+
+
+    id:
+      id:
+          type: integer
+          generator:
+              strategy: auto
+          options:
+              unsigned: true
+
+    fields:
+      uuid:
+        type: guid
+
+      title:
+        type: string
+        length: 255
+
+      createdAt:
+        type: datetime
+
+      updatedAt:
+        type: datetime
+
+    oneToOne:
+      book:
+        targetEntity: App\Entities\Book
+
+    manyToOne:
+      user:
+        targetEntity: App\Entities\User
+
+    manyToMany:
+      categories:
+          targetEntity: App\Entities\Category
+          cascade: [ 'persist' ]
+          fetch: EXTRA_LAZY
+          indexBy: type
+          joinTable:
+              name: post_categories

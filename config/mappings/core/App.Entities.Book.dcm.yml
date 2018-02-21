@@ -1,0 +1,27 @@
+App\Entities\Book:
+      type: entity
+      table: books
+      repositoryClass: App\Repositories\BookRepository
+
+      id:
+        id:
+            type: integer
+            generator:
+                strategy: auto
+            options:
+                unsigned: true
+      fields:
+        name:
+            type: string
+            length: 255
+        description:
+            type: text
+        isbn:
+            type: string
+            length: 255
+        year:
+            type: date
+
+      oneToOne:
+        post:
+          targetEntity: App\Entities\Post
