@@ -15,6 +15,10 @@ App\Entities\BookAudio:
               type: string
               length: 255
 
+            length:
+              type: integer
+              comment: 'by seconds'
+
             createdAt:
               type: datetime
 
