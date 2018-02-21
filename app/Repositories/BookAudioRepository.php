@@ -6,11 +6,10 @@ namespace App\Repositories;
 use App\Support\AppEntityRepository;
 
 /**
- * Class BookRepository
+ * Class BookAudioRepository
  * @package App\Repositories
  */
-class BookRepository extends AppEntityRepository
+class BookAudioRepository extends AppEntityRepository
 {
 
-    // buralar hep qb ile dolacak
 }

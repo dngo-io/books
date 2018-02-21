@@ -1,0 +1,28 @@
+App\Entities\BookAudio:
+        type: entity
+        table: book_audio
+        repositoryClass: App\Repositories\BookAudioRepository
+
+        id:
+          id:
+            type: integer
+            generator:
+                strategy: auto
+            options:
+                unsigned: true
+        fields:
+            name:
+              type: string
+              length: 255
+
+            createdAt:
+              type: datetime
+
+            updatedAt:
+              type: datetime
+
+        manyToOne:
+            user:
+              targetEntity: App\Entities\User
+            book:
+              targetEntity: App\Entities\Book
