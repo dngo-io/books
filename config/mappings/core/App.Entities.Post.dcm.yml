@@ -23,6 +23,8 @@ App\Entities\Post:
 
       createdAt:
         type: datetime
+        options:
+          default: Carbon\Carbon
 
       updatedAt:
         type: datetime

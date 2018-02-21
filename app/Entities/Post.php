@@ -3,6 +3,7 @@
 namespace App\Entities;
 
 
+use Carbon\Carbon;
 use Doctrine\Common\Collections\ArrayCollection;
 use Somnambulist\Doctrine\Traits\Activatable;
 use Somnambulist\Doctrine\Traits\Identifiable;
@@ -35,6 +36,12 @@ class Post implements \Somnambulist\Doctrine\Contracts\Activatable
      * @var integer
      */
     protected $status;
+
+    public function __construct()
+    {
+        $this->setUpdatedAt(new Carbon());
+        $this->setCreatedAt(new Carbon());
+    }
 
     /**
      * @return string

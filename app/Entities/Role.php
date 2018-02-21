@@ -25,6 +25,7 @@ class Role implements TrackableContract, RoleContract
     const ROLE_ROOT  = 'root';
     const ROLE_USER  = 'user';
     const ROLE_ADMIN = 'admin';
+    const ROLE_MODERATOR = 'moderator';
 
     /**
      * @var ArrayCollection

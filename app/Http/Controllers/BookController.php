@@ -32,7 +32,7 @@ class BookController extends AppController
         $book->setIsbn("12312321312");
         $book->setDescription('My Test book');
         $book->setPage(245);
-        $book->setYear(new Carbon('2014'));
+        $book->setYear((new Carbon())->year('2014'));
         $book->setReleaseDate(new Carbon('2014-01-19'));
         $book->setCover('https://about.canva.com/wp-content/uploads/sites/3/2015/01/business_bookcover.png');
 
@@ -45,8 +45,8 @@ class BookController extends AppController
 
         $post->setTitle('my test post');
         $post->setUser($user);
-        $post->setCreatedAt(new Carbon());
-        $post->setUpdatedAt(new Carbon());
+        //$post->setCreatedAt(new Carbon());
+//        $post->setUpdatedAt(new Carbon());
         $book->setPost($post);
 
 
