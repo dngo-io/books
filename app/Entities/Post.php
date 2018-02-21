@@ -7,13 +7,11 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Somnambulist\Doctrine\Traits\Activatable;
 use Somnambulist\Doctrine\Traits\Identifiable;
 use Somnambulist\Doctrine\Traits\Timestampable;
-use Somnambulist\Doctrine\Traits\UniversallyIdentifiable;
 
 class Post implements \Somnambulist\Doctrine\Contracts\Activatable
 {
 
     use Identifiable;
-    use UniversallyIdentifiable;
     use Activatable;
     use Timestampable;
 
@@ -32,10 +30,6 @@ class Post implements \Somnambulist\Doctrine\Contracts\Activatable
      */
     protected $user;
 
-    /**
-     * @var Book
-     */
-    protected $book;
 
     /**
      * @var integer
@@ -72,22 +66,6 @@ class Post implements \Somnambulist\Doctrine\Contracts\Activatable
     public function setUser($user)
     {
         $this->user = $user;
-    }
-
-    /**
-     * @return Book
-     */
-    public function getBook()
-    {
-        return $this->book;
-    }
-
-    /**
-     * @param Book $book
-     */
-    public function setBook($book)
-    {
-        $this->book = $book;
     }
 
     /**
