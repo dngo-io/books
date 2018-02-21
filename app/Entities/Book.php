@@ -3,8 +3,6 @@
 
 namespace App\Entities;
 
-
-use Doctrine\Common\Collections\ArrayCollection;
 use Somnambulist\Doctrine\Traits\Identifiable;
 use Somnambulist\Doctrine\Traits\Nameable;
 
@@ -27,6 +25,21 @@ class Book
      * @var \DateTime
      */
     protected $year;
+
+    /**
+     * @var \DateTime
+     */
+    protected $releaseDate;
+
+    /**
+     * @var integer
+     */
+    protected $page;
+
+    /**
+     * @var string
+     */
+    protected $cover;
 
     /**
      * @var Post
@@ -97,6 +110,54 @@ class Book
     public function setPost(Post $post)
     {
         $this->post = $post;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getReleaseDate()
+    {
+        return $this->releaseDate;
+    }
+
+    /**
+     * @param \DateTime $releaseDate
+     */
+    public function setReleaseDate($releaseDate)
+    {
+        $this->releaseDate = $releaseDate;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPage()
+    {
+        return $this->page;
+    }
+
+    /**
+     * @param int $page
+     */
+    public function setPage($page)
+    {
+        $this->page = $page;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCover()
+    {
+        return $this->cover;
+    }
+
+    /**
+     * @param string $cover
+     */
+    public function setCover($cover)
+    {
+        $this->cover = $cover;
     }
 
 }

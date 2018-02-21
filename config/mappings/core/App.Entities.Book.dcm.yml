@@ -21,6 +21,13 @@ App\Entities\Book:
             length: 255
         year:
             type: date
+        page:
+            type: integer
+        cover:
+            type: string
+            lenght: 255
+        releaseDate:
+            type: datetime
 
       oneToOne:
         post:
