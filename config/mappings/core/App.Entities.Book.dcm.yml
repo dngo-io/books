@@ -32,3 +32,4 @@ App\Entities\Book:
       oneToOne:
         post:
           targetEntity: App\Entities\Post
+          cascade: [ 'persist' ]
