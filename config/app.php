@@ -170,7 +170,6 @@ return [
         LaravelDoctrine\ORM\Auth\Passwords\PasswordResetServiceProvider::class,
         LaravelDoctrine\ACL\AclServiceProvider::class,
         LaravelDoctrine\Migrations\MigrationsServiceProvider::class,
-        TwigBridge\ServiceProvider::class,
         Somnambulist\EnvironmentLoader\ServiceProvider::class,
         Somnambulist\Doctrine\BehavioursServiceProvider::class,
         Somnambulist\DomainEvents\DomainEventsServiceProvider::class,
