@@ -41,6 +41,7 @@ class Post implements \Somnambulist\Doctrine\Contracts\Activatable
     {
         $this->setUpdatedAt(new Carbon());
         $this->setCreatedAt(new Carbon());
+        $this->activate(); //auto active
     }
 
     /**
