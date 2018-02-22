@@ -26,6 +26,10 @@ return [
         App\Entities\Permission::class,
         App\Entities\Role::class,
         App\Entities\User::class,
+        App\Entities\Book::class,
+        App\Entities\BookAudio::class,
+        App\Entities\Post::class,
+        App\Entities\Category::class,
     ],
 
 ];
