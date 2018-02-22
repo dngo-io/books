@@ -21,4 +21,8 @@ Route::get('/logout', 'Auth\LoginController@logout');
 Route::get('/home', 'HomeController@index');
 Route::get('/books', 'BookController@index');
 
+Route::resource('user','UserController');
+Route::resource('book','BookController');
+Route::resource('category','CategoryController');
+
 
