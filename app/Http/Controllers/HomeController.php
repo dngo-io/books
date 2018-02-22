@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Entities\User;
 use App\Support\AppController;
 
 /**
@@ -28,6 +29,8 @@ class HomeController extends AppController
      */
     public function index()
     {
-        return view('home');
+        $user = \EntityManager::getRepository(User::class)->find(1);
+
+        return view('home', ['user' => $user]);
     }
 }

@@ -235,7 +235,6 @@ return [
 
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
-        'Twig' => TwigBridge\Facade\Twig::class,
     ],
 
 ];
