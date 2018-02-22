@@ -11,5 +11,4 @@ composer dumpautoload
 ./artisan config:clear
 ./artisan route:clear
 ./artisan view:clear
-./artisan twig:clean
 ./artisan clear-compiled
