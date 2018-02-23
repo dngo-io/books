@@ -30,9 +30,14 @@ class BookAudio
     protected $length;
 
     /**
-     * @var
+     * @var string
      */
     protected $language;
+
+    /**
+     * @var string
+     */
+    protected $fileSource;
 
     /**
      * @return User
