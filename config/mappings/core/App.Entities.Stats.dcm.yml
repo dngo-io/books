@@ -1,0 +1,42 @@
+App\Entities\Stats:
+    type: entity
+    table: stats
+    repositoryClass: App\Repositories\StatsRepository
+
+    indexes:
+        idx_audio:
+            columns: [ audio_id ]
+        idx_book:
+            columns: [ book_id ]
+
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: auto
+            options:
+                unsigned: true
+
+    fields:
+
+        upvote:
+            type: integer
+
+        comment:
+            type: integer
+
+        day:
+            type: date
+
+    manyToOne:
+        audio:
+            targetEntity: App\Entities\BookAudio
+
+        book:
+            targetEntity: App\Entities\Book
+
+        post:
+            targetEntity: App\Entities\Post
+
+        user:
+            targetEntity: App\Entities\User
