@@ -30,6 +30,11 @@ class BookAudio
     protected $length;
 
     /**
+     * @var
+     */
+    protected $language;
+
+    /**
      * @return User
      */
     public function getUser()
