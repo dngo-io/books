@@ -39,6 +39,7 @@ class BookController extends AppController
     {
         $audio = \EntityManager::getRepository(BookAudio::class)->find(1);
 
+        /** @var BookAudio $audio */
         event(new StatsEvent($audio));
     }
 
