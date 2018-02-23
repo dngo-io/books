@@ -23,6 +23,9 @@ App\Entities\BookAudio:
               type: string
               length: 4
 
+            fileSource:
+              type: string
+
             createdAt:
               type: datetime
 

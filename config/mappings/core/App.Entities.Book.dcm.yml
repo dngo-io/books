@@ -20,7 +20,8 @@ App\Entities\Book:
             type: string
             length: 255
         year:
-            type: date
+            type: string
+            length: 4
         page:
             type: integer
         cover:
