@@ -13,13 +13,14 @@ use App\Support\AppController;
  */
 class HomeController extends AppController
 {
-
     /**
-     * Constructor.
+     * Index page
+     *
+     * @return \Illuminate\Http\Response
      */
-    public function __construct()
+    public function root_index()
     {
-        $this->middleware('auth');
+        return view('home');
     }
 
     /**
@@ -27,10 +28,10 @@ class HomeController extends AppController
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function home()
     {
         $user = \EntityManager::getRepository(User::class)->find(1);
 
-        return view('home', ['user' => $user]);
+        return view('profile', ['user' => $user]);
     }
 }

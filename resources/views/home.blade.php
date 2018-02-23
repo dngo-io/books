@@ -1,4 +1,6 @@
 @extends("layout")
 @section("content")
-    cool!
+    <div id="root_index">
+        jejeje
+    </div>
 @endsection

@@ -10,15 +10,14 @@
     <hr>
     <hr>
     <hr>
-    {{ var_dump(Route::getCurrentRoute()->getActionMethod() == 'root_index') }}
-    @if(!Route::is('/'))
-        @include("partials.header-base")
-    @endif
+    @include("partials.header-base")
     <!-- begin::Body -->
     <div class="m-grid__item m-grid__item--fluid m-grid m-grid--hor-desktop m-grid--desktop m-body">
         <div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-container m-container--responsive m-container--xxl m-container--full-height">
             <div class="m-grid__item m-grid__item--fluid m-wrapper">
-                @include("partials.subheader-default")
+                @if(Route::getCurrentRoute()->getActionMethod() != 'root_index')
+                    @include("partials.subheader-default")
+                @endif
                 <div class="m-content">@yield("content")</div>
             </div>
         </div>
