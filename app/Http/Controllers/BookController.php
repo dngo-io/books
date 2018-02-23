@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Entities\Book;
+use App\Entities\BookAudio;
 use App\Entities\Category;
 use App\Entities\Post;
 use App\Entities\User;
+use App\Events\StatsEvent;
 use App\Http\Requests\StoreBook;
 use App\Service\BookService;
 use App\Support\AppController;
@@ -33,10 +35,11 @@ class BookController extends AppController
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $id)
     {
+        $audio = \EntityManager::getRepository(BookAudio::class)->find(1);
 
-
+        event(new StatsEvent($audio));
     }
 
     /**
