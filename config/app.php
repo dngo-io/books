@@ -185,6 +185,10 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        /*
+         * Bizim Paketler
+         */
+        App\Providers\BookServiceProvider::class,
     ],
 
     /*

@@ -6,14 +6,28 @@ use App\Entities\Book;
 use App\Entities\Category;
 use App\Entities\Post;
 use App\Entities\User;
+use App\Http\Requests\StoreBook;
+use App\Service\BookService;
 use App\Support\AppController;
 use Carbon\Carbon;
 use Doctrine\Common\Collections\ArrayCollection;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use LaravelDoctrine\ORM\Facades\EntityManager;
 
 class BookController extends AppController
 {
+
+    /**
+     * @var BookService
+     */
+    private $bookService;
+
+    public function __construct(BookService $bookService)
+    {
+
+        $this->bookService = $bookService;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -21,39 +35,7 @@ class BookController extends AppController
      */
     public function index()
     {
-        $userRepository = EntityManager::getRepository(User::class);
-        $categoryRepository = EntityManager::getRepository(Category::class);
 
-        /** @var User $user */
-        $user = $userRepository->find(1);
-
-        $post = new Post();
-        $book = new Book();
-
-        $book->setName('My Awesome book');
-        $book->setIsbn("12312321312");
-        $book->setDescription('My Test book');
-        $book->setPage(245);
-        $book->setYear((new Carbon())->year('2014'));
-        $book->setReleaseDate(new Carbon('2014-01-19'));
-        $book->setCover('https://about.canva.com/wp-content/uploads/sites/3/2015/01/business_bookcover.png');
-
-        $categories = new ArrayCollection();
-        $categories->add($categoryRepository->findBySlug('action'));
-        $categories->add($categoryRepository->findBySlug('western'));
-
-        //add cateogires
-        $post->setCategories($categories);
-
-        $post->setTitle('my test post');
-        $post->setUser($user);
-        //$post->setCreatedAt(new Carbon());
-//        $post->setUpdatedAt(new Carbon());
-        $book->setPost($post);
-
-
-        EntityManager::persist($book);
-        EntityManager::flush();
 
     }
 
@@ -70,12 +52,20 @@ class BookController extends AppController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param StoreBook|Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreBook $request)
     {
+        try {
+            $this->bookService->addBook($request);
+            $response['success'] = true;
+        }catch (\Exception $e) {
+            $response['success'] = false;
+            $response['message'] = $e->getMessage();
+        }
 
+        return new Response($response);
 
     }
 
