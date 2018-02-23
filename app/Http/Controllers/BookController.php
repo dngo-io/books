@@ -30,6 +30,7 @@ class BookController extends AppController
 
         $this->bookService = $bookService;
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -61,6 +62,7 @@ class BookController extends AppController
      */
     public function store(StoreBook $request)
     {
+
         try {
             $this->bookService->addBook($request);
             $response['success'] = true;
@@ -81,7 +83,7 @@ class BookController extends AppController
      */
     public function show($id)
     {
-        //
+
     }
 
     /**

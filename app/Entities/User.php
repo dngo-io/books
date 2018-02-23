@@ -84,7 +84,15 @@ class User implements
      */
     protected $roles;
 
+    /**
+     * @var string
+     */
+    protected $account;
 
+    /**
+     * @var string
+     */
+    protected $profileImage;
 
 
     /**
@@ -421,4 +429,38 @@ class User implements
 
         return $this;
     }
+
+    /**
+     * @return string
+     */
+    public function getAccount()
+    {
+        return $this->account;
+    }
+
+    /**
+     * @param string $account
+     */
+    public function setAccount($account)
+    {
+        $this->account = $account;
+    }
+
+    /**
+     * @return string
+     */
+    public function getProfileImage()
+    {
+        return $this->profileImage;
+    }
+
+    /**
+     * @param string $profileImage
+     */
+    public function setProfileImage($profileImage)
+    {
+        $this->profileImage = $profileImage;
+    }
+
+
 }
