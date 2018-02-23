@@ -11,18 +11,18 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', 'HomeController@root_index', function () {
+    return view('home');
 });
 
 Route::auth();
 Route::get('/logout', 'Auth\LoginController@logout');
 
-Route::get('/home', 'HomeController@index');
+Route::get('/home', 'HomeController@home');
 Route::get('/books', 'BookController@index');
 
-Route::resource('user','UserController');
-Route::resource('book','BookController');
+Route::resource('user','UserController@index');
+Route::resource('book','BookController@index');
 Route::resource('category','CategoryController');
 
 
