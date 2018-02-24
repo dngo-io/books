@@ -45,6 +45,14 @@ App\Entities\User:
             length: 100
             nullable: true
 
+        account:
+            type: string
+            length: 60
+
+        profileImage:
+            type: string
+            length: 255
+
         lastLogin:
             type: datetime
             nullable: true
