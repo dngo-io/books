@@ -11,8 +11,10 @@
 |
 */
 
-Route::get('/', 'HomeController@root_index', function () {
-    return view('home');
+Route::get('/', 'HomeController@root_index');
+
+Route::get('/road-map', function () {
+    return view('road-map');
 });
 
 Route::auth();
