@@ -24,7 +24,7 @@
     <!--end::Page Vendors -->
     <link href="{{ asset("assets/vendors/base/vendors.bundle.css") }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset("assets/demo/demo9/base/style.bundle.css") }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset("assets/app/custom.css") }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset("assets/custom/css/custom.css") }}" rel="stylesheet" type="text/css" />
     <!--end::Base Styles -->
     <link rel="shortcut icon" href="{{ asset("assets/demo/demo9/media/img/logo/favicon.ico") }}" />
 </head>
