@@ -1,4 +1,4 @@
-@extends("layout")
+@extends("layout.layout")
 @section("content")
     <div class="m-portlet m-portlet--full-height">
         <div class="m-portlet__head">

@@ -1,4 +1,4 @@
-@extends("layout")
+@extends("layout.metronic")
 @section("content")
     <div id="root_index">
         <div id="root_layer">

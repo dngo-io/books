@@ -30,18 +30,16 @@
 </head>
 <!-- end::Head -->
 <!-- end::Body -->
-<body class="m--skin- m-page--loading-enabled m-page--loading m-content--skin-light m-header--fixed m-aside--offcanvas-default">
-@include("partials.loader-base")
-@include("body")
+<body class="m--skin- m-page--loading-enabled m-page--loading m-content--skin-light m-header--fixed m-header--fixed-mobile m-aside-left--offcanvas-default m-aside-left--enabled m-aside-left--fixed m-aside-left--skin-dark m-aside--offcanvas-default"  >
+@include("layout.partials.loader")
+@include("layout.partials.page")
 <!--begin::Base Scripts -->
 <script src="{{ asset("assets/vendors/base/vendors.bundle.js") }}" type="text/javascript"></script>
 <script src="{{ asset("assets/demo/demo9/base/scripts.bundle.js") }}" type="text/javascript"></script>
 <!--end::Base Scripts -->
 <!--begin::Page Vendors -->
 <script src="{{ asset("assets/vendors/custom/fullcalendar/fullcalendar.bundle.js") }}" type="text/javascript"></script>
-<!--end::Page Vendors -->                                                        <!--begin::Page Snippets -->
-<script src="{{ asset("assets/app/js/dashboard.js") }}" type="text/javascript"></script>
-<!--end::Page Snippets -->
+<!--end::Page Vendors -->
 <!-- begin::Page Loader -->
 <script>
     $(window).on('load', function () {
