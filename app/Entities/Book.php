@@ -17,6 +17,11 @@ class Book
     protected $description;
 
     /**
+     * @var
+     */
+    protected $author;
+
+    /**
      * @var string
      */
     protected $isbn;
@@ -158,6 +163,22 @@ class Book
     public function setCover($cover)
     {
         $this->cover = $cover;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAuthor()
+    {
+        return $this->author;
+    }
+
+    /**
+     * @param mixed $author
+     */
+    public function setAuthor($author)
+    {
+        $this->author = $author;
     }
 
 }

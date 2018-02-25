@@ -1,0 +1,22 @@
+App\Entities\Author:
+      type: entity
+      table: authors
+      repositoryClass: App\Repositories\AuthorRepository
+
+      indexes:
+        author_fulltext:
+            columns: ["name"]
+            flags: fulltext
+
+      id:
+        id:
+            type: integer
+            generator:
+                strategy: auto
+            options:
+                unsigned: true
+
+      fields:
+        name:
+          type: string
+          length: 255
