@@ -262,12 +262,11 @@
     </div>
     <h3 class="mt-5 mb-5">Founders</h3>
     <div class="row">
-
         <div class="col">
             <div class="card">
-                <img class="card-img-top" src="{{ asset("assets/app/media/img/users/300_14.jpg") }}" alt="Card image cap">
+                <img class="card-img-top" src="{{ asset("assets/app/media/img/users/300_5.jpg") }}" alt="Card image cap">
                 <div class="card-block p-5">
-                    <h4 class="card-title">Burak Albayrak</h4>
+                    <h4 class="card-title">bencagri</h4>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                     <a href="#" class="btn btn-block btn-success">Steem Profile</a>
                 </div>
@@ -275,9 +274,9 @@
         </div>
         <div class="col">
             <div class="card">
-                <img class="card-img-top" src="{{ asset("assets/app/media/img/users/300_5.jpg") }}" alt="Card image cap">
+                <img class="card-img-top" src="{{ asset("assets/app/media/img/users/300_14.jpg") }}" alt="Card image cap">
                 <div class="card-block p-5">
-                    <h4 class="card-title">Çağrı S. Kırbıyık</h4>
+                    <h4 class="card-title">ikidnapmyself</h4>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                     <a href="#" class="btn btn-block btn-success">Steem Profile</a>
                 </div>
@@ -287,7 +286,7 @@
             <div class="card">
                 <img class="card-img-top" src="{{ asset("assets/app/media/img/users/300_1.jpg") }}" alt="Card image cap">
                 <div class="card-block p-5">
-                    <h4 class="card-title">Etem Özdemirci</h4>
+                    <h4 class="card-title">meskoze</h4>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                     <a href="#" class="btn btn-block btn-success">Steem Profile</a>
                 </div>
@@ -297,7 +296,7 @@
             <div class="card">
                 <img class="card-img-top" src="{{ asset("assets/app/media/img/users/300_9.jpg") }}" alt="Card image cap">
                 <div class="card-block p-5">
-                    <h4 class="card-title">K. Tuğberk Çapraz</h4>
+                    <h4 class="card-title">tubi</h4>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                     <a href="#" class="btn btn-block btn-success">Steem Profile</a>
                 </div>
