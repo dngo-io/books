@@ -20,6 +20,14 @@ Route::get('/about', function () {
     return view('about');
 });
 
+Route::get('/book', function () {
+    return view('book');
+});
+
+Route::get('/listen', function () {
+    return view('listen');
+});
+
 Route::auth();
 Route::get('/logout', 'Auth\LoginController@logout');
 
@@ -27,7 +35,7 @@ Route::get('/home', 'HomeController@home');
 Route::get('/books', 'BookController@index');
 
 Route::resource('user','UserController@index');
-Route::resource('book','BookController@index');
+//Route::resource('book','BookController@index');
 Route::resource('category','CategoryController');
 
 

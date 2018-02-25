@@ -41,3 +41,25 @@ body.booky-background
         font-size: 8em;
     }
 }
+
+.fa-2x {
+    font-size: 1.5em !important;
+}
+.fa-3x {
+    font-size: 2em !important;
+}
+.fa-4x {
+    font-size: 3em !important;
+}
+.fa-5x {
+    font-size: 4em !important;
+}
+.fa-6x {
+    font-size: 5em !important;
+}
+.fa-7x {
+    font-size: 6em !important;
+}
+.fa-8x {
+    font-size: 7em !important;
+}

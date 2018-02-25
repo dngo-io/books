@@ -42,6 +42,9 @@ m-aside-left--offcanvas-default m-aside-left--enabled m-aside-left--fixed m-asid
 <!--begin::Page Vendors -->
 <script src="{{ asset("assets/vendors/custom/fullcalendar/fullcalendar.bundle.js") }}" type="text/javascript"></script>
 <!--end::Page Vendors -->
+<!--begin::Page Snippets -->
+<script src="{{ asset("assets/app/js/dashboard.js") }}" type="text/javascript"></script>
+<!--end::Page Snippets -->
 <!-- begin::Page Loader -->
 <script>
     $(window).on('load', function () {
