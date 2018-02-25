@@ -29,7 +29,7 @@
                         <div class="m-widget19__content">
                             <div class="m-widget19__header">
                                 <div class="m-widget19__user-img">
-                                    <img class="m-widget19__img" src="./assets/app/media/img//users/user1.jpg" alt="">
+                                    <img class="m-widget19__img" src="{{ asset("assets/app/media/img//users/user1.jpg") }}" alt="">
                                 </div>
                                 <div class="m-widget19__info">
                                     <span class="m-widget19__username">
@@ -667,7 +667,7 @@
                 <div class="m-portlet__head">
                     <div class="m-portlet__head-caption">
                         <div class="m-portlet__head-title">
-                            <h3 class="m-portlet__head-text m--font-light">
+                            <h3 class="m-portlet__head-text">
                                 Actions
                             </h3>
                         </div>
@@ -677,7 +677,7 @@
                 </div>
                 <div class="m-portlet__body">
                     <div class="m-widget17">
-                        <div class="m-widget17__visual m-widget17__visual--chart m-portlet-fit--top m-portlet-fit--sides m--bg-danger">
+                        <div class="m-widget17__visual m-widget17__visual--chart m-portlet-fit--top m-portlet-fit--sides m--bg-secondary">
                             <div class="m-widget17__chart" style="height:320px;">
                                 <canvas id="m_chart_activities"></canvas>
                             </div>
@@ -685,15 +685,15 @@
                         <div class="m-widget17__stats">
                             <div class="m-widget17__items m-widget17__items-col1">
                                 <div class="m-widget17__item">
-                                        <span class="m-widget17__icon">
-                                            <i class="fa fa-thumbs-o-up m--font-info"></i>
-                                        </span>
-                                        <span class="m-widget17__subtitle">
-                                            Up Vote
-                                        </span>
-                                        <span class="m-widget17__desc">
-                                            340 Up Votes
-                                        </span>
+                                    <span class="m-widget17__icon">
+                                        <i class="fa fa-thumbs-o-up m--font-info"></i>
+                                    </span>
+                                    <span class="m-widget17__subtitle">
+                                        Up Vote
+                                    </span>
+                                    <span class="m-widget17__desc">
+                                        340 Up Votes
+                                    </span>
                                 </div>
                                 <div class="m-widget17__item">
                                     <span class="m-widget17__icon">
@@ -820,7 +820,7 @@
                             <div class="m-widget5">
                                 <div class="m-widget5__item">
                                     <div class="m-widget5__pic">
-                                        <img class="m-widget7__img" src="./assets/app/media/img//products/product6.jpg" alt="">
+                                        <img class="m-widget7__img" src="{{ asset("assets/app/media/img//products/product6.jpg") }}" alt="">
                                     </div>
                                     <div class="m-widget5__content">
                                         <h4 class="m-widget5__title">
@@ -858,7 +858,7 @@
                                 </div>
                                 <div class="m-widget5__item">
                                     <div class="m-widget5__pic">
-                                        <img class="m-widget7__img" src="./assets/app/media/img//products/product10.jpg" alt="">
+                                        <img class="m-widget7__img" src="{{ asset("assets/app/media/img//products/product10.jpg") }}" alt="">
                                     </div>
                                     <div class="m-widget5__content">
                                         <h4 class="m-widget5__title">
@@ -893,7 +893,7 @@
                                 </div>
                                 <div class="m-widget5__item">
                                     <div class="m-widget5__pic">
-                                        <img class="m-widget7__img" src="./assets/app/media/img//products/product11.jpg" alt="">
+                                        <img class="m-widget7__img" src="{{ asset("assets/app/media/img//products/product11.jpg") }}" alt="">
                                     </div>
                                     <div class="m-widget5__content">
                                         <h4 class="m-widget5__title">
@@ -934,7 +934,7 @@
                             <div class="m-widget5">
                                 <div class="m-widget5__item">
                                     <div class="m-widget5__pic">
-                                        <img class="m-widget7__img" src="./assets/app/media/img//products/product11.jpg" alt="">
+                                        <img class="m-widget7__img" src="{{ asset("assets/app/media/img//products/product11.jpg") }}" alt="">
                                     </div>
                                     <div class="m-widget5__content">
                                         <h4 class="m-widget5__title">
@@ -969,7 +969,7 @@
                                 </div>
                                 <div class="m-widget5__item">
                                     <div class="m-widget5__pic">
-                                        <img class="m-widget7__img" src="./assets/app/media/img//products/product6.jpg" alt="">
+                                        <img class="m-widget7__img" src="{{ asset("assets/app/media/img//products/product6.jpg") }}" alt="">
                                     </div>
                                     <div class="m-widget5__content">
                                         <h4 class="m-widget5__title">
@@ -1004,7 +1004,7 @@
                                 </div>
                                 <div class="m-widget5__item">
                                     <div class="m-widget5__pic">
-                                        <img class="m-widget7__img" src="./assets/app/media/img//products/product10.jpg" alt="">
+                                        <img class="m-widget7__img" src="{{ asset("assets/app/media/img//products/product10.jpg") }}" alt="">
                                     </div>
                                     <div class="m-widget5__content">
                                         <h4 class="m-widget5__title">
@@ -1045,7 +1045,7 @@
                             <div class="m-widget5">
                                 <div class="m-widget5__item">
                                     <div class="m-widget5__pic">
-                                        <img class="m-widget7__img" src="./assets/app/media/img//products/product10.jpg" alt="">
+                                        <img class="m-widget7__img" src="{{ asset("assets/app/media/img//products/product10.jpg") }}" alt="">
                                     </div>
                                     <div class="m-widget5__content">
                                         <h4 class="m-widget5__title">
@@ -1080,7 +1080,7 @@
                                 </div>
                                 <div class="m-widget5__item">
                                     <div class="m-widget5__pic">
-                                        <img class="m-widget7__img" src="./assets/app/media/img//products/product11.jpg" alt="">
+                                        <img class="m-widget7__img" src="{{ asset("assets/app/media/img//products/product11.jpg") }}" alt="">
                                     </div>
                                     <div class="m-widget5__content">
                                         <h4 class="m-widget5__title">
@@ -1097,11 +1097,11 @@
                                             Fly themes
                                             </span>
                                             <span class="m-widget5__info-label">
-								Released:
-								</span>
+                                            Released:
+                                            </span>
                                             <span class="m-widget5__info-date m--font-info">
-								23.08.17
-								</span>
+                                            23.08.17
+                                            </span>
                                         </div>
                                     </div>
                                     <div class="m-widget5__stats1">
@@ -1115,7 +1115,7 @@
                                 </div>
                                 <div class="m-widget5__item">
                                     <div class="m-widget5__pic">
-                                        <img class="m-widget7__img" src="./assets/app/media/img//products/product6.jpg" alt="">
+                                        <img class="m-widget7__img" src="{{ asset("assets/app/media/img//products/product6.jpg") }}" alt="">
                                     </div>
                                     <div class="m-widget5__content">
                                         <h4 class="m-widget5__title">
