@@ -34,3 +34,8 @@ App\Entities\Book:
         post:
           targetEntity: App\Entities\Post
           cascade: [ 'persist' ]
+
+      manyToOne:
+        author:
+          targetEntity: App\Entities\Author
+          cascade: [ 'persist' ]
