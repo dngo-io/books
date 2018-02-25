@@ -16,6 +16,9 @@ Route::get('/', 'HomeController@root_index');
 Route::get('/road-map', function () {
     return view('road-map');
 });
+Route::get('/about', function () {
+    return view('about');
+});
 
 Route::auth();
 Route::get('/logout', 'Auth\LoginController@logout');
