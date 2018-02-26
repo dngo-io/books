@@ -28,6 +28,23 @@ Route::get('/listen', function () {
     return view('listen');
 });
 
+Route::get('/moderation', function () {
+    return view('moderation', [
+        'users' => [
+            'ikidnapmyself',
+            'tubi',
+            'maskoze',
+            'bencagri'
+        ],
+        'colors' => [
+            'success',
+            'dark',
+            'danger',
+            'warning'
+        ]
+    ]);
+});
+
 Route::auth();
 Route::get('/logout', 'Auth\LoginController@logout');
 

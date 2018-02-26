@@ -45,6 +45,7 @@ m-aside-left--offcanvas-default m-aside-left--enabled m-aside-left--fixed m-asid
 <!--begin::Page Snippets -->
 <script src="{{ asset("assets/app/js/dashboard.js") }}" type="text/javascript"></script>
 <script src="{{ asset("assets/custom/js/custom.js") }}" type="text/javascript"></script>
+<script src="{{ asset("assets/custom/js/moderation.js") }}" type="text/javascript"></script>
 <!--end::Page Snippets -->
 <!-- begin::Page Loader -->
 <script>
