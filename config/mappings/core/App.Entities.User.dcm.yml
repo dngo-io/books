@@ -4,8 +4,8 @@ App\Entities\User:
     repositoryClass: App\Repositories\UserRepository
 
     uniqueConstraints:
-        uniq_users_email:
-            columns: [ email ]
+        uniq_users_account:
+            columns: [ account ]
         uniq_users_uuid:
             columns: [ uuid ]
 
@@ -31,14 +31,6 @@ App\Entities\User:
         name:
             type: string
             length: 255
-
-        email:
-            type: string
-            length: 255
-
-        password:
-            type: string
-            length: 60
 
         accessToken:
             type: string
