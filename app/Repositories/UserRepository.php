@@ -21,12 +21,14 @@ class UserRepository extends AppEntityRepository implements UserRepositoryContra
     use FindByUUID;
 
     /**
-     * @param string $email
+     * Return
+     *
+     * @param string $account
      *
      * @return null|User
      */
-    public function findOneByEmailAddress($email)
+    public function findOneByAccount($account)
     {
-        return $this->findOneBy(['email' => $email]);
+        return $this->findOneBy(['account' => $account]);
     }
 }

@@ -55,11 +55,6 @@ class User implements
     use RaisesDomainEvents;
 
     /**
-     * @var string
-     */
-    protected $email;
-
-    /**
      * @var Carbon
      */
     protected $lastLogin;
@@ -99,55 +94,11 @@ class User implements
      */
     protected $profileImage;
 
-
     /**
-     * Constructor.
-     *
-     * @param string $uuid
-     * @param string $name
-     * @param string $email
-     * @param string $password
+     * @var int
      */
-    public function __construct($uuid, $name, $email, $password)
-    {
-        $this->name          = $name;
-        $this->email         = $email;
-        $this->password      = $password;
-        $this->addresses     = new ArrayCollection();
-        $this->organizations = new ArrayCollection();
-        $this->permissions   = new ArrayCollection();
-        $this->roles         = new ArrayCollection();
+    protected $isActive;
 
-        $this->raise(new Event\UserCreated(['uuid' => $uuid, 'name' => $name, 'email' => $email]));
-    }
-
-    /**
-     * @return string
-     */
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
-    /**
-     * @param string $email
-     * @param string $password
-     */
-    public function updateAuthenticationCredentials($email, $password)
-    {
-        $properties = [
-            'uuid'  => $this->uuid,
-            'name'  => $this->name,
-        ];
-        if ($email != $this->email) {
-            $properties['email'] = ['new' => $email, 'previous' => $this->email];
-        }
-
-        $this->email    = $email;
-        $this->password = $password;
-
-        $this->raise(new Event\AuthenticationCredentialsChanged($properties));
-    }
 
     /**
      * @return Carbon
@@ -444,19 +395,19 @@ class User implements
     }
 
     /**
-     * @param string $account
+     * @param string $accessToken
      */
-    public function setAccessToken($account)
+    public function setAccessToken($accessToken)
     {
-        $this->account = $account;
+        $this->accessToken = $accessToken;
     }
 
     /**
-     * @return string $accessToken
+     * @return string $account
      */
     public function getAccount()
     {
-        return $this->accessToken;
+        return $this->account;
     }
 
     /**
@@ -483,5 +434,21 @@ class User implements
         $this->profileImage = $profileImage;
     }
 
+
+    /**
+     * @return int $isActive
+     */
+    public function getIsActive()
+    {
+        return $this->isActive;
+    }
+
+    /**
+     * @param int $isActive
+     */
+    public function setIsActive($isActive)
+    {
+        $this->isActive = $isActive;
+    }
 
 }
