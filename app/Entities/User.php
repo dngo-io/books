@@ -87,6 +87,11 @@ class User implements
     /**
      * @var string
      */
+    protected $accessToken;
+
+    /**
+     * @var string
+     */
     protected $account;
 
     /**
@@ -431,11 +436,27 @@ class User implements
     }
 
     /**
-     * @return string
+     * @return string $accessToken
+     */
+    public function getAccessToken()
+    {
+        return $this->accessToken;
+    }
+
+    /**
+     * @param string $account
+     */
+    public function setAccessToken($account)
+    {
+        $this->account = $account;
+    }
+
+    /**
+     * @return string $accessToken
      */
     public function getAccount()
     {
-        return $this->account;
+        return $this->accessToken;
     }
 
     /**

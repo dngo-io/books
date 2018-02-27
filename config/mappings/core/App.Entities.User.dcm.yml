@@ -40,6 +40,11 @@ App\Entities\User:
             type: string
             length: 60
 
+        accessToken:
+            type: string
+            length: 255
+            nullable: true
+
         rememberToken:
             type: string
             length: 100
