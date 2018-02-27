@@ -2,7 +2,6 @@
 
 namespace App\Listeners;
 
-use App\Entities\BookAudio;
 use App\Events\StatsEvent;
 use Doctrine\ORM\EntityManagerInterface;
 
@@ -32,6 +31,6 @@ class StatsListener
      */
     public function handle(StatsEvent $event)
     {
-        dd($event));
+        dd($event);
     }
 }
