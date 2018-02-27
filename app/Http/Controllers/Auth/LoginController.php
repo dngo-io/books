@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Entities\User;
+use App\Repositories\UserRepository;
 use App\Support\AppController;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Socialite;
@@ -64,7 +65,10 @@ class LoginController extends AppController
     public function handleProviderCallback()
     {
         $steem = Socialite::driver('steem')->user();
-        $user  = $this->em->getRepository(User::class)->findOneByAccount($steem->nickname);
+
+        /** @var UserRepository $userRepository */
+        $userRepository  = $this->em->getRepository(User::class);
+        $user = $userRepository->findOneByAccount($steem->nickname);
 
         // If the user already registered, update access token.
         // If no matching user exists, create one.
@@ -77,6 +81,7 @@ class LoginController extends AppController
             $user->setProfileImage($steem->avatar);
             $user->setAccessToken($steem->token);
         } else {
+            /** @var User $user */
             $user->setName($steem->name);
             $user->setProfileImage($steem->avatar);
             $user->setAccessToken($steem->token);
