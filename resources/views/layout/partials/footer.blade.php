@@ -13,21 +13,21 @@
             <div class="m-stack__item m-stack__item--right m-stack__item--middle m-stack__item--first">
                 <ul class="m-footer__nav m-nav m-nav--inline m--pull-right">
                     <li class="m-nav__item">
-                        <a href="#" class="m-nav__link">
+                        <a href="{{ url("/about") }}" class="m-nav__link">
                             <span class="m-nav__link-text">
                                 About
                             </span>
                         </a>
                     </li>
                     <li class="m-nav__item">
-                        <a href="#" class="m-nav__link">
+                        <a href="{{ url(config("steem.rules")) }}" class="m-nav__link">
                             <span class="m-nav__link-text">
                                 Rules
                             </span>
                         </a>
                     </li>
                     <li class="m-nav__item">
-                        <a href="#" class="m-nav__link">
+                        <a href="{{ url(config("steem.how_to")) }}" class="m-nav__link">
                             <span class="m-nav__link-text">
                                 How to Contribute?
                             </span>
