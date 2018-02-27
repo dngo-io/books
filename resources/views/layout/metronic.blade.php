@@ -8,7 +8,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="google-site-verification" content="KkaUbgl3IwPy0Ruj257q6ZNVP8-ytzhTM57DtwLmaOw" />
-    <!--begin::Web font -->
     <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
     <script>
         WebFont.load({
@@ -18,7 +17,6 @@
             }
         });
     </script>
-    <!--end::Web font -->
     <!--begin::Base Styles -->
     <!--begin::Page Vendors -->
     <link href="{{ asset("assets/vendors/custom/fullcalendar/fullcalendar.bundle.css") }}" rel="stylesheet"
