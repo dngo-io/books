@@ -6,6 +6,7 @@ use App\Entities\User;
 use App\Support\AppController;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Socialite;
+use Doctrine\ORM\EntityManagerInterface;
 
 /**
  * Class LoginController
@@ -29,19 +30,21 @@ class LoginController extends AppController
     use AuthenticatesUsers;
 
     /**
-     * Where to redirect users after login.
-     *
-     * @var string
+     * @var EntityManagerInterface $em
      */
-    protected $redirectTo = '/home';
+    protected $em;
 
     /**
-     * Create a new controller instance.
+     * LoginController constructor.
+     *
+     * @param EntityManagerInterface $em
      */
-    public function __construct()
+    public function __construct(EntityManagerInterface $em)
     {
+        $this->em = $em;
         $this->middleware('guest', ['except' => 'logout']);
     }
+
 
     /**
      * Redirect the user to the Steem Connect authentication page.
@@ -56,10 +59,33 @@ class LoginController extends AppController
     /**
      * Obtain the user information from Steem Connect
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function handleProviderCallback()
     {
+        $steem = Socialite::driver('steem')->user();
+        $user  = $this->em->getRepository(User::class)->findOneByAccount($steem->nickname);
+
+        // If the user already registered, update access token.
+        // If no matching user exists, create one.
+        if($user === null)
+        {
+            $user = new User();
+            $user->setName($steem->name);
+            $user->setIsActive(1);
+            $user->setAccount($steem->nickname);
+            $user->setProfileImage($steem->avatar);
+            $user->setAccessToken($steem->token);
+        } else {
+            $user->setName($steem->name);
+            $user->setProfileImage($steem->avatar);
+            $user->setAccessToken($steem->token);
+        }
+
+        $this->em->persist($user);
+        $this->em->flush();
+
+        auth()->login($user);
         return redirect()->to('/');
     }
 }
