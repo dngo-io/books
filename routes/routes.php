@@ -32,6 +32,10 @@ Route::get('/post', function () {
     return view('post');
 });
 
+Route::get('/books', function () {
+    return view('books');
+});
+
 Route::get('/moderation', function () {
     return view('moderation', [
         'users' => [
@@ -53,7 +57,7 @@ Route::auth();
 Route::get('/logout', 'Auth\LoginController@logout');
 
 Route::get('/home', 'HomeController@home');
-Route::get('/books', 'BookController@index');
+//Route::get('/books', 'BookController@index');
 
 Route::resource('user','UserController@index');
 //Route::resource('book','BookController@index');
