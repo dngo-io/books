@@ -24,6 +24,9 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\StatsEvent' => [
             'App\Listeners\StatsListener',
         ],
+        \SocialiteProviders\Manager\SocialiteWasCalled::class => [
+            'SocialiteProviders\Steem\SteemExtendSocialite@handle',
+        ],
     ];
 
     /**

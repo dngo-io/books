@@ -186,7 +186,12 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         /*
-         * Bizim Paketler
+         * Laravel Socialite
+         */
+        \SocialiteProviders\Manager\ServiceProvider::class,
+
+        /*
+         * Our Packages
          */
         App\Providers\BookServiceProvider::class,
     ],

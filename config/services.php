@@ -29,10 +29,15 @@ return [
         'secret' => env('SPARKPOST_SECRET'),
     ],
 
+    'steem' => [
+        'client_id' => env('STEEM_KEY'),
+        'client_secret' => env('STEEM_SECRET'),
+        'redirect' => env('STEEM_REDIRECT_URI'),
+    ],
+
     'stripe' => [
         'model' => \App\Entities\User::class,
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
     ],
-
 ];

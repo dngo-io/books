@@ -53,7 +53,8 @@ Route::get('/moderation', function () {
     ]);
 });
 
-Route::auth();
+Route::get('/login', 'Auth\LoginController@redirectToProvider');
+Route::get('/login/callback', 'Auth\LoginController@handleProviderCallback');
 Route::get('/logout', 'Auth\LoginController@logout');
 
 Route::get('/home', 'HomeController@home');
