@@ -3,10 +3,10 @@
     <div class="d-flex align-items-center">
         <div class="mr-auto">
             <h3 class="m-subheader__title ">
-                Dashboard
+                {{ config("app.name") }} :: @yield("title")
             </h3>
         </div>
-        <div>
+        <div class="d-none">
             <span class="m-subheader__daterange" id="m_dashboard_daterangepicker">
                 <span class="m-subheader__daterange-label">
                     <span class="m-subheader__daterange-title"></span>
