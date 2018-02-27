@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Service\BookService;
+use Doctrine\ORM\EntityManagerInterface;
 use Illuminate\Support\ServiceProvider;
 
 class BookServiceProvider extends ServiceProvider
@@ -25,7 +26,7 @@ class BookServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(BookService::class, function ($app) {
-            return new BookService();
+            return new BookService(app(EntityManagerInterface::class));
         });
     }
 }

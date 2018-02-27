@@ -21,10 +21,10 @@ class BookService
      */
     private $entityManager;
 
-    public function __construct()
+    public function __construct(EntityManagerInterface $entityManager)
     {
 
-        $this->entityManager = new \EntityManager();
+        $this->entityManager = $entityManager;
     }
 
     public function addBook(StoreBook $request)
