@@ -1,4 +1,5 @@
 @extends("layout.metronic")
+@section("title", "Listening to \"A Tale Of Two Cities\" by @ikidnapmyself")
 @section("content")
     <div class="row">
         <div class="col-md-12">

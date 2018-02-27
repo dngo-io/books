@@ -1,4 +1,5 @@
 @extends("layout.metronic")
+@section("title", "Home")
 @section("content")
     <div class="masthead">
         <div class="intro-body text-center m--font-light">

@@ -1,4 +1,5 @@
 @extends("layout.metronic")
+@section("title", "Road Map")
 @section("content")
     <div class="m-timeline-1 m-timeline-1--fixed">
         <div class="m-timeline-1__items">
