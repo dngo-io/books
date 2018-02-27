@@ -100,6 +100,7 @@
                     </div>
                 </div>
             </li>
+            @if (!Auth::guest())
             <li class="m-nav__item m-dropdown m-dropdown--medium m-dropdown--arrow  m-dropdown--align-right m-dropdown--mobile-full-width m-dropdown--skin-light"
                 data-dropdown-toggle="click">
                 <a href="#" class="m-nav__link m-dropdown__toggle">
@@ -204,6 +205,7 @@
                     </div>
                 </div>
             </li>
+            @endif
             <li id="m_quick_sidebar_toggle" class="m-nav__item m-nav__item--info m-nav__item--qs invisible">
                 <a href="#" class="m-nav__link m-dropdown__toggle">
                     <span class="m-nav__link-icon m-nav__link-icon-alt">
