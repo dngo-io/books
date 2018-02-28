@@ -36,6 +36,14 @@ Route::get('/books', function () {
     return view('books');
 });
 
+
+Route::get('/profile', function () {
+    return view('profile');
+});
+Route::get('/feed', function () {
+    return view('feed');
+});
+
 Route::get('/moderation', function () {
     return view('moderation', [
         'users' => [
