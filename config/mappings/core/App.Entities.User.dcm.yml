@@ -45,10 +45,12 @@ App\Entities\User:
         account:
             type: string
             length: 60
+            unique: true
 
         profileImage:
             type: string
             length: 255
+            nullable: TRUE
 
         lastLogin:
             type: datetime
