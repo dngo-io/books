@@ -7,7 +7,7 @@
                 <div class="m-stack m-stack--ver m-stack--general">
                     <div class="m-stack__item m-stack__item--middle m-brand__logo">
                         <a href="{{ url("/") }}" class="m-brand__logo-wrapper">
-                            <img alt="{{ config("app.name") }} Logo" src="{{ asset("assets/demo/demo9/media/img/logo/logo.png") }}"/>
+                            <img alt="{{ config("app.name") }} Logo" src="{{ asset("assets/custom/img/dngo-square-logo.png") }}" height="31"/>
                         </a>
                     </div>
                     <div class="m-stack__item m-stack__item--middle m-brand__tools">
@@ -40,7 +40,7 @@
             <div class="m-stack__item m-stack__item--middle m-stack__item--center">
                 <!-- BEGIN: Brand -->
                 <a href="{{ url("/") }}" class="m-brand m-brand--desktop">
-                    <img alt="{{ config("app.name") }} Logo" src="{{ asset("assets/demo/demo9/media/img/logo/logo.png") }}"/>
+                    <img alt="{{ config("app.name") }} Logo" src="{{ asset("assets/custom/img/dngo-logo.png") }}" height="31"/>
                 </a>
                 <!-- END: Brand -->
             </div>
