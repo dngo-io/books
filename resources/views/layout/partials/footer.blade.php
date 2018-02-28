@@ -29,6 +29,20 @@
                         </a>
                     </li>
                     <li class="m-nav__item">
+                        <a href="{{ url("/road-map") }}" class="m-nav__link">
+                            <span class="m-nav__link-text">
+                                Road Map
+                            </span>
+                        </a>
+                    </li>
+                    <li class="m-nav__item">
+                        <a href="{{ url("/") }}" class="m-nav__link">
+                            <span class="m-nav__link-text">
+                                Whitepaper
+                            </span>
+                        </a>
+                    </li>
+                    <li class="m-nav__item">
                         <a href="{{ url(config("steem.rules")) }}" class="m-nav__link">
                             <span class="m-nav__link-text">
                                 Rules

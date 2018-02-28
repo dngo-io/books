@@ -31,6 +31,22 @@
         </li>
         @else
         <li class="m-menu__item m-menu__item--rel">
+            <a  href="{{ url("/road-map") }}" class="m-menu__link">
+                <span class="m-menu__item-here"></span>
+                <span class="m-menu__link-text">
+                Road Map
+            </span>
+            </a>
+        </li>
+        <li class="m-menu__item m-menu__item--rel">
+            <a  href="{{ url("/") }}" class="m-menu__link">
+                <span class="m-menu__item-here"></span>
+                <span class="m-menu__link-text">
+                Whitepaper
+            </span>
+            </a>
+        </li>
+        <li class="m-menu__item m-menu__item--rel">
             <a  href="{{ url("/login") }}" class="m-menu__link">
                 <span class="m-menu__item-here"></span>
                 <span class="m-menu__link-text m--font-danger">
