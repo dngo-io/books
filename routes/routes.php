@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'HomeController@root_index');
+Route::get('/steem', 'HomeController@steem');
 
 Route::get('/road-map', function () {
     return view('road-map');
