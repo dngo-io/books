@@ -4,10 +4,20 @@
     "keywords": ["framework", "laravel", "doctrine", "twig"],
     "license": "MIT",
     "type": "project",
+    "repositories": {
+       "dev-package": {
+          "type": "path",
+          "url": "./steem-connect",
+          "options": {
+              "symlink": true
+          }
+       }
+    },
     "require": {
         "php": ">=7",
         "beberlei/assert": "~2.7",
         "eloquent/enumeration": "~5.1",
+        "frnxstd/steem-connect": "@dev",
         "laravel-doctrine/acl": "~1.0",
         "laravel-doctrine/migrations": "~1.1",
         "laravel-doctrine/orm": "~1.3",
