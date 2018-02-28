@@ -3,7 +3,7 @@
     <div class="d-flex align-items-center">
         <div class="mr-auto">
             <h3 class="m-subheader__title ">
-                {{ config("app.name") }} :: @yield("title")
+
             </h3>
         </div>
         <div class="d-none">
