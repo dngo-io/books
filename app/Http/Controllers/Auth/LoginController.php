@@ -80,6 +80,7 @@ class LoginController extends AppController
             $user->setAccount($steem->nickname);
             $user->setProfileImage($steem->avatar);
             $user->setAccessToken($steem->token);
+            $this->em->persist($user);
         } else {
             /** @var User $user */
             $user->setName($steem->name);
@@ -87,7 +88,6 @@ class LoginController extends AppController
             $user->setAccessToken($steem->token);
         }
 
-        $this->em->persist($user);
         $this->em->flush();
 
         auth()->login($user);
