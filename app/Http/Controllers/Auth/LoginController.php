@@ -70,6 +70,8 @@ class LoginController extends AppController
         $userRepository  = $this->em->getRepository(User::class);
         $user = $userRepository->findOneByAccount($steem->nickname);
 
+        $avatar = empty($steem->avatar) ? asset('assets/custom/img/profile-picture.jpg') : $steem->avatar;
+
         // If the user already registered, update access token.
         // If no matching user exists, create one.
         if($user === null)
@@ -78,13 +80,13 @@ class LoginController extends AppController
             $user->setName($steem->name);
             $user->setIsActive(1);
             $user->setAccount($steem->nickname);
-            $user->setProfileImage($steem->avatar);
+            $user->setProfileImage($avatar);
             $user->setAccessToken($steem->token);
             $this->em->persist($user);
         } else {
             /** @var User $user */
             $user->setName($steem->name);
-            $user->setProfileImage($steem->avatar);
+            $user->setProfileImage($avatar);
             $user->setAccessToken($steem->token);
         }
 
