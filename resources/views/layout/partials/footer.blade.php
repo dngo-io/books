@@ -12,6 +12,15 @@
             </div>
             <div class="m-stack__item m-stack__item--right m-stack__item--middle m-stack__item--first">
                 <ul class="m-footer__nav m-nav m-nav--inline m--pull-right">
+                    @if (Auth::guest())
+                    <li class="m-nav__item">
+                        <a href="{{ url("/login") }}" class="m-nav__link">
+                        <span class="m-nav__link-text">
+                            Login
+                        </span>
+                        </a>
+                    </li>
+                    @endif
                     <li class="m-nav__item">
                         <a href="{{ url("/about") }}" class="m-nav__link">
                             <span class="m-nav__link-text">

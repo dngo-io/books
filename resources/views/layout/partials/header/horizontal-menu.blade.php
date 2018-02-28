@@ -20,14 +20,25 @@
                 </span>
             </a>
         </li>
+        @if (!Auth::guest())
         <li class="m-menu__item m-menu__item--rel">
             <a  href="{{ url("/post") }}" class="m-menu__link">
                 <span class="m-menu__item-here"></span>
-                <span class="m-menu__link-text">
+                <span class="m-menu__link-text m--font-success">
                     Contribute
                 </span>
             </a>
         </li>
+        @else
+        <li class="m-menu__item m-menu__item--rel">
+            <a  href="{{ url("/login") }}" class="m-menu__link">
+                <span class="m-menu__item-here"></span>
+                <span class="m-menu__link-text m--font-danger">
+                    Login
+                </span>
+            </a>
+        </li>
+        @endif
     </ul>
 </div>
 <!-- END: Horizontal Menu -->
