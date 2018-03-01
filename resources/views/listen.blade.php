@@ -1,61 +1,157 @@
 @extends("layout.page")
 @section("title", "Listening to \"A Tale Of Two Cities\" by @ikidnapmyself")
+@php
+    $songs = [
+            [
+                "name"          => "Risin' High (feat Raashan Ahmad)",
+                "artist"        => "Ancient Astronauts",
+                "album"         => "We Are to Answer",
+                "url"           => "assets/2Cellos - Hurt.mp3",
+                "cover_art_url" => "assets/custom/plugins/amplitudejs/examples/album-art/we-are-to-answer.jpg"
+            ],
+            [
+                "name"          => "The Gun",
+                "artist"        => "Lorn",
+                "album"         => "Ask The Dust",
+                "url"           => "../songs/08 The Gun.mp3",
+                "cover_art_url" => "assets/custom/plugins/amplitudejs/examples/album-art/ask-the-dust.jpg"
+            ],
+            [
+                "name"          => "Anvil",
+                "artist"        => "Lorn",
+                "album"         => "Anvil",
+                "url"           => "../songs/LORN - ANVIL.mp3",
+                "cover_art_url" => "assets/custom/plugins/amplitudejs/examples/album-art/anvil.jpg"
+            ],
+            [
+                "name"          => "I Came Running",
+                "artist"        => "Ancient Astronauts",
+                "album"         => "We Are to Answer",
+                "url"           => "../songs/ICameRunning-AncientAstronauts.mp3",
+                "cover_art_url" => "assets/custom/plugins/amplitudejs/examples/album-art/we-are-to-answer.jpg"
+            ],
+            [
+                "name"          => "First Snow",
+                "artist"        => "Emancipator",
+                "album"         => "Soon It Will Be Cold Enough",
+                "url"           => "../songs/FirstSnow-Emancipator.mp3",
+                "cover_art_url" => "assets/custom/plugins/amplitudejs/examples/album-art/soon-it-will-be-cold-enough.jpg"
+            ],
+            [
+                "name"          => "Terrain",
+                "artist"        => "pg.lost",
+                "album"         => "Key",
+                "url"           => "../songs/Terrain-pglost.mp3",
+                "cover_art_url" => "assets/custom/plugins/amplitudejs/examples/album-art/key.jpg"
+            ],
+            [
+                "name"          => "Vorel",
+                "artist"        => "Russian Circles",
+                "album"         => "Guidance",
+                "url"           => "../songs/Vorel-RussianCircles.mp3",
+                "cover_art_url" => "assets/custom/plugins/amplitudejs/examples/album-art/guidance.jpg"
+            ],
+            [
+                "name"          => "Intro / Sweet Glory",
+                "artist"        => "Jimkata",
+                "album"         => "Die Digital",
+                "url"           => "../songs/IntroSweetGlory-Jimkata.mp3",
+                "cover_art_url" => "assets/custom/plugins/amplitudejs/examples/album-art/die-digital.jpg"
+            ],
+            [
+                "name"          => "Offcut #6",
+                "artist"        => "Little People",
+                "album"         => "We Are But Hunks of Wood Remixes",
+                "url"           => "../songs/Offcut6-LittlePeople.mp3",
+                "cover_art_url" => "assets/custom/plugins/amplitudejs/examples/album-art/we-are-but-hunks-of-wood.jpg"
+            ],
+            [
+                "name"          => "Dusk To Dawn",
+                "artist"        => "Emancipator",
+                "album"         => "Dusk To Dawn",
+                "url"           => "../songs/DuskToDawn-Emancipator.mp3",
+                "cover_art_url" => "assets/custom/plugins/amplitudejs/examples/album-art/from-dusk-to-dawn.jpg"
+            ],
+            [
+                "name"          => "Anthem",
+                "artist"        => "Emancipator",
+                "album"         => "Soon It Will Be Cold Enough",
+                "url"           => "../songs/Anthem-Emancipator.mp3",
+                "cover_art_url" => "assets/custom/plugins/amplitudejs/examples/album-art/soon-it-will-be-cold-enough.jpg"
+            ]
+        ];
+@endphp
+@section("script")
+    Amplitude.init({
+        "songs": [
+            @foreach($songs as $song)
+            {
+                "name": "{{ $song['name'] }}",
+                "artist": "{{ $song['artist'] }}",
+                "album": "{{ $song['album'] }}",
+                "url": "{{ $song['url'] }}",
+                "cover_art_url": "{{ $song['cover_art_url'] }}"
+            },
+            @endforeach
+        ]
+    });
+@endsection
 @section("content")
     <div class="row">
-        <div class="col-md-12">
-            <div class="m-portlet m-portlet--full-height">
-                <div class="m-portlet__body" >
-                    <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/60791660&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
-                </div>
-            </div>
-        </div>
         <div class="col-md-4">
-            <div class="m-portlet m-portlet--bordered-semi m-portlet--full-height  m-portlet--rounded-force">
-                <div class="m-portlet__head m-portlet__head--fit">
+            <div class="m-portlet m-portlet--bordered-semi m-portlet--widget-fit m-portlet--full-height m-portlet--skin-light  m-portlet--rounded-force">
+                <div class="m-portlet__head">
                     <div class="m-portlet__head-caption">
-                        <div class="m-portlet__head-action">
-                            <a href="#" class="btn btn-sm m-btn--pill btn-brand">Book</a>
+                        <div class="m-portlet__head-title">
+                            <h3 class="m-portlet__head-text">
+                                Listen
+                            </h3>
                         </div>
+                    </div>
+                    <div class="m-portlet__head-tools">
                     </div>
                 </div>
                 <div class="m-portlet__body">
-                    <div class="m-widget19">
-                        <div class="m-widget19__pic m-portlet-fit--top m-portlet-fit--sides" style="min-height-: 286px">
-                            <img src="https://www.legendarytrips.com/wp-content/uploads/A-Tale-of-Two-Cities_Dickens_Cover_2.jpg" alt="">
-                            <h3 class="m-widget19__title m--font-light">
-                                A Tale of Two Cities
-                            </h3>
-                            <div class="m-widget19__shadow"></div>
-                        </div>
-                        <div class="m-widget19__content">
-                            <div class="m-widget19__header">
-                                <div class="m-widget19__user-img">
-                                    <img class="m-widget19__img" src="{{ asset("assets/app/media/img//users/user1.jpg") }}" alt="">
-                                </div>
-                                <div class="m-widget19__info">
-                                    <span class="m-widget19__username">
-                                        Charles Dickens
-                                    </span>
-                                    <br>
-                                    <span class="m-widget19__time">
-                                        ISBN 9781976040399
-                                    </span>
-                                </div>
-                                <div class="m-widget19__stats">
-                                    <span class="m-widget19__number m--font-brand">
-                                        18
-                                    </span>
-                                    <span class="m-widget19__comment">
-                                        Chapters
-                                    </span>
+                    <div id="amplitude-player">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 columns" id="amplitude-left">
+                                <div id="player-left-bottom">
+                                    <div id="time-container">
+                                        <span class="current-time">
+                                            <span class="amplitude-current-minutes" amplitude-main-current-minutes="true"></span>:<span class="amplitude-current-seconds" amplitude-main-current-seconds="true"></span>
+                                        </span>
+                                        <input type="range" class="amplitude-song-slider" amplitude-main-song-slider="true" step=".1"/>
+                                        <span class="duration">
+                                            <span class="amplitude-duration-minutes" amplitude-main-duration-minutes="true"></span>:<span class="amplitude-duration-seconds" amplitude-main-duration-seconds="true"></span>
+                                        </span>
+                                    </div>
+                                    <div id="control-container">
+                                        <div id="repeat-container">
+                                            <div class="amplitude-repeat" id="repeat"></div>
+                                        </div>
+                                        <div id="central-control-container">
+                                            <div id="central-controls">
+                                                <div class="amplitude-prev" id="previous"></div>
+                                                <div class="amplitude-play-pause" amplitude-main-play-pause="true" id="play-pause"></div>
+                                                <div class="amplitude-next" id="next"></div>
+                                            </div>
+                                        </div>
+                                        <div id="shuffle-container">
+                                            <div class="amplitude-shuffle amplitude-shuffle-off" id="shuffle"></div>
+                                        </div>
+                                    </div>
+
+                                    <div id="meta-container">
+                                        <span amplitude-song-info="name" amplitude-main-song-info="true" class="song-name"></span>
+
+                                        <div class="song-artist-album">
+                                            <span amplitude-song-info="artist" amplitude-main-song-info="true"></span>
+                                            <span amplitude-song-info="album" amplitude-main-song-info="true"></span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="m-widget19__body">
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry scrambled it to make text of the printing and typesetting industry scrambled a type specimen book text of the dummy text of the printing printing and typesetting industry scrambled dummy text of the printing.
-                            </div>
-                        </div>
-                        <div class="m-widget19__action">
-                            <button type="button" class="btn m-btn--pill btn-secondary m-btn m-btn--hover-brand m-btn--custom">Read More</button>
+
                         </div>
                     </div>
                 </div>
@@ -76,588 +172,23 @@
                 </div>
                 <div class="m-portlet__body">
                     <div class="m-scrollable" data-scrollable="true" data-max-height="500" data-scrollbar-shown="true">
-                        <div class="m-widget2">
-                            <div class="m-widget2__item m-widget2__item--metal">
-                                <div class="m-widget2__checkbox"></div>
-                                <div class="m-widget2__desc">
-                                    <span class="m-widget2__text">
-                                        <i class="fa fa-check"></i> Make Metronic Great
-                                    </span>
-                                    <br>
-                                    <span class="m-widget2__user-name">
-                                        <a href="#" class="m-widget2__link">
-                                        By @ikidnapmyself
-                                        </a>
-                                    </span>
-                                </div>
-                                <div class="m-widget2__actions">
-                                    <div class="m-widget2__actions-nav">
-                                        <div class="m-dropdown m-dropdown--inline m-dropdown--arrow m-dropdown--align-right m-dropdown--align-push" data-dropdown-toggle="hover">
-                                            <a href="#" class="m-dropdown__toggle">
-                                                <i class="la la-ellipsis-h"></i>
-                                            </a>
-                                            <div class="m-dropdown__wrapper">
-                                                <span class="m-dropdown__arrow m-dropdown__arrow--right m-dropdown__arrow--adjust"></span>
-                                                <div class="m-dropdown__inner">
-                                                    <div class="m-dropdown__body">
-                                                        <div class="m-dropdown__content">
-                                                            <ul class="m-nav">
-                                                                <li class="m-nav__item">
-                                                                    <a href="" class="m-nav__link">
-                                                                        <i class="m-nav__link-icon flaticon-share"></i>
-                                                                        <span class="m-nav__link-text">Go to this chapter</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li class="m-nav__item">
-                                                                    <a href="" class="m-nav__link">
-                                                                        <i class="m-nav__link-icon flaticon-chat-1"></i>
-                                                                        <span class="m-nav__link-text">Contributor's Page</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li class="m-nav__item">
-                                                                    <a href="" class="m-nav__link">
-                                                                        <i class="m-nav__link-icon flaticon-info"></i>
-                                                                        <span class="m-nav__link-text">Report</span>
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                        <div id="amplitude-right">
+                        @php($i = 0)
+                        @foreach($songs as $song)
+                            <div class="song amplitude-song-container amplitude-play-pause" amplitude-song-index="{{ $i++ }}">
+                                <div class="song-now-playing-icon-container">
+                                    <div class="play-button-container">
+
                                     </div>
+                                    <img class="now-playing" src="{{ asset("assets/custom/plugins/amplitudejs/examples/blue-playlist/img/now-playing.svg") }}"/>
                                 </div>
+                                <div class="song-meta-data">
+                                    <span class="song-title">{{ $song['name'] }}</span>
+                                    <span class="song-artist">{{ $song['artist'] }}</span>
+                                </div>
+                                <span class="song-duration">3:30</span>
                             </div>
-                            <div class="m-widget2__item m-widget2__item--metal">
-                                <div class="m-widget2__checkbox"></div>
-                                <div class="m-widget2__desc">
-                                    <span class="m-widget2__text">
-                                        <i class="fa fa-check"></i> Make Metronic Great Again
-                                    </span>
-                                    <br>
-                                    <span class="m-widget2__user-name">
-                                        <a href="#" class="m-widget2__link">
-                                        By @meskoze
-                                        </a>
-                                    </span>
-                                </div>
-                                <div class="m-widget2__actions">
-                                    <div class="m-widget2__actions-nav">
-                                        <div class="m-dropdown m-dropdown--inline m-dropdown--arrow m-dropdown--align-right m-dropdown--align-push" data-dropdown-toggle="hover">
-                                            <a href="#" class="m-dropdown__toggle">
-                                                <i class="la la-ellipsis-h"></i>
-                                            </a>
-                                            <div class="m-dropdown__wrapper">
-                                                <span class="m-dropdown__arrow m-dropdown__arrow--right m-dropdown__arrow--adjust"></span>
-                                                <div class="m-dropdown__inner">
-                                                    <div class="m-dropdown__body">
-                                                        <div class="m-dropdown__content">
-                                                            <ul class="m-nav">
-                                                                <li class="m-nav__item">
-                                                                    <a href="" class="m-nav__link">
-                                                                        <i class="m-nav__link-icon flaticon-share"></i>
-                                                                        <span class="m-nav__link-text">Go to this chapter</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li class="m-nav__item">
-                                                                    <a href="" class="m-nav__link">
-                                                                        <i class="m-nav__link-icon flaticon-chat-1"></i>
-                                                                        <span class="m-nav__link-text">Contributor's Page</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li class="m-nav__item">
-                                                                    <a href="" class="m-nav__link">
-                                                                        <i class="m-nav__link-icon flaticon-info"></i>
-                                                                        <span class="m-nav__link-text">Report</span>
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="m-widget2__item m-widget2__item--metal">
-                                <div class="m-widget2__checkbox"></div>
-                                <div class="m-widget2__desc">
-                                    <span class="m-widget2__text">
-                                        <i class="fa fa-check"></i> Make Metronic Great
-                                    </span>
-                                    <br>
-                                    <span class="m-widget2__user-name">
-                                        <a href="#" class="m-widget2__link">
-                                        By @ikidnapmyself
-                                        </a>
-                                    </span>
-                                </div>
-                                <div class="m-widget2__actions">
-                                    <div class="m-widget2__actions-nav">
-                                        <div class="m-dropdown m-dropdown--inline m-dropdown--arrow m-dropdown--align-right m-dropdown--align-push" data-dropdown-toggle="hover">
-                                            <a href="#" class="m-dropdown__toggle">
-                                                <i class="la la-ellipsis-h"></i>
-                                            </a>
-                                            <div class="m-dropdown__wrapper">
-                                                <span class="m-dropdown__arrow m-dropdown__arrow--right m-dropdown__arrow--adjust"></span>
-                                                <div class="m-dropdown__inner">
-                                                    <div class="m-dropdown__body">
-                                                        <div class="m-dropdown__content">
-                                                            <ul class="m-nav">
-                                                                <li class="m-nav__item">
-                                                                    <a href="" class="m-nav__link">
-                                                                        <i class="m-nav__link-icon flaticon-share"></i>
-                                                                        <span class="m-nav__link-text">Go to this chapter</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li class="m-nav__item">
-                                                                    <a href="" class="m-nav__link">
-                                                                        <i class="m-nav__link-icon flaticon-chat-1"></i>
-                                                                        <span class="m-nav__link-text">Contributor's Page</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li class="m-nav__item">
-                                                                    <a href="" class="m-nav__link">
-                                                                        <i class="m-nav__link-icon flaticon-info"></i>
-                                                                        <span class="m-nav__link-text">Report</span>
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="m-widget2__item m-widget2__item--metal">
-                                <div class="m-widget2__checkbox"></div>
-                                <div class="m-widget2__desc">
-                                    <span class="m-widget2__text">
-                                        <i class="fa fa-check"></i> Make Metronic Great Again
-                                    </span>
-                                    <br>
-                                    <span class="m-widget2__user-name">
-                                        <a href="#" class="m-widget2__link">
-                                        By @meskoze
-                                        </a>
-                                    </span>
-                                </div>
-                                <div class="m-widget2__actions">
-                                    <div class="m-widget2__actions-nav">
-                                        <div class="m-dropdown m-dropdown--inline m-dropdown--arrow m-dropdown--align-right m-dropdown--align-push" data-dropdown-toggle="hover">
-                                            <a href="#" class="m-dropdown__toggle">
-                                                <i class="la la-ellipsis-h"></i>
-                                            </a>
-                                            <div class="m-dropdown__wrapper">
-                                                <span class="m-dropdown__arrow m-dropdown__arrow--right m-dropdown__arrow--adjust"></span>
-                                                <div class="m-dropdown__inner">
-                                                    <div class="m-dropdown__body">
-                                                        <div class="m-dropdown__content">
-                                                            <ul class="m-nav">
-                                                                <li class="m-nav__item">
-                                                                    <a href="" class="m-nav__link">
-                                                                        <i class="m-nav__link-icon flaticon-share"></i>
-                                                                        <span class="m-nav__link-text">Go to this chapter</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li class="m-nav__item">
-                                                                    <a href="" class="m-nav__link">
-                                                                        <i class="m-nav__link-icon flaticon-chat-1"></i>
-                                                                        <span class="m-nav__link-text">Contributor's Page</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li class="m-nav__item">
-                                                                    <a href="" class="m-nav__link">
-                                                                        <i class="m-nav__link-icon flaticon-info"></i>
-                                                                        <span class="m-nav__link-text">Report</span>
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="m-widget2__item m-widget2__item--success">
-                                <div class="m-widget2__checkbox"></div>
-                                <div class="m-widget2__desc">
-                                    <span class="m-widget2__text m--font-success">
-                                        <i class="fa fa-play-circle"></i>
-                                        Do A Favour
-                                    </span>
-                                    <br>
-                                    <span class="m-widget2__user-name">
-                                        <a href="#" class="m-widget2__link">
-                                        By @tubi
-                                        </a>
-                                    </span>
-                                </div>
-                                <div class="m-widget2__actions">
-                                    <div class="m-widget2__actions-nav">
-                                        <div class="m-dropdown m-dropdown--inline m-dropdown--arrow m-dropdown--align-right m-dropdown--align-push" data-dropdown-toggle="hover">
-                                            <a href="#" class="m-dropdown__toggle">
-                                                <i class="la la-ellipsis-h"></i>
-                                            </a>
-                                            <div class="m-dropdown__wrapper">
-                                                <span class="m-dropdown__arrow m-dropdown__arrow--right m-dropdown__arrow--adjust"></span>
-                                                <div class="m-dropdown__inner">
-                                                    <div class="m-dropdown__body">
-                                                        <div class="m-dropdown__content">
-                                                            <ul class="m-nav">
-                                                                <li class="m-nav__item">
-                                                                    <a href="" class="m-nav__link">
-                                                                        <i class="m-nav__link-icon flaticon-share"></i>
-                                                                        <span class="m-nav__link-text">Go to this chapter</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li class="m-nav__item">
-                                                                    <a href="" class="m-nav__link">
-                                                                        <i class="m-nav__link-icon flaticon-chat-1"></i>
-                                                                        <span class="m-nav__link-text">Contributor's Page</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li class="m-nav__item">
-                                                                    <a href="" class="m-nav__link">
-                                                                        <i class="m-nav__link-icon flaticon-info"></i>
-                                                                        <span class="m-nav__link-text">Report</span>
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="m-widget2__item m-widget2__item--warning">
-                                <div class="m-widget2__checkbox">
-                                </div>
-                                <div class="m-widget2__desc">
-                                    <span class="m-widget2__text">
-                                        <i class="fa fa-circle-o"></i>
-                                        Prepare Docs For Metting On Monday
-                                    </span>
-                                    <br>
-                                    <span class="m-widget2__user-name">
-                                        <a href="#" class="m-widget2__link m--font-warning">
-                                            Pending Approval
-                                        </a>
-                                    </span>
-                                </div>
-                                <div class="m-widget2__actions">
-                                    <div class="m-widget2__actions-nav">
-                                        <div class="m-dropdown m-dropdown--inline m-dropdown--arrow m-dropdown--align-right m-dropdown--align-push" data-dropdown-toggle="hover">
-                                            <a href="#" class="m-dropdown__toggle">
-                                                <i class="la la-ellipsis-h"></i>
-                                            </a>
-                                            <div class="m-dropdown__wrapper">
-                                                <span class="m-dropdown__arrow m-dropdown__arrow--right m-dropdown__arrow--adjust"></span>
-                                                <div class="m-dropdown__inner">
-                                                    <div class="m-dropdown__body">
-                                                        <div class="m-dropdown__content">
-                                                            <ul class="m-nav">
-                                                                <li class="m-nav__item">
-                                                                    <a href="" class="m-nav__link">
-                                                                        <i class="m-nav__link-icon flaticon-share"></i>
-                                                                        <span class="m-nav__link-text">Activity</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li class="m-nav__item">
-                                                                    <a href="" class="m-nav__link">
-                                                                        <i class="m-nav__link-icon flaticon-chat-1"></i>
-                                                                        <span class="m-nav__link-text">Messages</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li class="m-nav__item">
-                                                                    <a href="" class="m-nav__link">
-                                                                        <i class="m-nav__link-icon flaticon-info"></i>
-                                                                        <span class="m-nav__link-text">FAQ</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li class="m-nav__item">
-                                                                    <a href="" class="m-nav__link">
-                                                                        <i class="m-nav__link-icon flaticon-lifebuoy"></i>
-                                                                        <span class="m-nav__link-text">Support</span>
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="m-widget2__item m-widget2__item--danger">
-                                <div class="m-widget2__checkbox"></div>
-                                <div class="m-widget2__desc">
-                                    <span class="m-widget2__text">
-                                        <i class="fa fa-circle-o"></i> Make Metronic Great Again
-                                    </span>
-                                    <br>
-                                    <span class="m-widget2__user-name">
-                                        <a href="#" class="m-widget2__link m--font-danger">
-                                        Voice Needed!
-                                        </a>
-                                    </span>
-                                </div>
-                                <div class="m-widget2__actions">
-                                    <div class="m-widget2__actions-nav">
-                                        <div class="m-dropdown m-dropdown--inline m-dropdown--arrow m-dropdown--align-right m-dropdown--align-push" data-dropdown-toggle="hover">
-                                            <a href="#" class="m-dropdown__toggle">
-                                                <i class="la la-ellipsis-h"></i>
-                                            </a>
-                                            <div class="m-dropdown__wrapper">
-                                                <span class="m-dropdown__arrow m-dropdown__arrow--right m-dropdown__arrow--adjust"></span>
-                                                <div class="m-dropdown__inner">
-                                                    <div class="m-dropdown__body">
-                                                        <div class="m-dropdown__content">
-                                                            <ul class="m-nav">
-                                                                <li class="m-nav__item">
-                                                                    <a href="" class="m-nav__link">
-                                                                        <i class="m-nav__link-icon flaticon-share"></i>
-                                                                        <span class="m-nav__link-text">Go to this chapter</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li class="m-nav__item">
-                                                                    <a href="" class="m-nav__link">
-                                                                        <i class="m-nav__link-icon flaticon-chat-1"></i>
-                                                                        <span class="m-nav__link-text">Contributor's Page</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li class="m-nav__item">
-                                                                    <a href="" class="m-nav__link">
-                                                                        <i class="m-nav__link-icon flaticon-info"></i>
-                                                                        <span class="m-nav__link-text">Report</span>
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="m-widget2__item m-widget2__item--danger">
-                                <div class="m-widget2__checkbox"></div>
-                                <div class="m-widget2__desc">
-                                    <span class="m-widget2__text">
-                                        <i class="fa fa-circle-o"></i> Make Metronic Great Again
-                                    </span>
-                                    <br>
-                                    <span class="m-widget2__user-name">
-                                        <a href="#" class="m-widget2__link m--font-danger">
-                                        Voice Needed!
-                                        </a>
-                                    </span>
-                                </div>
-                                <div class="m-widget2__actions">
-                                    <div class="m-widget2__actions-nav">
-                                        <div class="m-dropdown m-dropdown--inline m-dropdown--arrow m-dropdown--align-right m-dropdown--align-push" data-dropdown-toggle="hover">
-                                            <a href="#" class="m-dropdown__toggle">
-                                                <i class="la la-ellipsis-h"></i>
-                                            </a>
-                                            <div class="m-dropdown__wrapper">
-                                                <span class="m-dropdown__arrow m-dropdown__arrow--right m-dropdown__arrow--adjust"></span>
-                                                <div class="m-dropdown__inner">
-                                                    <div class="m-dropdown__body">
-                                                        <div class="m-dropdown__content">
-                                                            <ul class="m-nav">
-                                                                <li class="m-nav__item">
-                                                                    <a href="" class="m-nav__link">
-                                                                        <i class="m-nav__link-icon flaticon-share"></i>
-                                                                        <span class="m-nav__link-text">Go to this chapter</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li class="m-nav__item">
-                                                                    <a href="" class="m-nav__link">
-                                                                        <i class="m-nav__link-icon flaticon-chat-1"></i>
-                                                                        <span class="m-nav__link-text">Contributor's Page</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li class="m-nav__item">
-                                                                    <a href="" class="m-nav__link">
-                                                                        <i class="m-nav__link-icon flaticon-info"></i>
-                                                                        <span class="m-nav__link-text">Report</span>
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="m-widget2__item m-widget2__item--danger">
-                                <div class="m-widget2__checkbox"></div>
-                                <div class="m-widget2__desc">
-                                    <span class="m-widget2__text">
-                                        <i class="fa fa-circle-o"></i> Make Metronic Great Again
-                                    </span>
-                                    <br>
-                                    <span class="m-widget2__user-name">
-                                        <a href="#" class="m-widget2__link m--font-danger">
-                                        Voice Needed!
-                                        </a>
-                                    </span>
-                                </div>
-                                <div class="m-widget2__actions">
-                                    <div class="m-widget2__actions-nav">
-                                        <div class="m-dropdown m-dropdown--inline m-dropdown--arrow m-dropdown--align-right m-dropdown--align-push" data-dropdown-toggle="hover">
-                                            <a href="#" class="m-dropdown__toggle">
-                                                <i class="la la-ellipsis-h"></i>
-                                            </a>
-                                            <div class="m-dropdown__wrapper">
-                                                <span class="m-dropdown__arrow m-dropdown__arrow--right m-dropdown__arrow--adjust"></span>
-                                                <div class="m-dropdown__inner">
-                                                    <div class="m-dropdown__body">
-                                                        <div class="m-dropdown__content">
-                                                            <ul class="m-nav">
-                                                                <li class="m-nav__item">
-                                                                    <a href="" class="m-nav__link">
-                                                                        <i class="m-nav__link-icon flaticon-share"></i>
-                                                                        <span class="m-nav__link-text">Go to this chapter</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li class="m-nav__item">
-                                                                    <a href="" class="m-nav__link">
-                                                                        <i class="m-nav__link-icon flaticon-chat-1"></i>
-                                                                        <span class="m-nav__link-text">Contributor's Page</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li class="m-nav__item">
-                                                                    <a href="" class="m-nav__link">
-                                                                        <i class="m-nav__link-icon flaticon-info"></i>
-                                                                        <span class="m-nav__link-text">Report</span>
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="m-widget2__item m-widget2__item--danger">
-                                <div class="m-widget2__checkbox"></div>
-                                <div class="m-widget2__desc">
-                                    <span class="m-widget2__text">
-                                        <i class="fa fa-circle-o"></i> Make Metronic Great Again
-                                    </span>
-                                    <br>
-                                    <span class="m-widget2__user-name">
-                                        <a href="#" class="m-widget2__link m--font-danger">
-                                        Voice Needed!
-                                        </a>
-                                    </span>
-                                </div>
-                                <div class="m-widget2__actions">
-                                    <div class="m-widget2__actions-nav">
-                                        <div class="m-dropdown m-dropdown--inline m-dropdown--arrow m-dropdown--align-right m-dropdown--align-push" data-dropdown-toggle="hover">
-                                            <a href="#" class="m-dropdown__toggle">
-                                                <i class="la la-ellipsis-h"></i>
-                                            </a>
-                                            <div class="m-dropdown__wrapper">
-                                                <span class="m-dropdown__arrow m-dropdown__arrow--right m-dropdown__arrow--adjust"></span>
-                                                <div class="m-dropdown__inner">
-                                                    <div class="m-dropdown__body">
-                                                        <div class="m-dropdown__content">
-                                                            <ul class="m-nav">
-                                                                <li class="m-nav__item">
-                                                                    <a href="" class="m-nav__link">
-                                                                        <i class="m-nav__link-icon flaticon-share"></i>
-                                                                        <span class="m-nav__link-text">Go to this chapter</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li class="m-nav__item">
-                                                                    <a href="" class="m-nav__link">
-                                                                        <i class="m-nav__link-icon flaticon-chat-1"></i>
-                                                                        <span class="m-nav__link-text">Contributor's Page</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li class="m-nav__item">
-                                                                    <a href="" class="m-nav__link">
-                                                                        <i class="m-nav__link-icon flaticon-info"></i>
-                                                                        <span class="m-nav__link-text">Report</span>
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="m-widget2__item m-widget2__item--danger">
-                                <div class="m-widget2__checkbox"></div>
-                                <div class="m-widget2__desc">
-                                    <span class="m-widget2__text">
-                                        <i class="fa fa-circle-o"></i> Make Metronic Great Again
-                                    </span>
-                                    <br>
-                                    <span class="m-widget2__user-name">
-                                        <a href="#" class="m-widget2__link m--font-danger">
-                                        Voice Needed!
-                                        </a>
-                                    </span>
-                                </div>
-                                <div class="m-widget2__actions">
-                                    <div class="m-widget2__actions-nav">
-                                        <div class="m-dropdown m-dropdown--inline m-dropdown--arrow m-dropdown--align-right m-dropdown--align-push" data-dropdown-toggle="hover">
-                                            <a href="#" class="m-dropdown__toggle">
-                                                <i class="la la-ellipsis-h"></i>
-                                            </a>
-                                            <div class="m-dropdown__wrapper">
-                                                <span class="m-dropdown__arrow m-dropdown__arrow--right m-dropdown__arrow--adjust"></span>
-                                                <div class="m-dropdown__inner">
-                                                    <div class="m-dropdown__body">
-                                                        <div class="m-dropdown__content">
-                                                            <ul class="m-nav">
-                                                                <li class="m-nav__item">
-                                                                    <a href="" class="m-nav__link">
-                                                                        <i class="m-nav__link-icon flaticon-share"></i>
-                                                                        <span class="m-nav__link-text">Go to this chapter</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li class="m-nav__item">
-                                                                    <a href="" class="m-nav__link">
-                                                                        <i class="m-nav__link-icon flaticon-chat-1"></i>
-                                                                        <span class="m-nav__link-text">Contributor's Page</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li class="m-nav__item">
-                                                                    <a href="" class="m-nav__link">
-                                                                        <i class="m-nav__link-icon flaticon-info"></i>
-                                                                        <span class="m-nav__link-text">Report</span>
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        @endforeach
                         </div>
                     </div>
                 </div>

@@ -24,6 +24,7 @@
     <!--end::Page Vendors -->
     <link href="{{ asset("assets/vendors/base/vendors.bundle.css") }}" rel="stylesheet" type="text/css"/>
     <link href="{{ asset("assets/demo/demo9/base/style.bundle.css") }}" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset("assets/custom/css/amplitudejs.css") }}"/>
     <link href="{{ asset("assets/custom/css/custom.css") }}" rel="stylesheet" type="text/css"/>
     <!--end::Base Styles -->
     <link rel="shortcut icon" href="{{ asset("favicon.ico") }}"/>
@@ -61,6 +62,11 @@ m-aside-left--offcanvas-default m-aside-left--enabled m-aside-left--fixed m-asid
 <!--begin::Page Snippets -->
 <script src="{{ asset("assets/app/js/dashboard.js") }}" type="text/javascript"></script>
 <script src="{{ asset("assets/demo/default/custom/components/forms/widgets/select2.js") }}" type="text/javascript"></script>
+
+<script src="{{ asset("assets/custom/plugins/amplitudejs/dist/amplitude.js") }}" type="text/javascript"></script>
+<script src="{{ asset("assets/custom/plugins/amplitudejs/examples/blue-playlist/js/functions.js") }}" type="text/javascript"></script>
+
+
 <script src="{{ asset("assets/custom/js/custom.js") }}" type="text/javascript"></script>
 <script src="{{ asset("assets/custom/js/moderation.js") }}" type="text/javascript"></script>
 <!--end::Page Snippets -->
@@ -68,6 +74,9 @@ m-aside-left--offcanvas-default m-aside-left--enabled m-aside-left--fixed m-asid
 <script>
     $(window).on('load', function () {
         $('body').removeClass('m-page--loading');
+    });
+    $(document).ready(function () {
+        @yield("script")
     });
 </script>
 <!-- end::Page Loader -->
