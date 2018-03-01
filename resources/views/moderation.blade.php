@@ -1,4 +1,4 @@
-@extends("layout.metronic")
+@extends("layout.page")
 @section("title", "Moderation")
 @section("content")
     <div class="modal fade" id="mod-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="false">

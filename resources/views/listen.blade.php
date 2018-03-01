@@ -1,4 +1,4 @@
-@extends("layout.metronic")
+@extends("layout.page")
 @section("title", "Listening to \"A Tale Of Two Cities\" by @ikidnapmyself")
 @section("content")
     <div class="row">

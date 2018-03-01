@@ -1,4 +1,4 @@
-@extends("layout.metronic")
+@extends("layout.page")
 @section("title", "Books")
 @section("content")
     <div class="row">

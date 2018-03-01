@@ -48,9 +48,9 @@
 <!-- end::Head -->
 <!-- end::Body -->
 <body class="m--skin- m-page--loading-enabled m-page--loading m-content--skin-light m-header--fixed m-header--fixed-mobile
-m-aside-left--offcanvas-default m-aside-left--enabled m-aside-left--fixed m-aside-left--skin-dark m-aside--offcanvas-default @if(Route::getCurrentRoute()->getActionMethod() == 'root_index') booky-background @endif">
+m-aside-left--offcanvas-default m-aside-left--enabled m-aside-left--fixed m-aside-left--skin-dark m-aside--offcanvas-default @if(!is_null(Route::getCurrentRoute()) && Route::getCurrentRoute()->getActionMethod() == 'root_index') booky-background @endif">
 @include("layout.partials.loader")
-@include("layout.partials.page")
+@yield("page")
 <!--begin::Base Scripts -->
 <script src="{{ asset("assets/vendors/base/vendors.bundle.js") }}" type="text/javascript"></script>
 <script src="{{ asset("assets/demo/demo9/base/scripts.bundle.js") }}" type="text/javascript"></script>
