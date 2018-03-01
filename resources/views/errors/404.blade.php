@@ -2,7 +2,7 @@
 @section("title","404 Not Found")
 @section("page")
     <div class="m-grid m-grid--hor m-grid--root m-page">
-        <div class="m-grid__item m-grid__item--fluid m-grid m-error-4" style="background-image: url(./assets/app/media/img//error/bg4.jpg);">
+        <div class="m-grid__item m-grid__item--fluid m-grid m-error-4" style="background-image: url({{ asset("assets/app/media/img/error/bg4.jpg") }});">
             <div class="m-error_container">
                 <h1 class="m-error_number">
                     404
