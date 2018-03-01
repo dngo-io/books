@@ -11,6 +11,8 @@
 |
 */
 
+use App\Entities\User;
+
 Route::get('/', 'HomeController@root_index');
 Route::get('/steem', 'HomeController@steem');
 
@@ -74,3 +76,17 @@ Route::resource('user','UserController@index');
 Route::resource('category','CategoryController');
 
 
+if (config('app.env') == 'local') {
+    Route::get('/login/test', function () {
+        $em = app('em');
+        $userRepository = $em->getRepository(User::class);
+
+        if ($user = $userRepository->findOneByAccount('dngotester')) {
+            Auth::login($user);
+            redirect('/');
+        }else{
+            echo 'run <b> php artisan dngo:create:testuser</b> first';
+        }
+
+    });
+}
