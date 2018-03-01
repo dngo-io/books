@@ -23,7 +23,7 @@
                     </div>
                 @endif
 
-                <form class="m-form m-form--label-align-right" action="{{ url("audio") }}" method="post">
+                <form class="m-form m-form--label-align-right" action="{{ url("audio") }}" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <input type="hidden" name="book" value="1">
                     <div class="m-portlet__body">

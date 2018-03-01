@@ -65,16 +65,13 @@ class AudioController extends AppController
 
         $user = Auth::user();
 
-//        dd($request->all());
-
         //upload file here
-//        $file = $request->file('audio');
-//        dd($file);
-//
-//        $fileName = sprintf('%s_%s_%s.$s',$book->getId(),$user->getId(),time(),$file->extension());
-//        $filePath = sprintf('/%s/%s',$book->getId(),$fileName);
-//        $s3 = Storage::disk('s3');
-//        $s3->put($filePath, file_get_contents($file), 'public');
+        $file = $request->file('audio');
+
+        $fileName = sprintf('%s_%s_%s.%s',$book->getId(),$user->getId(),time(),$file->getExtension());
+        $filePath = sprintf('/%s/%s',$book->getId(),$fileName);
+        $s3 = Storage::disk('s3');
+        $s3->put($filePath, file_get_contents($file), 'public');
 
         $audio = new BookAudio();
         $audio->setUser($user);
@@ -84,12 +81,7 @@ class AudioController extends AppController
         $audio->setBody($request->request->get('content'));
         $audio->setFileSource('');
 
-        //set duration
-//        $mp3service = new Mp3Service($file);
-//        $metaData = $mp3service->get_metadata();
-//        $length = $metaData['Length mm:ss'];
-//
-//        $audio->setLength((new Carbon($length))->second);
+        $audio->setLength(0); //js ile gelecek bu
 
         $this->entityManager->persist($audio);
         $this->entityManager->flush();
