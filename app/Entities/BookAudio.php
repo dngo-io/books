@@ -3,6 +3,7 @@
 namespace App\Entities;
 
 
+use Carbon\Carbon;
 use Somnambulist\Doctrine\Traits\Identifiable;
 use Somnambulist\Doctrine\Traits\Nameable;
 use Somnambulist\Doctrine\Traits\Timestampable;
@@ -30,6 +31,11 @@ class BookAudio
     protected $length;
 
     /**
+     * @var  string
+     */
+    protected $body;
+
+    /**
      * @var string
      */
     protected $language;
@@ -38,6 +44,12 @@ class BookAudio
      * @var string
      */
     protected $fileSource;
+
+
+    public function __construct()
+    {
+        $this->setCreatedAt(new Carbon());
+    }
 
     /**
      * @return User
@@ -86,5 +98,54 @@ class BookAudio
     {
         $this->length = $length;
     }
+
+    /**
+     * @return string
+     */
+    public function getBody()
+    {
+        return $this->body;
+    }
+
+    /**
+     * @param string $body
+     */
+    public function setBody($body)
+    {
+        $this->body = $body;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLanguage()
+    {
+        return $this->language;
+    }
+
+    /**
+     * @param string $language
+     */
+    public function setLanguage($language)
+    {
+        $this->language = $language;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFileSource()
+    {
+        return $this->fileSource;
+    }
+
+    /**
+     * @param string $fileSource
+     */
+    public function setFileSource($fileSource)
+    {
+        $this->fileSource = $fileSource;
+    }
+
 
 }

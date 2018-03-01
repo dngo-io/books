@@ -13,7 +13,19 @@
                     <div class="m-portlet__head-tools">
                     </div>
                 </div>
-                <form class="m-form m-form--label-align-right">
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
+                <form class="m-form m-form--label-align-right" action="{{ url("audio") }}" method="post">
+                    {{ csrf_field() }}
+                    <input type="hidden" name="book" value="1">
                     <div class="m-portlet__body">
                         <div class="row">
                             <div class="col-xl-10 offset-xl-1">
@@ -51,6 +63,27 @@
                                             <span class="m-form__help">Appartment, suite, unit, building, floor, etc</span>
                                         </div>
                                     </div>
+
+                                    <div class="form-group m-form__group row">
+                                        <label class="col-xl-3 col-lg-3 col-form-label">* Language:</label>
+                                        <div class="col-xl-9 col-lg-9">
+                                            <select class="form-control" name="language">
+                                                <option value="en">English</option>
+                                                <option value="de">Deutch</option>
+                                                <option value="es">Spanish</option>
+                                            </select>
+                                            <span class="m-form__help">Appartment, suite, unit, building, floor, etc</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group m-form__group row">
+                                        <label class="col-xl-3 col-lg-3 col-form-label">* Audio:</label>
+                                        <div class="col-xl-9 col-lg-9">
+                                            {{ Form::file('audio', ['class' => 'form-control']) }}
+                                            <span class="m-form__help">Appartment, suite, unit, building, floor, etc</span>
+                                        </div>
+                                    </div>
+
                                     <div class="form-group m-form__group row">
                                         <label class="col-xl-3 col-lg-3 col-form-label">* Tags:</label>
                                         <div class="col-xl-9 col-lg-9">
@@ -120,6 +153,10 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+
+                            <div class="col-xl-10 offset-xl-1">
+                                <input type="submit" value="send" class="btn-action btn-dark">
                             </div>
                         </div>
                     </div>

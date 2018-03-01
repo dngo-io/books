@@ -18,10 +18,14 @@ App\Entities\BookAudio:
             length:
               type: integer
               comment: 'by seconds'
+              nullable: true
 
             language:
               type: string
               length: 4
+
+            body:
+              type: text
 
             fileSource:
               type: string
@@ -31,6 +35,7 @@ App\Entities\BookAudio:
 
             updatedAt:
               type: datetime
+              nullable: true
 
         manyToOne:
             user:

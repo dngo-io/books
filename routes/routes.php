@@ -74,6 +74,7 @@ Route::get('/home', 'HomeController@home');
 Route::resource('user','UserController@index');
 //Route::resource('book','BookController@index');
 Route::resource('category','CategoryController');
+Route::resource('audio','AudioController');
 
 
 if (config('app.env') == 'local') {
