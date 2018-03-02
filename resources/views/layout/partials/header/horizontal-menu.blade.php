@@ -24,7 +24,7 @@
         </li>
         @if (!Auth::guest())
         <li class="m-menu__item m-menu__item--rel">
-            <a  href="{{ url("/post") }}" class="m-menu__link">
+            <a  href="{{ url("/audio/create") }}" class="m-menu__link">
                 <span class="m-menu__item-here"></span>
                 <i class="m-menu__link-icon fa fa-plus m--font-success"></i>
                 <span class="m-menu__link-text m--font-success">
