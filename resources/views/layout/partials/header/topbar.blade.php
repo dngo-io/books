@@ -32,23 +32,22 @@
                             </form>
                         </div>
                         <div class="m-dropdown__body">
-                            <div class="m-dropdown__scrollable m-scrollable" data-max-height="300"
-                                 data-mobile-max-height="200">
+                            <div class="m-dropdown__scrollable m-scrollable" data-max-height="300" data-mobile-max-height="200">
                                 <div class="m-dropdown__content"></div>
                             </div>
                         </div>
                     </div>
                 </div>
             </li>
-            <li class="m-nav__item m-nav__item--danger m-dropdown m-dropdown--skin-light m-dropdown--large m-dropdown--arrow m-dropdown--align-right m-dropdown--align-push m-dropdown--mobile-full-width m-dropdown--skin-light"
+            <li class="d-none m-nav__item m-nav__item--danger m-dropdown m-dropdown--skin-light m-dropdown--large m-dropdown--arrow m-dropdown--align-right m-dropdown--align-push m-dropdown--mobile-full-width m-dropdown--skin-light"
                 data-dropdown-toggle="click">
                 <a href="#" class="m-nav__link m-dropdown__toggle">
                     <span class="m-nav__link-badge m-badge m-badge--dot m-badge--info m--hide"></span>
                     <span class="m-nav__link-icon">
-                                    <span class="m-nav__link-icon-wrapper">
-                                        <i class="flaticon-share"></i>
-                                    </span>
-                                </span>
+                        <span class="m-nav__link-icon-wrapper">
+                            <i class="flaticon-share"></i>
+                        </span>
+                    </span>
                 </a>
                 <div class="m-dropdown__wrapper">
                     <span class="m-dropdown__arrow m-dropdown__arrow--right m-dropdown__arrow--adjust"></span>
@@ -101,8 +100,7 @@
                     </div>
                 </div>
             </li>
-            <li class="m-nav__item m-dropdown m-dropdown--medium m-dropdown--arrow  m-dropdown--align-right m-dropdown--mobile-full-width m-dropdown--skin-light"
-                data-dropdown-toggle="click">
+            <li class="m-nav__item m-dropdown m-dropdown--medium m-dropdown--arrow  m-dropdown--align-right m-dropdown--mobile-full-width m-dropdown--skin-light" data-dropdown-toggle="click">
                 <a href="#" class="m-nav__link m-dropdown__toggle">
                     <span class="m-topbar__username m--hidden-mobile">
                         {{ Auth::user()->getName() }}
@@ -143,59 +141,45 @@
                                         </span>
                                     </li>
                                     <li class="m-nav__item">
-                                        <a href="profile.html" class="m-nav__link">
-                                            <i class="m-nav__link-icon flaticon-profile-1"></i>
+                                        <a href="{{ url("/user/".Auth::user()->getAccount()) }}" class="m-nav__link">
+                                            <i class="m-nav__link-icon fa fa-user"></i>
                                             <span class="m-nav__link-title">
                                                 <span class="m-nav__link-wrap">
                                                     <span class="m-nav__link-text">
                                                         My Profile
-                                                    </span>
-                                                    <span class="m-nav__link-badge">
-                                                        <span class="m-badge m-badge--success">
-                                                            2
-                                                        </span>
                                                     </span>
                                                 </span>
                                             </span>
                                         </a>
                                     </li>
                                     <li class="m-nav__item">
-                                        <a href="profile.html" class="m-nav__link">
-                                            <i class="m-nav__link-icon flaticon-share"></i>
+                                        <a href="{{ url("https://steemit.com/@".Auth::user()->getAccount()."/settings") }}" class="m-nav__link">
+                                            <i class="m-nav__link-icon fa fa-cog"></i>
                                             <span class="m-nav__link-text">
-                                                Activity
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li class="m-nav__item">
-                                        <a href="profile.html" class="m-nav__link">
-                                            <i class="m-nav__link-icon flaticon-chat-1"></i>
-                                            <span class="m-nav__link-text">
-                                                Messages
+                                                Profile Settings
                                             </span>
                                         </a>
                                     </li>
                                     <li class="m-nav__separator m-nav__separator--fit"></li>
                                     <li class="m-nav__item">
-                                        <a href="profile.html" class="m-nav__link">
-                                            <i class="m-nav__link-icon flaticon-info"></i>
+                                        <a href="{{ url(config("steem.rules")) }}" class="m-nav__link">
+                                            <i class="m-nav__link-icon fa fa-balance-scale"></i>
                                             <span class="m-nav__link-text">
-                                                FAQ
+                                                Rules
                                             </span>
                                         </a>
                                     </li>
                                     <li class="m-nav__item">
-                                        <a href="profile.html" class="m-nav__link">
-                                            <i class="m-nav__link-icon flaticon-lifebuoy"></i>
+                                        <a href="{{ url(config("steem.how_to")) }}" class="m-nav__link">
+                                            <i class="m-nav__link-icon fa fa-question-circle"></i>
                                             <span class="m-nav__link-text">
-                                                Support
+                                                How to Contribute?
                                             </span>
                                         </a>
                                     </li>
                                     <li class="m-nav__separator m-nav__separator--fit"></li>
                                     <li class="m-nav__item">
-                                        <a href="{{ url("/logout") }}"
-                                           class="btn m-btn--pill    btn-secondary m-btn m-btn--custom m-btn--label-brand m-btn--bolder">
+                                        <a href="{{ url("/logout") }}" class="btn m-btn--pill btn-secondary m-btn m-btn--custom m-btn--label-brand m-btn--bolder">
                                             Logout
                                         </a>
                                     </li>
