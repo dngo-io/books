@@ -1,21 +1,14 @@
 /* Player Left Styles */
 div#amplitude-left{
     padding: 0px;
-    border-right: 1px solid #CFD8DC;
-}
-
-div#amplitude-left img[amplitude-song-info="cover_art_url"]{
-    width: 400px;
-    height: 400px;
 }
 
 div#amplitude-left div#player-left-bottom{
-    background-color: #F1F1F1;
     padding: 20px 10px;
 }
 
 div#amplitude-left div#player-left-bottom div#time-container span.current-time{
-    color: #607D8B;
+    color: #575962;
     font-size: 14px;
     font-weight: 700;
     float: left;
@@ -65,7 +58,7 @@ div#amplitude-left div#player-left-bottom div#time-container input[type=range].a
     height: 20px;
     width: 20px;
     border-radius: 10px;
-    background: #00A0FF;
+    background: #36a3f7;
     cursor: pointer;
     margin-top: -8px;
     -webkit-appearance: none;
@@ -87,7 +80,7 @@ div#amplitude-left div#player-left-bottom div#time-container input[type=range].a
     height: 20px;
     width: 20px;
     border-radius: 10px;
-    background: #00A0FF;
+    background: #36a3f7;
     cursor: pointer;
     margin-top: -8px;
 }
@@ -114,7 +107,7 @@ div#amplitude-left div#player-left-bottom div#time-container input[type=range].a
     height: 20px;
     width: 20px;
     border-radius: 10px;
-    background: #00A0FF;
+    background: #36a3f7;
     cursor: pointer;
     margin-top: 4px;
 }
@@ -132,7 +125,7 @@ div#amplitude-left div#player-left-bottom div#time-container input[type=range].a
 }
 
 div#amplitude-left div#player-left-bottom div#time-container span.duration{
-    color: #607D8B;
+    color: #575962;
     font-size: 14px;
     font-weight: 700;
     float: left;
@@ -255,18 +248,16 @@ div#amplitude-left div#player-left-bottom div#meta-container span.song-name{
     display: block;
     color: #272726;
     font-size: 20px;
-    font-family: 'Open Sans', sans-serif;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
 div#amplitude-left div#player-left-bottom div#meta-container div.song-artist-album{
-    color: #607D8B;
+    color: #575962;
     font-size: 14px;
     font-weight: 700;
     text-transform: uppercase;
-    font-family: 'Open Sans', sans-serif;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -329,7 +320,7 @@ div#amplitude-right	div.song div.song-meta-data span.song-title{
     text-overflow: ellipsis;
 }
 div#amplitude-right	div.song div.song-meta-data span.song-artist{
-    color: #607D8B;
+    color: #575962;
     font-size: 14px;
     font-weight: bold;
     text-transform: uppercase;
@@ -339,22 +330,12 @@ div#amplitude-right	div.song div.song-meta-data span.song-artist{
     text-overflow: ellipsis;
 }
 
-div#amplitude-right	div.song img.bandcamp-grey{
-    float: left;
-    display: block;
-    margin-top: 10px;
-}
-div#amplitude-right	div.song img.bandcamp-white{
-    float: left;
-    display: none;
-    margin-top: 10px;
-}
 div#amplitude-right	div.song span.song-duration{
     float: left;
     width: 55px;
     text-align: center;
     line-height: 45px;
-    color: #607D8B;
+    color: #575962;
     font-size: 16px;
     font-weight: 500;
 }
