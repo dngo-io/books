@@ -13,16 +13,6 @@
                     <div class="m-portlet__head-tools">
                     </div>
                 </div>
-                @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
-
                 <form class="m-form m-form--label-align-right" action="{{ url("audio") }}" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <input type="hidden" name="book" value="1">
@@ -77,12 +67,16 @@
                                     </div>
 
                                     <div class="form-group m-form__group row">
-                                        <label class="col-xl-3 col-lg-3 col-form-label">* Audio:</label>
+                                        <label class="col-xl-3 col-lg-3 col-form-label" for="audio">* Audio:</label>
                                         <div class="col-xl-9 col-lg-9">
-                                            {{ Form::file('audio', ['class' => 'form-control']) }}
-                                            <span class="m-form__help">Appartment, suite, unit, building, floor, etc</span>
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input" name="audio" id="audio">
+                                                <label class="custom-file-label" for="customFile">Choose file</label>
+                                            </div>
+                                            <span class="m-form__help">Browse your local device and choose a file to upload</span>
                                         </div>
                                     </div>
+
 
                                     <div class="form-group m-form__group row">
                                         <label class="col-xl-3 col-lg-3 col-form-label">* Tags:</label>
@@ -154,62 +148,11 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="col-xl-10 offset-xl-1">
-                                <input type="submit" value="send" class="btn-action btn-dark">
-                            </div>
                         </div>
                     </div>
-                </form>
-            </div>
-        </div>
-        <div class="col-md-12">
-            <div class="m-portlet m-portlet--tabs">
-                <div class="m-portlet__head">
-                    <div class="m-portlet__head-tools">
-                        <ul class="nav nav-tabs m-tabs-line m-tabs-line--success m-tabs-line--2x" role="tablist">
-                            <li class="nav-item m-tabs__item">
-                                <a class="nav-link m-tabs__link active" data-toggle="tab" href="#voice_upload" role="tab">
-                                    <i class="fa fa-cloud-upload"></i> Upload
-                                </a>
-                            </li>
-                            <li class="nav-item m-tabs__item d-none">
-                                <a class="nav-link m-tabs__link" data-toggle="tab" href="#voice_record" role="tab">
-                                    <i class="fa fa-microphone"></i> Record
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <form class="m-form m-form--fit m-form--label-align-right">
-                    <div class="m-portlet__body">
-                        <div class="tab-content">
-                            <div class="tab-pane active" id="voice_upload" role="tabpanel">
-                                <div class="col-lg-6 offset-lg-3 offset-md-2 col-md-8 col-sm-12">
-                                    <div class="m-dropzone dropzone m-stack__item m-stack__item--fluid" action="{{ url("here") }}" id="m-dropzone-one">
-                                        <div class="m-dropzone__msg dz-message needsclick">
-                                            <div class="text-center">
-                                                <i class="fa fa-cloud-upload fa-5x"></i>
-                                            </div>
-                                            <h3 class="m-dropzone__msg-title">Drop your file here or click to choose and upload.</h3>
-                                            <span class="m-dropzone__msg-desc">You can upload only <strong>one</strong> file for each post.</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tab-pane" id="voice_record" role="tabpanel">
-                                <div class="form-group m-form__group row">
-                                    <label class="col-form-label col-lg-3 col-sm-12">Record</label>
-                                    <div class="col-lg-4 col-md-9 col-sm-12">
-                                        <div class="m-btn-group m-btn-group--pill btn-group" role="group" aria-label="Record">
-                                            <button type="button" class="m-btn btn btn-secondary"><i class="fa fa-play"></i></button>
-                                            <button type="button" class="m-btn btn btn-secondary"><i class="fa fa-pause"></i></button>
-                                            <button type="button" class="m-btn btn btn-secondary"><i class="fa fa-stop"></i></button>
-                                            <button type="button" class="m-btn btn btn-secondary"><i class="fa fa-save"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                    <div class="m-portlet__foot m-portlet__no-border m-portlet__foot--fit">
+                        <div class="m-form__actions m-form__actions--solid text-center">
+                            <button type="submit" class="btn btn-brand">Submit</button>
                         </div>
                     </div>
                 </form>

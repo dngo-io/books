@@ -31,10 +31,6 @@ Route::get('/listen', function () {
     return view('listen');
 });
 
-Route::get('/post', function () {
-    return view('post');
-});
-
 Route::get('/books', function () {
     return view('books');
 });

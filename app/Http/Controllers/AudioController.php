@@ -46,7 +46,7 @@ class AudioController extends AppController
      */
     public function create()
     {
-        return view('post');
+        return view('audio-create');
     }
 
     /**
