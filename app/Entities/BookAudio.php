@@ -41,6 +41,11 @@ class BookAudio
     protected $language;
 
     /**
+     * @var integer
+     */
+    protected $chapter = 0;
+
+    /**
      * @var string
      */
     protected $fileSource;
@@ -145,6 +150,22 @@ class BookAudio
     public function setFileSource($fileSource)
     {
         $this->fileSource = $fileSource;
+    }
+
+    /**
+     * @return int
+     */
+    public function getChapter()
+    {
+        return $this->chapter;
+    }
+
+    /**
+     * @param int $chapter
+     */
+    public function setChapter($chapter)
+    {
+        $this->chapter = $chapter;
     }
 
 

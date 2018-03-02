@@ -27,6 +27,10 @@ App\Entities\BookAudio:
             body:
               type: text
 
+            chapter:
+              type: integer
+
+
             fileSource:
               type: string
 
