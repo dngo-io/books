@@ -30,6 +30,8 @@ App\Entities\BookAudio:
             chapter:
               type: integer
 
+            isActive:
+              type: boolean
 
             fileSource:
               type: string

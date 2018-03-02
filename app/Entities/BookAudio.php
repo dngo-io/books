@@ -4,6 +4,7 @@ namespace App\Entities;
 
 
 use Carbon\Carbon;
+use Somnambulist\Doctrine\Traits\Activatable;
 use Somnambulist\Doctrine\Traits\Identifiable;
 use Somnambulist\Doctrine\Traits\Nameable;
 use Somnambulist\Doctrine\Traits\Timestampable;
@@ -13,6 +14,7 @@ class BookAudio
     use Identifiable;
     use Timestampable;
     use Nameable;
+    use Activatable;
 
 
     /**
@@ -54,6 +56,7 @@ class BookAudio
     public function __construct()
     {
         $this->setCreatedAt(new Carbon());
+        $this->deactivate();
     }
 
     /**
