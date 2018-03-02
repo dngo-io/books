@@ -1,5 +1,5 @@
 @extends("layout.page")
-@section("title", "Profile")
+@section("title", "@{$user->getAccount()}")
 @section("content")
     <div class="row">
         <div class="col-lg-4">
@@ -11,12 +11,12 @@
                         </div>
                         <div class="m-card-profile__pic">
                             <div class="m-card-profile__pic-wrapper">
-                                <img src="{{ asset("assets/app/media/img/users/user4.jpg") }}" alt=""/>
+                                <img src="{{ asset($user->getProfileImage()) }}" alt="@{{ $user->getAccount() }}">
                             </div>
                         </div>
                         <div class="m-card-profile__details">
-                            <span class="m-card-profile__name">Semih</span>
-                            <a href="{{ url("https://steemit.com/@author") }}" class="m-card-profile__email m-link">@account</a>
+                            <span class="m-card-profile__name">{{ $user->getName() }}</span>
+                            <a href="{{ url("https://steemit.com/@{$user->getAccount()}") }}" class="m-card-profile__email m-link">{{ '@'.$user->getAccount() }}</a>
                         </div>
                     </div>
                     <ul class="m-nav m-nav--hover-bg m-portlet-fit--sides">
@@ -25,13 +25,13 @@
                             <span class="m-nav__section-text">Section</span>
                         </li>
                         <li class="m-nav__item">
-                            <a href="{{ url("https://steemit.com/@author") }}" class="m-nav__link">
+                            <a href="{{ url("https://steemit.com/@{$user->getAccount()}") }}" class="m-nav__link">
                                 <i class="m-nav__link-icon fa fa-user"></i>
                                 <span class="m-nav__link-text">Steemit Profile</span>
                             </a>
                         </li>
                         <li class="m-nav__item">
-                            <a href="{{ url("https://steemit.com/@author/followed") }}" class="m-nav__link m-tabs__item">
+                            <a href="{{ url("https://steemit.com/@{$user->getAccount()}/followed") }}" class="m-nav__link m-tabs__item">
                                 <i class="m-nav__link-icon fa fa-arrow-left"></i>
                                 <span class="m-nav__link-text">Following</span>
                                 <span class="m-nav__link-badge">
@@ -40,7 +40,7 @@
                             </a>
                         </li>
                         <li class="m-nav__item">
-                            <a href="{{ url("https://steemit.com/@author/followers") }}" class="m-nav__link m-tabs__item">
+                            <a href="{{ url("https://steemit.com/@{$user->getAccount()}/followers") }}" class="m-nav__link m-tabs__item">
                                 <i class="m-nav__link-icon fa fa-arrow-right"></i>
                                 <span class="m-nav__link-text">Followers</span>
                                 <span class="m-nav__link-badge">
@@ -96,7 +96,7 @@
                     <div class="m-portlet__head-caption">
                         <div class="m-portlet__head-title">
                             <h3 class="m-portlet__head-text">
-                                @author
+                                {{ '@'.$user->getAccount() }}
                             </h3>
                         </div>
                     </div>

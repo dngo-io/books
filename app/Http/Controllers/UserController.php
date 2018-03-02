@@ -2,11 +2,27 @@
 
 namespace App\Http\Controllers;
 
+use App\Entities\User;
 use App\Support\AppController;
 use Illuminate\Http\Request;
+use Doctrine\ORM\EntityManagerInterface;
 
 class UserController extends AppController
 {
+    /**
+     * @var EntityManagerInterface
+     */
+    private $entityManager;
+
+    /**
+     * UserController constructor.
+     * @param EntityManagerInterface $entityManager
+     */
+    public function __construct(EntityManagerInterface $entityManager)
+    {
+        $this->entityManager = $entityManager;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +30,7 @@ class UserController extends AppController
      */
     public function index()
     {
-        //
+        return redirect()->to('/user/'.\Auth::user()->getAccount());
     }
 
     /**
@@ -46,7 +62,15 @@ class UserController extends AppController
      */
     public function show($id)
     {
-        //
+        $repo = $this->entityManager->getRepository(User::class);
+        $user = $repo->findOneByAccount($id);
+
+        if(is_null($user))
+        {
+            abort(404);
+        }
+
+        return view('profile', ['user' => $user]);
     }
 
     /**

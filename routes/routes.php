@@ -67,7 +67,7 @@ Route::get('/logout', 'Auth\LoginController@logout');
 Route::get('/home', 'HomeController@home');
 //Route::get('/books', 'BookController@index');
 
-Route::resource('user','UserController@index');
+Route::resource('user','UserController');
 //Route::resource('book','BookController@index');
 Route::resource('category','CategoryController');
 Route::resource('audio','AudioController');
