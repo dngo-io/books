@@ -71,7 +71,8 @@ Route::resource('user','UserController');
 //Route::resource('book','BookController@index');
 Route::resource('category','CategoryController');
 Route::resource('audio','AudioController');
-
+// Sitemap for Google
+Route::get('sitemap', 'SitemapsController@index');
 
 if (config('app.env') == 'local') {
     Route::get('/login/test', function () {

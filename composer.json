@@ -31,7 +31,8 @@
         "somnambulist/laravel-doctrine-entity-audit": "~0.5",
         "somnambulist/laravel-doctrine-entity-validation": "~0.1",
         "somnambulist/laravel-domain-input-mapper": "~0.5",
-        "somnambulist/laravel-environment-loader": "~0.1"
+        "somnambulist/laravel-environment-loader": "~0.1",
+        "watson/sitemap": "^2.0"
     },
     "require-dev": {
         "codeception/codeception": "~2.3",
