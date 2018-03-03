@@ -1,0 +1,23 @@
+App\Entities\AudioTags:
+      type: entity
+      table: tags
+      repositoryClass: App\Repositories\AudioTagsRepository
+
+      indexes:
+          tag_slug:
+              columns: [ slug ]
+      id:
+          id:
+              type: integer
+              generator:
+                  strategy: auto
+              options:
+                  unsigned: true
+      fields:
+          name:
+            type: string
+            length: 50
+          slug:
+            type: string
+            length: 50
+

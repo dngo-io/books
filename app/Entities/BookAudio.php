@@ -4,6 +4,7 @@ namespace App\Entities;
 
 
 use Carbon\Carbon;
+use Doctrine\Common\Collections\ArrayCollection;
 use Somnambulist\Doctrine\Traits\Activatable;
 use Somnambulist\Doctrine\Traits\Identifiable;
 use Somnambulist\Doctrine\Traits\Nameable;
@@ -51,6 +52,9 @@ class BookAudio
      * @var string
      */
     protected $fileSource;
+
+    /** @var  ArrayCollection|AudioTags */
+    protected $tags;
 
 
     public function __construct()
@@ -169,6 +173,46 @@ class BookAudio
     public function setChapter($chapter)
     {
         $this->chapter = $chapter;
+    }
+
+    /**
+     * @return AudioTags|ArrayCollection
+     */
+    public function getTags()
+    {
+        return $this->tags;
+    }
+
+    /**
+     * @param AudioTags|ArrayCollection $tags
+     */
+    public function setTags(ArrayCollection $tags)
+    {
+        $this->tags = $tags;
+    }
+
+    /**
+     * @param $tag
+     * @return bool
+     * @internal param $category
+     */
+    public function hasTag($tag)
+    {
+        return $this->tags->contains($tag);
+    }
+
+    /**
+     * @param AudioTags $tag
+     * @return $this
+     * @internal param Category $category
+     */
+    public function addTag(AudioTags $tag)
+    {
+        if (!$this->hasTag($tag)) {
+            $this->tags->add($tag);
+        }
+
+        return $this;
     }
 
 

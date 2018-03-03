@@ -48,3 +48,12 @@ App\Entities\BookAudio:
               targetEntity: App\Entities\User
             book:
               targetEntity: App\Entities\Book
+
+        manyToMany:
+            tags:
+                targetEntity: App\Entities\AudioTags
+                cascade: [ 'persist' ]
+                fetch: EXTRA_LAZY
+                indexBy: type
+                joinTable:
+                    name: book_audio_tags
