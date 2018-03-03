@@ -12,6 +12,10 @@
                 </p>
                 <p class="m-error_description">
                     Nothing left to do here.
+                    <br>
+                    <a href="{{ url("/") }}" class="mt-5 btn btn-lg m-btn btn-success">
+                        TAKE ME BACK HOME
+                    </a>
                 </p>
             </div>
         </div>
