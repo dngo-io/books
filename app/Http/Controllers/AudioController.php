@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Entities\Book;
 use App\Entities\BookAudio;
 use App\Http\Requests\StoreBookAudio;
+use App\Service\BookAudioService;
 use App\Service\Mp3Service;
 use App\Support\AppController;
 use Auth;
@@ -12,6 +13,7 @@ use Carbon\Carbon;
 use Doctrine\ORM\EntityManagerInterface;
 use EntityManager;
 use Illuminate\Http\Request;
+use League\Flysystem\Exception;
 use Storage;
 
 class AudioController extends AppController
@@ -22,10 +24,16 @@ class AudioController extends AppController
      */
     private $entityManager;
 
-    public function __construct(EntityManagerInterface $entityManager)
+    /**
+     * @var BookAudioService
+     */
+    private $bookAudioService;
+
+    public function __construct(EntityManagerInterface $entityManager, BookAudioService $bookAudioService)
     {
 
         $this->entityManager = $entityManager;
+        $this->bookAudioService = $bookAudioService;
     }
 
     /**
@@ -57,35 +65,14 @@ class AudioController extends AppController
      */
     public function store(StoreBookAudio $request)
     {
-
-        $bookRepository = $this->entityManager->getRepository(Book::class);
-
-        /** @var Book $book */
-        $book = $bookRepository->find($request->request->get('book'));
-
-        $user = Auth::user();
-
-        //upload file here
-        $file = $request->file('audio');
-
-        $fileName = sprintf('%s_%s_%s.%s',$book->getId(),$user->getId(),time(),$file->getExtension());
-        $filePath = sprintf('/%s/%s',$book->getId(),$fileName);
-        $s3 = Storage::disk('s3');
-        $s3->put($filePath, file_get_contents($file), 'public');
-
-        $audio = new BookAudio();
-        $audio->setUser($user);
-        $audio->setBook($book);
-        $audio->setName($request->request->get('title'));
-        $audio->setLanguage($request->request->get('language'));
-        $audio->setBody($request->request->get('content'));
-        $audio->setFileSource('');
-
-        $audio->setLength(0); //js ile gelecek bu
-
-        $this->entityManager->persist($audio);
-        $this->entityManager->flush();
-
+        try {
+            $this->bookAudioService->addAudio($request);
+        }catch (Exception $e) {
+            return [
+                'success' => false,
+                'message' => $e->getMessage()
+            ];
+        }
     }
 
     /**

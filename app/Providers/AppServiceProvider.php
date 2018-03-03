@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use App\Service\BookService;
+use App\Service\BookAudioService;
+use Doctrine\ORM\EntityManagerInterface;
 use Illuminate\Support\ServiceProvider;
 
 /**
@@ -29,6 +32,22 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        /**
+         * Book Service
+         */
+        $this->app->bind(BookService::class, function ($app) {
+            return new BookService(
+                app(EntityManagerInterface::class)
+            );
+        });
+
+        /**
+         * BookAudioService
+         */
+        $this->app->bind(BookAudioService::class , function ($app) {
+            return new BookService(
+                app(EntityManagerInterface::class)
+            );
+        });
     }
 }
