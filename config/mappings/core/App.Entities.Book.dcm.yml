@@ -3,6 +3,12 @@ App\Entities\Book:
       table: books
       repositoryClass: App\Repositories\BookRepository
 
+      indexes:
+        book_language:
+            columns: ["language"]
+        year:
+            columns: ["year"]
+
       id:
         id:
             type: integer
@@ -27,6 +33,9 @@ App\Entities\Book:
         cover:
             type: string
             lenght: 255
+        language:
+            type: string
+
         releaseDate:
             type: datetime
 
