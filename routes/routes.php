@@ -19,9 +19,7 @@ Route::get('/steem', 'HomeController@steem');
 Route::get('/road-map', function () {
     return view('road-map');
 });
-Route::get('/about', function () {
-    return view('about');
-});
+Route::get('/about', 'AboutController@index');
 
 Route::get('/book', function () {
     return view('book');

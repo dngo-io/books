@@ -6,9 +6,9 @@
             <div class="m-portlet">
                 <div class="m-portlet__body">
                     <blockquote class="blockquote">
-                        <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                        <p class="mb-0">There's none so blind as those who will not see.</p>
                         <footer class="blockquote-footer">
-                            Kıssadan hisse by <cite title="Source Title">Nasreddin Hoca</cite>
+                            Kıssadan hisse by <cite title="Source Title">Proverb</cite>
                         </footer>
                     </blockquote>
                 </div>
@@ -263,46 +263,22 @@
     </div>
     <h3 class="mt-5 mb-5">Founders</h3>
     <div class="row">
+        @foreach($founders as $founder)
         <div class="col">
             <div class="card">
-                <img class="card-img-top" src="{{ asset("assets/app/media/img/users/300_5.jpg") }}" alt="Card image cap">
+                <img class="card-img-top" src="{{ asset($founder['picture']) }}" alt="{{ $founder['account'] }}">
                 <div class="card-block p-5">
-                    <h4 class="card-title">bencagri</h4>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-block btn-success">Steem Profile</a>
+                    <h4 class="card-title">{{ $founder['account'] }}</h4>
+                    <p class="card-text">
+                        {{ $founder['location'] }}
+                        <br>
+                        {{ $founder['about'] }}
+                    </p>
+                    <a href="https://steemit.com/{{ "@{$founder['account']}" }}" class="btn btn-block btn-success">Steem Profile</a>
                 </div>
             </div>
         </div>
-        <div class="col">
-            <div class="card">
-                <img class="card-img-top" src="{{ asset("assets/app/media/img/users/300_14.jpg") }}" alt="Card image cap">
-                <div class="card-block p-5">
-                    <h4 class="card-title">ikidnapmyself</h4>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-block btn-success">Steem Profile</a>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card">
-                <img class="card-img-top" src="{{ asset("assets/app/media/img/users/300_1.jpg") }}" alt="Card image cap">
-                <div class="card-block p-5">
-                    <h4 class="card-title">meskoze</h4>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-block btn-success">Steem Profile</a>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card">
-                <img class="card-img-top" src="{{ asset("assets/app/media/img/users/300_9.jpg") }}" alt="Card image cap">
-                <div class="card-block p-5">
-                    <h4 class="card-title">tubi</h4>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-block btn-success">Steem Profile</a>
-                </div>
-            </div>
-        </div>
+        @endforeach
     </div>
     <h3 class="mt-5 mb-5">Special Thanks To...</h3>
     <div class="row">
