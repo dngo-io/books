@@ -21,7 +21,10 @@ class HomeController extends AppController
      */
     public function root_index()
     {
-        return view('home');
+        if(\Auth::check())
+            return redirect()->to('/user');
+        else
+            return view('home');
     }
 
     /**
@@ -29,6 +32,8 @@ class HomeController extends AppController
      */
     public function steem()
     {
+        dd('DANGER ZONE!');
+
         $token  = \Auth::user()->getAccessToken();
         $author = \Auth::user()->getAccount();
         $title  = 'I do post from my local machine!';
