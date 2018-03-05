@@ -26,15 +26,11 @@ Route::get('/listen', function () {
     return view('listen');
 });
 
-Route::get('/books', function () {
-    return view('books');
-});
-
 Route::get('/search', function (\Illuminate\Http\Request $request) {
     /** @var \App\Repositories\BookRepository $bookRepository */
     $bookRepository = EntityManager::getRepository(\App\Entities\Book::class);
     $books = $bookRepository->getSearchResults($request);
-    dd($books);
+    dump($books);
 });
 
 Route::get('/profile', function () {
@@ -66,10 +62,10 @@ Route::get('/login/callback', 'Auth\LoginController@handleProviderCallback');
 Route::get('/logout', 'Auth\LoginController@logout');
 
 Route::get('/home', 'HomeController@home');
-//Route::get('/books', 'BookController@index');
+Route::get('/books', 'BooksController@index');
 
 Route::resource('user','UserController');
-Route::resource('book','BookController@index');
+Route::resource('book','BookController');
 Route::resource('category','CategoryController');
 Route::resource('audio','AudioController');
 // Sitemap for Google
@@ -82,7 +78,7 @@ if (config('app.env') == 'local') {
 
         if ($user = $userRepository->findOneByAccount('dngotester')) {
             Auth::login($user);
-            redirect('/');
+            redirect('/books');
         }else{
             echo 'run <b> php artisan dngo:create:testuser</b> first';
         }

@@ -246,4 +246,11 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
     ],
 
+
+    'languages' => [
+        'en' => 'English',
+        'de' => 'Deutch',
+        'es' => 'Spanish',
+        'tr' => 'Turkish'
+    ]
 ];

@@ -3,6 +3,7 @@
 @section("content")
     <div class="row">
         <div class="col-md-3">
+            {{ Form::open(array('method' => 'GET')) }}
             <div class="m-portlet m-portlet--mobile">
                 <div class="m-portlet__head">
                     <div class="m-portlet__head-caption">
@@ -65,28 +66,7 @@
                     </div>
                 </div>
                 <div class="m-portlet__body">
-                    <div class="m-checkbox-list">
-                        <label class="m-checkbox">
-                            <input type="checkbox" checked> 1880 - 1900
-                            <span></span>
-                        </label>
-                        <label class="m-checkbox">
-                            <input type="checkbox" checked> 1921 - 1940
-                            <span></span>
-                        </label>
-                        <label class="m-checkbox">
-                            <input type="checkbox" checked> 1941 - 1960
-                            <span></span>
-                        </label>
-                        <label class="m-checkbox">
-                            <input type="checkbox" checked> 1961 - 1980
-                            <span></span>
-                        </label>
-                        <label class="m-checkbox">
-                            <input type="checkbox" checked> 1981 - 2000
-                            <span></span>
-                        </label>
-                    </div>
+                    <input id="year-slider" name="year">
                 </div>
             </div>
             <div class="m-portlet m-portlet--mobile">
@@ -101,29 +81,23 @@
                 </div>
                 <div class="m-portlet__body">
                     <div class="m-checkbox-list">
+                        @foreach(config('app.languages') as $key => $language)
                         <label class="m-checkbox">
-                            <input type="checkbox" checked> English
+                            <input type="checkbox" checked value="{{ $key }}"> {{ $language }}
                             <span></span>
                         </label>
-                        <label class="m-checkbox">
-                            <input type="checkbox" checked> Italian
-                            <span></span>
-                        </label>
-                        <label class="m-checkbox">
-                            <input type="checkbox" checked> French
-                            <span></span>
-                        </label>
-                        <label class="m-checkbox">
-                            <input type="checkbox" checked> Sanskrit
-                            <span></span>
-                        </label>
-                        <label class="m-checkbox">
-                            <input type="checkbox" checked> German
-                            <span></span>
-                        </label>
+                        @endforeach
                     </div>
                 </div>
             </div>
+            <div class="m-portlet m-portlet--mobile">
+                <div class="m-portlet__body">
+                    <div class="m-checkbox-list">
+                       <input class="btn btn-dark btn-block" type="submit" value="search"/>
+                    </div>
+                </div>
+            </div>
+            {{ Form::close() }}
         </div>
         <div class="col-md-9">
 
@@ -146,7 +120,8 @@
                     </li>
                 </ul>
             </nav>
-
+            {{ dump($obj) }}
+            {{ dump($books) }}
             <div class="row">
                 @for($i = 2; $i <= 10; $i++)
                     @php

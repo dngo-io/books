@@ -14,6 +14,8 @@ use LaravelDoctrine\ORM\Pagination\PaginatesFromRequest;
 class BookRepository extends AppEntityRepository
 {
 
+    const RANGE_SLIDER_DELIMITER = ';';
+
     use PaginatesFromRequest;
 
     /**
@@ -34,16 +36,15 @@ class BookRepository extends AppEntityRepository
 
         //set year
         if ($request->get('year')) {
-            $year = explode('-',$request->get('year'));
-
-            $qb->andWhere("b.year BETWEEN :start AND :end")
-                ->setParameter('start',$year[0])
-                ->setParameter('end',$year[1]);
+            $year = explode(self::RANGE_SLIDER_DELIMITER,$request->get('year'));
+            if( !empty($year[0]) && !empty($year[1])) {
+                $qb->andWhere("b.year BETWEEN :start AND :end")
+                    ->setParameter('start',$year[0])
+                    ->setParameter('end',$year[1]);
+            }
         }
 
         //categories
-
-        dump($qb->getQuery());
         return $this->paginate($qb->getQuery(), $perPage, $pageName);
     }
 }
