@@ -36,12 +36,9 @@ class BookController extends AppController
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $id)
+    public function index()
     {
-        $audio = \EntityManager::getRepository(BookAudio::class)->find(1);
-
-        /** @var BookAudio $audio */
-        event(new StatsEvent($audio));
+        return view('book');
     }
 
     /**
