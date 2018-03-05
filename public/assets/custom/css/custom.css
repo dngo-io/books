@@ -6,12 +6,12 @@ body.booky-background
     font-size: 4em;
     font-weight: 700;
     margin: 0;
-    color: #FFFFFF;
+    color: #eaeaea;
     background: #fbf8ec;
-    background: -moz-linear-gradient(top, #FFFFFF 35%, #4e6773 100%);
-    background: -webkit-linear-gradient(top, #FFFFFF 35%, #4e6773 100%);
-    background: -ms-linear-gradient(top, #FFFFFF 35%, #4e6773 100%);
-    background: linear-gradient(to bottom, #FFFFFF 35%, #4e6773 100%);
+    background: -moz-linear-gradient(top, #eaeaea 35%, #c4c5d6 100%);
+    background: -webkit-linear-gradient(top, #eaeaea 35%, #c4c5d6 100%);
+    background: -ms-linear-gradient(top, #eaeaea 35%, #c4c5d6 100%);
+    background: linear-gradient(to bottom, #eaeaea 35%, #c4c5d6 100%);
     background-clip: border-box;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -21,7 +21,7 @@ body.booky-background
     display: table;
     width: 100%;
     height: auto;
-    padding: 200px 0;
+    padding: 25px 0;
 }
 
 .masthead .intro-body {
@@ -35,7 +35,7 @@ body.booky-background
 @media (min-width: 768px) {
     .masthead {
         height: 100%;
-        padding: 0
+        padding: 100px 0;
     }
     .masthead .intro-body .presentation-title {
         font-size: 8em;
