@@ -21,9 +21,6 @@ Route::get('/road-map', function () {
 });
 Route::get('/about', 'AboutController@index');
 
-Route::get('/book', function () {
-    return view('book');
-});
 
 Route::get('/listen', function () {
     return view('listen');
@@ -33,6 +30,12 @@ Route::get('/books', function () {
     return view('books');
 });
 
+Route::get('/search', function (\Illuminate\Http\Request $request) {
+    /** @var \App\Repositories\BookRepository $bookRepository */
+    $bookRepository = EntityManager::getRepository(\App\Entities\Book::class);
+    $books = $bookRepository->getSearchResults($request);
+    dd($books);
+});
 
 Route::get('/profile', function () {
     return view('profile');
@@ -66,7 +69,7 @@ Route::get('/home', 'HomeController@home');
 //Route::get('/books', 'BookController@index');
 
 Route::resource('user','UserController');
-//Route::resource('book','BookController@index');
+Route::resource('book','BookController@index');
 Route::resource('category','CategoryController');
 Route::resource('audio','AudioController');
 // Sitemap for Google
