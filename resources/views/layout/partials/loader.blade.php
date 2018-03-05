@@ -1,7 +1,7 @@
 <!-- begin::Page loader -->
 <div class="m-page-loader m-page-loader--base">
     <div class="m-blockui">
-        <span>
+        <span class="d-none">
             Please wait...
         </span>
         <span>
