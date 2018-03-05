@@ -83,7 +83,7 @@
                     <div class="m-checkbox-list">
                         @foreach(config('app.languages') as $key => $language)
                         <label class="m-checkbox">
-                            <input type="checkbox" checked value="{{ $key }}"> {{ $language }}
+                            <input type="checkbox" name="language[]" checked value="{{ $key }}"> {{ $language }}
                             <span></span>
                         </label>
                         @endforeach
