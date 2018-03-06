@@ -3,7 +3,7 @@
 @section("content")
     <div class="row">
         <div class="col-md-3">
-            {{ Form::open(array('method' => 'GET')) }}
+            {{ Form::open(array('method' => 'GET', 'id' => 'book-filters')) }}
             <div class="m-portlet m-portlet--mobile">
                 <div class="m-portlet__head">
                     <div class="m-portlet__head-caption">
@@ -32,26 +32,12 @@
                 </div>
                 <div class="m-portlet__body">
                     <div class="m-checkbox-list">
-                        <label class="m-checkbox">
-                            <input type="checkbox" checked> Horror
-                            <span></span>
-                        </label>
-                        <label class="m-checkbox">
-                            <input type="checkbox" checked> Adventure
-                            <span></span>
-                        </label>
-                        <label class="m-checkbox">
-                            <input type="checkbox" checked> Travel
-                            <span></span>
-                        </label>
-                        <label class="m-checkbox">
-                            <input type="checkbox" checked> Lorem
-                            <span></span>
-                        </label>
-                        <label class="m-checkbox">
-                            <input type="checkbox" checked> Ipsom
-                            <span></span>
-                        </label>
+                        @foreach($categories as $category)
+                            <label class="m-checkbox">
+                                <input type="checkbox" name="category[]" value="{{ $category->getId() }}" checked> {{ $category->getName() }}
+                                <span></span>
+                            </label>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -100,71 +86,36 @@
             {{ Form::close() }}
         </div>
         <div class="col-md-9">
-
             <nav aria-label="Search result pagination">
-                <ul class="pagination">
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                            <span class="sr-only">Next</span>
-                        </a>
-                    </li>
-                </ul>
+                {{ $obj->render('pagination::bootstrap-4') }}
             </nav>
-            {{ dump($obj) }}
-            {{ dump($books) }}
             <div class="row">
-                @for($i = 2; $i <= 10; $i++)
-                    @php
-                        $rand = rand(1,14);
-                    @endphp
+                @foreach ($books as $book)
                     <div class="col-md-4 mb-5">
-                        <div class="card">
-                            <img class="card-img-top" src="http://via.placeholder.com/250x350" alt="Card image cap">
-                            <div class="card-body">
-                                <h6 class="card-title">A Tale of {{ $i }} Cities</h6>
-                                <p class="card-text">by <a href="#" class="m-link">Hom Thanks</a>.</p>
-                            </div>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">{{ $rand }} {{ str_plural('Contribution', $rand) }}</li>
-                                <li class="list-group-item">{{ date('M d, Y', strtotime('-'.rand(80, 130).'YEAR -'.rand(0,12).'MONTH -'.rand(0,30).'DAY')) }}</li>
-                            </ul>
-                            <div class="card-body text-center">
-                                <a href="#" class="btn btn-outline-brand m-btn m-btn--outline-2x">More</a>
+                        <div class="m-portlet m-portlet--bordered m-portlet--rounded  m-portlet--full-height">
+                            <div class="m-portlet__body p-0">
+                                <div class="card no-border">
+                                    <img class="card-img-top" src="{{ $book->getCover() }}" alt="{{ $book->getName() }} Cover Image">
+                                    <div class="card-body">
+                                        <h6 class="card-title">{{ $book->getName() }}</h6>
+                                        <p class="card-text">in {{ $book->getYear() }} by <a href="{{ url("author/{$book->getAuthor()->getId()}") }}" class="m-link">{{ $book->getAuthor()->getName() }}</a></p>
+                                    </div>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">2131 {{ str_plural('Contribution', 21312) }}</li>
+                                        <li class="list-group-item">ISBN {{ $book->getIsbn() }}</li>
+                                        <li class="list-group-item">{{ format_date($book->getReleaseDate()) }}</li>
+                                    </ul>
+                                    <div class="card-body text-center">
+                                        <a href="{{ url("book/{$book->getId()}") }}" class="btn btn-outline-brand m-btn m-btn--outline-2x">More</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                @endfor
+                @endforeach
             </div>
-
-
             <nav aria-label="Search result pagination">
-                <ul class="pagination">
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                            <span class="sr-only">Next</span>
-                        </a>
-                    </li>
-                </ul>
+                {{ $obj->render('pagination::bootstrap-4') }}
             </nav>
 
         </div>

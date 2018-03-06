@@ -34,14 +34,7 @@ class BooksController extends AppController
         /** @var BookRepository $bookRepository */
         $bookRepository = $this->entityManager->getRepository(Book::class);
 
-        $books = $bookRepository->getSearchresults($request);
-
-        dump($books->toArray());
-        dump($books->getCollection()->toArray());
-        foreach ($books->getCollection() as $book) {
-            /** @var Book $book */
-            dd($book->getAuthor()->getName());
-        }
+        $books = $bookRepository->getSearchresults($request, 9);
 
         return view('books',
             [
