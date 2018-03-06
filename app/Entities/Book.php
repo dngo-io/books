@@ -17,7 +17,7 @@ class Book
     protected $description;
 
     /**
-     * @var
+     * @var Author
      */
     protected $author;
 
@@ -169,7 +169,7 @@ class Book
     }
 
     /**
-     * @return mixed
+     * @return Author
      */
     public function getAuthor()
     {
