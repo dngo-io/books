@@ -29,6 +29,12 @@ class BookRepository extends AppEntityRepository
     {
         $qb = $this->createQueryBuilder('b');
 
+        //book name
+        if ($request->get('name')) {
+            $qb->where('MATCH_AGAINST (b.name, :searchTerm) > 0.8');
+            $qb->setParameter('searchTerm',$request->get('name'));
+        }
+
         //set language
         if($request->get('language')){
             $qb->andWhere('b.language IN (:language)');

@@ -16,7 +16,7 @@
                 </div>
                 <div class="m-portlet__body">
                     <div class="m-checkbox-list">
-                        <input type="text" class="form-control m-input" placeholder="Type...">
+                        <input type="text" name="name" class="form-control m-input" placeholder="Type...">
                     </div>
                 </div>
             </div>

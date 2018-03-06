@@ -137,7 +137,9 @@ return [
     | DQL custom string functions
     |--------------------------------------------------------------------------
     */
-    'custom_string_functions'   => [],
+    'custom_string_functions'   => [
+        'MATCH_AGAINST' => \App\Support\DoctrineMatchAgainst::class
+    ],
     /*
     |--------------------------------------------------------------------------
     | Enable query logging with laravel file logging,
