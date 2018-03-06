@@ -67,6 +67,8 @@ class BookRepository extends AppEntityRepository
             $qb->groupBy('b.id');
         }
 
-        return $this->paginate($qb->getQuery(), $perPage, $pageName);
+        $result = $qb->getQuery()->useQueryCache(true);
+
+        return $this->paginate($result, $perPage, $pageName);
     }
 }
