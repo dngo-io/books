@@ -6,6 +6,9 @@ use App\Entities\User;
 use App\Support\AppController;
 use Illuminate\Http\Request;
 use Doctrine\ORM\EntityManagerInterface;
+use App\Service\SteemService;
+use Illuminate\Support\Facades\Cache;
+
 
 class UserController extends AppController
 {
@@ -15,12 +18,19 @@ class UserController extends AppController
     private $entityManager;
 
     /**
+     * @var SteemService
+     */
+    private $steem;
+
+    /**
      * UserController constructor.
      * @param EntityManagerInterface $entityManager
+     * @param SteemService $steem
      */
-    public function __construct(EntityManagerInterface $entityManager)
+    public function __construct(EntityManagerInterface $entityManager, SteemService $steem)
     {
         $this->entityManager = $entityManager;
+        $this->steem         = $steem;
     }
 
     /**
@@ -30,7 +40,10 @@ class UserController extends AppController
      */
     public function index()
     {
-        return redirect()->to('/user/'.\Auth::user()->getAccount());
+        if(\Auth::check())
+            return redirect()->to('/user/'.\Auth::user()->getAccount());
+        else
+            return redirect()->to('/');
     }
 
     /**
@@ -62,6 +75,13 @@ class UserController extends AppController
      */
     public function show($id)
     {
+        if (Cache::has("user_{$id}")) {
+            $follows = Cache::get("user_{$id}");
+        } else {
+            $follows = $this->steem->getAccount()->countFollows($id);
+            Cache::put("user_{$id}", $follows, config('cache.expire'));
+        }
+
         $repo = $this->entityManager->getRepository(User::class);
         $user = $repo->findOneByAccount($id);
 
@@ -70,7 +90,7 @@ class UserController extends AppController
             abort(404);
         }
 
-        return view('profile', ['user' => $user]);
+        return view('profile', ['user' => $user, 'follows' => $follows]);
     }
 
     /**
