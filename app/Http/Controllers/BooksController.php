@@ -39,7 +39,7 @@ class BooksController extends AppController
         return view('books',
             [
                 'categories' => $categories,
-                'obj' => $books,
+                'paginate' => $books->appends($request->except('page')),
                 'books' => $books->getCollection()
             ]
         );

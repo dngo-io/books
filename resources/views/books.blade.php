@@ -87,7 +87,7 @@
         </div>
         <div class="col-md-9">
             <nav aria-label="Search result pagination">
-                {{ $obj->render('pagination::bootstrap-4') }}
+                {{ $paginate->render('pagination::bootstrap-4') }}
             </nav>
             <div class="row">
                 @foreach ($books as $book)
@@ -115,7 +115,7 @@
                 @endforeach
             </div>
             <nav aria-label="Search result pagination">
-                {{ $obj->render('pagination::bootstrap-4') }}
+                {{ $paginate->render('pagination::bootstrap-4') }}
             </nav>
 
         </div>
