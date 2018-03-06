@@ -41,7 +41,7 @@ body.booky-background
         font-size: 8em;
     }
 }
-
+.no-border { border: 0 !important; }
 .fa-2x {
     font-size: 1.5em !important;
 }
