@@ -36,6 +36,13 @@ class BooksController extends AppController
 
         $books = $bookRepository->getSearchresults($request);
 
+        dump($books->toArray());
+        dump($books->getCollection()->toArray());
+        foreach ($books->getCollection() as $book) {
+            /** @var Book $book */
+            dd($book->getAuthor()->getName());
+        }
+
         return view('books',
             [
                 'categories' => $categories,

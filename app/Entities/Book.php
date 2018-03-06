@@ -179,7 +179,7 @@ class Book
     /**
      * @param mixed $author
      */
-    public function setAuthor($author)
+    public function setAuthor(Author $author)
     {
         $this->author = $author;
     }
