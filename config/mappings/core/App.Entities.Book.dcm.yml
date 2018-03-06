@@ -8,7 +8,9 @@ App\Entities\Book:
             columns: ["language"]
         year:
             columns: ["year"]
-
+        book_name:
+            columns: ['name']
+            flags: fulltext
       id:
         id:
             type: integer
