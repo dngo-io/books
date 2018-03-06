@@ -34,7 +34,7 @@ class BooksController extends AppController
         /** @var BookRepository $bookRepository */
         $bookRepository = $this->entityManager->getRepository(Book::class);
 
-        $books = $bookRepository->getSearchresults($request, 9);
+        $books = $bookRepository->getSearchResults($request, 9);
 
         return view('books',
             [

@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 
+use App\Entities\Post;
 use App\Support\AppEntityRepository;
 use Illuminate\Http\Request;
 use LaravelDoctrine\ORM\Pagination\PaginatesFromRequest;
@@ -45,6 +46,21 @@ class BookRepository extends AppEntityRepository
         }
 
         //categories
+        if (
+            $request->get('category')
+            &&
+            is_array($request->get('category'))
+            &&
+            count($request->get('category')) > 0
+        )
+        {
+            $qb->join('b.post','p');
+            $qb->innerJoin('p.categories','c');
+            $qb->andWhere('c.id IN (:categories)');
+            $qb->setParameter('categories',implode(',',$request->get('category')));
+            $qb->groupBy('b.id');
+        }
+
         return $this->paginate($qb->getQuery(), $perPage, $pageName);
     }
 }
