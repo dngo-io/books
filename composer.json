@@ -4,6 +4,7 @@
     "keywords": ["framework", "laravel", "doctrine", "twig"],
     "license": "MIT",
     "type": "project",
+    "minimum-stability": "dev",
     "repositories": {
        "dev-package": {
           "type": "path",
@@ -16,6 +17,7 @@
     "require": {
         "php": ">=7",
         "beberlei/assert": "~2.7",
+        "davidkevork/steemphp": "dev-master",
         "eloquent/enumeration": "~5.1",
         "frnxstd/steem-connect": "@dev",
         "laravel-doctrine/acl": "~1.0",
