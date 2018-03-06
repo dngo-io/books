@@ -1,13 +1,15 @@
 <?php
 
-if (! function_exists('an_example_helper_function')) {
+if (! function_exists('format_date')) {
     /**
-     * Example function
+     * Date formatting
      *
-     * @return true
+     * @param string $time
+     * @param string $format
+     * @return false|string
      */
-    function an_example_helper_function()
+    function format_date($time, $format = 'M d, Y')
     {
-        return true;
+        return date($format, strtotime($time));
     }
 }
