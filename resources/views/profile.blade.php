@@ -35,7 +35,7 @@
                                 <i class="m-nav__link-icon fa fa-arrow-left"></i>
                                 <span class="m-nav__link-text">Following</span>
                                 <span class="m-nav__link-badge">
-                                    <span class="m-badge m-badge--metal">{{ $follows['following_count'] }}</span>
+                                    <span class="m-badge m-badge--metal">0</span>
                                 </span>
                             </a>
                         </li>
@@ -44,7 +44,7 @@
                                 <i class="m-nav__link-icon fa fa-arrow-right"></i>
                                 <span class="m-nav__link-text">Followers</span>
                                 <span class="m-nav__link-badge">
-                                    <span class="m-badge m-badge--metal">{{ $follows['follower_count'] }}</span>
+                                    <span class="m-badge m-badge--metal">0</span>
                                 </span>
                             </a>
                         </li>
