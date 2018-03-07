@@ -7,6 +7,7 @@ use App\Support\AppController;
 use Illuminate\Http\Request;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Service\SteemService;
+use SteemAPI\SteemAPI;
 use Illuminate\Support\Facades\Cache;
 
 
@@ -75,12 +76,14 @@ class UserController extends AppController
      */
     public function show($id)
     {
-//        if (Cache::has("user_{$id}")) {
-//            $follows = Cache::get("user_{$id}");
-//        } else {
-//            $follows = $this->steem->getAccount()->countFollows($id);
-//            Cache::put("user_{$id}", $follows, config('cache.expire'));
-//        }
+        if (Cache::has("user_{$id}")) {
+            $follows = Cache::get("user_{$id}");
+        } else {
+            $steem   = new SteemAPI();
+            $follows = $steem->exec('followCount', [$id]);
+
+            Cache::put("user_{$id}", $follows, config('cache.expire'));
+        }
 
         $repo = $this->entityManager->getRepository(User::class);
         $user = $repo->findOneByAccount($id);
@@ -90,7 +93,7 @@ class UserController extends AppController
             abort(404);
         }
 
-        return view('profile', ['user' => $user]);
+        return view('profile', ['user' => $user, 'follows' => $follows]);
     }
 
     /**
