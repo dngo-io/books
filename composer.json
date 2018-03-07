@@ -5,19 +5,27 @@
     "license": "MIT",
     "type": "project",
     "repositories": {
-       "dev-package": {
-          "type": "path",
-          "url": "./steem-connect",
-          "options": {
-              "symlink": true
-          }
-       }
+        "dev-package": {
+            "type": "path",
+            "url": "./steem-connect",
+            "options": {
+                "symlink": true
+            }
+        },
+        "dev-steem-api-package": {
+            "type": "path",
+            "url": "./steem-api",
+            "options": {
+                "symlink": true
+            }
+        }
     },
     "require": {
         "php": ">=7",
         "beberlei/assert": "~2.7",
         "eloquent/enumeration": "~5.1",
         "frnxstd/steem-connect": "@dev",
+        "frnxstd/steem-api": "@dev",
         "laravel-doctrine/acl": "~1.0",
         "laravel-doctrine/migrations": "~1.1",
         "laravel-doctrine/orm": "~1.3",
