@@ -4,7 +4,6 @@
     "keywords": ["framework", "laravel", "doctrine", "twig"],
     "license": "MIT",
     "type": "project",
-    "minimum-stability": "dev",
     "repositories": {
        "dev-package": {
           "type": "path",
