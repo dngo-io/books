@@ -2,37 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use App\Entities\Book;
-use App\Entities\BookAudio;
 use App\Http\Requests\StoreBookAudio;
 use App\Service\BookAudioService;
-use App\Service\Mp3Service;
 use App\Support\AppController;
-use Auth;
-use Carbon\Carbon;
 use Doctrine\ORM\EntityManagerInterface;
-use EntityManager;
 use Illuminate\Http\Request;
 use League\Flysystem\Exception;
-use Storage;
 
 class AudioController extends AppController
 {
-
-    /**
-     * @var EntityManagerInterface
-     */
-    private $entityManager;
 
     /**
      * @var BookAudioService
      */
     private $bookAudioService;
 
-    public function __construct(EntityManagerInterface $entityManager, BookAudioService $bookAudioService)
+    public function __construct(BookAudioService $bookAudioService)
     {
 
-        $this->entityManager = $entityManager;
         $this->bookAudioService = $bookAudioService;
     }
 

@@ -45,7 +45,7 @@ class AppServiceProvider extends ServiceProvider
          * BookAudioService
          */
         $this->app->bind(BookAudioService::class , function ($app) {
-            return new BookService(
+            return new BookAudioService(
                 app(EntityManagerInterface::class)
             );
         });

@@ -80,7 +80,7 @@ class BookController extends AppController
      */
     public function show($id)
     {
-
+        return view('book',['id' => $id]);
     }
 
     /**
