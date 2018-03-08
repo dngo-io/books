@@ -80,7 +80,13 @@ class BookController extends AppController
      */
     public function show($id)
     {
-        return view('book',['id' => $id]);
+        $book = $this->bookService->getBook($id);
+
+        if ($book) {
+            return view('book',['book' => $book]);
+        }
+
+        return view('errors.404');
     }
 
     /**

@@ -12,6 +12,7 @@ use Auth;
 use Carbon\Carbon;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityManagerInterface;
+use http\Exception\InvalidArgumentException;
 
 class BookService
 {
@@ -27,6 +28,24 @@ class BookService
         $this->entityManager = $entityManager;
     }
 
+    /**
+     * @param $id
+     * @return null|object
+     */
+    public function getBook($id)
+    {
+        if (is_null($id)) return null;
+
+        $bookRepository = $this->entityManager->getRepository(Book::class);
+
+        $book = $bookRepository->find($id);
+
+        return $book;
+    }
+
+    /**
+     * @param StoreBook $request
+     */
     public function addBook(StoreBook $request)
     {
         $userRepository = $this->entityManager->getRepository(User::class);
