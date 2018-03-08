@@ -8,7 +8,7 @@
                     <div class="m-portlet__head-caption">
                         <div class="m-portlet__head-title">
                             <h3 class="m-portlet__head-text">
-                                Charles Dickens
+                                {{ $book->getName() }}
                             </h3>
                         </div>
                     </div>
@@ -20,7 +20,7 @@
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque diam mi, pellentesque eu
                             turpis eget, bibendum varius neque. Duis ullamcorper neque eget eros euismod consequat.
                         </p>
-                        <footer class="blockquote-footer">Released on February 25, 2018.</footer>
+                        <footer class="blockquote-footer">{{ $book->getReleaseDate() }}</footer>
                     </blockquote>
                 </div>
             </div>
@@ -47,7 +47,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-3">
-                            <img src="https://www.gutenberg.org/files/56630/56630-h/images/cover.jpg" alt="Rome" class="img-fluid img-rounded img-thumbnail">
+                            <img src="{{ $book->getCover() }}" alt="Rome" class="img-fluid img-rounded img-thumbnail">
                         </div>
                         <div class="col-md-9">
                             <table class="table table-inverse col-md-9">
@@ -66,7 +66,7 @@
                                     </tr>
                                     <tr>
                                         <th scope="row">Language</th>
-                                        <td>German</td>
+                                        <td>{{ $book->getLanguage() }}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">EBook-No.</th>
@@ -86,15 +86,7 @@
                     <hr>
                     <div class="m--space-30"></div>
                     <p class="lead text-justify">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sed justo accumsan, auctor
-                        lorem in, eleifend sem. Morbi eu sagittis magna. Nam condimentum nisl in libero auctor, sed
-                        rhoncus massa congue. Sed laoreet et quam eget rhoncus. Vivamus ut tempus lacus, vel suscipit
-                        eros. Aenean fermentum finibus tempus. Vestibulum dignissim, nibh ut egestas dapibus, eros
-                        lorem mollis neque, nec elementum turpis turpis vel nulla. Curabitur aliquam eros at suscipit
-                        aliquet. Proin odio ligula, ornare sed lacus ultrices, vestibulum varius enim. Suspendisse
-                        vestibulum pulvinar augue in auctor. Sed ut luctus nunc. Ut ut eros gravida, vehicula mi a,
-                        ultricies libero. Curabitur lorem nunc, vehicula id dapibus quis, aliquet vitae augue.
-                        Praesent congue eu quam convallis suscipit. Etiam eu vestibulum est.
+                        {{ $book->getDescription() }}
                     </p>
                     <div class="m--space-30 text-center">
                         <a href="#" class="btn m-btn--pill m-btn--air btn-outline-dark m-btn m-btn--custom m-btn--outline-2x">
@@ -172,7 +164,7 @@
                     <div class="m-portlet__head-caption">
                         <div class="m-portlet__head-title">
                             <h3 class="m-portlet__head-text">
-                                Tags
+                                Categories
                             </h3>
                         </div>
                     </div>
@@ -180,9 +172,9 @@
                     </div>
                 </div>
                 <div class="m-portlet__body">
-                    <a href="#" class="btn btn-block btn-default">Adventure</a>
-                    <a href="#" class="btn btn-block btn-default">Mythology</a>
-                    <a href="#" class="btn btn-block btn-default">Drama</a>
+                    @foreach($book->getPost()->getCategories() as $category)
+                        <a href="#" class="btn btn-block btn-default">{{ $category->getName() }}</a>
+                    @endforeach
                 </div>
             </div>
         </div>
