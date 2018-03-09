@@ -7,6 +7,7 @@ use App\Service\BookAudioService;
 use App\Support\AppController;
 use Doctrine\ORM\EntityManagerInterface;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use League\Flysystem\Exception;
 
 class AudioController extends AppController
@@ -48,18 +49,24 @@ class AudioController extends AppController
      * Store a newly created resource in storage.
      *
      * @param StoreBookAudio|Request $request
-     * @return \Illuminate\Http\Response
+     * @return array
      */
     public function store(StoreBookAudio $request)
     {
         try {
             $this->bookAudioService->addAudio($request);
+            $response = [
+                'success' => true
+            ];
+
         }catch (Exception $e) {
-            return [
+            $response = [
                 'success' => false,
                 'message' => $e->getMessage()
             ];
         }
+
+        return $response;
     }
 
     /**
