@@ -1,5 +1,60 @@
 @extends("layout.page")
-@section("title", "Post")
+@section("title", "Create a new post")
+@section("script")
+    function formatRepo(book)
+    {
+        console.log(book);
+        if (book.loading)
+            return book.text;
+
+        var markup = "<div class='select2-result-repository clearfix'>" +
+                     "<div class='select2-result-repository__meta'>" +
+                     "<div class='select2-result-repository__title'>" + book.name + "</div>";
+        if (book.description) {
+            markup += "<div class='select2-result-repository__description'>ISBN: " + book.isbn + "</div>";
+        }
+        markup += "<div class='select2-result-repository__statistics'>" +
+                  "<div class='select2-result-repository__forks'><i class='fa fa-user'></i> Author's Name</div>" +
+                  "<div class='select2-result-repository__stargazers'><i class='fa fa-star'></i> " + book.page + " pages in " + book.language + "</div>" +
+                  "<div class='select2-result-repository__watchers'><i class='fa fa-eye'></i> " + book.watchers_count + " Watchers</div>" +
+                  "</div>" +
+                  "</div></div>";
+        return markup;
+    }
+
+    $("#chapter").select2({
+        placeholder: "Search for book chapters",
+        allowClear: true,
+        ajax: {
+            url: "{{ url("action/book") }}",
+            dataType: 'json',
+            delay: 250,
+            data: function(params) {
+                return {
+                    name: params.term, // search term
+                    page: params.page
+                };
+            },
+            processResults: function(data, params) {
+                // parse the results into the format expected by Select2
+                // since we are using custom formatting functions we do not need to
+                // alter the remote JSON data, except to indicate that infinite
+                // scrolling can be used
+                params.page = params.page || 1;
+
+                return {
+                    results: data
+                };
+            },
+            cache: true
+        },
+        escapeMarkup: function(markup) {
+            return markup;
+        }, // let our custom formatter work
+        minimumInputLength: 1,
+        templateResult: formatRepo // omitted for brevity, see the source of this page
+    });
+@endsection
 @section("content")
     <div class="row">
         <div class="col-md-12">
@@ -23,7 +78,7 @@
                                     <div class="form-group m-form__group row">
                                         <label class="col-xl-3 col-lg-3 col-form-label">* Voiced Chapter:</label>
                                         <div class="col-xl-9 col-lg-9">
-                                            <select class="form-control m-select2" id="m_select2_6" name="param">
+                                            <select class="form-control m-select2" id="chapter" name="param">
                                                 <option></option>
                                             </select>
                                             <span class="m-form__help">Please choose a book chapter to post</span>
