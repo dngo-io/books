@@ -36,7 +36,20 @@ class BooksController extends AppController
 
         $books = $bookRepository->getSearchResults($request, 9);
 
-        $chosen = ['category' => [], 'language' => [], 'year' => []];
+        /**
+         * Search filters
+         */
+
+        $chosen = [
+            'name'     => '',
+            'category' => [],
+            'language' => [],
+            'year'     => []
+        ];
+
+        if($request->get('name')) {
+            $chosen['name'] = $request->get('name');
+        }
 
         if(!$request->get('category')) {
             $chosen['category'] = true;
