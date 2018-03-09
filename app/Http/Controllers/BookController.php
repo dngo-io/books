@@ -2,20 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Entities\Book;
-use App\Entities\BookAudio;
-use App\Entities\Category;
-use App\Entities\Post;
-use App\Entities\User;
-use App\Events\StatsEvent;
 use App\Http\Requests\StoreBook;
 use App\Service\BookService;
 use App\Support\AppController;
-use Carbon\Carbon;
-use Doctrine\Common\Collections\ArrayCollection;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use LaravelDoctrine\ORM\Facades\EntityManager;
 
 class BookController extends AppController
 {
@@ -86,7 +77,7 @@ class BookController extends AppController
             return view('book',['book' => $book]);
         }
 
-        return view('errors.404');
+        return abort(404);
     }
 
     /**
