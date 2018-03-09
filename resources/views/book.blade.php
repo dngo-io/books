@@ -1,5 +1,5 @@
 @extends("layout.page")
-@section("title", "A Tale of Two Cities")
+@section("title", $book->getName())
 @section("content")
     <div class="row">
         <div class="col-md-12">
@@ -17,10 +17,9 @@
                 <div class="m-portlet__body">
                     <blockquote class="blockquote">
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque diam mi, pellentesque eu
-                            turpis eget, bibendum varius neque. Duis ullamcorper neque eget eros euismod consequat.
+                            {{ $book->getDescription() }}
                         </p>
-                        <footer class="blockquote-footer">{{ $book->getReleaseDate() }}</footer>
+                        <footer class="blockquote-footer">{{ format_date($book->getReleaseDate()) }}</footer>
                     </blockquote>
                 </div>
             </div>
@@ -47,7 +46,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-3">
-                            <img src="{{ $book->getCover() }}" alt="Rome" class="img-fluid img-rounded img-thumbnail">
+                            <img src="{{ $book->getCover() }}" alt="{{ $book->getName() }}" class="img-fluid img-rounded img-thumbnail">
                         </div>
                         <div class="col-md-9">
                             <table class="table table-inverse col-md-9">
@@ -83,12 +82,10 @@
                     <div class="m--space-30"></div>
                     <a href="#" class="btn btn-block btn-lg btn-accent m-btn m-btn--custom m-btn--outline-2x m-btn--uppercase">Contribute!</a>
                     <div class="m--space-30"></div>
-                    <hr>
-                    <div class="m--space-30"></div>
-                    <p class="lead text-justify">
+                    <p class="lead text-justify d-none">
                         {{ $book->getDescription() }}
                     </p>
-                    <div class="m--space-30 text-center">
+                    <div class="m--space-30 text-center d-none">
                         <a href="#" class="btn m-btn--pill m-btn--air btn-outline-dark m-btn m-btn--custom m-btn--outline-2x">
                             <i class="fa fa-wikipedia-w"></i> Wikipedia
                         </a>
@@ -173,7 +170,7 @@
                 </div>
                 <div class="m-portlet__body">
                     @foreach($book->getPost()->getCategories() as $category)
-                        <a href="#" class="btn btn-block btn-default">{{ $category->getName() }}</a>
+                        <a href="{{ url("/books?category[]={$category->getId()}") }}" class="btn btn-block btn-default">{{ $category->getName() }}</a>
                     @endforeach
                 </div>
             </div>
