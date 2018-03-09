@@ -54,6 +54,11 @@
         minimumInputLength: 1,
         templateResult: formatRepo // omitted for brevity, see the source of this page
     });
+
+    $('#tags').select2({
+        placeholder: "Select an option",
+        maximumSelectionLength: 2
+    });
 @endsection
 @section("content")
     <div class="row">
@@ -136,7 +141,7 @@
                                     <div class="form-group m-form__group row">
                                         <label class="col-xl-3 col-lg-3 col-form-label">* Tags:</label>
                                         <div class="col-xl-9 col-lg-9">
-                                            <select class="form-control m-select2" id="m_select2_9" name="tags" multiple>
+                                            <select class="form-control m-select2" id="tags" name="tags" multiple>
                                                 <option></option>
                                                 <optgroup label="Alaskan/Hawaiian Time Zone">
                                                     <option value="AK">Alaska</option>
