@@ -38,7 +38,7 @@ class BookAudioService
         //upload file here
         $file = $request->file('audio');
 
-        $fileName = sprintf('%s_%s_%s.%s',$book->getId(),$user->getId(),$request->get('chapter'),time(),'mp3');
+        $fileName = sprintf('%s_%s_%s_%s.%s',$book->getId(),$user->getId(),$request->get('chapter'),time(),'mp3');
         $filePath = sprintf('/%s/%s',$book->getId(),$fileName);
         $s3 = Storage::disk('s3');
         $upload = $s3->put($filePath, file_get_contents($file), 'public');
