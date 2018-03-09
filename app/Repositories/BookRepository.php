@@ -71,4 +71,24 @@ class BookRepository extends AppEntityRepository
 
         return $this->paginate($result, $perPage, $pageName);
     }
+
+    /**
+     * @param $name
+     * @return mixed
+     */
+    public function findByName($name)
+    {
+        //book name
+        if ($name) {
+            $qb = $this->createQueryBuilder('b');
+            $qb->where('MATCH_AGAINST (b.name, :searchTerm) > 0.8');
+            $qb->setParameter('searchTerm',$name);
+
+            return $qb->getQuery()->getArrayResult();
+
+        }
+
+        return [];
+
+    }
 }

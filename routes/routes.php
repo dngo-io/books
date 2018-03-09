@@ -64,6 +64,11 @@ Route::get('/logout', 'Auth\LoginController@logout');
 Route::get('/home', 'HomeController@home');
 Route::get('/books', 'BooksController@index');
 
+/** Actions */
+Route::prefix('action')->group(function () {
+    Route::get('book', 'ActionController@book');
+});
+
 Route::resource('user','UserController');
 Route::resource('book','BookController');
 Route::resource('category','CategoryController');
