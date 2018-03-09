@@ -100,3 +100,9 @@
 
 .irs-disabled {
 }
+
+.irs-from::after, .irs-to::after, .irs-single::after {
+    border: 3px solid transparent;
+    border-top-color: transparent;
+    border-top-color: #999;
+}
