@@ -92,7 +92,7 @@ class LoginController extends AppController
 
         $this->em->flush();
 
-        auth()->login($user);
+        auth()->login($user, true);
         return redirect()->to('/');
     }
 }
