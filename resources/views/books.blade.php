@@ -1,5 +1,17 @@
 @extends("layout.page")
 @section("title", "Books")
+@section("script")
+    $("#year-slider").ionRangeSlider({
+        type: "double",
+        min: 1900,
+        max: 2018,
+        from: {{ $chosen['year'][0] }},
+        to: {{ $chosen['year'][1] }},
+        grid: true,
+        input: 'year'
+    });
+
+@endsection
 @section("content")
     <div class="row">
         <div class="col-md-3">
@@ -34,7 +46,8 @@
                     <div class="m-checkbox-list">
                         @foreach($categories as $category)
                             <label class="m-checkbox">
-                                <input type="checkbox" name="category[]" value="{{ $category->getId() }}" checked> {{ $category->getName() }}
+                                <input type="checkbox" name="category[]" value="{{ $category->getId() }}" {{ ($chosen['category']) === true || in_array($category->getId(), $chosen['category']) ? 'checked':'' }}>
+                                    {{ $category->getName() }}
                                 <span></span>
                             </label>
                         @endforeach
@@ -69,7 +82,7 @@
                     <div class="m-checkbox-list">
                         @foreach(config('app.languages') as $key => $language)
                         <label class="m-checkbox">
-                            <input type="checkbox" name="language[]" checked value="{{ $key }}"> {{ $language }}
+                            <input type="checkbox" name="language[]" value="{{ $key }}" {{ ($chosen['language']) === true || in_array($key, $chosen['language']) ? 'checked':'' }}> {{ $language }}
                             <span></span>
                         </label>
                         @endforeach

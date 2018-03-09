@@ -51,15 +51,4 @@ var Custom = function() {
 //== Class initialization on page load
 jQuery(document).ready(function() {
     Custom.init();
-
-
-    //year slider
-    $("#year-slider").ionRangeSlider({
-        type: "double",
-        min: 1900,
-        max: 2018,
-        grid: true,
-        input: 'year'
-    });
-
 });

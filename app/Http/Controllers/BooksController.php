@@ -36,11 +36,32 @@ class BooksController extends AppController
 
         $books = $bookRepository->getSearchResults($request, 9);
 
+        $chosen = ['category' => [], 'language' => [], 'year' => []];
+
+        if(!$request->get('category')) {
+            $chosen['category'] = true;
+        } else {
+            $chosen['category'] = $request->get('category');
+        }
+
+        if(!$request->get('language')) {
+            $chosen['language'] = true;
+        } else {
+            $chosen['language'] = $request->get('language');
+        }
+
+        if(!$request->get('language')) {
+            $chosen['year'] = [ 1900, 2018 ];
+        } else {
+            $chosen['year'] = explode(';', $request->get('year'));
+        }
+
         return view('books',
             [
                 'categories' => $categories,
-                'paginate' => $books->appends($request->except('page')),
-                'books' => $books->getCollection()
+                'paginate'   => $books->appends($request->except('page')),
+                'books'      => $books->getCollection(),
+                'chosen'     => $chosen
             ]
         );
 
