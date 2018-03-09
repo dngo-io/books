@@ -66,7 +66,7 @@ class BooksController extends AppController
         if(!$request->get('language')) {
             $chosen['year'] = [ 1900, 2018 ];
         } else {
-            $chosen['year'] = explode(';', $request->get('year'));
+            $chosen['year'] = explode(BookRepository::RANGE_SLIDER_DELIMITER, $request->get('year'));
         }
 
         return view('books',

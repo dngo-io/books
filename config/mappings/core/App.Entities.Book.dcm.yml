@@ -50,3 +50,4 @@ App\Entities\Book:
         author:
           targetEntity: App\Entities\Author
           cascade: [ 'persist' ]
+          fetch: EAGER
