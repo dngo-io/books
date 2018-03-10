@@ -37,7 +37,10 @@ App\Entities\Book:
             lenght: 255
         language:
             type: string
-
+        gutenbergId:
+            type: integer
+        gutenbergFiles:
+            type: json
         releaseDate:
             type: datetime
 

@@ -3,6 +3,7 @@
 
 namespace App\Entities;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Somnambulist\Doctrine\Traits\Identifiable;
 use Somnambulist\Doctrine\Traits\Nameable;
 
@@ -50,6 +51,16 @@ class Book
      * @var Post
      */
     protected $post;
+
+    /**
+     * @var integer
+     */
+    protected $gutenbergId;
+
+    /**
+     * @var ArrayCollection
+     */
+    protected $gutenbergFiles;
 
     /** @var  string */
     protected $language;
@@ -199,6 +210,39 @@ class Book
     {
         $this->language = $language;
     }
+
+    /**
+     * @return int
+     */
+    public function getGutenbergId()
+    {
+        return $this->gutenbergId;
+    }
+
+    /**
+     * @param int $gutenbergId
+     */
+    public function setGutenbergId($gutenbergId)
+    {
+        $this->gutenbergId = $gutenbergId;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getGutenbergFiles()
+    {
+        return $this->gutenbergFiles;
+    }
+
+    /**
+     * @param ArrayCollection $gutenbergFiles
+     */
+    public function setGutenbergFiles($gutenbergFiles)
+    {
+        $this->gutenbergFiles = $gutenbergFiles;
+    }
+
 
 
 }

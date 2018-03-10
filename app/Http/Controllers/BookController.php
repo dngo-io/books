@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Entities\Book;
 use App\Http\Requests\StoreBook;
 use App\Service\BookService;
 use App\Support\AppController;
@@ -71,8 +72,8 @@ class BookController extends AppController
      */
     public function show($id)
     {
+        /** @var Book $book */
         $book = $this->bookService->getBook($id);
-
         if ($book) {
             return view('book',['book' => $book]);
         }

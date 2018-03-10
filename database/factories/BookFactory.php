@@ -22,6 +22,8 @@ $factory->define(\App\Entities\Book::class, function (Faker $faker) {
         'post' => function() {
             return entity(\App\Entities\Post::class)->create();
         },
-        'language' => $languages[$randLang]
+        'language' => $languages[$randLang],
+        'gutenbergId' => $faker->numberBetween(10000,99999),
+        'gutenbergFiles' => ['epub-url','pdf-url','txt-url']
     ];
 });
