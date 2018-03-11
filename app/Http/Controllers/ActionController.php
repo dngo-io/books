@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Entities\Book;
+use App\Entities\User;
 use App\Repositories\BookRepository;
 use App\Support\AppController;
 use Doctrine\ORM\EntityManagerInterface;
@@ -32,4 +33,17 @@ class ActionController extends AppController
         return response($books);
     }
 
+    public function topbar(Request $request)
+    {
+        /** @var BookRepository $repository */
+        $repository = $this->entityManager->getRepository(User::class);
+
+        $users =  $repository->findByAccount($request->get('query'));
+
+        dd($users);
+
+        return view('layout.partials.header.topbar-results', [
+            'users' => $users,
+        ]);
+    }
 }

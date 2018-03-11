@@ -31,4 +31,16 @@ class UserRepository extends AppEntityRepository implements UserRepositoryContra
     {
         return $this->findOneBy(['account' => $account]);
     }
+
+    /**
+     * Return
+     *
+     * @param string $account
+     *
+     * @return null|User
+     */
+    public function findByAccount($account)
+    {
+        return $this->findBy(['name' => $account], ['account' => 'ASC']);
+    }
 }

@@ -5,7 +5,7 @@
             @if (!Auth::guest())
             <li class="
 	m-nav__item m-nav__item--focus m-dropdown m-dropdown--large m-dropdown--arrow m-dropdown--align-center m-dropdown--mobile-full-width m-dropdown--skin-light	m-list-search m-list-search--skin-light"
-                data-dropdown-toggle="click" data-dropdown-persistent="true" id="m_quicksearch"
+                data-dropdown-toggle="click" data-dropdown-persistent="true" id="topbar_quicksearch"
                 data-search-type="dropdown">
                 <a href="#" class="m-nav__link m-dropdown__toggle">
                     <span class="m-nav__link-icon">
@@ -22,10 +22,10 @@
                                 {{ csrf_field() }}
                                 <div class="m-list-search__form-wrapper">
                                     <span class="m-list-search__form-input-wrapper">
-                                        <input id="m_quicksearch_input" autocomplete="off" type="text" name="q"
+                                        <input id="topbar_quicksearch_input" autocomplete="off" type="text" name="name"
                                                class="m-list-search__form-input" value="" placeholder="Search...">
                                     </span>
-                                    <span class="m-list-search__form-icon-close" id="m_quicksearch_close">
+                                    <span class="m-list-search__form-icon-close" id="topbar_quicksearch_close">
                                         <i class="la la-remove"></i>
                                     </span>
                                 </div>

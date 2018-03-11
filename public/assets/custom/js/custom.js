@@ -8,6 +8,28 @@ var Custom = function() {
         });
     }
 
+    var initQuicksearch = function() {
+        var qs = $('#topbar_quicksearch');
+        qs.mQuicksearch({
+            type: qs.data('search-type'), // quick search type
+            source: 'http://127.0.0.1:8000/action/topbar',
+            spinner: 'm-loader m-loader--skin-light m-loader--right',
+
+            input: '#topbar_quicksearch_input',
+            iconClose: '#topbar_quicksearch_close',
+            iconCancel: '#topbar_quicksearch_cancel',
+            iconSearch: '#topbar_quicksearch_search',
+
+            hasResultClass: 'm-list-search--has-result',
+            minLength: 1,
+            templates: {
+                error: function(qs) {
+                    return '<div class="m-search-results m-search-results--skin-light"><span class="m-search-result__message">Something went wrong</div></div>';
+                }
+            }
+        });
+    }
+
     var Parser = {
         //== Sparkline Chart helper function
         sentence: function () {
@@ -42,7 +64,7 @@ var Custom = function() {
         init: function() {
             // init charts
             Parser.sentence();
-
+            initQuicksearch();
             markToggle();
         }
     };
