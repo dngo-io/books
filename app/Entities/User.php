@@ -260,6 +260,15 @@ class User implements
     }
 
     /**
+     * @param $name
+     * @return bool
+     */
+    public function checkRole($name)
+    {
+        return $this->hasRoleByName($name);
+    }
+
+    /**
      * @param Role $role
      *
      * @return $this

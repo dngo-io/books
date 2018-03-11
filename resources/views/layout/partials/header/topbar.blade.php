@@ -152,6 +152,16 @@
                                             </span>
                                         </a>
                                     </li>
+                                    @if (Auth::user()->checkRole('moderator'))
+                                    <li class="m-nav__item">
+                                        <a href="{{ url("/moderator/") }}" class="m-nav__link">
+                                            <i class="m-nav__link-icon fa fa-cog"></i>
+                                            <span class="m-nav__link-text">
+                                                Moderator
+                                            </span>
+                                        </a>
+                                    </li>
+                                    @endif
                                     <li class="m-nav__item">
                                         <a href="{{ url("https://steemit.com/@".Auth::user()->getAccount()."/settings") }}" class="m-nav__link">
                                             <i class="m-nav__link-icon fa fa-cog"></i>
