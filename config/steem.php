@@ -24,4 +24,7 @@ return [
     'rules' => env('STEEM_RULES'),
     'how_to' => env('STEEM_HOW_TO'),
 
+
+    'tag' => env('STEEM_TAG'),
+
 ];
