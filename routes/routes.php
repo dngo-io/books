@@ -40,22 +40,7 @@ Route::get('/feed', function () {
     return view('feed');
 });
 
-Route::get('/moderation', function () {
-    return view('moderation', [
-        'users' => [
-            'ikidnapmyself',
-            'tubi',
-            'maskoze',
-            'bencagri'
-        ],
-        'colors' => [
-            'success',
-            'dark',
-            'danger',
-            'warning'
-        ]
-    ]);
-});
+Route::get('/moderation', 'Staff\ModeratorController@index');
 
 Route::get('/login', 'Auth\LoginController@redirectToProvider');
 Route::get('/login/callback', 'Auth\LoginController@handleProviderCallback');

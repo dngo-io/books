@@ -57,6 +57,11 @@ return [
             'entity'     => App\Entities\User::class,
             'alias'      => App\Support\Contracts\Repository\UserRepository::class,
         ],
+        [
+            'repository' => App\Repositories\BookAudioRepository::class,
+            'entity'     => App\Entities\BookAudio::class,
+            'alias'      => App\Support\Contracts\Repository\UserRepository::class,
+        ],
     ],
 
 ];

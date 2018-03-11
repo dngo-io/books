@@ -197,27 +197,27 @@
                                 </div>
                             </div>
                             <div class="form-group m-form__group row">
-                                <label class="col-lg-2 col-form-label">Group by:</label>
+                                <label class="col-lg-2 col-form-label">Order by:</label>
                                 <div class="col-lg-10">
                                     <div class="m-radio-inline">
                                         <label class="m-radio m-radio--solid">
-                                            <input type="radio" name="group_by" checked value="1"> Language
+                                            <input type="radio" name="order_by" checked value="language"> Language
                                             <span></span>
                                         </label>
                                         <label class="m-radio m-radio--solid">
-                                            <input type="radio" name="group_by" value="2"> Date
+                                            <input type="radio" name="order_by" value="date"> Date
                                             <span></span>
                                         </label>
                                         <label class="m-radio m-radio--solid">
-                                            <input type="radio" name="group_by" value="3"> Book
+                                            <input type="radio" name="order_by" value="book"> Book
                                             <span></span>
                                         </label>
                                         <label class="m-radio m-radio--solid">
-                                            <input type="radio" name="group_by" value="4"> User
+                                            <input type="radio" name="order_by" value="user"> User
                                             <span></span>
                                         </label>
                                         <label class="m-radio m-radio--solid">
-                                            <input type="radio" name="group_by" value="5"> Author
+                                            <input type="radio" name="order_by" value="author"> Author
                                             <span></span>
                                         </label>
                                     </div>
@@ -260,6 +260,7 @@
                                 <div class="fc-scroller">
                                     <table class="fc-list-table ">
                                         <tbody>
+                                        {{ dump($content) }}
                                             @for($u = 0; $u <= rand(3,7); $u++)
                                                 <tr class="fc-list-heading">
                                                     <td class="fc-widget-header" colspan="3">Lorem<a class="fc-list-heading-alt">{{ date("M d, Y", strtotime("+$u DAY")) }}</a></td>

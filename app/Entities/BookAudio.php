@@ -38,15 +38,17 @@ class BookAudio
      */
     protected $body;
 
-    /**
-     * @var string
-     */
-    protected $language;
 
     /**
      * @var integer
      */
     protected $chapter = 0;
+
+    /**
+     * @var int
+     */
+
+    protected $status = 0;
 
     /**
      * @var string
@@ -127,21 +129,6 @@ class BookAudio
         $this->body = $body;
     }
 
-    /**
-     * @return string
-     */
-    public function getLanguage()
-    {
-        return $this->language;
-    }
-
-    /**
-     * @param string $language
-     */
-    public function setLanguage($language)
-    {
-        $this->language = $language;
-    }
 
     /**
      * @return string
@@ -215,5 +202,20 @@ class BookAudio
         return $this;
     }
 
+    /**
+     * @return int
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param int $status
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+    }
 
 }

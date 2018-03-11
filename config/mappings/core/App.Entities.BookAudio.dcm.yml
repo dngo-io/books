@@ -20,10 +20,6 @@ App\Entities\BookAudio:
               comment: 'by seconds'
               nullable: true
 
-            language:
-              type: string
-              length: 4
-
             body:
               type: text
 
@@ -32,6 +28,10 @@ App\Entities\BookAudio:
 
             isActive:
               type: boolean
+
+            status:
+              type: integer
+              length: 1
 
             fileSource:
               type: string
