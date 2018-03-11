@@ -114,7 +114,7 @@
                                         <p class="card-text">in {{ $book->getYear() }} by <a href="{{ url("author/{$book->getAuthor()->getId()}") }}" class="m-link">{{ $book->getAuthor()->getName() }}</a></p>
                                     </div>
                                     <ul class="list-group list-group-flush">
-                                        <li class="list-group-item">2131 {{ str_plural('Contribution', 21312) }}</li>
+                                        <li class="list-group-item">#### Contributions</li>
                                         <li class="list-group-item">ISBN {{ $book->getIsbn() }}</li>
                                         <li class="list-group-item">{{ format_date($book->getReleaseDate()) }}</li>
                                     </ul>
