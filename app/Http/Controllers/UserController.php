@@ -6,7 +6,6 @@ use App\Entities\User;
 use App\Support\AppController;
 use Illuminate\Http\Request;
 use Doctrine\ORM\EntityManagerInterface;
-use App\Service\SteemService;
 use SteemAPI\SteemAPI;
 use Illuminate\Support\Facades\Cache;
 
