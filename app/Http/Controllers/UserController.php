@@ -18,19 +18,12 @@ class UserController extends AppController
     private $entityManager;
 
     /**
-     * @var SteemService
-     */
-    private $steem;
-
-    /**
      * UserController constructor.
      * @param EntityManagerInterface $entityManager
-     * @param SteemService $steem
      */
-    public function __construct(EntityManagerInterface $entityManager, SteemService $steem)
+    public function __construct(EntityManagerInterface $entityManager)
     {
         $this->entityManager = $entityManager;
-        $this->steem         = $steem;
     }
 
     /**
