@@ -74,9 +74,10 @@ class BookRepository extends AppEntityRepository
 
     /**
      * @param $name
-     * @return mixed
+     * @param int $limit
+     * @return array|mixed
      */
-    public function findByName($name)
+    public function findByName($name, $limit = 10)
     {
         //book name
         if ($name) {
@@ -87,9 +88,9 @@ class BookRepository extends AppEntityRepository
 
             $qb->join('b.post','p');
             $qb->groupBy('b.id');
-            $qb->setMaxResults(10);
+            $qb->setMaxResults($limit);
 
-            return $qb->getQuery()->getArrayResult();
+            return $qb->getQuery()->getResult();
 
         }
 

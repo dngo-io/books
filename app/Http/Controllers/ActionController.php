@@ -30,7 +30,28 @@ class ActionController extends AppController
 
         $books =  $repository->findByName($request->get('name'));
 
-        return response($books);
+
+        $result = [];
+        foreach ($books as $book)
+        {
+            $result[] = [
+                'description'     => $book->getDescription(),
+                'author'          => $book->getAuthor()->getName(),
+                'isbn'            => $book->getIsbn(),
+                'year'            => $book->getYear(),
+                'releaseDate'     => $book->getReleaseDate(),
+                'page'            => $book->getPage(),
+                'cover'           => $book->getCover(),
+                'post'            => $book->getPost(),
+                'gutenbergId'     => $book->getGutenbergId(),
+                'gutenbergFiles'  => $book->getGutenbergFiles(),
+                'language'        => config("app.languages.{$book->getLanguage()}"),
+                'name'            => $book->getName(),
+                'id'              => $book->getId(),
+            ];
+        }
+
+        return response($result);
     }
 
     public function topbar(Request $request)
