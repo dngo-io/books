@@ -33,14 +33,24 @@ class UserRepository extends AppEntityRepository implements UserRepositoryContra
     }
 
     /**
-     * Return
-     *
-     * @param string $account
-     *
-     * @return null|User
+     * @param $account
+     * @param int $limit
+     * @return array
      */
-    public function findByAccount($account)
+    public function findByAccount($account, $limit = 10)
     {
-        return $this->findBy(['name' => $account], ['account' => 'ASC']);
+        //account name
+        if ($account) {
+            $qb = $this->createQueryBuilder('u')->select(['u.account', 'u.name', 'u.profileImage']);
+
+            $qb->where('u.account LIKE :username');
+            $qb->setParameter('username', "%$account%");
+            $qb->setMaxResults($limit);
+
+            return $qb->getQuery()->getArrayResult();
+
+        }
+
+        return [];
     }
 }
