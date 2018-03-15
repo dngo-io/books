@@ -10,6 +10,9 @@ App\Entities\User:
             columns: [ uuid ]
 
     indexes:
+        account_fulltext:
+            columns: ["account"]
+            flags: fulltext
         idx_users_active:
             columns: [ is_active ]
 
