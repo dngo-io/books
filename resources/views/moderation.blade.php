@@ -14,7 +14,7 @@
                     <div id="mod-readable-zone">
                         <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/60791660&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
                         <div class="m--space-30"></div>
-                        <div id="mod-readable-zone" class="m-scrollable" data-scrollable="true" data-max-height="300" data-scrollbar-shown="true">
+                        <div class="m-scrollable" data-scrollable="true" data-max-height="300" data-scrollbar-shown="true">
                             <p data-parse="sentence">
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque diam mi, pellentesque eu
                                 turpis eget, bibendum varius neque. Duis ullamcorper neque eget eros euismod consequat. Proin
