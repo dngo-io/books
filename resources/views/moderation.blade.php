@@ -58,14 +58,14 @@
                     <div id="mod-reject" class="d-none">
                         <div class="bg-secondary p-5">
                             <div class="media">
-                                <img class="align-self-start mr-3" src="{{ asset("assets/app/media/img/users/user4.jpg") }}" alt="">
+                                <img class="align-self-start mr-3" src="{{ asset(Auth::user()->getProfileImage()) }}" width="50" alt="{{ Auth::user()->getAccount() }}">
                                 <div class="media-body">
-                                    <h5 class="mt-0">@ikidnapmyself (53) · <span class="m--font-metal">00 hours ago</span></h5>
+                                    <h5 class="mt-0">{{ '@'.Auth::user()->getAccount() }} · <span class="m--font-metal">00 hours ago</span></h5>
                                     <p>
                                         Your contribution cannot be approved because it does not follow the
                                         <a href="{{ config("steem.rules") }}">{{ config("app.name") }} Rules</a>.
                                     </p>
-                                    <textarea class="form-control m-input" name="reject-message" id="reject-message" cols="30" rows="10" placeholder="YOU CAN ADD YOUR MESSAGE HERE"></textarea>
+                                    <textarea class="form-control m-input" name="reject-message" cols="30" rows="10" placeholder="YOU CAN ADD YOUR MESSAGE HERE"></textarea>
                                     <p>
                                         <strong>[MODERATOR]</strong>
                                     </p>
@@ -90,13 +90,13 @@
                     <div id="mod-approve" class="d-none">
                         <div class="bg-secondary p-5">
                             <div class="media">
-                                <img class="align-self-start mr-3" src="{{ asset("assets/app/media/img/users/user4.jpg") }}" alt="">
+                                <img class="align-self-start mr-3" src="{{ asset(Auth::user()->getProfileImage()) }}" width="50" alt="{{ Auth::user()->getAccount() }}">
                                 <div class="media-body">
-                                    <h5 class="mt-0">@ikidnapmyself (53) · <span class="m--font-metal">00 hours ago</span></h5>
+                                    <h5 class="mt-0">{{ '@'.Auth::user()->getAccount() }} · <span class="m--font-metal">00 hours ago</span></h5>
                                     <p>
                                         Thank you for the contribution. It has been approved.
                                     </p>
-                                    <textarea class="form-control m-input" name="reject-message" id="reject-message" cols="30" rows="10" placeholder="YOU CAN ADD YOUR MESSAGE HERE"></textarea>
+                                    <textarea class="form-control m-input" name="reject-message" cols="30" rows="10" placeholder="YOU CAN ADD YOUR MESSAGE HERE"></textarea>
                                     <p>
                                         <strong>[MODERATOR]</strong>
                                     </p>
@@ -171,7 +171,7 @@
                                 </div>
                             </div>
                             <div class="form-group m-form__group row">
-                                <label class="col-lg-2 col-form-label" for="status">Status:</label>
+                                <label class="col-lg-2 col-form-label">Status:</label>
                                 <div class="col-lg-10">
                                     <div class="m-checkbox-inline">
                                         <label class="m-checkbox m-checkbox--bold m-checkbox--state-warning">
@@ -260,7 +260,7 @@
                                             @foreach($content as $post)
                                                 <tr class="fc-list-heading">
                                                     <td class="fc-widget-header" colspan="4">
-                                                        {{ $post->getBook()->getName() }} <a class="fc-list-heading-alt">{{ $post->getBook()->getAuthor()->getName() }}</a></a>
+                                                        {{ $post->getBook()->getName() }} <a class="fc-list-heading-alt">{{ $post->getBook()->getAuthor()->getName() }}</a>
                                                     </td>
                                                 </tr>
                                                 <tr class="fc-list-item m-fc-event--{{ $status[$post->getStatus()]['color'] }}">
