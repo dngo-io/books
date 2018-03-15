@@ -44,10 +44,12 @@ class BookAudioRepository extends AppEntityRepository
             ->createQueryBuilder('a')
             ->innerJoin('a.book','b');
 
+        $qb->andWhere('a.status IN (:status)');
         //status
         if ($request->get('status')) {
-            $qb->andWhere('a.status IN (:status)');
             $qb->setParameter('status',$request->get('status'));
+        } else {
+            $qb->setParameter('status',['pending']);
         }
 
         //set language

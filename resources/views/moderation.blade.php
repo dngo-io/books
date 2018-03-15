@@ -175,19 +175,19 @@
                                 <div class="col-lg-10">
                                     <div class="m-checkbox-inline">
                                         <label class="m-checkbox m-checkbox--bold m-checkbox--state-warning">
-                                            <input type="checkbox" name="status[]" @if(in_array('pending', array_get($filters, 'status'))) checked @endif value="pending" class="checked"> Pending
+                                            <input type="checkbox" name="status[]" @if(in_array('0', array_get($filters, 'status'))) checked @endif value="0" class="checked"> Pending
                                             <span></span>
                                         </label>
                                         <label class="m-checkbox m-checkbox--bold m-checkbox--state-success">
-                                            <input type="checkbox" name="status[]" @if(in_array('approved', array_get($filters, 'status'))) checked @endif value="approved"> Approved
+                                            <input type="checkbox" name="status[]" @if(in_array('1', array_get($filters, 'status'))) checked @endif value="1"> Approved
                                             <span></span>
                                         </label>
                                         <label class="m-checkbox m-checkbox--bold m-checkbox--state-danger">
-                                            <input type="checkbox" name="status[]" @if(in_array('rejected', array_get($filters, 'status'))) checked @endif value="rejected"> Rejected
+                                            <input type="checkbox" name="status[]" @if(in_array('2', array_get($filters, 'status'))) checked @endif value="2"> Rejected
                                             <span></span>
                                         </label>
                                         <label class="m-checkbox m-checkbox--bold m-checkbox--state-dark">
-                                            <input type="checkbox" name="status[]" @if(in_array('no', array_get($filters, 'status'))) checked @endif value="no-contribution"> No Contribution
+                                            <input type="checkbox" name="status[]" @if(in_array('3', array_get($filters, 'status'))) checked @endif value="3"> No Contribution
                                             <span></span>
                                         </label>
                                     </div>
