@@ -52,7 +52,7 @@ class BookAudioRepository extends AppEntityRepository
 
         //set language
         if($request->get('language')){
-            $qb->andWhere('b.language IN (:language)');
+            $qb->andWhere('b.language = :language');
             $qb->setParameter('language',$request->get('language'));
         }
 
@@ -67,13 +67,13 @@ class BookAudioRepository extends AppEntityRepository
         if($request->get('order_by')){
 
             if ($request->get('order_by') == self::ORDER_BY_AUTHOR)
-                $qb->orderBy("b.author");
+                $qb->orderBy('b.author');
 
             if ($request->get('order_by') == self::ORDER_BY_BOOK)
-                $qb->orderBy('a.book');
+                $qb->orderBy('b.id');
 
             if ($request->get('order_by') == self::ORDER_BY_DATE)
-                $qb->orderBy('a.create_at');
+                $qb->orderBy('a.createdAt');
 
             if ($request->get('order_by') == self::ORDER_BY_LANGUAGE)
                 $qb->orderBy('b.language');
