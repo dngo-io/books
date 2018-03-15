@@ -82,19 +82,10 @@ class BookRepository extends AppEntityRepository
         if ($name) {
             $qb = $this->createQueryBuilder('b');
 
-            /**
-             * TODO: fix here
-             */
-            //$qb->where('MATCH_AGAINST (b.name, :searchTerm) > 0.8');
-            //$qb->setParam('searchTerm',$name);
+            $qb->where('MATCH_AGAINST (b.name, :searchTerm) > 0.8');
+            $qb->setParameter('searchTerm',$name);
 
-
-            /**
-             * TODO: display joins
-             */
-            $qb->join('App\Entities\Author','a');
             $qb->join('b.post','p');
-            $qb->innerJoin('App\Entities\Category','c');
             $qb->groupBy('b.id');
             $qb->setMaxResults(10);
 
