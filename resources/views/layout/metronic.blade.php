@@ -79,10 +79,12 @@ m-aside-left--offcanvas-default m-aside-left--enabled m-aside-left--fixed m-asid
         @yield("script")
     });
 </script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-114999163-1"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-114999163-1');
-</script>
+@if(config('env') == 'production')
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-114999163-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-114999163-1');
+    </script>
+@endif
 <!-- end::Page Loader -->
 </body>
 <!-- end::Body -->
