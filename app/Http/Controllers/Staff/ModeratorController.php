@@ -32,24 +32,28 @@ class ModeratorController extends AppController
     public function index(Request $request)
     {
         $results = $this->audioRepository->searchByRequest($request);
+        $filters = $request->all();
 
-        dd($results);
+        if(!isset($filters['status']))
+        {
+            $filters['status'] = ['pending'];
+        }
+        if(!isset($filters['order_by']))
+        {
+            $filters['order_by'] = 'date';
+        }
 
         return view('moderation', [
-            'users' => [
-                'ikidnapmyself',
-                'tubi',
-                'maskoze',
-                'bencagri'
+            'status' => [
+                0 => ['color' =>'warning', 'text' => 'Pending Approval'],
+                1 => ['color' =>'success', 'text' => 'Approved'],
+                2 => ['color' =>'danger',  'text' => 'Rejected'],
+                3 => ['color' =>'dark',    'text' => 'No Contribution'],
             ],
-            'colors' => [
-                'success',
-                'dark',
-                'danger',
-                'warning'
-            ],
-            'content' => $results->getCollection(),
-            'paginate'   => $results->appends($request->except('page')),
+            'filters'  => $filters,
+            'count'    => $results->count(),
+            'content'  => $results->getCollection(),
+            'paginate' => $results->appends($request->except('page')),
         ]);
     }
 }
