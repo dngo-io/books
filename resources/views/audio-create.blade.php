@@ -14,21 +14,20 @@
             markup += "<div class='select2-result-repository__description'>ISBN: " + book.isbn + "</div>";
         }
         markup += "<div class='select2-result-repository__statistics'>" +
-                  "<div class='select2-result-repository__forks'><i class='fa fa-user'></i> Author's Name</div>" +
+                  "<div class='select2-result-repository__forks'><i class='fa fa-user'></i> " + book.author + "</div>" +
                   "<div class='select2-result-repository__stargazers'><i class='fa fa-star'></i> " + book.page + " pages in " + book.language + "</div>" +
-                  "<div class='select2-result-repository__watchers'><i class='fa fa-eye'></i> " + book.watchers_count + " Watchers</div>" +
                   "</div>" +
                   "</div></div>";
         return markup;
     }
 
-    $("#chapter").select2({
-        placeholder: "Search for book chapters",
+    $("#book").select2({
+        placeholder: "Search for books",
         allowClear: true,
         ajax: {
             url: "{{ url("action/book") }}",
             dataType: 'json',
-            delay: 250,
+            delay: 500,
             data: function(params) {
                 return {
                     name: params.term, // search term
@@ -75,7 +74,6 @@
                 </div>
                 <form class="m-form m-form--label-align-right" action="{{ url("audio") }}" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
-                    <input type="hidden" name="book" value="1">
                     <div class="m-portlet__body">
                         <div class="row">
                             <div class="col-xl-10 offset-xl-1">
@@ -83,10 +81,10 @@
                                     <div class="form-group m-form__group row">
                                         <label class="col-xl-3 col-lg-3 col-form-label">* Voiced Chapter:</label>
                                         <div class="col-xl-9 col-lg-9">
-                                            <select class="form-control m-select2" id="chapter" name="param">
+                                            <select class="form-control m-select2" id="book" name="param">
                                                 <option></option>
                                             </select>
-                                            <span class="m-form__help">Please choose a book chapter to post</span>
+                                            <span class="m-form__help">Please choose a book</span>
                                         </div>
                                     </div>
                                 </div>
