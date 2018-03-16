@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Staff;
 use App\Repositories\BookAudioRepository;
 use App\Support\AppController;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 
 class ModeratorController extends AppController
@@ -18,10 +17,6 @@ class ModeratorController extends AppController
 
     public function __construct(BookAudioRepository $audioRepository)
     {
-        if (Auth::user() && !Auth::user()->checkRole('moderator')) {
-            abort(404);
-        }
-
         $this->audioRepository = $audioRepository;
     }
 
