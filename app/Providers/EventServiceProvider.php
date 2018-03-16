@@ -27,6 +27,9 @@ class EventServiceProvider extends ServiceProvider
         \SocialiteProviders\Manager\SocialiteWasCalled::class => [
             'SocialiteProviders\Steem\SteemExtendSocialite@handle',
         ],
+        'App\Events\AudioApproved' => [
+            'App\EventListeners\PostToSteemListener'
+        ],
     ];
 
     /**

@@ -13,6 +13,13 @@
 
 use App\Entities\User;
 
+Route::middleware(['moderator'])->group(function () {
+    Route::get('/moderation', 'Staff\ModeratorController@index');
+
+    Route::get('/moderation/approve/{id}', 'Staff\ModeratorController@approveContent');
+});
+
+
 Route::get('/', 'HomeController@root_index');
 Route::get('/steem', 'HomeController@steem');
 
@@ -26,12 +33,6 @@ Route::get('/listen', function () {
     return view('listen');
 });
 
-Route::get('/search', function (\Illuminate\Http\Request $request) {
-    /** @var \App\Repositories\BookRepository $bookRepository */
-    $bookRepository = EntityManager::getRepository(\App\Entities\Book::class);
-    $books = $bookRepository->getSearchResults($request);
-    dump($books);
-});
 
 Route::get('/profile', function () {
     return view('profile');
@@ -40,7 +41,6 @@ Route::get('/feed', function () {
     return view('feed');
 });
 
-Route::get('/moderation', 'Staff\ModeratorController@index')->middleware('moderator');
 
 Route::get('/login', 'Auth\LoginController@redirectToProvider');
 Route::get('/login/callback', 'Auth\LoginController@handleProviderCallback');
@@ -70,7 +70,7 @@ if (config('app.env') == 'local') {
 
         if ($user = $userRepository->findOneByAccount('dngotester')) {
             Auth::login($user);
-            redirect('/books');
+            return redirect('/books');
         }else{
             echo 'run <b> php artisan dngo:create:testuser</b> first';
         }
