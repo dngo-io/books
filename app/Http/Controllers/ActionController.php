@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Entities\Book;
+use App\Entities\BookAudio;
 use App\Entities\User;
+use App\Repositories\BookAudioRepository;
 use App\Repositories\BookRepository;
 use App\Repositories\UserRepository;
 use App\Support\AppController;
@@ -53,6 +55,11 @@ class ActionController extends AppController
         }
 
         return response($result);
+    }
+
+    public function audioTags(BookAudio $bookAudio)
+    {
+        response($bookAudio->getTags());
     }
 
     public function topbar(Request $request)

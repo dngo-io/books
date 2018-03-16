@@ -40,7 +40,9 @@ Route::get('/feed', function () {
     return view('feed');
 });
 
-Route::get('/moderation', 'Staff\ModeratorController@index');
+Route::get('/moderation', function (){
+    dd(Auth::set());
+});
 
 Route::get('/login', 'Auth\LoginController@redirectToProvider');
 Route::get('/login/callback', 'Auth\LoginController@handleProviderCallback');
