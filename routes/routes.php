@@ -16,7 +16,7 @@ use App\Entities\User;
 Route::middleware(['moderator'])->group(function () {
     Route::get('/moderation', 'Staff\ModeratorController@index');
 
-    Route::get('/moderation/approve/{id}', 'Staff\ModeratorController@approveContent');
+    Route::get('/moderation/action/{id}/{status}', 'Staff\ModeratorController@action');
 });
 
 

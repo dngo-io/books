@@ -62,16 +62,27 @@ class ModeratorController extends AppController
 
     public function action($id,$status)
     {
-        if (!in_array($status, BookAudioRepository::AUDIO_STATUS)) {
+        $statusList = BookAudioRepository::AUDIO_STATUS;
+
+        if (!isset($statusList[$status])) {
             return  [
                 'status' => false,
                 'message' => "Status is incorrect"
             ];
         }
+        /** @var BookAudio $bookAudio */
+        $bookAudio = $this->audioRepository->find($id);
 
-        $statusList = BookAudioRepository::AUDIO_STATUS;
+        if($status == BookAudioRepository::STATUS_APPROVED ) {
+            $bookAudio->activate();
+        }
 
+        $bookAudio->setStatus($status);
 
+        //fire event
+        event(new AudioApproved($bookAudio));
+
+        exit;
         try  {
             /** @var BookAudio $bookAudio */
             $bookAudio = $this->audioRepository->find($id);
