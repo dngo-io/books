@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Entities\User;
+use App\Repositories\UserRepository;
 use App\Support\AppController;
 use Illuminate\Http\Request;
 use Doctrine\ORM\EntityManagerInterface;
@@ -61,10 +62,12 @@ class UserController extends AppController
     }
 
     /**
-     * Display the specified resource.
+     * User's page
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws \Doctrine\ORM\NoResultException
+     * @throws \Doctrine\ORM\NonUniqueResultException
      */
     public function show($id)
     {
@@ -77,15 +80,20 @@ class UserController extends AppController
             Cache::put("user_{$id}", $follows, config('cache.expire'));
         }
 
+        /** @var UserRepository $repo */
         $repo = $this->entityManager->getRepository(User::class);
-        $user = $repo->findOneByAccount($id);
+        $user = $repo->findProfileByAccount($id);
 
         if(is_null($user))
         {
             abort(404);
         }
 
-        return view('profile', ['user' => $user, 'follows' => $follows]);
+        return view('profile', [
+            'user'         => $user[0],
+            'follows'      => $follows,
+            'contribution' => $user['contribution']
+        ]);
     }
 
     /**

@@ -57,10 +57,10 @@
                             <div class="row m-row--no-padding align-items-center">
                                 <div class="col">
                                     <h3 class="m-widget1__title">Contributions</h3>
-                                    <span class="m-widget1__desc">Contributor since Feb, 18</span>
+                                    <span class="m-widget1__desc">Contributor since {{ format_date($user->getCreatedAt(), 'M, y') }}</span>
                                 </div>
                                 <div class="col m--align-right">
-                                    <span class="m-widget1__number m--font-brand">33</span>
+                                    <span class="m-widget1__number m--font-brand">{{ $contribution }}</span>
                                 </div>
                             </div>
                         </div>

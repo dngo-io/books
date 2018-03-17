@@ -34,6 +34,35 @@ class UserRepository extends AppEntityRepository implements UserRepositoryContra
 
     /**
      * @param $account
+     * @return array|mixed
+     * @throws \Doctrine\ORM\NoResultException
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
+    public function findProfileByAccount($account)
+    {
+        //account name
+        if ($account) {
+            $qb = $this->createQueryBuilder('u')->select(['u', 'COUNT(ba) as contribution']);
+
+            $qb->leftJoin('App\Entities\BookAudio', 'ba', \Doctrine\ORM\Query\Expr\Join::WITH, 'u.id = ba.user');
+
+            $qb->where('u.account = :username');
+            $qb->setParameter('username', $account);
+
+            $qb->andWhere('ba.status = :status');
+            $qb->setParameter('status', 1);
+
+            $qb->setMaxResults(1);
+
+            return $qb->getQuery()->getSingleResult();
+
+        }
+
+        return [];
+    }
+
+    /**
+     * @param $account
      * @param int $limit
      * @return array
      */
