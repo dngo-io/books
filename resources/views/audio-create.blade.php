@@ -109,7 +109,7 @@
                                 <div class="form-group m-form__group row">
                                     <label class="col-xl-3 col-lg-3 col-form-label">* Post Title:</label>
                                     <div class="col-xl-9 col-lg-9">
-                                        <input type="text" name="title" class="form-control m-input" placeholder="" value="The Tale of Two Cities - Chapter 4 Audio Book">
+                                        <input type="text" name="title" class="form-control m-input" placeholder="Title for your contribution" value="{{ old("title") }}">
                                         <span class="m-form__help">The title will be displayed as Steemit post title.</span>
                                     </div>
                                 </div>
@@ -117,7 +117,7 @@
                                     <label class="col-xl-3 col-lg-3 col-form-label">* Post Body:</label>
                                     <div class="col-xl-9 col-lg-9">
                                         <textarea name="content" class="form-control" data-provide="markdown" rows="15"></textarea>
-                                        <span class="m-form__help">Appartment, suite, unit, building, floor, etc</span>
+                                        <span class="m-form__help">Steemit post body and a text space for proof-of-work</span>
                                     </div>
                                 </div>
                                 <div class="form-group m-form__group row">
