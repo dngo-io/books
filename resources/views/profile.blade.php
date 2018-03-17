@@ -60,29 +60,7 @@
                                     <span class="m-widget1__desc">Contributor since {{ format_date($user->getCreatedAt(), 'M, y') }}</span>
                                 </div>
                                 <div class="col m--align-right">
-                                    <span class="m-widget1__number m--font-brand">{{ $contribution }}</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="m-widget1__item">
-                            <div class="row m-row--no-padding align-items-center">
-                                <div class="col">
-                                    <h3 class="m-widget1__title">Rewards</h3>
-                                    <span class="m-widget1__desc">Current Price 4123 USD</span>
-                                </div>
-                                <div class="col m--align-right">
-                                    <span class="m-widget1__number m--font-success">842 SBD</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="m-widget1__item">
-                            <div class="row m-row--no-padding align-items-center">
-                                <div class="col">
-                                    <h3 class="m-widget1__title">Voting Power</h3>
-                                    <span class="m-widget1__desc">Current Price 4123 USD</span>
-                                </div>
-                                <div class="col m--align-right">
-                                    <span class="m-widget1__number m--font-accent">98%</span>
+                                    <span class="m-widget1__number m--font-success">{{ $contribution }}</span>
                                 </div>
                             </div>
                         </div>
