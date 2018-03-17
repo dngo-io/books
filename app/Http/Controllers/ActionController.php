@@ -59,7 +59,12 @@ class ActionController extends AppController
 
     public function audioTags(BookAudio $bookAudio)
     {
-        response($bookAudio->getTags());
+        if(is_array($bookAudio->getTags()))
+            $result = select2fy($bookAudio->getTags());
+        else
+            $result = [];
+
+        return response($result);
     }
 
     public function topbar(Request $request)
