@@ -36,8 +36,8 @@ App\Entities\User:
             length: 255
 
         accessToken:
-            type: string
-            length: 255
+            type: text
+            length: 65535
             nullable: true
 
         rememberToken:
