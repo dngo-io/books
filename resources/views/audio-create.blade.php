@@ -78,6 +78,15 @@
             cache: true
         }
     });
+
+    $("#audio-create-form").submit(function(){
+        mApp.blockPage({
+            overlayColor: '#000000',
+            type: 'loader',
+            state: 'success',
+            message: 'Please wait...'
+        });
+    });
 @endsection
 @section("content")
     <div class="row">
@@ -92,7 +101,7 @@
                     <div class="m-portlet__head-tools">
                     </div>
                 </div>
-                <form class="m-form m-form--label-align-right" action="{{ url("audio") }}" method="post" enctype="multipart/form-data">
+                <form class="m-form m-form--label-align-right" action="{{ url("audio") }}" method="post" enctype="multipart/form-data" id="audio-create-form">
                     {{ csrf_field() }}
                     <div class="m-portlet__body">
                         <div class="row">
