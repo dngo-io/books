@@ -60,7 +60,13 @@ class ModeratorController extends AppController
         ]);
     }
 
-    public function action($id,$status)
+    /**
+     * @param $id
+     * @param $status
+     * @param Request $request
+     * @return array
+     */
+    public function action($id,$status, Request $request)
     {
         $statusList = BookAudioRepository::AUDIO_STATUS;
 
@@ -74,8 +80,10 @@ class ModeratorController extends AppController
         $bookAudio = $this->audioRepository->find($id);
         if($status == BookAudioRepository::STATUS_APPROVED ) {
             $bookAudio->activate();
-            $bookAudio->setStatus($status);
         }
+
+        $bookAudio->setModComment($request->get('comment'));
+        $bookAudio->setStatus($status);
 
         try  {
             /** @var BookAudio $bookAudio */
