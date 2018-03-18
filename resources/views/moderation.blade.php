@@ -1,5 +1,19 @@
 @extends("layout.page")
 @section("title", "Moderation")
+
+@section("script")
+    Amplitude.init({
+    "songs": [
+        {
+            "name": "Anthem",
+            "artist": "Emancipator",
+            "album": "Soon It Will Be Cold Enough",
+            "url": "assets/song.mp3",
+            "cover_art_url": "assets/custom/plugins/amplitudejs/examples/album-art/soon-it-will-be-cold-enough.jpg"
+        }
+    ]
+    });
+@endsection
 @section("content")
     <div class="modal fade" id="mod-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="false">
         <div class="modal-dialog modal-lg" role="document">
@@ -12,7 +26,45 @@
                 </div>
                 <div class="modal-body">
                     <div id="mod-readable-zone">
-                        <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/60791660&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+                        <div id="amplitude-player">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 columns" id="amplitude-left">
+                                    <div id="player-left-bottom">
+                                        <div id="time-container">
+                                        <span class="current-time">
+                                            <span class="amplitude-current-minutes" amplitude-main-current-minutes="true"></span>:<span class="amplitude-current-seconds" amplitude-main-current-seconds="true"></span>
+                                        </span>
+                                            <input type="range" class="amplitude-song-slider" amplitude-main-song-slider="true" step=".1"/>
+                                            <span class="duration">
+                                            <span class="amplitude-duration-minutes" amplitude-main-duration-minutes="true"></span>:<span class="amplitude-duration-seconds" amplitude-main-duration-seconds="true"></span>
+                                        </span>
+                                        </div>
+                                        <div id="control-container">
+                                            <div id="repeat-container">
+                                                <div class="amplitude-repeat" id="repeat"></div>
+                                            </div>
+                                            <div id="central-control-container">
+                                                <div id="central-controls">
+                                                    <div class="amplitude-prev" id="previous"></div>
+                                                    <div class="amplitude-play-pause" amplitude-main-play-pause="true" id="play-pause"></div>
+                                                    <div class="amplitude-next" id="next"></div>
+                                                </div>
+                                            </div>
+                                            <div id="shuffle-container">
+                                                <div class="amplitude-shuffle amplitude-shuffle-off" id="shuffle"></div>
+                                            </div>
+                                        </div>
+                                        <div id="meta-container">
+                                            <span amplitude-song-info="name" amplitude-main-song-info="true" class="song-name"></span>
+                                            <div class="song-artist-album">
+                                                <span amplitude-song-info="artist" amplitude-main-song-info="true"></span>
+                                                <span amplitude-song-info="album" amplitude-main-song-info="true"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="m--space-30"></div>
                         <div class="m-scrollable" data-scrollable="true" data-max-height="300" data-scrollbar-shown="true">
                             <p data-parse="sentence">
@@ -23,35 +75,6 @@
                                 sit amet elit eu magna posuere euismod. Donec sed rhoncus elit. Suspendisse eu purus non tortor
                                 gravida molestie id eget magna. Morbi eu fringilla ante, vitae ullamcorper eros. Pellentesque nec
                                 urna eu dui pharetra ultrices.
-                            </p>
-                            <p data-parse="sentence">
-                                Duis tempor pharetra nisl nec efficitur. Ut nec placerat justo. Cras at nunc viverra, venenatis
-                                mauris eget, pellentesque tortor. Maecenas tellus odio, tempus at nulla et, vulputate dapibus lacus.
-                                Duis ullamcorper, leo eu tempus consequat, mauris nisi elementum ipsum, vel aliquet ipsum sapien eu
-                                massa. Donec at malesuada lectus. Etiam ac purus vitae risus pharetra euismod. Etiam ac nulla mattis,
-                                hendrerit quam id, imperdiet justo. Etiam elementum magna nec dictum tempor. Interdum et malesuada
-                                fames ac ante ipsum primis in faucibus. Vivamus mattis consequat magna. Vestibulum sit amet lacinia neque.
-                                Praesent ex ipsum, mattis eu malesuada ut, facilisis ut diam. Proin vehicula nunc tortor, sit amet
-                                consequat tortor pulvinar ut.
-                            </p>
-                            <p data-parse="sentence">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque diam mi, pellentesque eu
-                                turpis eget, bibendum varius neque. Duis ullamcorper neque eget eros euismod consequat. Proin
-                                gravida ullamcorper eros, nec dapibus lectus feugiat vitae. Donec faucibus ex quis est vulputate,
-                                a mattis est imperdiet. Proin nec eros odio. Aenean non elit mollis est interdum elementum. Sed
-                                sit amet elit eu magna posuere euismod. Donec sed rhoncus elit. Suspendisse eu purus non tortor
-                                gravida molestie id eget magna. Morbi eu fringilla ante, vitae ullamcorper eros. Pellentesque nec
-                                urna eu dui pharetra ultrices.
-                            </p>
-                            <p data-parse="sentence">
-                                Duis tempor pharetra nisl nec efficitur. Ut nec placerat justo. Cras at nunc viverra, venenatis
-                                mauris eget, pellentesque tortor. Maecenas tellus odio, tempus at nulla et, vulputate dapibus lacus.
-                                Duis ullamcorper, leo eu tempus consequat, mauris nisi elementum ipsum, vel aliquet ipsum sapien eu
-                                massa. Donec at malesuada lectus. Etiam ac purus vitae risus pharetra euismod. Etiam ac nulla mattis,
-                                hendrerit quam id, imperdiet justo. Etiam elementum magna nec dictum tempor. Interdum et malesuada
-                                fames ac ante ipsum primis in faucibus. Vivamus mattis consequat magna. Vestibulum sit amet lacinia neque.
-                                Praesent ex ipsum, mattis eu malesuada ut, facilisis ut diam. Proin vehicula nunc tortor, sit amet
-                                consequat tortor pulvinar ut.
                             </p>
                         </div>
                     </div>
