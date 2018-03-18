@@ -23,7 +23,7 @@
             <div class="m-alert m-alert--outline m-alert--outline-2x alert alert-warning alert-dismissible fade show" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 </button>
-                <strong>Warning!</strong> {{ $error }} {{ $error }}
+                <strong>Warning!</strong> {{ $error }}
             </div>
         @endforeach
     @endif
