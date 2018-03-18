@@ -13,10 +13,10 @@
 
 use App\Entities\User;
 
-Route::middleware(['moderator'])->group(function () {
-    Route::get('/moderation', 'Staff\ModeratorController@index');
-
-    Route::get('/moderation/action/{id}/{status}', 'Staff\ModeratorController@action');
+Route::middleware(['moderator'])->prefix('moderation')->group(function () {
+    Route::get('/', 'Staff\ModeratorController@index');
+    Route::get('/audio/{id}', 'Staff\ModeratorController@modal');
+    Route::get('/action/{id}/{status}', 'Staff\ModeratorController@action');
 });
 
 
