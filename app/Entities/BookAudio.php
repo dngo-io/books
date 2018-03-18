@@ -64,7 +64,7 @@ class BookAudio
      */
     protected $fileSource;
 
-    /** @var  ArrayCollection|AudioTags */
+    /** @var  ArrayCollection */
     protected $tags;
 
 
@@ -200,7 +200,6 @@ class BookAudio
     /**
      * @param AudioTags $tag
      * @return $this
-     * @internal param Category $category
      */
     public function addTag(AudioTags $tag)
     {

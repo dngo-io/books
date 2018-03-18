@@ -100,7 +100,7 @@
                                 <div class="form-group m-form__group row">
                                     <label class="col-xl-3 col-lg-3 col-form-label">* Book:</label>
                                     <div class="col-xl-9 col-lg-9">
-                                        <select class="form-control m-select2" id="book" name="param">
+                                        <select class="form-control m-select2" id="book" name="book">
                                             <option></option>
                                         </select>
                                         <span class="m-form__help">Please choose a book</span>
@@ -118,6 +118,13 @@
                                     <div class="col-xl-9 col-lg-9">
                                         <textarea name="content" class="form-control" data-provide="markdown" rows="15"></textarea>
                                         <span class="m-form__help">Steemit post body and a text space for proof-of-work</span>
+                                    </div>
+                                </div>
+                                <div class="form-group m-form__group row">
+                                    <label class="col-xl-3 col-lg-3 col-form-label">* Post Body:</label>
+                                    <div class="col-xl-9 col-lg-9">
+                                        <input type="text" name="chapter" class="form-control m-input" placeholder="Chapter value="1">
+                                        <span class="m-form__help">Chapter</span>
                                     </div>
                                 </div>
                                 <div class="form-group m-form__group row">

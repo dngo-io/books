@@ -26,10 +26,9 @@ class StoreBookAudio extends FormRequest
         return [
             'title' => 'required|max:255',
             'content' => 'required',
-            'language' => 'required',
             'audio' => 'required',
             'book' => 'required',
-            'chapter' => 'required|number'
+            'chapter' => 'required|numeric'
         ];
     }
 
