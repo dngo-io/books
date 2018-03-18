@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Entities\Book;
 use App\Http\Requests\StoreBookAudio;
+use App\Repositories\BookRepository;
 use App\Service\BookAudioService;
 use App\Support\AppController;
 use Doctrine\ORM\EntityManagerInterface;
@@ -17,11 +19,15 @@ class AudioController extends AppController
      * @var BookAudioService
      */
     private $bookAudioService;
+    /**
+     * @var EntityManagerInterface
+     */
+    private $entityManager;
 
-    public function __construct(BookAudioService $bookAudioService)
+    public function __construct(BookAudioService $bookAudioService, EntityManagerInterface $entityManager)
     {
-
         $this->bookAudioService = $bookAudioService;
+        $this->entityManager = $entityManager;
     }
 
     /**
@@ -42,7 +48,28 @@ class AudioController extends AppController
      */
     public function create()
     {
-        return view('audio-create');
+        $chosenBook = old('book');
+        $chosenTags = old('tags');
+        $tags       = [];
+        $book       = null;
+        if(!empty($chosenBook))
+        {
+            /** @var BookRepository $bookRepository */
+            $bookRepository = $this->entityManager->getRepository(Book::class);
+
+            $getBook = $bookRepository->findOneBy(['id' => $chosenBook]);
+            $book    = [
+                'id'   => $chosenBook,
+                'text' => $getBook->getName().' - '.$getBook->getAuthor()->getName()
+            ];
+        }
+
+        if(!empty($chosenTags))
+        {
+            $tags    = $chosenTags;
+        }
+
+        return view('audio-create', ['book' => $book, 'tags' => $tags]);
     }
 
     /**
