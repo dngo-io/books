@@ -18,15 +18,6 @@ class PostToSteemListener
      */
     private $bookAudio;
 
-    /**
-     * Create the event listener.
-     *
-     * @param BookAudio $bookAudio
-     */
-    public function __construct(BookAudio $bookAudio)
-    {
-        $this->bookAudio = $bookAudio;
-    }
 
     /**
      * Handle the event.
@@ -36,6 +27,8 @@ class PostToSteemListener
      */
     public function handle(AudioApproved $event)
     {
+        $this->bookAudio = $event->bookAudio;
+
         /** @var EntityManager $em */
         $em = app('em');
 

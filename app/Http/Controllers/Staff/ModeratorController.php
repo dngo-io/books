@@ -72,22 +72,18 @@ class ModeratorController extends AppController
         }
         /** @var BookAudio $bookAudio */
         $bookAudio = $this->audioRepository->find($id);
-
         if($status == BookAudioRepository::STATUS_APPROVED ) {
             $bookAudio->activate();
+            $bookAudio->setStatus($status);
         }
-
-        $bookAudio->setStatus($status);
-
         //fire event
         event(new AudioApproved($bookAudio));
 
-        exit;
         try  {
             /** @var BookAudio $bookAudio */
             $bookAudio = $this->audioRepository->find($id);
             $bookAudio->activate();
-            $bookAudio->setStatus(BookAudioRepository::$statusList[$status]);
+            $bookAudio->setStatus($status);
             $this->entityManager->persist($bookAudio);
             $this->entityManager->flush();
 
