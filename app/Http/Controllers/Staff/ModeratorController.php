@@ -76,8 +76,6 @@ class ModeratorController extends AppController
             $bookAudio->activate();
             $bookAudio->setStatus($status);
         }
-        //fire event
-        event(new AudioApproved($bookAudio));
 
         try  {
             /** @var BookAudio $bookAudio */
