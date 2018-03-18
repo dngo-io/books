@@ -36,6 +36,15 @@ App\Entities\BookAudio:
             fileSource:
               type: string
 
+            steemSlug:
+              type: string
+              length: 255
+              nullable: true
+
+            modComment:
+              type: text
+              nullable: true
+
             createdAt:
               type: datetime
 

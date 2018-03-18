@@ -1,0 +1,17 @@
+App\Entities\SteemLogs:
+    type: entity
+    table: steem_logs
+    id:
+      id:
+          type: integer
+          generator:
+              strategy: auto
+          options:
+              unsigned: true
+    fields:
+      request:
+        type: json
+      response:
+        type: json
+      type:
+        type: string

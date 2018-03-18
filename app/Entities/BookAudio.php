@@ -45,9 +45,18 @@ class BookAudio
     protected $chapter = 0;
 
     /**
+     * @var string
+     */
+    protected $steemSlug;
+
+    /**
+     * @var string
+     */
+    protected $modComment;
+
+    /**
      * @var int
      */
-
     protected $status = 0;
 
     /**
@@ -216,6 +225,38 @@ class BookAudio
     public function setStatus($status)
     {
         $this->status = $status;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSteemSlug()
+    {
+        return $this->steemSlug;
+    }
+
+    /**
+     * @param string $steemSlug
+     */
+    public function setSteemSlug($steemSlug)
+    {
+        $this->steemSlug = $steemSlug;
+    }
+
+    /**
+     * @return string
+     */
+    public function getModComment()
+    {
+        return $this->modComment;
+    }
+
+    /**
+     * @param string $modComment
+     */
+    public function setModComment($modComment)
+    {
+        $this->modComment = $modComment;
     }
 
 }
