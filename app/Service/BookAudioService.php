@@ -76,4 +76,35 @@ class BookAudioService
         $this->entityManager->flush();
     }
 
+    public function find($id)
+    {
+        $bookRepository = $this->entityManager->getRepository(BookAudio::class);
+
+        /** @var BookAudio $bookAudio */
+        $bookAudio = $bookRepository->findOneBy(['id' => $id]);
+
+        return [
+            'audio'   => [
+                'name'       => $bookAudio->getName(),
+                'file'       => $bookAudio->getFileSource(),
+                'body'       => $bookAudio->getBody(),
+                'chapter'    => $bookAudio->getChapter(),
+                'status'     => $bookAudio->getStatus(),
+                'created_at' => $bookAudio->getCreatedAt(),
+            ],
+            'user'    => [
+                'account' => $bookAudio->getUser()->getAccount(),
+                'name'    => $bookAudio->getUser()->getName()
+            ],
+            'book'    => [
+                'id'   => $bookAudio->getBook()->getId(),
+                'name' => $bookAudio->getBook()->getName()
+            ],
+            'author'  => [
+                'id'   => $bookAudio->getBook()->getAuthor()->getId(),
+                'name' => $bookAudio->getBook()->getAuthor()->getName()
+            ],
+        ];
+    }
+
 }
