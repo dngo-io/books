@@ -37,28 +37,6 @@
                     <div class="m-portlet__head-caption">
                         <div class="m-portlet__head-title">
                             <h3 class="m-portlet__head-text">
-                                Narrow by Tags
-                            </h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="m-portlet__body">
-                    <div class="m-checkbox-list">
-                        @foreach($categories as $category)
-                            <label class="m-checkbox">
-                                <input type="checkbox" name="category[]" value="{{ $category->getId() }}" {{ ($chosen['category']) === true || in_array($category->getId(), $chosen['category']) ? 'checked':'' }}>
-                                    {{ $category->getName() }}
-                                <span></span>
-                            </label>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
-            <div class="m-portlet m-portlet--mobile">
-                <div class="m-portlet__head">
-                    <div class="m-portlet__head-caption">
-                        <div class="m-portlet__head-title">
-                            <h3 class="m-portlet__head-text">
                                 Narrow by Year Range
                             </h3>
                         </div>
