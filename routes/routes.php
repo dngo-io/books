@@ -20,6 +20,12 @@ Route::middleware(['moderator'])->prefix('moderation')->group(function () {
 });
 
 
+Route::prefix('listen')->group(function () {
+    Route::get('/{id}', 'ListenController@index');
+    Route::get('/embed/{id}', 'ListenController@embed');
+});
+
+
 Route::get('/', 'HomeController@root_index');
 Route::get('/steem', 'HomeController@steem');
 
@@ -27,11 +33,6 @@ Route::get('/road-map', function () {
     return view('road-map');
 });
 Route::get('/about', 'AboutController@index');
-
-
-Route::get('/listen', function () {
-    return view('listen');
-});
 
 
 Route::get('/profile', function () {
