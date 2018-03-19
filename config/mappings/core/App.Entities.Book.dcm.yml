@@ -22,25 +22,57 @@ App\Entities\Book:
         name:
             type: string
             length: 255
+
         description:
             type: text
+            nullable: true
+
         isbn:
             type: string
             length: 255
+
         year:
             type: string
             length: 4
+            nullable: true
         page:
             type: integer
+            nullable: true
+
         cover:
             type: string
             lenght: 255
+            nullable: true
+
         language:
             type: string
+            nullable: true
+
         gutenbergId:
             type: integer
+
         gutenbergFiles:
             type: json
+
+        source: #url çak geç
+            type: string
+            nullable: true
+
+        categories:
+            type: text
+            nullable: true
+
+        rights:
+            type: string
+            nullable: true
+        licence:
+            type: string
+            nullable: true
+
+        collection:
+            type: string
+            nullable: true
+
         releaseDate:
             type: datetime
 
