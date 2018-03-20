@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Service\BookService;
 use App\Service\BookAudioService;
+use App\Service\Importer\ArchiveImport;
 use Doctrine\ORM\EntityManagerInterface;
 use Illuminate\Support\ServiceProvider;
 
@@ -48,6 +49,15 @@ class AppServiceProvider extends ServiceProvider
             return new BookAudioService(
                 app(EntityManagerInterface::class)
             );
+        });
+
+
+        /**
+         * Importer
+         */
+
+        $this->app->bind(ArchiveImport::class, function($app) {
+            return new ArchiveImport(app(EntityManagerInterface::class));
         });
     }
 }

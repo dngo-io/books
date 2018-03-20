@@ -8,7 +8,9 @@ class Crawler
 
     const STATUS_SCANNED = "scanned";
 
-    const STATUS_IMPORTED = "imported";
+    const STATUS_IMPORTED = "new_imported";
+
+    const STATUS_ALREADY_IMPORTED = "already_imported";
 
     /**
      * @var integer
