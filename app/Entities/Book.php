@@ -62,6 +62,29 @@ class Book
      */
     protected $gutenbergFiles;
 
+    /**
+     * @var string
+     */
+    protected $source;
+
+    /**
+     * @var string
+     */
+    protected $rights;
+
+    /**
+     * @var string
+     */
+    protected $licence;
+
+    /**
+     * @var string
+     */
+    protected $categories;
+
+    /** @var  string */
+    protected $collection;
+
     /** @var  string */
     protected $language;
 
@@ -243,6 +266,84 @@ class Book
         $this->gutenbergFiles = $gutenbergFiles;
     }
 
+    /**
+     * @return string
+     */
+    public function getSource()
+    {
+        return $this->source;
+    }
 
+    /**
+     * @param string $source
+     */
+    public function setSource($source)
+    {
+        $this->source = $source;
+    }
+
+    /**
+     * @return string
+     */
+    public function getRights()
+    {
+        return $this->rights;
+    }
+
+    /**
+     * @param string $rights
+     */
+    public function setRights($rights)
+    {
+        $this->rights = $rights;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLicence()
+    {
+        return $this->licence;
+    }
+
+    /**
+     * @param string $licence
+     */
+    public function setLicence($licence)
+    {
+        $this->licence = $licence;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCollection()
+    {
+        return $this->collection;
+    }
+
+    /**
+     * @param mixed $collection
+     */
+    public function setCollection($collection)
+    {
+        $this->collection = $collection;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCategories()
+    {
+        return $this->categories;
+    }
+
+    /**
+     * @param string $categories
+     */
+    public function setCategories($categories)
+    {
+        $this->categories = $categories;
+    }
 
 }

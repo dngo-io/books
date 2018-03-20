@@ -59,7 +59,7 @@ App\Entities\Book:
             nullable: true
 
         categories:
-            type: text
+            type: string
             nullable: true
 
         rights:
