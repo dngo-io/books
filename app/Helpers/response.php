@@ -11,14 +11,26 @@ if (! function_exists('select2fy')) {
     {
         $return = [];
 
-        foreach ($array as $item)
-        {
+        foreach ($array as $item) {
             $return[] = [
-                'id'   => $item,
+                'id' => $item,
                 'text' => $item,
             ];
         }
 
         return $return;
+    }
+}
+
+if (! function_exists('remote_path')) {
+    /**
+     * Fix remote file location
+     *
+     * @param string $file
+     * @return string
+     */
+    function remote_path(string $file)
+    {
+        return starts_with($file, '/') ? substr($file, 1, strlen($file)) : $file;
     }
 }
