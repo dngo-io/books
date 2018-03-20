@@ -53,7 +53,7 @@ App\Entities\Book:
             nullable: true
 
         gutenbergFiles:
-            type: json
+            type: array
             nullable: true
 
         source: #url çak geç

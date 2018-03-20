@@ -259,7 +259,7 @@ class Book
     }
 
     /**
-     * @param ArrayCollection $gutenbergFiles
+     * @param array $gutenbergFiles
      */
     public function setGutenbergFiles($gutenbergFiles)
     {
