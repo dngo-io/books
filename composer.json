@@ -43,12 +43,13 @@
         "watson/sitemap": "^2.0"
     },
     "require-dev": {
-        "codeception/codeception": "~2.3",
-        "fzaninotto/faker": "~1.6",
-        "mockery/mockery": "0.9.*",
         "barryvdh/laravel-debugbar": "~2.3",
         "barryvdh/laravel-ide-helper": "~2.3",
-        "laravel/homestead": "^5.4"
+        "codeception/codeception": "~2.3",
+        "fzaninotto/faker": "~1.6",
+        "imangazaliev/didom": "^1.13",
+        "laravel/homestead": "^5.4",
+        "mockery/mockery": "0.9.*"
     },
     "autoload": {
         "classmap": [
