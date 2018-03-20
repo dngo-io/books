@@ -34,7 +34,7 @@ class ArchiveImport
         $i=0;
         while(1){
             $i++;
-            $baseUrl = sprintf("http://archive.org/details/gutenberg?page=%s",$i);
+            $baseUrl = sprintf("%s?page=%s",$this->getBaseUrl(),$i);
             $document = new Document($baseUrl,true);
 
             //get url of book
@@ -43,15 +43,22 @@ class ArchiveImport
                 $bookUrl = $url->find("a::attr(href)");
                 $bookUrl = $this->parseBaseUrl($this->getBaseUrl()) . $bookUrl[0];
 
-                $crawl = new Crawler();
-                $crawl->setUrl($bookUrl);
-                $crawl->setIdentifier($this->getIdentifier($bookUrl));
+                $identifier = $this->getIdentifier($bookUrl);
 
-                $this->entityManager->persist($crawl);
-                $this->entityManager->flush();
+                $find = $this->entityManager->getRepository(Crawler::class)->findBy(['identifier' => $identifier]);
+
+                if (!$find) {
+                    $crawl = new Crawler();
+                    $crawl->setUrl($bookUrl);
+                    $crawl->setIdentifier($identifier);
+
+                    $this->entityManager->persist($crawl);
+                    $this->entityManager->flush();
+                }
 
             }
 
+            if($i == 3) break;
             if($document->has(".no-results")) break;
         }
 

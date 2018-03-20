@@ -43,7 +43,7 @@ class ImporterCommand extends Command
      */
     public function handle()
     {
-        $this->archiveImport->setBaseUrl("http://archive.org/details/gutenberg?");
+        $this->archiveImport->setBaseUrl("http://archive.org/details/gutenberg");
         $this->archiveImport->scanAndImport();
     }
 }

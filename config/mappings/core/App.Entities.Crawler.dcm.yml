@@ -1,6 +1,7 @@
 App\Entities\Crawler:
     type: entity
     table: crawler
+    repositoryClass: App\Repositories\CrawlerRepository
 
     indexes:
         idx_identifier:
