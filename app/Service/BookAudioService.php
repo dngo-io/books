@@ -93,9 +93,8 @@ class BookAudioService
     /**
      * Finds an audio
      *
-     * @param int $id
+     * @param $id
      * @return array
-     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
     public function find($id)
     {
@@ -107,7 +106,7 @@ class BookAudioService
         return [
             'audio'   => [
                 'name'       => $bookAudio->getName(),
-                'file'       => $this->disk->get($bookAudio->getFileSource()),
+                'file'       => $this->disk->temporaryUrl(remote_path($bookAudio->getFileSource()), now()->addMinutes(30)),
                 'body'       => $bookAudio->getBody(),
                 'chapter'    => $bookAudio->getChapter(),
                 'status'     => $bookAudio->getStatus(),
