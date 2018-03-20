@@ -80,6 +80,12 @@ class AudioController extends AppController
      */
     public function store(StoreBookAudio $request)
     {
+        /**
+         * Required for slow uploaders. There is no elegant way to solve.
+         * 3 Minutes
+         */
+        ini_set('max_execution_time', 180);
+
         try {
             $this->bookAudioService->addAudio($request);
             $response = [
