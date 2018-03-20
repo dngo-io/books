@@ -60,7 +60,17 @@ return [
         [
             'repository' => App\Repositories\BookAudioRepository::class,
             'entity'     => App\Entities\BookAudio::class,
-            'alias'      => App\Support\Contracts\Repository\UserRepository::class,
+            'alias'      => 'app.book.audio.repository',
+        ],
+        [
+            'repository' => App\Repositories\BookRepository::class,
+            'entity'     => App\Entities\Book::class,
+            'alias'      => 'app.book.repository',
+        ],
+        [
+            'repository' => App\Repositories\AuthorRepository::class,
+            'entity'     => App\Entities\Author::class,
+            'alias'      => 'app.author.repository',
         ],
     ],
 

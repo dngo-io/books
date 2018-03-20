@@ -2,11 +2,14 @@
 
 namespace App\Providers;
 
+use App\Repositories\AuthorRepository;
+use App\Repositories\BookRepository;
 use App\Service\BookService;
 use App\Service\BookAudioService;
 use App\Service\Importer\ArchiveImport;
 use Doctrine\ORM\EntityManagerInterface;
 use Illuminate\Support\ServiceProvider;
+use Somnambulist\EntityValidation\Factories\EntityValidationFactory;
 
 /**
  * Class AppServiceProvider
@@ -57,7 +60,12 @@ class AppServiceProvider extends ServiceProvider
          */
 
         $this->app->bind(ArchiveImport::class, function($app) {
-            return new ArchiveImport(app(EntityManagerInterface::class));
+            return new ArchiveImport(
+                app(EntityManagerInterface::class),
+                app(AuthorRepository::class),
+                app(BookRepository::class),
+                app(EntityValidationFactory::class)
+            );
         });
     }
 }

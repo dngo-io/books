@@ -43,7 +43,17 @@ class ImporterCommand extends Command
      */
     public function handle()
     {
-        $this->archiveImport->setBaseUrl("http://archive.org/details/gutenberg");
-        $this->archiveImport->scanAndImport();
+        try {
+            $this->archiveImport->setBaseUrl("http://archive.org/details/gutenberg");
+            $this->archiveImport->scanAndImport();
+
+            $this->output->writeln("Bitti!");
+        }catch (\Exception $e) {
+            $this->output->writeln("Oops!");
+            $this->output->writeln($e->getMessage());
+            $this->output->writeln("File: ".$e->getFile());
+            $this->output->writeln("Line: ".$e->getLine());
+            dump($e);
+        }
     }
 }

@@ -50,9 +50,11 @@ App\Entities\Book:
 
         gutenbergId:
             type: integer
+            nullable: true
 
         gutenbergFiles:
             type: json
+            nullable: true
 
         source: #url çak geç
             type: string

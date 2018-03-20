@@ -25,4 +25,4 @@ App\Entities\Crawler:
 
         status:
           type: string
-          length: 10
+          length: 50

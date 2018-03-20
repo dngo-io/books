@@ -12,6 +12,7 @@ return [
      */
     'mappings' => [
         // App\Entities\User::class => App\Validation\EntityRules\UserRules::class,
+        App\Entities\Book::class => App\Validation\EntityRules\BookImportRules::class,
     ],
 
 ];
