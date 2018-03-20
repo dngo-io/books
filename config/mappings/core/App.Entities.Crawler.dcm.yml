@@ -1,0 +1,27 @@
+App\Entities\Crawler:
+    type: entity
+    table: crawler
+
+    indexes:
+        idx_identifier:
+            columns: [ identifier ]
+        idx_sttaus:
+            columns: [ status ]
+
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: auto
+            options:
+
+    fields:
+        url:
+          type: string
+
+        identifier:
+          type: string
+
+        status:
+          type: string
+          length: 10
