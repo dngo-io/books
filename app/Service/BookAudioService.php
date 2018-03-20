@@ -22,12 +22,27 @@ class BookAudioService
      */
     private $entityManager;
 
+    /**
+     * @var \Illuminate\Filesystem\FilesystemAdapter
+     */
+    private $disk;
+
+    /**
+     * BookAudioService constructor
+     *
+     * @param EntityManagerInterface $entityManager
+     */
     public function __construct(EntityManagerInterface $entityManager)
     {
-
+        $this->disk          = Storage::disk('s3');
         $this->entityManager = $entityManager;
     }
 
+    /**
+     * Uploads an audio
+     *
+     * @param StoreBookAudio $request
+     */
     public function addAudio(StoreBookAudio $request)
     {
         $bookRepository = $this->entityManager->getRepository(Book::class);
@@ -43,8 +58,7 @@ class BookAudioService
 
         $fileName = sprintf('%s_%s_%s_%s.%s',$book->getId(),$user->getId(),$request->get('chapter'),time(),'mp3');
         $filePath = sprintf('/%s/%s',$book->getId(),$fileName);
-        $s3 = Storage::disk('s3');
-        $upload = $s3->put($filePath, file_get_contents($file), 'public');
+        $upload = $this->disk->put($filePath, file_get_contents($file), 'public');
 
         if (!$upload) throw new UploadException();
 
@@ -76,6 +90,14 @@ class BookAudioService
         $this->entityManager->flush();
     }
 
+    /**
+     * Finds an audio
+     *
+     * @param int $id
+     * @return array
+     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
+     * 
+     */
     public function find($id)
     {
         $bookRepository = $this->entityManager->getRepository(BookAudio::class);
@@ -83,28 +105,33 @@ class BookAudioService
         /** @var BookAudio $bookAudio */
         $bookAudio = $bookRepository->findOneBy(['id' => $id]);
 
-        return [
-            'audio'   => [
-                'name'       => $bookAudio->getName(),
-                'file'       => $bookAudio->getFileSource(),
-                'body'       => $bookAudio->getBody(),
-                'chapter'    => $bookAudio->getChapter(),
-                'status'     => $bookAudio->getStatus(),
-                'created_at' => $bookAudio->getCreatedAt(),
-            ],
-            'user'    => [
-                'account' => $bookAudio->getUser()->getAccount(),
-                'name'    => $bookAudio->getUser()->getName()
-            ],
-            'book'    => [
-                'id'   => $bookAudio->getBook()->getId(),
-                'name' => $bookAudio->getBook()->getName()
-            ],
-            'author'  => [
-                'id'   => $bookAudio->getBook()->getAuthor()->getId(),
-                'name' => $bookAudio->getBook()->getAuthor()->getName()
-            ],
-        ];
+        if($this->disk->exists($bookAudio->getFileSource()))
+        {
+            return [
+                'audio'   => [
+                    'name'       => $bookAudio->getName(),
+                    'file'       => $this->disk->get($bookAudio->getFileSource()),
+                    'body'       => $bookAudio->getBody(),
+                    'chapter'    => $bookAudio->getChapter(),
+                    'status'     => $bookAudio->getStatus(),
+                    'created_at' => $bookAudio->getCreatedAt(),
+                ],
+                'user'    => [
+                    'account' => $bookAudio->getUser()->getAccount(),
+                    'name'    => $bookAudio->getUser()->getName()
+                ],
+                'book'    => [
+                    'id'   => $bookAudio->getBook()->getId(),
+                    'name' => $bookAudio->getBook()->getName()
+                ],
+                'author'  => [
+                    'id'   => $bookAudio->getBook()->getAuthor()->getId(),
+                    'name' => $bookAudio->getBook()->getAuthor()->getName()
+                ],
+            ];
+        } else {
+            abort(404);
+        }
     }
 
 }
