@@ -12,7 +12,7 @@ class ImporterCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'dgno:import';
+    protected $signature = 'dngo:import';
 
     /**
      * The console command description.
@@ -47,7 +47,7 @@ class ImporterCommand extends Command
             $this->archiveImport->setBaseUrl("http://archive.org/details/gutenberg");
             $this->archiveImport->scanAndImport();
 
-            $this->output->writeln("Bitti!");
+            $this->output->writeln("Finished!");
         }catch (\Exception $e) {
             $this->output->writeln("Oops!");
             $this->output->writeln($e->getMessage());
