@@ -70,35 +70,35 @@ class ArchiveImport
         }
 
         $crawlerRepository = $this->entityManager->getRepository(Crawler::class);
-//        $i=0;
-//        while(1){
-//            $i++;
-//            $baseUrl = sprintf("%s?page=%s",$this->getBaseUrl(),$i);
-//            $document = new Document($baseUrl,true);
-//
-//            //get url of book
-//            $urls = $document->find(".item-ttl");
-//            foreach ($urls as $url) {
-//                $bookUrl = $url->find("a::attr(href)");
-//                $bookUrl = $this->parseBaseUrl($this->getBaseUrl()) . $bookUrl[0];
-//
-//                $identifier = $this->getIdentifier($bookUrl);
-//
-//                $find = $crawlerRepository->findBy(['identifier' => $identifier]);
-//
-//                if (!$find) {
-//                    $crawl = new Crawler();
-//                    $crawl->setUrl($bookUrl);
-//                    $crawl->setIdentifier($identifier);
-//
-//                    $this->entityManager->persist($crawl);
-//                    $this->entityManager->flush();
-//                }
-//
-//            }
-//
-//            if($document->has(".no-results")) break;
-//        }
+        $i=0;
+        while(1){
+            $i++;
+            $baseUrl = sprintf("%s?page=%s",$this->getBaseUrl(),$i);
+            $document = new Document($baseUrl,true);
+
+            //get url of book
+            $urls = $document->find(".item-ttl");
+            foreach ($urls as $url) {
+                $bookUrl = $url->find("a::attr(href)");
+                $bookUrl = $this->parseBaseUrl($this->getBaseUrl()) . $bookUrl[0];
+
+                $identifier = $this->getIdentifier($bookUrl);
+
+                $find = $crawlerRepository->findBy(['identifier' => $identifier]);
+
+                if (!$find) {
+                    $crawl = new Crawler();
+                    $crawl->setUrl($bookUrl);
+                    $crawl->setIdentifier($identifier);
+
+                    $this->entityManager->persist($crawl);
+                    $this->entityManager->flush();
+                }
+
+            }
+
+            if($document->has(".no-results")) break;
+        }
 
         // get url's from db and scan
         // update status on db.
