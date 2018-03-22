@@ -1,8 +1,7 @@
 <?php
 namespace SteemAPI;
 
-
-class Account
+class Account extends Query
 {
     /**
      * Get follow count
@@ -20,7 +19,6 @@ class Account
                 ]
         ];
 
-        return $request;
+        return parent::call($request);
     }
-
 }

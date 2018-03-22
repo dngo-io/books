@@ -7,17 +7,10 @@ use GuzzleHttp\Exception\RequestException;
 
 class SteemAPI
 {
-
     /**
-     * Domain
-     *
      * @var string
      */
-    private $domain = 'https://api.steemjs.com';
-
-    private $map = [
-        'followCount' => 'Account',
-    ];
+    public $domain = '';
 
     /**
      * Steemit constructor
@@ -44,20 +37,9 @@ class SteemAPI
     }
 
     /**
-     * Create client via Guzzle!
-     *
-     * @return Client
-     */
-    private function getClient()
-    {
-        return new Client();
-    }
-
-    /**
      * Set domain
      *
      * @param  string $domain
-     *
      * @return $this
      */
     public function setDomain($domain)
@@ -68,71 +50,20 @@ class SteemAPI
     }
 
     /**
-     * Make requests
-     *
-     * @param  array $request
-     * @return array
+     * @return Account
      */
-    private function call($request)
+    public function getAccount()
     {
-        $method  = 'GET';
-        $headers = $this->getHeaders();
-        $query   = http_build_query($request['query']);
-        $url     = "{$this->domain}/{$request['route']}?$query";
-
-        try {
-            $request = $this->getClient()->request($method, $url, [
-                'headers' => $headers
-            ]);
-
-            $response = $request->getBody()->getContents();
-
-            return json_decode($response, true);
-
-        } catch (RequestException $e) {
-            $response = $e->getResponse()->getBody()->getContents();
-            $response = json_decode($response, true);
-            return $response;
-        } catch (\Exception $e) {
-            return ['error' => $e->getCode(), 'error_description' => $e->getMessage()];
-        }
+        return new \SteemAPI\Account();
     }
+
 
     /**
-     * Retrieves class name from map array
-     *
-     * @param  string $request
-     * @return string
+     * @return Post
      */
-    private function getByClassMap($request)
+    public function getPost()
     {
-        return $this->map[$request];
+        return new \SteemAPI\Post();
     }
 
-    /**
-     * Returns target object
-     *
-     * @param  string $request
-     * @return mixed
-     */
-    private function getClass($request)
-    {
-        $class = 'SteemAPI\\'.$this->getByClassMap($request);
-        return new $class;
-    }
-
-    /**
-     * Execute an operation to broadcast!
-     *
-     * @param  string $do     Name of the operation
-     * @param  array  $params Required parameters
-     * @return array
-     */
-    public function exec($do, array $params)
-    {
-        $class   = $this->getClass($do);
-        $request = call_user_func_array(array($class, $do), $params);
-
-        return $this->call($request);
-    }
 }
