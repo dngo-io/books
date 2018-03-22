@@ -81,34 +81,32 @@
                 {{ $paginate->render('pagination::bootstrap-4') }}
             </nav>
             <div class="row">
-                @foreach ($books as $book)
-                    <div class="col-md-4 mb-5">
-                        <div class="m-portlet m-portlet--bordered m-portlet--rounded  m-portlet--full-height">
-                            <div class="m-portlet__body p-0">
-                                <div class="card no-border">
-                                    <img class="card-img-top" src="{{ $book->getCover() }}" alt="{{ $book->getName() }} Cover Image">
-                                    <div class="card-body">
-                                        <h6 class="card-title"><a href="{{ url('book') }}/{{ $book->getId() }}">{{ $book->getName() }}</a></h6>
-                                        <p class="card-text">in {{ $book->getYear() }} by <a href="{{ url("author/{$book->getAuthor()->getId()}") }}" class="m-link">{{ $book->getAuthor()->getName() }}</a></p>
-                                    </div>
-                                    <ul class="list-group list-group-flush">
-                                        <li class="list-group-item">#### Contributions</li>
-                                        <li class="list-group-item">ISBN {{ $book->getIsbn() }}</li>
-                                        <li class="list-group-item">{{ format_date($book->getReleaseDate()) }}</li>
-                                    </ul>
-                                    <div class="card-body text-center">
-                                        <a href="{{ url("book/{$book->getId()}") }}" class="btn btn-outline-brand m-btn m-btn--outline-2x">More</a>
-                                    </div>
-                                </div>
+                <div class="card-columns">
+                    @foreach ($books as $book)
+                        <div class="card mb-5">
+                            <div class="card-header text-center bg-secondary">
+                                {{ $book->getCollection() }}
+                            </div>
+                            <img class="card-img-top" src="{{ $book->getCover() }}" alt="{{ $book->getName() }} Cover Image">
+                            <div class="card-body">
+                                <h6 class="card-title"><a href="{{ url('book') }}/{{ $book->getId() }}" class="m-link">{{ $book->getName() }}</a></h6>
+                                <p class="card-text">by <a href="{{ url("author/{$book->getAuthor()->getId()}") }}" class="m-link">{{ $book->getAuthor()->getName() }}</a></p>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">{{ config("app.languages.{$book->getLanguage()}") }}</li>
+                                <li class="list-group-item">ISBN {{ $book->getIsbn() }}</li>
+                                <li class="list-group-item">{{ format_date($book->getReleaseDate()) }}</li>
+                            </ul>
+                            <div class="card-body text-center bg-secondary">
+                                <a href="{{ url("book/{$book->getId()}") }}" class="btn btn-outline-brand m-btn m-btn--outline-2x">More</a>
                             </div>
                         </div>
-                    </div>
-                @endforeach
+                    @endforeach
+                </div>
             </div>
             <nav aria-label="Search result pagination">
                 {{ $paginate->render('pagination::bootstrap-4') }}
             </nav>
-
         </div>
     </div>
 @endsection
