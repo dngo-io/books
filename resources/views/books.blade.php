@@ -94,8 +94,6 @@
                             </div>
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item">{{ config("app.languages.{$book->getLanguage()}") }}</li>
-                                <li class="list-group-item">ISBN {{ $book->getIsbn() }}</li>
-                                <li class="list-group-item">{{ format_date($book->getReleaseDate()) }}</li>
                             </ul>
                             <div class="card-body text-center bg-secondary">
                                 <a href="{{ url("book/{$book->getId()}") }}" class="btn btn-outline-brand m-btn m-btn--outline-2x">More</a>
