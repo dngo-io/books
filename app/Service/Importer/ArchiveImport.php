@@ -60,7 +60,13 @@ class ArchiveImport
         $this->entityValidationFactory = $entityValidationFactory;
     }
 
-    public function scanAndImport()
+    /**
+     * @param int $limit
+     * @throws EntityNotFoundException
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+    public function scanAndImport($limit = 0)
     {
         /** @var User $user */
         $user = $this->entityManager->getRepository(User::class)->findOneBy(["account" => "dngotester"]);
@@ -70,7 +76,8 @@ class ArchiveImport
         }
 
         $crawlerRepository = $this->entityManager->getRepository(Crawler::class);
-        $i=0;
+        $lim = 0;
+        $i = 0;
         while(1){
             $i++;
             $baseUrl = sprintf("%s?page=%s",$this->getBaseUrl(),$i);
@@ -86,18 +93,22 @@ class ArchiveImport
 
                 $find = $crawlerRepository->findBy(['identifier' => $identifier]);
 
-                if (!$find) {
+                if (!$find)
+                {
                     $crawl = new Crawler();
                     $crawl->setUrl($bookUrl);
                     $crawl->setIdentifier($identifier);
 
                     $this->entityManager->persist($crawl);
                     $this->entityManager->flush();
+                    $lim++;
                 }
 
             }
 
             if($document->has(".no-results")) break;
+            if($limit !== 0 && $lim <= $limit) break;
+
         }
 
         // get url's from db and scan
