@@ -109,6 +109,7 @@ class BookAudioService
                 'file'       => $this->disk->temporaryUrl(remote_path($bookAudio->getFileSource()), now()->addMinutes(30)),
                 'body'       => $bookAudio->getBody(),
                 'chapter'    => $bookAudio->getChapter(),
+                'slug'       => $bookAudio->getSteemSlug(),
                 'status'     => $bookAudio->getStatus(),
                 'created_at' => $bookAudio->getCreatedAt(),
             ],
