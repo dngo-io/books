@@ -9,12 +9,9 @@
         var markup = "<div class='select2-result-repository clearfix'>" +
                      "<div class='select2-result-repository__meta'>" +
                      "<div class='select2-result-repository__title'><strong>" + book.name + "</strong></div>";
-        if (book.description) {
-            markup += "<div class='select2-result-repository__description'>ISBN: " + book.isbn + "</div>";
-        }
         markup += "<div class='select2-result-repository__statistics'>" +
                   "<div class='select2-result-repository__forks'>" + book.author + "</div>" +
-                  "<div class='select2-result-repository__stargazers'>" + book.page + " pages in <u>" + book.language + "</u></div>" +
+                  "<div class='select2-result-repository__stargazers'>" + book.language + "</u></div>" +
                   "</div>" +
                   "</div></div>";
         return markup;
