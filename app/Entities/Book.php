@@ -129,7 +129,7 @@ class Book
     }
 
     /**
-     * @param \DateTime $year
+     * @param integer $year
      */
     public function setYear($year)
     {

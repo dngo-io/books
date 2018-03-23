@@ -175,6 +175,7 @@ class ArchiveImport
                 //add release date
                 if ($value = $this->checkDataAgainstPayload($payload, 'publicdate')) {
                     $book->setReleaseDate(new Carbon($value));
+                    $book->setYear((new Carbon($value))->year);
                 }
 
                 //add files
