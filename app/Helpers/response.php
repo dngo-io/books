@@ -34,3 +34,34 @@ if (! function_exists('remote_path')) {
         return starts_with($file, '/') ? substr($file, 1, strlen($file)) : $file;
     }
 }
+
+if (! function_exists('downloadable')) {
+    /**
+     * Elect files
+     *
+     * @param array $files
+     * @return array
+     */
+    function downloadable(array $files)
+    {
+        $download = [];
+
+        foreach ($files as $file)
+        {
+            foreach ($file as $key => $item)
+            {
+                if(in_array($key, ['text','zip', 'hypertext']))
+                {
+                    $download[] = [
+                        'type' => str_replace(['hypertext', 'text'], ['html', 'doc'], $key),
+                        'file' => basename($item),
+                        'path' => $item,
+                    ];
+                }
+
+            }
+        }
+
+        return $download;
+    }
+}
