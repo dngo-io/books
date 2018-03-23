@@ -39,11 +39,19 @@ if (! function_exists('author')) {
      * Display author's name with @
      *
      * @param string $author
+     * @param null $reputation
      * @return string
      */
-    function author(string $author)
+    function author(string $author, $reputation = null)
     {
-        return "@{$author}";
+        $return = "@{$author}";
+
+        if(!is_null($reputation))
+        {
+            $return .= ' ('.reputation($reputation).')';
+        }
+
+        return $return;
     }
 }
 
@@ -58,6 +66,6 @@ if (! function_exists('payout')) {
     {
         $payout = explode(' ', $payout);
 
-        return '$'.round($payout[0], 2);
+        return '$ '.round($payout[0], 2);
     }
 }
