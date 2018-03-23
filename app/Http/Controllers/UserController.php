@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Entities\User;
+use App\Repositories\BookAudioRepository;
 use App\Repositories\UserRepository;
 use App\Support\AppController;
 use Illuminate\Http\Request;
@@ -17,14 +18,20 @@ class UserController extends AppController
      * @var EntityManagerInterface
      */
     private $entityManager;
+    /**
+     * @var BookAudioRepository
+     */
+    private $audioRepository;
 
     /**
      * UserController constructor.
      * @param EntityManagerInterface $entityManager
+     * @param BookAudioRepository $audioRepository
      */
-    public function __construct(EntityManagerInterface $entityManager)
+    public function __construct(EntityManagerInterface $entityManager, BookAudioRepository $audioRepository)
     {
         $this->entityManager = $entityManager;
+        $this->audioRepository = $audioRepository;
     }
 
     /**
@@ -74,7 +81,7 @@ class UserController extends AppController
             $follows = Cache::get("user_{$id}");
         } else {
             $steem   = new SteemAPI();
-            $follows = $steem->exec('followCount', [$id]);
+            $follows = $follows = $steem->getAccount()->followCount($id);
 
             Cache::put("user_{$id}", $follows, config('cache.expire'));
         }
@@ -88,8 +95,8 @@ class UserController extends AppController
             abort(404);
         }
 
-        $feed = $repo->getUserFeed($request);
-
+        $feed = $this->audioRepository->getUserFeed($request, $id);
+        dd($feed);
 
         return view('profile', [
             'user'         => $user[0],

@@ -9,6 +9,7 @@ use App\Entities\User;
 use App\Support\AppEntityRepository;
 use App\Support\Traits\Repository\FindByName;
 use App\Support\Traits\Repository\FindByUUID;
+use Doctrine\ORM\Query\Expr\Join;
 use Illuminate\Http\Request;
 use LaravelDoctrine\ORM\Pagination\PaginatesFromRequest;
 
@@ -46,7 +47,9 @@ class UserRepository extends AppEntityRepository implements UserRepositoryContra
     {
         //account name
         if ($account) {
-            $qb = $this->createQueryBuilder('u')->select(['u', 'COUNT(ba) as contribution']);
+            $qb = $this->createQueryBuilder('u');
+
+            $qb->select(['u', 'COUNT(ba) as contribution']);
 
             $qb->leftJoin('App\Entities\BookAudio', 'ba', \Doctrine\ORM\Query\Expr\Join::WITH, 'u.id = ba.user');
 
@@ -87,24 +90,5 @@ class UserRepository extends AppEntityRepository implements UserRepositoryContra
         return [];
     }
 
-    /**
-     * @param Request $request
-     * @param int $perPage
-     * @param string $pageName
-     * @return \Illuminate\Pagination\LengthAwarePaginator
-     */
-    public function getUserFeed(Request $request, $perPage = 10, $pageName = 'page')
-    {
-        $qb = $this->createQueryBuilder('u');
 
-        $qb->innerJoin(BookAudio::class,'ba','ON', 'ba.user = u.id');
-        $qb->innerJoin(Book::class,'b','ON','ba.book = b.id');
-
-        $qb->where('ba.status = :status');
-        $qb->setParameter('status',$request->request->get('status'));
-
-        $result = $qb->getQuery()->useQueryCache(true);
-
-        return $this->paginate($result, $perPage, $pageName);
-    }
 }
