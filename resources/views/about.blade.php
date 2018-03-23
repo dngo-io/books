@@ -6,9 +6,9 @@
             <div class="m-portlet">
                 <div class="m-portlet__body">
                     <blockquote class="blockquote">
-                        <p class="mb-0">There's none so blind as those who will not see.</p>
+                        <p class="mb-0">“Nanos gigantum humeris insidentes”</p>
                         <footer class="blockquote-footer">
-                            Kıssadan hisse by <cite title="Source Title">Proverb</cite>
+                            <cite title="Source Title">Discovering truth by building on previous discoveries</cite>
                         </footer>
                     </blockquote>
                 </div>
@@ -23,29 +23,28 @@
                                 <i class="la la-gear"></i>
                             </span>
                             <h3 class="m-portlet__head-text">
-                                An introduction to {{ config("app.name") }} Project
+                                DNGO In A Nutshell
                             </h3>
                         </div>
                     </div>
                 </div>
                 <div class="m-portlet__body">
-                    <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque diam mi, pellentesque eu
-                        turpis eget, bibendum varius neque. Duis ullamcorper neque eget eros euismod consequat. Proin
-                        gravida ullamcorper eros, nec dapibus lectus feugiat vitae. Donec faucibus ex quis est vulputate,
-                        a mattis est imperdiet. Proin nec eros odio. Aenean non elit mollis est interdum elementum. Sed
-                        sit amet elit eu magna posuere euismod. Donec sed rhoncus elit. Suspendisse eu purus non tortor
-                        gravida molestie id eget magna. Morbi eu fringilla ante, vitae ullamcorper eros. Pellentesque nec
-                        urna eu dui pharetra ultrices.
+                    <p> Dngo is the first blockchain based and decentralized NGO of the world to serve civil society purposes. Dngo aims to increase civil society participation by incentivizing every contribution with cryptocurrencies. By creating its own blockchain based community, Dngo also seeks for providing an open room for deliberative democracy on Steem blockchain.
                     </p>
                     <p>
-                        Duis tempor pharetra nisl nec efficitur. Ut nec placerat justo. Cras at nunc viverra, venenatis
-                        mauris eget, pellentesque tortor. Maecenas tellus odio, tempus at nulla et, vulputate dapibus lacus.
-                        Duis ullamcorper, leo eu tempus consequat, mauris nisi elementum ipsum, vel aliquet ipsum sapien eu
-                        massa. Donec at malesuada lectus. Etiam ac purus vitae risus pharetra euismod. Etiam ac nulla mattis,
-                        hendrerit quam id, imperdiet justo. Etiam elementum magna nec dictum tempor. Interdum et malesuada
-                        fames ac ante ipsum primis in faucibus. Vivamus mattis consequat magna. Vestibulum sit amet lacinia neque.
-                        Praesent ex ipsum, mattis eu malesuada ut, facilisis ut diam. Proin vehicula nunc tortor, sit amet
-                        consequat tortor pulvinar ut.
+                        Dngo runs on project based model. It creates various projects to incentivize people to provide valuable outputs. The project outputs, say audiobook archive or language learning database, are publicly accessible. Apart from gifting those valuable contents to the humanity, Dngo dedicates a decent share of its curation rewards and its Community Fund to make donations and charities to support people who are depriving resources.
+                    </p>
+                    <p>
+                        To achieve these goals, Dngo has four founding principles guiding and framing its activities:<br>
+                        <br>
+                        - Open Democracy Principle<br>
+                        - Accountability Principle<br>
+                        - Transparency Principle<br>
+                        - Blockchain Environmentalism Principle<br>
+
+                    </p>
+                    <p>
+                        More information about DNGO can be found in Whitepaper or Bluepaper.
                     </p>
                 </div>
             </div>
@@ -233,29 +232,25 @@
                                 <i class="la la-gear"></i>
                             </span>
                             <h3 class="m-portlet__head-text">
-                                More About {{ config("app.name") }} Project
+                                DNGO Books Project
                             </h3>
                         </div>
                     </div>
                 </div>
                 <div class="m-portlet__body">
-                    <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque diam mi, pellentesque eu
-                        turpis eget, bibendum varius neque. Duis ullamcorper neque eget eros euismod consequat. Proin
-                        gravida ullamcorper eros, nec dapibus lectus feugiat vitae. Donec faucibus ex quis est vulputate,
-                        a mattis est imperdiet. Proin nec eros odio. Aenean non elit mollis est interdum elementum. Sed
-                        sit amet elit eu magna posuere euismod. Donec sed rhoncus elit. Suspendisse eu purus non tortor
-                        gravida molestie id eget magna. Morbi eu fringilla ante, vitae ullamcorper eros. Pellentesque nec
-                        urna eu dui pharetra ultrices.
+                    <p> Dngo books is Dngo’s first project specifically aims to incentivize people to collectively create multilingual audiobook archive, mainly to serve visually impaired people. Dngo Books is also based on Fair Share Script.
                     </p>
                     <p>
-                        Duis tempor pharetra nisl nec efficitur. Ut nec placerat justo. Cras at nunc viverra, venenatis
-                        mauris eget, pellentesque tortor. Maecenas tellus odio, tempus at nulla et, vulputate dapibus lacus.
-                        Duis ullamcorper, leo eu tempus consequat, mauris nisi elementum ipsum, vel aliquet ipsum sapien eu
-                        massa. Donec at malesuada lectus. Etiam ac purus vitae risus pharetra euismod. Etiam ac nulla mattis,
-                        hendrerit quam id, imperdiet justo. Etiam elementum magna nec dictum tempor. Interdum et malesuada
-                        fames ac ante ipsum primis in faucibus. Vivamus mattis consequat magna. Vestibulum sit amet lacinia neque.
-                        Praesent ex ipsum, mattis eu malesuada ut, facilisis ut diam. Proin vehicula nunc tortor, sit amet
-                        consequat tortor pulvinar ut.
+                        As Fair Share Script guides, the following result are expected to be achieved within Dngo Books projects:
+                    </p>
+                    <p>
+                        1) Creating a publicly accessible, multilingual and collectively produced audiobook archive mainly for the public. A special emphasis will be given to the visually impaired people
+                    </p>
+                    <p>
+                        2) Creating a sustainable income source to the Steemit.com users and diversifying and enriching their user experience on the platform
+                    </p>
+                    <p>
+                        3) Assisting people in real need by using Community Fund account and curation rewards. This would increase Steem blockchain’s visibility and make it more sympathetic to the people.
                     </p>
                 </div>
             </div>
