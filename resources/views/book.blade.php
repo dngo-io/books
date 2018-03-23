@@ -108,51 +108,23 @@
                 </div>
                 <div class="m-portlet__body">
                     <div class="m-widget4">
-                        <div class="m-widget4__item">
-                            <div class="m-widget4__img m-widget4__img--icon">
-                                <img src="{{ asset("assets/app/media/img/files/doc.svg") }}" alt="">
+                        @foreach(downloadable($book->getGutenbergFiles()) as $item)
+                            <div class="m-widget4__item">
+                                <div class="m-widget4__img m-widget4__img--icon">
+                                    <img src="{{ asset("assets/app/media/img/files/{$item['type']}.svg") }}" alt="{{ $item['type'] }}">
+                                </div>
+                                <div class="m-widget4__info">
+                                    <span class="m-widget4__text">
+                                    {{ $item['file'] }}
+                                    </span>
+                                </div>
+                                <div class="m-widget4__ext">
+                                    <a href="{{ url($item['path']) }}" class="m-widget4__icon">
+                                        <i class="la la-download"></i>
+                                    </a>
+                                </div>
                             </div>
-                            <div class="m-widget4__info">
-                                <span class="m-widget4__text">
-                                EPUB (with images)
-                                </span>
-                            </div>
-                            <div class="m-widget4__ext">
-                                <a href="#" class="m-widget4__icon">
-                                    <i class="la la-download"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="m-widget4__item">
-                            <div class="m-widget4__img m-widget4__img--icon">
-                                <img src="{{ asset("assets/app/media/img/files/jpg.svg") }}" alt="">
-                            </div>
-                            <div class="m-widget4__info">
-                                <span class="m-widget4__text">
-                                EPUB (no images)
-                                </span>
-                            </div>
-                            <div class="m-widget4__ext">
-                                <a href="#" class="m-widget4__icon">
-                                    <i class="la la-download"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="m-widget4__item">
-                            <div class="m-widget4__img m-widget4__img--icon">
-                                <img src="{{ asset("assets/app/media/img/files/pdf.svg") }}" alt="">
-                            </div>
-                            <div class="m-widget4__info">
-                                <span class="m-widget4__text">
-                                Kindle (with images)
-                                </span>
-                            </div>
-                            <div class="m-widget4__ext">
-                                <a href="#" class="m-widget4__icon">
-                                    <i class="la la-download"></i>
-                                </a>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
