@@ -268,7 +268,7 @@
             <div class="card">
                 <img class="card-img-top" src="{{ asset($founder['picture']) }}" alt="{{ $founder['account'] }}">
                 <div class="card-block p-5">
-                    <h4 class="card-title">{{ $founder['account'] }}</h4>
+                    <h5 class="card-title">{{ author($founder['account'], $founder['reputation']) }}</h5>
                     <p class="card-text">
                         {{ $founder['location'] }}
                         <br>
