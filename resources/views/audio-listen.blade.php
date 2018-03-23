@@ -1,13 +1,13 @@
 @extends("layout.page")
-@section("title", $data['book']['name'].' - Chapter #'.$data['audio']['chapter'].' by '.$data['author']['name'])
+@section("title", $data['content']['book']['name'].' - Chapter #'.$data['content']['audio']['chapter'].' by '.$data['content']['author']['name'])
 @section("script")
     Amplitude.init({
     "songs": [
     {
-    "name": "{{ $data['audio']['name'] }}",
-    "artist": "{{ $data['author']['name'] }}",
-    "album": "{{ $data['book']['name'] }}",
-    "url": "{{ $data['audio']['file'] }}"
+    "name": "{{ $data['content']['audio']['name'] }}",
+    "artist": "{{ $data['content']['author']['name'] }}",
+    "album": "{{ $data['content']['book']['name'] }}",
+    "url": "{{ $data['content']['audio']['file'] }}"
     }
     ]
     });
@@ -70,52 +70,7 @@
                     </div>
                 </div>
                 <div class="m-portlet__body">
-                    <div class="media">
-                        <img class="mr-3 m--img-rounded" src="{{ asset("assets/app/media/img/users/100_2.jpg") }}" width="64" alt="Generic placeholder image">
-                        <div class="media-body">
-                            <h5 class="mt-0">Media heading</h5>
-                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                            <p>
-                                <i class="fa fa-chevron-up"></i> $0.00
-                                <a href="#" class="ml-5 m-link">Reply</a>
-                            </p>
-                            <div class="media mt-3">
-                                <a class="pr-3" href="#">
-                                    <img src="{{ asset("assets/app/media/img/users/100_1.jpg") }}" class="m--img-rounded" width="64" alt="Generic placeholder image">
-                                </a>
-                                <div class="media-body">
-                                    <h5 class="mt-0">Media heading</h5>
-                                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                                    <p>
-                                        <i class="fa fa-chevron-up m--font-success"></i> $0.01
-                                        <a href="#" class="ml-5 m-link">Reply</a>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="media">
-                        <img class="mr-3 m--img-rounded" src="{{ asset("assets/app/media/img/users/100_3.jpg") }}" width="64" alt="Generic placeholder image">
-                        <div class="media-body">
-                            <h5 class="mt-0">Media heading</h5>
-                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                            <p>
-                                <i class="fa fa-chevron-up"></i> $0.00
-                                <a href="#" class="ml-5 m-link">Reply</a>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="media">
-                        <img class="mr-3 m--img-rounded" src="{{ asset("assets/app/media/img/users/100_4.jpg") }}" width="64" alt="Generic placeholder image">
-                        <div class="media-body">
-                            <h5 class="mt-0">Media heading</h5>
-                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                            <p>
-                                <i class="fa fa-chevron-up"></i> $0.00
-                                <a href="#" class="ml-5 m-link">Reply</a>
-                            </p>
-                        </div>
-                    </div>
+                    @each("layout.partials.comments", $data['replies'], 'reply', "layout.partials.comments-none")
                 </div>
             </div>
         </div>
