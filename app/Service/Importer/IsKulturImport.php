@@ -119,6 +119,7 @@ class IsKulturImport
                     $book->setYear($specs["Yılı"]);
                     $book->setReleaseDate(new Carbon($specs["Yılı"]));
                 }
+                $book->setLanguage('tr');
 
                 $book->setCollection("İş Bankası Kültür Yayınları");
 
