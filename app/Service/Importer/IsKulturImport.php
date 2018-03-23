@@ -101,7 +101,8 @@ class IsKulturImport
 
                 //set cover
                 $cover = $bookInfo->find('img[itemprop="image"]');
-                $book->setCover($cover[0]->text());
+                dd($cover[0]->attr("src"));
+                $book->setCover($cover[0]->attr("src"));
 
                 //set page
                 if (isset($specs["Sayfa Sayısı"])) {
