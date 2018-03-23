@@ -3,10 +3,10 @@
         <img src="{{ asset("assets/custom/img/profile-picture.jpg") }}" class="m--img-rounded" width="64" alt="{{ $_reply['author'] }}">
     </a>
     <div class="media-body">
-        <h5 class="mt-0">{{ author($_reply['author']) }} ({{ reputation($reply['author_reputation']) }})</h5>
+        <h5 class="mt-0">{{ author($_reply['author']) }} ({{ reputation($_reply['author_reputation']) }})</h5>
         {!! $_reply['body'] !!}
         <p>
-            <i class="fa fa-chevron-up m--font-success"></i> {{ payout($reply['pending_payout_value']) }}
+            <i class="fa fa-chevron-up m--font-success"></i> {{ payout($_reply['pending_payout_value']) }}
             <a href="#" class="ml-5 m-link">Reply</a>
         </p>
         @foreach($_reply['replies'] as $_reply)
