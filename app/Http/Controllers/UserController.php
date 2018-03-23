@@ -96,7 +96,6 @@ class UserController extends AppController
         }
 
         $feed = $this->audioRepository->getUserFeed($request, $id);
-        dd($feed);
 
         return view('profile', [
             'user'         => $user[0],
