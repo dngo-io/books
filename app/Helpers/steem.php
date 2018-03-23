@@ -33,3 +33,16 @@ if (! function_exists('reputation')) {
         return floor($reputation_level);
     }
 }
+
+if (! function_exists('author')) {
+    /**
+     * Display author's name with @
+     *
+     * @param string $author
+     * @return string
+     */
+    function author(string $author)
+    {
+        return "@{$author}";
+    }
+}
