@@ -65,11 +65,10 @@ class UserController extends AppController
      * User's page
      *
      * @param $id
+     * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     * @throws \Doctrine\ORM\NoResultException
-     * @throws \Doctrine\ORM\NonUniqueResultException
      */
-    public function show($id)
+    public function show($id, Request $request)
     {
         if (Cache::has("user_{$id}")) {
             $follows = Cache::get("user_{$id}");
@@ -89,9 +88,14 @@ class UserController extends AppController
             abort(404);
         }
 
+        $feed = $repo->getUserFeed($request);
+
+
         return view('profile', [
             'user'         => $user[0],
             'follows'      => $follows,
+            'feed'         => $feed->getCollection(),
+            'pagination'   => $feed->appends($request->except('page')),
             'contribution' => $user['contribution']
         ]);
     }
