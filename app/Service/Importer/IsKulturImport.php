@@ -92,8 +92,9 @@ class IsKulturImport
 
                 //set title
                 $title = $bookInfo->find('h1[itemprop="name"]');
-                $book->setName($title[0]->text());
-                $post->setTitle($title[0]->text());
+                $bookName = str_replace("– Kısaltılmış Metin","",$title[0]->text());
+                $book->setName($bookName);
+                $post->setTitle($bookName);
 
                 //set description
                 $desc = $bookInfo->find("td.colorLac");
