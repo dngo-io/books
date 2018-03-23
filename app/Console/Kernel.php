@@ -21,7 +21,8 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         'App\Console\Commands\CreateTestUser',
         'App\Console\Commands\DngoUser',
-        'App\Console\Commands\ImporterCommand'
+        'App\Console\Commands\ImporterIsKulturCommand',
+        'App\Console\Commands\ImporterArchiveCommand'
     ];
 
     /**

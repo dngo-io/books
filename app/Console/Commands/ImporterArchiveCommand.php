@@ -5,14 +5,14 @@ namespace App\Console\Commands;
 use App\Service\Importer\ArchiveImport;
 use Illuminate\Console\Command;
 
-class ImporterCommand extends Command
+class ImporterArchiveCommand extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'dngo:import {--limit=}';
+    protected $signature = 'dngo:import:archive {--limit=}';
 
     /**
      * The console command description.

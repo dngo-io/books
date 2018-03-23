@@ -7,6 +7,7 @@ use App\Repositories\BookRepository;
 use App\Service\BookService;
 use App\Service\BookAudioService;
 use App\Service\Importer\ArchiveImport;
+use App\Service\Importer\IsKulturImport;
 use Doctrine\ORM\EntityManagerInterface;
 use Illuminate\Support\ServiceProvider;
 use Somnambulist\EntityValidation\Factories\EntityValidationFactory;
@@ -67,5 +68,15 @@ class AppServiceProvider extends ServiceProvider
                 app(EntityValidationFactory::class)
             );
         });
+
+        $this->app->bind(IsKulturImport::class, function($app) {
+            return new IsKulturImport(
+                app(EntityManagerInterface::class),
+                app(AuthorRepository::class),
+                app(BookRepository::class),
+                app(EntityValidationFactory::class)
+            );
+        });
+
     }
 }
