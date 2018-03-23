@@ -101,9 +101,8 @@ class IsKulturImport
 
                 //set cover
                 $cover = $bookInfo->find('img[itemprop="image"]');
-                dd($cover[0]->attr("src"));
                 $book->setCover($cover[0]->attr("src"));
-
+                $book->setGutenbergFiles([]);
                 //set page
                 if (isset($specs["Sayfa Sayısı"])) {
                     $book->setPage($specs["Sayfa Sayısı"]);
