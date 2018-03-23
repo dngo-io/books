@@ -2,15 +2,11 @@
 
 namespace SteemAPI;
 
-use GuzzleHttp\Client;
-use GuzzleHttp\Exception\RequestException;
+use SteemAPI\Account as Account;
+use SteemAPI\Post as Post;
 
 class SteemAPI
 {
-    /**
-     * @var string
-     */
-    public $domain = '';
 
     /**
      * Steemit constructor
@@ -21,49 +17,22 @@ class SteemAPI
     }
 
     /**
-     * Return headers
-     *
-     * @param  array $options Header array
-     * @return array
-     */
-    private function getHeaders(array $options = [])
-    {
-        $headers = array_merge([
-            'Content-Type'  => 'application/json',
-            'Accept'        => 'application/json',
-        ], $options);
-
-        return $headers;
-    }
-
-    /**
-     * Set domain
-     *
-     * @param  string $domain
-     * @return $this
-     */
-    public function setDomain($domain)
-    {
-        $this->domain = $domain;
-
-        return $this;
-    }
-
-    /**
-     * @return Account
+     * @return \SteemAPI\Account
      */
     public function getAccount()
     {
-        return new \SteemAPI\Account();
+        require_once 'API/Account.php';
+        return new Account();
     }
 
 
     /**
-     * @return Post
+     * @return \SteemAPI\Post
      */
     public function getPost()
     {
-        return new \SteemAPI\Post();
+        require_once 'API/Post.php';
+        return new Post();
     }
 
 }
