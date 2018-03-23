@@ -46,3 +46,18 @@ if (! function_exists('author')) {
         return "@{$author}";
     }
 }
+
+if (! function_exists('payout')) {
+    /**
+     * Display payout,
+     *
+     * @param string $payout
+     * @return string
+     */
+    function payout($payout)
+    {
+        $payout = explode(' ', $payout);
+
+        return '$'.round($payout[0], 2);
+    }
+}
