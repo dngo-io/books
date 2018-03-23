@@ -38,13 +38,13 @@ class AboutController extends AppController
             {
                 $account = $this->client->get("https://steemit.com/@{$founder}.json")->getBody()->getContents();
                 $account = json_decode($account, true);
-
                 $founders[$founder] = [
-                    'account'  => array_get($account, 'user.name'),
-                    'created'  => array_get($account, 'user.created'),
-                    'picture'  => array_get($account, 'user.json_metadata.profile.profile_image', 'assets/custom/img/profile-picture.jpg'),
-                    'about'    => array_get($account, 'user.json_metadata.profile.about', '-'),
-                    'location' => array_get($account, 'user.json_metadata.profile.location', '-'),
+                    'account'    => array_get($account, 'user.name'),
+                    'reputation' => array_get($account, 'user.reputation'),
+                    'created'    => array_get($account, 'user.created'),
+                    'picture'    => array_get($account, 'user.json_metadata.profile.profile_image', 'assets/custom/img/profile-picture.jpg'),
+                    'about'      => array_get($account, 'user.json_metadata.profile.about', '-'),
+                    'location'   => array_get($account, 'user.json_metadata.profile.location', '-'),
                 ];
             }
             Cache::put('founders', $founders, config('cache.expire'));
