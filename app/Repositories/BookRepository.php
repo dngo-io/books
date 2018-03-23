@@ -49,6 +49,8 @@ class BookRepository extends AppEntityRepository
                     ->setParameter('start',$year[0])
                     ->setParameter('end',$year[1]);
             }
+
+            $qb->orWhere('b.year is NULL'); // gecici cozum
         }
 
         //categories
