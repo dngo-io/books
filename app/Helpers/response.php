@@ -42,7 +42,7 @@ if (! function_exists('downloadable')) {
      * @param array $files
      * @return array
      */
-    function downloadable(array $files)
+    function downloadable(array $files = [])
     {
         $download = [];
 
