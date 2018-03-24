@@ -100,21 +100,18 @@ if (! function_exists('voting_power')) {
     }
 }
 
-if (! function_exists('voting_power')) {
+if (! function_exists('member_since')) {
     /**
      * Display voting power
      *
      * @param array $account
      * @return float
      */
-    function voting_power($account)
+    function member_since($account)
     {
-        $now  = \Carbon\Carbon::now();
-        $ago  = $now - strtotime(array_get($account, 'last_vote_time'));
-        $vpow = array_get($account, 'voting_power') + (10000 * $ago / 432000);
-        $vpow = round($vpow,2);
+        $created = array_get($account, 'created');
 
-        return $vpow;
+        return format_date($created);
     }
 }
 

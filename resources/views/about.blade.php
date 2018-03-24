@@ -56,7 +56,7 @@
                         <div class="m-portlet__head-title">
                             <h3 class="m-portlet__head-text">
                                 {{ author($about['bot']) }}
-                                <span class="m-portlet__head-desc">Total Rewards By Contribution</span>
+                                <span class="m-portlet__head-desc">Steemian since {{ member_since($about['bot']) }}</span>
                             </h3>
                         </div>
                     </div>
