@@ -77,9 +77,17 @@
             {{ Form::close() }}
         </div>
         <div class="col-md-9">
-            <nav aria-label="Search result pagination">
-                {{ $paginate->render('pagination::bootstrap-4') }}
-            </nav>
+            <div class="row">
+                <div class="col-md-8">
+                    <nav aria-label="Search result pagination">
+                        {{ $paginate->render('pagination::bootstrap-4') }}
+                    </nav>
+                </div>
+                <div class="col-md-4">
+                    <div class="pull-right"> Total {{ $total }} books found</div>
+                </div>
+            </div>
+
             <div class="row">
                 <div class="card-columns">
                     @foreach ($books as $book)

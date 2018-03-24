@@ -74,6 +74,7 @@ class BooksController extends AppController
                 'categories' => $categories,
                 'paginate'   => $books->appends($request->except('page')),
                 'books'      => $books->getCollection(),
+                'total'      => $books->total(),
                 'chosen'     => $chosen
             ]
         );
