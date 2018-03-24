@@ -51,6 +51,7 @@
                                 </div>
                             </div>
                         </div>
+                        <input type="text" id="moderation-action" value="{{ url("moderation/action") }}">
                         <div class="m--space-30"></div>
                         <blockquote class="blockquote blockquote-reverse">
                             <p class="mb-0"><i class="fa fa-book"></i> <span id="moderation-book-name"></span></p>
@@ -62,67 +63,71 @@
                         </div>
                     </div>
                     <div id="mod-reject" class="d-none">
-                        <div class="bg-secondary p-5">
-                            <div class="media">
-                                <img class="align-self-start mr-3" src="{{ asset(Auth::user()->getProfileImage()) }}" width="50" alt="{{ Auth::user()->getAccount() }}">
-                                <div class="media-body">
-                                    <h5 class="mt-0">{{ '@'.Auth::user()->getAccount() }} · <span class="m--font-metal">00 hours ago</span></h5>
-                                    <p>
-                                        Your contribution cannot be approved because it does not follow the
-                                        <a href="{{ config("steem.rules") }}">{{ config("app.name") }} Rules</a>.
-                                    </p>
-                                    <textarea class="form-control m-input" name="reject-message" cols="30" rows="10" placeholder="YOU CAN ADD YOUR MESSAGE HERE"></textarea>
-                                    <p>
-                                        <strong>[MODERATOR]</strong>
-                                    </p>
+                        <form id="moderation-reject" method="GET">
+                            <div class="bg-secondary p-5">
+                                <div class="media">
+                                    <img class="align-self-start mr-3" src="{{ asset(Auth::user()->getProfileImage()) }}" width="50" alt="{{ Auth::user()->getAccount() }}">
+                                    <div class="media-body">
+                                        <h5 class="mt-0">{{ '@'.Auth::user()->getAccount() }} · <span class="m--font-metal">00 hours ago</span></h5>
+                                        <p>
+                                            Your contribution cannot be approved because it does not follow the
+                                            <a href="{{ config("steem.rules") }}">{{ config("app.name") }} Rules</a>.
+                                        </p>
+                                        <textarea class="form-control m-input" name="reject-message" cols="30" rows="10" placeholder="YOU CAN ADD YOUR MESSAGE HERE"></textarea>
+                                        <p>
+                                            <strong>[MODERATOR]</strong>
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <br>
-                        <div class="m-alert m-alert--icon alert alert-danger" role="alert">
-                            <div class="m-alert__icon">
-                                <i class="fa fa-warning"></i>
+                            <br>
+                            <div class="m-alert m-alert--icon alert alert-danger" role="alert">
+                                <div class="m-alert__icon">
+                                    <i class="fa fa-warning"></i>
+                                </div>
+                                <div class="m-alert__text">
+                                    <strong>Attention!</strong> This contribution will be rejected.
+                                </div>
+                                <div class="m-alert__actions" style="width: 220px;">
+                                    <button type="submit" class="btn btn-outline-secondary btn-sm m-btn m-btn--hover-secondary">
+                                        Reject
+                                    </button>
+                                </div>
                             </div>
-                            <div class="m-alert__text">
-                                <strong>Attention!</strong> This contribution will be rejected.
-                            </div>
-                            <div class="m-alert__actions" style="width: 220px;">
-                                <button type="button" class="btn btn-outline-secondary btn-sm m-btn m-btn--hover-secondary">
-                                    Reject
-                                </button>
-                            </div>
-                        </div>
+                        </form>
                     </div>
                     <div id="mod-approve" class="d-none">
-                        <div class="bg-secondary p-5">
-                            <div class="media">
-                                <img class="align-self-start mr-3" src="{{ asset(Auth::user()->getProfileImage()) }}" width="50" alt="{{ Auth::user()->getAccount() }}">
-                                <div class="media-body">
-                                    <h5 class="mt-0">{{ '@'.Auth::user()->getAccount() }} · <span class="m--font-metal">00 hours ago</span></h5>
-                                    <p>
-                                        Thank you for the contribution. It has been approved.
-                                    </p>
-                                    <textarea class="form-control m-input" name="reject-message" cols="30" rows="10" placeholder="YOU CAN ADD YOUR MESSAGE HERE"></textarea>
-                                    <p>
-                                        <strong>[MODERATOR]</strong>
-                                    </p>
+                        <form id="moderation-approve" method="GET">
+                            <div class="bg-secondary p-5">
+                                <div class="media">
+                                    <img class="align-self-start mr-3" src="{{ asset(Auth::user()->getProfileImage()) }}" width="50" alt="{{ Auth::user()->getAccount() }}">
+                                    <div class="media-body">
+                                        <h5 class="mt-0">{{ '@'.Auth::user()->getAccount() }} · <span class="m--font-metal">00 hours ago</span></h5>
+                                        <p>
+                                            Thank you for the contribution. It has been approved.
+                                        </p>
+                                        <textarea class="form-control m-input" name="reject-message" cols="30" rows="10" placeholder="YOU CAN ADD YOUR MESSAGE HERE"></textarea>
+                                        <p>
+                                            <strong>[MODERATOR]</strong>
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <br>
-                        <div class="m-alert m-alert--icon alert alert-success" role="alert">
-                            <div class="m-alert__icon">
-                                <i class="fa fa-warning"></i>
+                            <br>
+                            <div class="m-alert m-alert--icon alert alert-success" role="alert">
+                                <div class="m-alert__icon">
+                                    <i class="fa fa-warning"></i>
+                                </div>
+                                <div class="m-alert__text">
+                                    <strong>Attention!</strong> This contribution will be approved.
+                                </div>
+                                <div class="m-alert__actions" style="width: 220px;">
+                                    <button type="submit" class="btn btn-outline-secondary btn-sm m-btn m-btn--hover-secondary">
+                                        Approve
+                                    </button>
+                                </div>
                             </div>
-                            <div class="m-alert__text">
-                                <strong>Attention!</strong> This contribution will be approved.
-                            </div>
-                            <div class="m-alert__actions" style="width: 220px;">
-                                <button type="button" class="btn btn-outline-secondary btn-sm m-btn m-btn--hover-secondary">
-                                    Approve
-                                </button>
-                            </div>
-                        </div>
+                        </form>
                     </div>
                     <div id="mod-controls">
                         <hr>

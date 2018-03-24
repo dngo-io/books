@@ -40,6 +40,8 @@ var Moderation = function() {
                             }
                         ]
                     });
+                    $("#moderation-reject").attr("action", $("#moderation-action").val() + '/' + success.data.audio.id + '/2');
+                    $("#moderation-approve").attr("action", $("#moderation-action").val() + '/' + success.data.audio.id + '/1');
 
                     $("#moderation-modal-body").html(success.data.audio.body);
                     $("#moderation-book-name").html(success.data.book.name);

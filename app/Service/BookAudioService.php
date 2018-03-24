@@ -105,6 +105,7 @@ class BookAudioService
 
         return [
             'audio'   => [
+                'id'         => $bookAudio->getId(),
                 'name'       => $bookAudio->getName(),
                 'file'       => $this->disk->temporaryUrl(remote_path($bookAudio->getFileSource()), now()->addMinutes(30)),
                 'body'       => $bookAudio->getBody(),
