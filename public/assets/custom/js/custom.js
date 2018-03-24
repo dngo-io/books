@@ -12,7 +12,7 @@ var Custom = function() {
         var qs = $('#topbar_quicksearch');
         qs.mQuicksearch({
             type: qs.data('search-type'), // quick search type
-            source: 'http://127.0.0.1:8000/action/topbar',
+            source: '/action/topbar',
             spinner: 'm-loader m-loader--skin-light m-loader--right',
 
             input: '#topbar_quicksearch_input',

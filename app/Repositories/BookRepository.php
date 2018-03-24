@@ -86,13 +86,12 @@ class BookRepository extends AppEntityRepository
         if ($name) {
             $qb = $this->createQueryBuilder('b');
 
-            $qb->where('MATCH_AGAINST (b.name, :searchTerm) > 0.8');
-            $qb->setParameter('searchTerm',$name);
+            $qb->where('MATCH_AGAINST (b.name, :searchTerm) > 0');
+            $qb->setParameter('searchTerm',"'".$name."*'");
 
             $qb->join('b.post','p');
             $qb->groupBy('b.id');
             $qb->setMaxResults($limit);
-
             return $qb->getQuery()->getResult();
 
         }
