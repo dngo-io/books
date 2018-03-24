@@ -74,7 +74,7 @@ class PostToSteemListener
 
                 $response = $steem->setToken($user->getAccessToken())->exec('comment',$exec);
 
-                if($response['error'] || !$response['result']){
+                if(isset($response['error']) || !isset($response['result'])){
                     $this->log($response,$exec,'comment',$em);
                 }
 
