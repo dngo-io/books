@@ -69,11 +69,13 @@ class UserController extends AppController
     }
 
     /**
-     * User's page
+     * User's profile
      *
      * @param $id
      * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws \Doctrine\ORM\NoResultException
+     * @throws \Doctrine\ORM\NonUniqueResultException
      */
     public function show($id, Request $request)
     {
