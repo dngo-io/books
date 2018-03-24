@@ -66,7 +66,7 @@ m-aside-left--offcanvas-default m-aside-left--enabled m-aside-left--fixed m-asid
 <script src="{{ asset("assets/custom/plugins/amplitudejs/examples/resources/js/foundation.min.js") }}" type="text/javascript"></script>
 <script src="{{ asset("assets/custom/plugins/amplitudejs/examples/blue-playlist/js/functions.js") }}" type="text/javascript"></script>
 <script src="{{ asset("assets/custom/js/custom.js") }}" type="text/javascript"></script>
-@if (Auth::user()->checkRole('moderator'))
+@if (!Auth::guest() && Auth::user()->checkRole('moderator'))
 <script src="{{ asset("assets/custom/js/moderation.js") }}" type="text/javascript"></script>
 @endif
 <!--end::Page Snippets -->
