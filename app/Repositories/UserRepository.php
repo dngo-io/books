@@ -39,11 +39,12 @@ class UserRepository extends AppEntityRepository implements UserRepositoryContra
 
     /**
      * @param $account
+     * @param int $hydrate
      * @return array|mixed
      * @throws \Doctrine\ORM\NoResultException
      * @throws \Doctrine\ORM\NonUniqueResultException
      */
-    public function findProfileByAccount($account)
+    public function findProfileByAccount($account, $hydrate = 1)
     {
         //account name
         if ($account) {
@@ -61,7 +62,7 @@ class UserRepository extends AppEntityRepository implements UserRepositoryContra
 
             $qb->setMaxResults(1);
 
-            return $qb->getQuery()->getSingleResult();
+            return $qb->getQuery()->getSingleResult($hydrate);
 
         }
 
