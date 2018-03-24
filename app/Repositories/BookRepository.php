@@ -31,8 +31,8 @@ class BookRepository extends AppEntityRepository
 
         //book name
         if ($request->get('name')) {
-            $qb->where('MATCH_AGAINST (b.name, :searchTerm) > 0.8');
-            $qb->setParameter('searchTerm',$request->get('name'));
+            $qb->where('MATCH_AGAINST (b.name, :searchTerm) > 0');
+            $qb->setParameter('searchTerm',"'" . $request->get('name') . "*'");
         }
 
         //set language
@@ -67,7 +67,10 @@ class BookRepository extends AppEntityRepository
             $qb->groupBy('b.id');
         }
 
-        $result = $qb->getQuery()->useQueryCache(true);
+        /** TODO Request'den al bunu */
+        $qb->orderBy("b.name");
+
+        $result = $qb->getQuery()->useQueryCache(false);
 
         return $this->paginate($result, $perPage, $pageName);
     }

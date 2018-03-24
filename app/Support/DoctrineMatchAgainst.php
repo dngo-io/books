@@ -46,7 +46,7 @@ class DoctrineMatchAgainst extends FunctionNode {
             $haystack .= $column->dispatch($sqlWalker);
         }
         $query = "MATCH(" . $haystack .
-            ") AGAINST (" . $this->needle->dispatch($sqlWalker);
+            ") AGAINST (" . $this->needle->dispatch($sqlWalker) . " IN BOOLEAN MODE";
         if($this->mode) {
             $query .= " " . $this->mode->dispatch($sqlWalker) . " )";
         } else {
