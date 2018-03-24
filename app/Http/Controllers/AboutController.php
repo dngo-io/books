@@ -30,16 +30,21 @@ class AboutController extends AppController
 
     public function index()
     {
-        if (Cache::has('founders')) {
-            $founders = Cache::get('founders');
+        if (Cache::has('about')) {
+            $about = Cache::get('about');
         } else {
-            $founders = [];
+            $about = [];
+            $bot   = $this->client->get("https://steemit.com/@".config('steem.bot').".json")->getBody()->getContents();
+            $bot   = json_decode($bot, true);
+
+            $about['bot'] = array_get($bot, 'user');
+
             foreach ($this->founders as $founder)
             {
                 $account = $this->client->get("https://steemit.com/@{$founder}.json")->getBody()->getContents();
                 $account = json_decode($account, true);
-                $founders[$founder] = [
-                    'account'    => array_get($account, 'user.name'),
+                $about['founders'][$founder] = [
+                    'name'       => array_get($account, 'user.name'),
                     'reputation' => array_get($account, 'user.reputation'),
                     'created'    => array_get($account, 'user.created'),
                     'picture'    => array_get($account, 'user.json_metadata.profile.profile_image', 'assets/custom/img/profile-picture.jpg'),
@@ -47,9 +52,9 @@ class AboutController extends AppController
                     'location'   => array_get($account, 'user.json_metadata.profile.location', '-'),
                 ];
             }
-            Cache::put('founders', $founders, config('cache.expire'));
+            Cache::put('about', $about, config('cache.expire'));
         }
 
-        return view('about', ['founders' => $founders]);
+        return view('about', ['about' => $about]);
     }
 }

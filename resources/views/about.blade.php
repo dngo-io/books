@@ -55,7 +55,7 @@
                     <div class="m-portlet__head-caption">
                         <div class="m-portlet__head-title">
                             <h3 class="m-portlet__head-text">
-                                What Have We Done?
+                                {{ author($about['bot']) }}
                                 <span class="m-portlet__head-desc">Total Rewards By Contribution</span>
                             </h3>
                         </div>
@@ -70,14 +70,14 @@
                         <div class="m-widget25--progress">
                             <div class="m-widget25__progress">
                                 <span class="m-widget25__progress-number">
-                                    63%
+                                    {{ voting_power($about['bot']) }}%
                                 </span>
                                 <div class="m--space-10"></div>
                                 <div class="progress m-progress--sm">
-                                    <div class="progress-bar m--bg-danger" role="progressbar" style="width: 63%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="progress-bar m--bg-success" role="progressbar" style="width: {{ voting_power($about['bot']) }}%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                                 <span class="m-widget25__progress-sub">
-                                    Sales Growth
+                                    Voting Power
                                 </span>
                             </div>
                             <div class="m-widget25__progress">
@@ -258,18 +258,18 @@
     </div>
     <h3 class="mt-5 mb-5">Founders</h3>
     <div class="row">
-        @foreach($founders as $founder)
+        @foreach($about['founders'] as $founder)
         <div class="col">
             <div class="card">
-                <img class="card-img-top" src="{{ asset($founder['picture']) }}" alt="{{ $founder['account'] }}">
+                <img class="card-img-top" src="{{ asset($founder['picture']) }}" alt="{{ author($founder, false) }}">
                 <div class="card-block p-5">
-                    <h5 class="card-title">{{ author($founder['account'], $founder['reputation']) }}</h5>
+                    <h5 class="card-title">{{ author($founder) }}</h5>
                     <p class="card-text">
                         {{ $founder['location'] }}
                         <br>
                         {{ $founder['about'] }}
                     </p>
-                    <a href="https://steemit.com/{{ "@{$founder['account']}" }}" class="btn btn-block btn-success">Steem Profile</a>
+                    <a href="https://steemit.com/{{ author($founder, false) }}" class="btn btn-block btn-success">Steem Profile</a>
                 </div>
             </div>
         </div>
