@@ -69,3 +69,51 @@ if (! function_exists('payout')) {
         return '$ '.round($payout[0], 2);
     }
 }
+
+if (! function_exists('voting_power')) {
+    /**
+     * Display voting power
+     *
+     * @see https://steemit.com/utopian-io/@stoodkev/steem-js-for-dummies-1-how-to-calculate-the-current-voting-power
+     *
+     * @param array $account
+     * @return float
+     */
+    function voting_power($account)
+    {
+        $last_vote_time = array_get($account, 'last_vote_time');
+        $voting_power   = array_get($account, 'voting_power');
+
+        $now  = \Carbon\Carbon::now()->timestamp;
+        $ago  = $now - strtotime($last_vote_time);
+
+        $vpow = $voting_power + (10000 * $ago / 432000);
+        $vpow = round($vpow / 100,2);
+
+        if($vpow > 100)
+        {
+            $vpow = 100;
+        }
+
+        return $vpow;
+    }
+}
+
+if (! function_exists('voting_power')) {
+    /**
+     * Display voting power
+     *
+     * @param array $account
+     * @return float
+     */
+    function voting_power($account)
+    {
+        $now  = \Carbon\Carbon::now();
+        $ago  = $now - strtotime(array_get($account, 'last_vote_time'));
+        $vpow = array_get($account, 'voting_power') + (10000 * $ago / 432000);
+        $vpow = round($vpow,2);
+
+        return $vpow;
+    }
+}
+
