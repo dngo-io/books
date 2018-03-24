@@ -1,5 +1,5 @@
 @extends("layout.page")
-@section("title", author($user->getAccount()))
+@section("title", $user->getAccount())
 @section("content")
     <div class="row">
         <div class="col-lg-4">
@@ -74,7 +74,7 @@
                     <div class="m-portlet__head-caption">
                         <div class="m-portlet__head-title">
                             <h3 class="m-portlet__head-text">
-                                {{ author($user->getAccount()) }}
+                                {{ $user->getAccount() }}
                             </h3>
                         </div>
                     </div>
@@ -116,7 +116,7 @@
                                             by
                                         </span>
                                         <span class="m-widget5__info-author-name">
-                                            {{ author($item->getUser()->getAccount()) }}
+                                            {{ $item->getUser()->getAccount() }}
                                         </span>
                                         <span class="m-widget5__info-label">
                                             on
