@@ -88,14 +88,13 @@ class ModeratorController extends AppController
             $bookAudio->activate();
         }
 
-        $bookAudio->setModComment($request->get('comment'));
-        $bookAudio->setStatus($status);
 
         try  {
             /** @var BookAudio $bookAudio */
             $bookAudio = $this->audioRepository->find($id);
             $bookAudio->activate();
             $bookAudio->setStatus($status);
+            $bookAudio->setModComment($request->get('comment'));
             $this->entityManager->persist($bookAudio);
             $this->entityManager->flush();
 
