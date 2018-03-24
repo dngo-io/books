@@ -57,7 +57,7 @@ var Custom = function() {
                 $(this).replaceWith(replacementP);
             });
         }
-    }
+    };
 
     return {
         //== Init demos
@@ -66,6 +66,20 @@ var Custom = function() {
             Parser.sentence();
             initQuicksearch();
             markToggle();
+        },
+
+        GET: function(url, success)
+        {
+            return $.ajax({
+                type: "GET",
+                cache: true,
+                url: url,
+                dataType: "json",
+                success: function (result) {
+                    return success(result);
+                },
+                async: false
+            });
         }
     };
 }();

@@ -15,11 +15,48 @@ var Moderation = function() {
         });
     }
 
+    var modalActivator = function () {
+        $(".mod-check").each(function () {
+            $(this).click(function (e) {
+                mApp.blockPage({
+                    overlayColor: '#000000',
+                    type: 'loader',
+                    state: 'success',
+                    message: 'Please wait...'
+                });
+
+                e.preventDefault();
+                Custom.GET($(this).data("href"), function (success) {
+                    mApp.unblockPage();
+                    console.log(success.data);
+
+                    Amplitude.init({
+                        "songs": [
+                            {
+                                "name": success.data.audio.name,
+                                "artist": success.data.author.name,
+                                "album": success.data.book.name,
+                                "url": success.data.audio.file
+                            }
+                        ]
+                    });
+
+                    $("#moderation-modal-body").html(success.data.audio.body);
+                    $("#moderation-book-name").html(success.data.book.name);
+                    $("#moderation-book-author").html(success.data.author.name);
+                    $("#mod-modal").modal("show");
+                });
+                return false;
+            });
+        });
+    }
+
     return {
         //== Init
         init: function() {
             clickReject();
             clickApprove();
+            modalActivator();
         }
     };
 }();

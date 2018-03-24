@@ -1,19 +1,5 @@
 @extends("layout.page")
 @section("title", "Moderation")
-
-@section("script")
-    Amplitude.init({
-    "songs": [
-        {
-            "name": "Anthem",
-            "artist": "Emancipator",
-            "album": "Soon It Will Be Cold Enough",
-            "url": "assets/song.mp3",
-            "cover_art_url": "assets/custom/plugins/amplitudejs/examples/album-art/soon-it-will-be-cold-enough.jpg"
-        }
-    ]
-    });
-@endsection
 @section("content")
     <div class="modal fade" id="mod-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="false">
         <div class="modal-dialog modal-lg" role="document">
@@ -66,16 +52,13 @@
                             </div>
                         </div>
                         <div class="m--space-30"></div>
-                        <div class="m-scrollable" data-scrollable="true" data-max-height="300" data-scrollbar-shown="true">
-                            <p data-parse="sentence">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque diam mi, pellentesque eu
-                                turpis eget, bibendum varius neque. Duis ullamcorper neque eget eros euismod consequat. Proin
-                                gravida ullamcorper eros, nec dapibus lectus feugiat vitae. Donec faucibus ex quis est vulputate,
-                                a mattis est imperdiet. Proin nec eros odio. Aenean non elit mollis est interdum elementum. Sed
-                                sit amet elit eu magna posuere euismod. Donec sed rhoncus elit. Suspendisse eu purus non tortor
-                                gravida molestie id eget magna. Morbi eu fringilla ante, vitae ullamcorper eros. Pellentesque nec
-                                urna eu dui pharetra ultrices.
-                            </p>
+                        <blockquote class="blockquote blockquote-reverse">
+                            <p class="mb-0"><i class="fa fa-book"></i> <span id="moderation-book-name"></span></p>
+                            <footer class="blockquote-footer">By
+                                <cite id="moderation-book-author"></cite>
+                            </footer>
+                        </blockquote>
+                        <div class="m-scrollable" data-scrollable="true" data-max-height="300" data-scrollbar-shown="true" id="moderation-modal-body">
                         </div>
                     </div>
                     <div id="mod-reject" class="d-none">
@@ -288,7 +271,7 @@
                                                 </tr>
                                                 <tr class="fc-list-item m-fc-event--{{ $status[$post->getStatus()]['color'] }}">
                                                     <td class="fc-list-item-time fc-widget-content">
-                                                        <a href="#" data-toggle="modal" data-target="#mod-modal" class="btn btn-accent m-btn m-btn--uppercase">
+                                                        <a href="#" data-href="{{ url("moderation/audio/{$post->getId()}") }}" data-toggle="modal" data-target="#mod-modal" class="btn btn-accent m-btn m-btn--uppercase mod-check">
                                                             <i class="fa fa-search"></i>
                                                         </a>
                                                     </td>
