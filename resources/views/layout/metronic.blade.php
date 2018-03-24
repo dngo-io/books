@@ -46,6 +46,9 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="{{ asset("assets/custom/img/dngo/ms-icon-144x144.png") }}">
     <meta name="theme-color" content="#ffffff">
+    <script>
+        var SITE_URL = "{{ config('app.url') }}";
+    </script>
 </head>
 <!-- end::Head -->
 <!-- end::Body -->
