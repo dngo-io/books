@@ -40,9 +40,6 @@
                         <br>
                         Reading & writing Steem blockchain
                     </div>
-                    <div class="m-timeline-1__item-actions">
-                        <a  href="#" class="btn btn-sm btn-outline-brand m-btn m-btn--pill m-btn--custom">Read</a>
-                    </div>
                 </div>
             </div>
             <div class="m-timeline-1__item m-timeline-1__item--left">
@@ -90,7 +87,7 @@
                     <hr>
                     <div style="height:170px;">
                         <div style="height:100%;overflow:hidden;display:block;background: url(http://maps.googleapis.com/maps/api/staticmap?center=48.858271,2.294264&amp;size=640x300&amp;zoom=5&amp;key=AIzaSyBMlTEcPR5QULmk9QUaS7lwUK7qtabunEI) no-repeat 50% 50%;">
-                            <img src="http://maps.googleapis.com/maps/api/staticmap?center=38.4014762,27.1002453&amp;size=640x300&amp;zoom=11&amp;key=AIzaSyBMlTEcPR5QULmk9QUaS7lwUK7qtabunEI" style="" alt="">
+                            <img src="https://maps.googleapis.com/maps/api/staticmap?center=38.4014762,27.1002453&amp;size=640x300&amp;zoom=11&amp;key=AIzaSyBMlTEcPR5QULmk9QUaS7lwUK7qtabunEI" style="" alt="">
                         </div>
                     </div>
                 </div>
@@ -98,7 +95,7 @@
             <div class="m-timeline-1__item m-timeline-1__item--right">
                 <div class="m-timeline-1__item-circle"><div class="m--bg-danger"></div></div>
                 <div class="m-timeline-1__item-arrow"></div>
-                <span class="m-timeline-1__item-time m--font-brand">11:35<span>AM</span></span>
+                <span class="m-timeline-1__item-time m--font-brand">March 2018</span>
                 <div class="m-timeline-1__item-content">
                     <div class="m-timeline-1__item-title">
                         Dngo Team is growing
