@@ -97,15 +97,17 @@ class BookAudioRepository extends AppEntityRepository
      * @param string $pageName
      * @return \Illuminate\Pagination\LengthAwarePaginator
      */
-    public function getUserFeed(Request $request, $account, $perPage = 10, $pageName = 'page')
+    public function getUserFeed(Request $request, $account = null, $perPage = 10, $pageName = 'page')
     {
         $qb = $this->createQueryBuilder('ba');
 
         $qb->join(Book::class,'b', Join::WITH, 'ba.book = b.id');
         $qb->join(User::class,'u', Join::WITH, 'ba.user = u.id');
 
-        $qb->where('u.account = :account');
-        $qb->setParameter('account',$account);
+        if ($account) {
+            $qb->where('u.account = :account');
+            $qb->setParameter('account',$account);
+        }
 
         $qb->andWhere('ba.status = :status');
         $status = NULL !== $request->request->get('status') ? $request->request->get('status') : self::STATUS_APPROVED;
