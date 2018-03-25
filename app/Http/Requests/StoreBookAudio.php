@@ -26,7 +26,7 @@ class StoreBookAudio extends FormRequest
         return [
             'title' => 'required|max:255',
             'content' => 'required',
-            'audio' => 'required|mimes:mpga,mp3',
+            'audio' => 'required|mimetypes:audio/mpeg,audio/mp4,audio/ogg,video/quicktime',
             'book' => 'required',
             'chapter' => 'required|numeric'
         ];
@@ -43,6 +43,7 @@ class StoreBookAudio extends FormRequest
         return [
             'title.required' => 'A title is required',
             'content.required'  => 'A message is required',
+            'audio.required' => 'A mp3 audio file is required',
         ];
     }
 }
