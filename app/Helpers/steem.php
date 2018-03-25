@@ -5,14 +5,20 @@ if (! function_exists('reputation')) {
      * Calculates Steem reputation
      * ((log10(abs(reputation))-9)9)+25
      *
-     * @param array $account
+     * @param array|object $account
      * @return int
      */
-    function reputation(array $account)
+    function reputation($account)
     {
         $reputation_level = 25;
         $neg = false;
+
         $rep = array_get($account,'reputation');
+
+        if(is_null($rep))
+        {
+            return 0;
+        }
 
         if ($rep < 0)
             $neg = true;
@@ -39,17 +45,37 @@ if (! function_exists('author')) {
     /**
      * Display author's name with @
      *
-     * @param array $author
+     * @param array|object $author
      * @param bool $reputation
      * @return string
      */
-    function author(array $author, $reputation = true)
+    function author($author, bool $reputation = true)
     {
-        $return = "@".array_get($author, 'name');
+        $return = '';
 
-        if($reputation === true)
+        if(is_array($author))
         {
-            $return .= ' ('.reputation($author).')';
+            $return .= array_get($author, 'name');
+
+            if(!$return)
+            {
+                $return .= array_get($author, 'account');
+            }
+            if(!$return)
+            {
+                $return .= array_get($author, 'author');
+            }
+        } else {
+            $return = $author->getAccount();
+        }
+
+        $return = "@{$return}";
+
+        $rep    = reputation($author);
+
+        if($reputation === true && $rep > 0)
+        {
+            $return .= ' ('.$rep.')';
         }
 
         return $return;
