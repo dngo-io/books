@@ -29,9 +29,7 @@ Route::prefix('listen')->group(function () {
 Route::get('/', 'HomeController@root_index');
 Route::get('/steem', 'HomeController@steem');
 
-Route::get('/road-map', function () {
-    return view('road-map');
-});
+Route::get('/road-map', 'RoadMapController@index');
 Route::get('/about', 'AboutController@index');
 
 
