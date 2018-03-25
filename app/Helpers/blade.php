@@ -13,3 +13,19 @@ if (! function_exists('format_date')) {
         return date($format, strtotime($time));
     }
 }
+
+if (! function_exists('parse_md')) {
+    /**
+     * Parse markdown content
+     *
+     * @param $content
+     * @return string
+     */
+    function parse_md($content)
+    {
+        $api = app('Parsedown');
+
+        return $api->text($content);
+    }
+}
+

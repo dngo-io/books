@@ -4,7 +4,7 @@
     </a>
     <div class="media-body">
         <h5 class="mt-0">{{ author($_reply) }}</h5>
-        {!! $_reply['body'] !!}
+        {!! parse_md($_reply['body']) !!}
         <p>
             <i class="fa fa-chevron-up m--font-success d-none"></i> {{ payout($_reply['pending_payout_value']) }}
             <a href="{{ url('https://steemit.com'.str_start($_reply['url'], '/')) }}" class="ml-5 m-link">Reply</a>
