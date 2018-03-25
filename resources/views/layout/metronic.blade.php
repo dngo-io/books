@@ -53,7 +53,7 @@
 <!-- end::Head -->
 <!-- end::Body -->
 <body class="m--skin- m-page--loading-enabled m-page--loading m-content--skin-light m-header--fixed m-header--fixed-mobile
-m-aside-left--offcanvas-default m-aside-left--enabled m-aside-left--fixed m-aside-left--skin-dark m-aside--offcanvas-default @if(!is_null(Route::getCurrentRoute()) && Route::getCurrentRoute()->getActionMethod() == 'root_index') booky-background @endif">
+m-aside-left--offcanvas-default m-aside-left--enabled m-aside-left--fixed m-aside-left--skin-dark m-aside--offcanvas-default @if(!is_null(Route::getCurrentRoute()) && Route::getCurrentRoute()->getActionMethod() == 'root_index' && !\Auth::check()) booky-background @endif">
 @include("layout.partials.loader")
 @yield("page")
 <!--begin::Base Scripts -->
