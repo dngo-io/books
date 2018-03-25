@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Entities\BookAudio;
+use App\Repositories\BookAudioRepository;
 use App\Service\BookAudioService;
 use App\Support\AppController;
+use Illuminate\Support\Facades\Storage;
 use SteemAPI\SteemAPI;
 use Illuminate\Support\Facades\Cache;
 
@@ -13,15 +16,24 @@ class ListenController extends AppController
      * @var BookAudioService
      */
     private $bookAudioService;
+    /**
+     * @var BookAudioRepository
+     */
+    private $audioRepository;
 
     /**
      * ListenController constructor
      *
      * @param BookAudioService $bookAudioService
+     * @param BookAudioRepository $audioRepository
      */
-    public function __construct(BookAudioService $bookAudioService)
+    public function __construct(
+        BookAudioService $bookAudioService,
+        BookAudioRepository $audioRepository
+    )
     {
         $this->bookAudioService = $bookAudioService;
+        $this->audioRepository = $audioRepository;
     }
 
     /**
@@ -32,23 +44,34 @@ class ListenController extends AppController
      */
     public function index($id)
     {
+        /** @var BookAudio $bookAudio */
+        $bookAudio = $this->audioRepository->find($id);
+
+        if(!$bookAudio) {
+            return abort(404);
+        }
+
+        if($bookAudio->getStatus() == BookAudioRepository::STATUS_PENDING) {
+            return view('audio-listen', ['id' => $id, 'audio' => $bookAudio]);
+        }
+
         if (Cache::has("book_audio_{$id}") && 0) {
             $result = Cache::get("book_audio_{$id}");
         } else {
-            $bookAudio = $this->bookAudioService->find($id);
+
             $steem     = new SteemAPI();
-            $replies   = $steem->getPost()->getContentAllReplies($bookAudio['user']['account'], $bookAudio['audio']['slug']);
+            $replies   = $steem->getPost()->getContentAllReplies($bookAudio->getUser()->getAccount(), $bookAudio->getSteemSlug());
 
             $result    = [
-                'content' => $bookAudio,
-                'body'    => $steem->getPost()->getContent($bookAudio['user']['account'], $bookAudio['audio']['slug']),
+                'body'    => $steem->getPost()->getContent($bookAudio->getUser()->getAccount(), $bookAudio->getSteemSlug()),
                 'replies' => $replies,
+                'fileSource' => Storage::disk('s3')->temporaryUrl(remote_path($bookAudio->getFileSource()), now()->addMinutes(30))
             ];
 
             Cache::put("book_audio_{$id}", $result, config('cache.expire'));
         }
 
-        return view('audio-listen', ['id' => $id, 'data' => $result]);
+        return view('audio-listen', ['id' => $id, 'audio' => $bookAudio, 'data' => $result]);
     }
 
     /**

@@ -1,22 +1,17 @@
+<?php /** @var \App\Entities\BookAudio $audio */?>
 @extends("layout.page")
-@section("title", $data['content']['book']['name'].' - Chapter #'.$data['content']['audio']['chapter'].' by '.$data['content']['author']['name'])
-@section("script")
-    Amplitude.init({
-    "songs": [
-        {
-        "name": "{{ $data['content']['audio']['name'] }}",
-        "artist": "{{ $data['content']['author']['name'] }}",
-        "album": "{{ $data['content']['book']['name'] }}",
-        "url": "{{ $data['content']['audio']['file'] }}"
-        }
-    ]
-    });
-    new Clipboard('[data-clipboard=true]').on('success', function(e) {
-        e.clearSelection();
-        alert('Copied!');
-    });
-@endsection
+@section("title", $audio->getName().' - Chapter #'.$audio->getChapter().' by '.$audio->getBook()->getAuthor()->getName())
 @section("content")
+
+    @if ($audio->getStatus() == \App\Repositories\BookAudioRepository::STATUS_PENDING)
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <div class="alert alert-danger" role="alert">
+                    <strong>Ohh!</strong> This content is under moderator review. Until then its not playable.
+                </div>
+            </div>
+        </div>
+    @else
     <div class="row">
         <div class="col-md-12 col-sm-12">
             <div class="m-portlet m-portlet--bordered bg-secondary">
@@ -76,4 +71,21 @@
         </div>
     </div>
     <textarea id="embed-code" style="width: 0;height: 0; border: 0; opacity: 0"><iframe src="{{ url("/listen/embed/{$id}") }}" style="border:0px #ffffff none;" name="DNGOBooks" scrolling="no" frameborder="0" marginheight="0px" marginwidth="0px" height="200px" width="600px" allowfullscreen></iframe></textarea>
+    @section("script")
+        Amplitude.init({
+        "songs": [
+        {
+        "name": "{{ $audio->getName() }}",
+        "artist": "{{ $audio->getBook()->getAuthor()->getName()}}",
+        "album": "{{ $audio->getBook()->getName() }}",
+        "url": "{{ $data['fileSource'] }}"
+        }
+        ]
+        });
+        new Clipboard('[data-clipboard=true]').on('success', function(e) {
+        e.clearSelection();
+        alert('Copied!');
+        });
+    @endsection
+    @endif
 @endsection

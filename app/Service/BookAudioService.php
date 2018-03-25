@@ -95,6 +95,7 @@ class BookAudioService
      *
      * @param $id
      * @return array
+     * @deprecated
      */
     public function find($id)
     {
