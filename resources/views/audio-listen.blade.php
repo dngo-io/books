@@ -3,17 +3,17 @@
 @section("script")
     Amplitude.init({
     "songs": [
-    {
-    "name": "{{ $data['content']['audio']['name'] }}",
-    "artist": "{{ $data['content']['author']['name'] }}",
-    "album": "{{ $data['content']['book']['name'] }}",
-    "url": "{{ $data['content']['audio']['file'] }}"
-    }
+        {
+        "name": "{{ $data['content']['audio']['name'] }}",
+        "artist": "{{ $data['content']['author']['name'] }}",
+        "album": "{{ $data['content']['book']['name'] }}",
+        "url": "{{ $data['content']['audio']['file'] }}"
+        }
     ]
     });
     new Clipboard('[data-clipboard=true]').on('success', function(e) {
-    e.clearSelection();
-    alert('Copied!');
+        e.clearSelection();
+        alert('Copied!');
     });
 @endsection
 @section("content")
