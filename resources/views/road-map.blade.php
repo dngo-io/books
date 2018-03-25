@@ -65,8 +65,9 @@
                 <span class="m-timeline-1__item-time m--font-brand">March 2018</span>
                 <div class="m-timeline-1__item-content">
                     <div class="media">
+                        <img class="m--margin-right-20" style="height: auto" src="{{ url("assets/custom/img/dngo-hq-square-logo.png") }}" title="{{ config("app.name") }} Logo">
                         <div class="media-body">
-                            <div class="m-timeline-1__item-title">
+                            <div class="m-timeline-1__item-title m--margin-top-10  ">
                                 DNGO Alpha Release
                             </div>
                             <div class="m-timeline-1__item-body">
