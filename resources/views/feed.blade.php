@@ -2,132 +2,94 @@
 @section("title", "Feed")
 @section("content")
     <div class="row">
-        <div class="col-lg-12">
-            <div class="m-portlet">
-                <div class="m-portlet">
+        <div class="col-md-12">
+            @if($count > 0)
+                <div class="m-portlet m--bg-secondary m-portlet--bordered-semi">
                     <div class="m-portlet__head">
                         <div class="m-portlet__head-caption">
                             <div class="m-portlet__head-title">
+                            <span class="m-portlet__head-icon m--hide">
+                                <i class="la la-gear"></i>
+                            </span>
                                 <h3 class="m-portlet__head-text">
-                                    @author
+                                    Feed
                                 </h3>
                             </div>
                         </div>
                     </div>
                     <div class="m-portlet__body">
+                        <nav aria-label="Search result pagination">
+                            {{ $pagination->render('pagination::bootstrap-4') }}
+                        </nav>
+
                         <div class="m-widget5">
-                            <div class="m-widget5__item">
-                                <div class="m-widget5__pic">
-                                    <img class="m-widget7__img" src="./assets/app/media/img//products/product6.jpg" alt="">
-                                </div>
-                                <div class="m-widget5__content">
-                                    <h4 class="m-widget5__title">
-                                        Great Logo Designn
-                                    </h4>
-                                    <span class="m-widget5__desc">
-                                        Make Metronic Great  Again.Lorem Ipsum Amet
+                            @foreach($content as $item)
+                                <div class="m-widget5__item">
+                                    <div class="m-widget5__content">
+                                        <h4 class="m-widget5__title">
+                                            <a href="{{ url("listen/{$item->getId()}") }}" title="{{ $item->getName() }}" class="m-link">
+                                                {{ $item->getName() }}
+                                            </a>
+                                        </h4>
+                                        <span class="m-widget5__desc">
+                                        <blockquote class="blockquote blockquote-reverse">
+                                            <p class="mb-0"><i class="fa fa-book"></i> {{ $item->getBook()->getName() }}</p>
+                                            <footer class="blockquote-footer">By
+                                                <cite title="{{ $item->getBook()->getAuthor()->getName() }}">
+                                                    <a href="{{ url("author/{$item->getBook()->getAuthor()->getId()}") }}" class="m-link">
+                                                        {{ $item->getBook()->getAuthor()->getName() }}
+                                                    </a>
+                                                </cite>
+                                                in
+                                                <cite title="{{ $item->getBook()->getYear() }}">
+                                                    {{ $item->getBook()->getYear() }}
+                                                </cite>
+                                            </footer>
+                                        </blockquote>
+
+                                            {{ str_limit($item->getBody(), 200, '...') }}
                                     </span>
-                                    <div class="m-widget5__info">
+                                        <div class="m-widget5__info">
                                         <span class="m-widget5__author">
-                                        Author:
+                                            by
                                         </span>
-                                        <span class="m-widget5__info-label">
-                                        author:
-                                    </span>
-                                        <span class="m-widget5__info-author-name">
-                                        Fly themes
-                                    </span>
-                                        <span class="m-widget5__info-label">
-                                        Released:
-                                    </span>
-                                        <span class="m-widget5__info-date m--font-info">
-                                        23.08.17
-                                    </span>
+                                            <span class="m-widget5__info-author-name">
+                                            {{ $item->getUser()->getAccount() }}
+                                        </span>
+                                            <span class="m-widget5__info-label">
+                                            on
+                                        </span>
+                                            <span class="m-widget5__info-date">
+                                            {{ format_date($item->getCreatedAt()) }}
+                                        </span>
+                                        </div>
+                                    </div>
+                                    <div class="m-widget5__stats1 text-center pl-0">
+                                        <a class="m-link" href="{{ url("book/{$item->getBook()->getId()}") }}">
+                                            <span><i class="fa fa-3x fa-book"></i></span><br>
+                                            <span>Book</span>
+                                        </a>
+                                    </div>
+                                    <div class="m-widget5__stats2 text-center pl-0">
+                                        <a class="m-link" href="{{ url("listen/{$item->getId()}") }}">
+                                            <span><i class="fa fa-3x fa-play"></i></span><br>
+                                            <span>Listen</span>
+                                        </a>
                                     </div>
                                 </div>
-                                <div class="m-widget5__stats1">
-                                    <span class="m-widget5__number">19,200</span><br>
-                                    <span class="m-widget5__sales">sales</span>
-                                </div>
-                                <div class="m-widget5__stats2">
-                                    <span class="m-widget5__number">1046</span><br>
-                                    <span class="m-widget5__votes">votes</span>
-                                </div>
-                            </div>
-                            <div class="m-widget5__item">
-                                <div class="m-widget5__pic">
-                                    <img class="m-widget7__img" src="./assets/app/media/img//products/product10.jpg" alt="">
-                                </div>
-                                <div class="m-widget5__content">
-                                    <h4 class="m-widget5__title">
-                                        Branding Mockup
-                                    </h4>
-                                    <span class="m-widget5__desc">
-                                        Make Metronic Great  Again.Lorem Ipsum Amet
-                                    </span>
-                                    <div class="m-widget5__info">
-                                    <span class="m-widget5__author">
-                                        Author:
-                                    </span>
-                                        <span class="m-widget5__info-author m--font-info">
-                                        Fly themes
-                                    </span>
-                                        <span class="m-widget5__info-label">
-                                        Released:
-                                    </span>
-                                        <span class="m-widget5__info-date m--font-info">
-                                        23.08.17
-                                    </span>
-                                    </div>
-                                </div>
-                                <div class="m-widget5__stats1">
-                                    <span class="m-widget5__number">24,583</span><br>
-                                    <span class="m-widget5__sales">sales</span>
-                                </div>
-                                <div class="m-widget5__stats2">
-                                    <span class="m-widget5__number">3809</span><br>
-                                    <span class="m-widget5__votes">votes</span>
-                                </div>
-                            </div>
-                            <div class="m-widget5__item">
-                                <div class="m-widget5__pic">
-                                    <img class="m-widget7__img" src="./assets/app/media/img//products/product11.jpg" alt="">
-                                </div>
-                                <div class="m-widget5__content">
-                                    <h4 class="m-widget5__title">
-                                        Awesome Mobile App
-                                    </h4>
-                                    <span class="m-widget5__desc">
-                                        Make Metronic Great  Again.Lorem Ipsum Amet
-                                    </span>
-                                    <div class="m-widget5__info">
-                                    <span class="m-widget5__author">
-                                        Author:
-                                    </span>
-                                        <span class="m-widget5__info-author m--font-info">
-                                        Fly themes
-                                    </span>
-                                        <span class="m-widget5__info-label">
-                                        Released:
-                                    </span>
-                                        <span class="m-widget5__info-date m--font-info">
-                                        23.08.17
-                                    </span>
-                                    </div>
-                                </div>
-                                <div class="m-widget5__stats1">
-                                    <span class="m-widget5__number">10,054</span><br>
-                                    <span class="m-widget5__sales">sales</span>
-                                </div>
-                                <div class="m-widget5__stats2">
-                                    <span class="m-widget5__number">1103</span><br>
-                                    <span class="m-widget5__votes">votes</span>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
+
+                        <nav aria-label="Search result pagination">
+                            {{ $pagination->render('pagination::bootstrap-4') }}
+                        </nav>
                     </div>
                 </div>
-            </div>
+            @else
+                <div class="m-alert m-alert--outline m-alert--outline-2x alert alert-warning fade show" role="alert">
+                    <strong>Warning!</strong> No matching record found.
+                </div>
+            @endif
         </div>
     </div>
 @endsection

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Entities\User;
 use App\Support\AppController;
+use Illuminate\Http\Request;
+use App\Repositories\BookAudioRepository;
 use Steem\Steemit;
 
 /**
@@ -15,14 +17,37 @@ use Steem\Steemit;
 class HomeController extends AppController
 {
     /**
+     * @var BookAudioRepository
+     */
+    private $audioRepository;
+
+    /**
+     * HomeController constructor
+     *
+     * @param BookAudioRepository $audioRepository
+     */
+    public function __construct(BookAudioRepository $audioRepository)
+    {
+        $this->audioRepository  = $audioRepository;
+    }
+
+    /**
      * Index page
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function root_index()
+    public function root_index(Request $request)
     {
         if(\Auth::check())
-            return view('feed');
+        {
+            $feed = $this->audioRepository->getUserFeed($request);
+
+            return view('feed', [
+                'count'      => $feed->count(),
+                'content'    => $feed->getCollection(),
+                'pagination' => $feed->appends($request->except('page'))
+            ]);
+        }
         else
             return view('home');
     }
