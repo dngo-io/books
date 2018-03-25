@@ -42,6 +42,7 @@ class BookAudioService
      * Uploads an audio
      *
      * @param StoreBookAudio $request
+     * @return int
      */
     public function addAudio(StoreBookAudio $request)
     {
@@ -88,6 +89,8 @@ class BookAudioService
 
         $this->entityManager->persist($audio);
         $this->entityManager->flush();
+
+        return $audio->getId();
     }
 
     /**

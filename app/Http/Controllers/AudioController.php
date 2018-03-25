@@ -87,19 +87,12 @@ class AudioController extends AppController
         ini_set('max_execution_time', 180);
 
         try {
-            $this->bookAudioService->addAudio($request);
-            $response = [
-                'success' => true
-            ];
+            $id = $this->bookAudioService->addAudio($request);
+            return redirect("listen/$id");
 
         }catch (Exception $e) {
-            $response = [
-                'success' => false,
-                'message' => $e->getMessage()
-            ];
+            return abort(500);
         }
-
-        return $response;
     }
 
     /**
