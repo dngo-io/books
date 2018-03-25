@@ -57,14 +57,14 @@
                     </div>
                     <div class="m-portlet__head-tools">
                         <ul class="nav nav-tabs m-tabs m-tabs-line m-tabs-line--success m-tabs-line--right" role="tablist">
-                            <li class="nav-item m-tabs__item">
+                            <li class="nav-item m-tabs__item d-none">
                                 <a class="nav-link m-tabs__link">
                                     <i class="fa fa-chevron-up"></i>
                                     Up Vote
                                 </a>
                             </li>
                             <li class="nav-item dropdown m-tabs__item">
-                                <a class="nav-link m-tabs__link" href="#" ><i class="fa fa-comment-o"></i> Comment</a>
+                                <a class="nav-link m-tabs__link" href="{{ url("https://steemit.com/{$data['body']['parent_permlink']}/@{$data['body']['author']}/{$data['body']['permlink']}#comments") }}" ><i class="fa fa-comment-o"></i> Comment</a>
                             </li>
                         </ul>
                     </div>
