@@ -22,7 +22,7 @@ class HomeController extends AppController
     public function root_index()
     {
         if(\Auth::check())
-            return redirect()->to('/user');
+            return view('feed');
         else
             return view('home');
     }
