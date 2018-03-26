@@ -49,9 +49,9 @@ class PostToSteemListener
 
             $response = $steem->setToken($user->getAccessToken())->exec('post',$exec);
 
-            if($response['error'] || !$response['result']) {
+            if(isset($response['error']) || !isset($response['result'])) {
                 //log
-                $this->log($response,$exec,'post',$em);
+                $this->log($response,$exec,'post',$em, $this->bookAudio);
             }else{
                 //update steem slug and post first comment
                 $slug = sprintf("@%s/%s",$response['operations']['comment']['author'],$response['operations']['comment']['permlink']);
@@ -90,14 +90,18 @@ class PostToSteemListener
      * @param $request
      * @param $type
      * @param EntityManager $em
+     * @param null $post
      * @internal param $log
      */
-    public function log($response,$request, $type, EntityManager $em)
+    public function log($response,$request, $type, EntityManager $em,$post = null)
     {
         $log = new SteemLogs();
         $log->setRequest($request);
         $log->setResponse($response);
         $log->setType($type);
+        if(NULL != $post){
+            $log->setBookAudio($post);
+        }
         $em->persist($log);
         $em->flush();
     }

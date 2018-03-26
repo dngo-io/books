@@ -15,3 +15,7 @@ App\Entities\SteemLogs:
         type: json
       type:
         type: string
+
+    manyToOne:
+      bookAudio:
+        targetEntity: App\Entities\BookAudio

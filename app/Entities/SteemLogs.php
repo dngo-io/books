@@ -28,6 +28,11 @@ class SteemLogs
     protected $type;
 
     /**
+     * @var BookAudio
+     */
+    private $bookAudio;
+
+    /**
      * @return int
      */
     public function getId()
@@ -82,6 +87,24 @@ class SteemLogs
     {
         $this->type = $type;
     }
+
+    /**
+     * @return BookAudio
+     */
+    public function getBookAudio()
+    {
+        return $this->bookAudio;
+    }
+
+    /**
+     * @param BookAudio $bookAudio
+     */
+    public function setBookAudio($bookAudio)
+    {
+        $this->bookAudio = $bookAudio;
+    }
+
+
 
 
 }
