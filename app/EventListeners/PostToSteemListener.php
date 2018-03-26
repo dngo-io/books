@@ -61,23 +61,23 @@ class PostToSteemListener
                 $this->bookAudio->activate();
                 $em->flush($this->bookAudio);
 
-                //add first comment
-                $user = Auth::user();
-                $exec =
-                    [
-                        $response['author'],
-                        $response['permlink'],
-                        $user->getAccount(),
-                        "approved-{$this->bookAudio->getName()}",
-                        $this->bookAudio->getModComment(),
-                        config('services.steem.client_id')
-                    ];
-
-                $response = $steem->setToken($user->getAccessToken())->exec('comment',$exec);
-
-                if(isset($response['error']) || !isset($response['result'])){
-                    $this->log($response,$exec,'comment',$em);
-                }
+//                //add first comment
+//                $user = Auth::user();
+//                $exec =
+//                    [
+//                        $response['author'],
+//                        $response['permlink'],
+//                        $user->getAccount(),
+//                        "approved-{$this->bookAudio->getName()}",
+//                        $this->bookAudio->getModComment(),
+//                        config('services.steem.client_id')
+//                    ];
+//
+//                $response = $steem->setToken($user->getAccessToken())->exec('comment',$exec);
+//
+//                if(isset($response['error']) || !isset($response['result'])){
+//                    $this->log($response,$exec,'comment',$em);
+//                }
 
             }
 
