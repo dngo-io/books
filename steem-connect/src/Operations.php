@@ -47,8 +47,8 @@ class Operations
     public function post(string $author, string $title, string $body, array $tags, string $app = '')
     {
         $first_tag = Helpers::slug(array_shift($tags));
-        $shorty    = Helpers::limit($title, 40);
-        $permalink = Helpers::slug($shorty).'-'.Helpers::random();
+        $shorty    = Helpers::limit($title, 35);
+        $permalink = Helpers::slug($shorty).'-'.time();
         $metadata  = [];
 
         if (count($tags) > 0)
@@ -95,8 +95,8 @@ class Operations
      */
     public function comment(string $parent_author, string $parent_permlink, string $author, string $permlink, string $body, string $app = '')
     {
-        $permlink  = Helpers::limit($permlink, 40);
-        $permalink = Helpers::slug($permlink).'-'.Helpers::random();
+        $permlink  = Helpers::limit($permlink, 35);
+        $permalink = Helpers::slug($permlink).'-'.time();
         $metadata  = [];
 
         if (!empty($app))
