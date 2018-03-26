@@ -55,7 +55,7 @@ class ListenController extends AppController
             return view('audio-listen', ['id' => $id, 'audio' => $bookAudio]);
         }
 
-        if (Cache::has("book_audio_{$id}") && 0) {
+        if (false) {
             $result = Cache::get("book_audio_{$id}");
         } else {
 
@@ -64,14 +64,18 @@ class ListenController extends AppController
 
             if( NULL !== $bookAudio->getSteemSlug()) {
                 $steem     = new SteemAPI();
-                $replies   = $steem->getPost()->getContentAllReplies($bookAudio->getUser()->getAccount(), $bookAudio->getSteemSlug());
 
+                $slug = explode('/',$bookAudio->getSteemSlug());
+                $slug = end($slug);
+                $replies   = $steem->getPost()->getContentAllReplies($bookAudio->getUser()->getAccount(), $slug);
                 $result    = [
-                    'body'    => $steem->getPost()->getContent($bookAudio->getUser()->getAccount(), $bookAudio->getSteemSlug()),
+                    'body'    => $steem->getPost()->getContent($bookAudio->getUser()->getAccount(), $slug),
                     'replies' => $replies,
                 ];
 
                 Cache::put("book_audio_{$id}", $result, config('cache.expire'));
+            }else {
+                return abort(500);
             }
 
         }
