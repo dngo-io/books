@@ -67,7 +67,7 @@ class PostToSteemListener
                         $response['operations']['comment']['author'],
                         $response['operations']['comment']['permlink'],
                         $user->getAccount(),
-                        $this->bookAudio->getModComment(),
+                        "approved-{$this->bookAudio->getName()}",
                         $this->bookAudio->getModComment(),
                         config('services.steem.client_id')
                     ];
