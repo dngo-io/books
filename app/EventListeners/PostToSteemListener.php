@@ -54,7 +54,8 @@ class PostToSteemListener
                 $this->log($response,$exec,'post',$em, $this->bookAudio);
             }else{
                 //update steem slug and post first comment
-                $slug = sprintf("@%s/%s",$response['operations']['comment']['author'],$response['operations']['comment']['permlink']);
+                $response = $response['result']['operations']['comment'];
+                $slug = sprintf("@%s/%s",$response['author'],$response['permlink']);
 
                 $this->bookAudio->setSteemSlug($slug);
                 $this->bookAudio->activate();
@@ -64,8 +65,8 @@ class PostToSteemListener
                 $user = Auth::user();
                 $exec =
                     [
-                        $response['operations']['comment']['author'],
-                        $response['operations']['comment']['permlink'],
+                        $response['author'],
+                        $response['permlink'],
                         $user->getAccount(),
                         "approved-{$this->bookAudio->getName()}",
                         $this->bookAudio->getModComment(),
