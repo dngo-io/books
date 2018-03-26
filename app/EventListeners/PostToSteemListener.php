@@ -44,7 +44,7 @@ class PostToSteemListener
                     $this->bookAudio->getName(),
                     $this->bookAudio->getBody(), //burada body'yi transform edebiliriz. ek metin ekleme vs.
                     array_merge(['dngo'],$this->bookAudio->getTags()->toArray()),
-                    config('steem.account')
+                    config('services.steem.client_id')
                 ];
 
             $response = $steem->setToken($user->getAccessToken())->exec('post',$exec);
@@ -69,7 +69,7 @@ class PostToSteemListener
                         $user->getAccount(),
                         $this->bookAudio->getModComment(),
                         $this->bookAudio->getModComment(),
-                        config('steem.account')
+                        config('services.steem.client_id')
                     ];
 
                 $response = $steem->setToken($user->getAccessToken())->exec('comment',$exec);
