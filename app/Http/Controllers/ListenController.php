@@ -59,7 +59,6 @@ class ListenController extends AppController
             $result = Cache::get("book_audio_{$id}");
         } else {
 
-            $result['fileSource'] = Storage::disk('s3')->temporaryUrl(remote_path($bookAudio->getFileSource()), now()->addMinutes(30));
             $result['replies'] = NULL;
             $result['body'] = NULL;
 
@@ -76,6 +75,8 @@ class ListenController extends AppController
             }
 
         }
+
+        $result['fileSource'] = Storage::disk('s3')->temporaryUrl(remote_path($bookAudio->getFileSource()), now()->addMinutes(30));
 
         return view('audio-listen', ['id' => $id, 'audio' => $bookAudio, 'data' => $result]);
     }
