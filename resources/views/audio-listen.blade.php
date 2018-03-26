@@ -58,14 +58,18 @@
                                     Up Vote
                                 </a>
                             </li>
+                            @if($data['body'])
                             <li class="nav-item dropdown m-tabs__item">
-                                <a class="nav-link m-tabs__link" href="{{ url("https://steemit.com/{$data['body']['parent_permlink']}/@{$data['body']['author']}/{$data['body']['permlink']}#comments") }}" ><i class="fa fa-comment-o"></i> Comment</a>
+                                <a class="nav-link mgit status-tabs__link" href="{{ url("https://steemit.com/{$data['body']['parent_permlink']}/@{$data['body']['author']}/{$data['body']['permlink']}#comments") }}" ><i class="fa fa-comment-o"></i> Comment</a>
                             </li>
+                            @endif
                         </ul>
                     </div>
                 </div>
                 <div class="m-portlet__body">
+                    @if ($data['replies'])
                     @each("layout.partials.comments", $data['replies'], 'reply', "layout.partials.comments-none")
+                    @endif
                 </div>
             </div>
         </div>

@@ -59,16 +59,22 @@ class ListenController extends AppController
             $result = Cache::get("book_audio_{$id}");
         } else {
 
-            $steem     = new SteemAPI();
-            $replies   = $steem->getPost()->getContentAllReplies($bookAudio->getUser()->getAccount(), $bookAudio->getSteemSlug());
+            $result['fileSource'] = Storage::disk('s3')->temporaryUrl(remote_path($bookAudio->getFileSource()), now()->addMinutes(30));
+            $result['replies'] = NULL;
+            $result['body'] = NULL;
 
-            $result    = [
-                'body'    => $steem->getPost()->getContent($bookAudio->getUser()->getAccount(), $bookAudio->getSteemSlug()),
-                'replies' => $replies,
-                'fileSource' => Storage::disk('s3')->temporaryUrl(remote_path($bookAudio->getFileSource()), now()->addMinutes(30))
-            ];
+            if( NULL !== $bookAudio->getSteemSlug()) {
+                $steem     = new SteemAPI();
+                $replies   = $steem->getPost()->getContentAllReplies($bookAudio->getUser()->getAccount(), $bookAudio->getSteemSlug());
 
-            Cache::put("book_audio_{$id}", $result, config('cache.expire'));
+                $result    = [
+                    'body'    => $steem->getPost()->getContent($bookAudio->getUser()->getAccount(), $bookAudio->getSteemSlug()),
+                    'replies' => $replies,
+                ];
+
+                Cache::put("book_audio_{$id}", $result, config('cache.expire'));
+            }
+
         }
 
         return view('audio-listen', ['id' => $id, 'audio' => $bookAudio, 'data' => $result]);
