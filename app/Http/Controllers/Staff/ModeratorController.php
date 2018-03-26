@@ -135,6 +135,7 @@ class ModeratorController extends AppController
         else
             $response = [
                 'success' => true,
+                'csrf'    => csrf_token(),
                 'data'    => $bookAudio
             ];
 
