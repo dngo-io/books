@@ -55,7 +55,7 @@ class ListenController extends AppController
             return view('audio-listen', ['id' => $id, 'audio' => $bookAudio]);
         }
 
-        if (false) {
+        if (Cache::has("book_audio_{$id}") && 0) {
             $result = Cache::get("book_audio_{$id}");
         } else {
 
