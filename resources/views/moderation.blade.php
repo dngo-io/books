@@ -63,7 +63,7 @@
                         </div>
                     </div>
                     <div id="mod-reject" class="d-none">
-                        <form id="moderation-reject" method="GET">
+                        <form id="moderation-reject" method="POST">
                             <div class="bg-secondary p-5">
                                 <div class="media">
                                     <img class="align-self-start mr-3" src="{{ asset(Auth::user()->getProfileImage()) }}" width="50" alt="{{ Auth::user()->getAccount() }}">
@@ -73,7 +73,7 @@
                                             Your contribution cannot be approved because it does not follow the
                                             <a href="{{ config("steem.rules") }}">{{ config("app.name") }} Rules</a>.
                                         </p>
-                                        <textarea class="form-control m-input" name="reject-message" cols="30" rows="10" placeholder="YOU CAN ADD YOUR MESSAGE HERE"></textarea>
+                                        <textarea class="form-control m-input" name="comment" cols="30" rows="10" placeholder="YOU CAN ADD YOUR MESSAGE HERE"></textarea>
                                         <p>
                                             <strong>[MODERATOR]</strong>
                                         </p>
@@ -97,7 +97,7 @@
                         </form>
                     </div>
                     <div id="mod-approve" class="d-none">
-                        <form id="moderation-approve" method="GET">
+                        <form id="moderation-approve" method="POST">
                             <div class="bg-secondary p-5">
                                 <div class="media">
                                     <img class="align-self-start mr-3" src="{{ asset(Auth::user()->getProfileImage()) }}" width="50" alt="{{ Auth::user()->getAccount() }}">
@@ -106,7 +106,7 @@
                                         <p>
                                             Thank you for the contribution. It has been approved.
                                         </p>
-                                        <textarea class="form-control m-input" name="reject-message" cols="30" rows="10" placeholder="YOU CAN ADD YOUR MESSAGE HERE"></textarea>
+                                        <textarea class="form-control m-input" name="comment" cols="30" rows="10" placeholder="YOU CAN ADD YOUR MESSAGE HERE"></textarea>
                                         <p>
                                             <strong>[MODERATOR]</strong>
                                         </p>
