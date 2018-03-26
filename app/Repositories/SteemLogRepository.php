@@ -25,6 +25,7 @@ class SteemLogRepository extends AppEntityRepository
         $qb = $this->createQueryBuilder("l");
         $qb->join(BookAudio::class,"a",Join::WITH, "a.id = l.bookAudio");
         $qb->where("a.status = 1");
+        $qb->andWhere("a.steemSlug IS NULL");
 
         return $this->paginate($qb->getQuery(),$perPage,$pageName);
     }
