@@ -64,6 +64,7 @@
                     </div>
                     <div id="mod-reject" class="d-none">
                         <form id="moderation-reject" method="POST">
+                            {{ csrf_field() }}
                             <div class="bg-secondary p-5">
                                 <div class="media">
                                     <img class="align-self-start mr-3" src="{{ asset(Auth::user()->getProfileImage()) }}" width="50" alt="{{ Auth::user()->getAccount() }}">
@@ -98,6 +99,7 @@
                     </div>
                     <div id="mod-approve" class="d-none">
                         <form id="moderation-approve" method="POST">
+                            {{ csrf_field() }}
                             <div class="bg-secondary p-5">
                                 <div class="media">
                                     <img class="align-self-start mr-3" src="{{ asset(Auth::user()->getProfileImage()) }}" width="50" alt="{{ Auth::user()->getAccount() }}">

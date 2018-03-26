@@ -17,7 +17,7 @@ Route::middleware(['moderator'])->prefix('moderation')->group(function () {
     Route::get('/', 'Staff\ModeratorController@index');
     Route::get('/logs', 'Staff\ModeratorController@steemLogs');
     Route::get('/audio/{id}', 'Staff\ModeratorController@modal');
-    Route::get('/action/{id}/{status}', 'Staff\ModeratorController@action');
+    Route::post('/action/{id}/{status}', 'Staff\ModeratorController@action');
 });
 
 
