@@ -30,7 +30,7 @@ class SteemLogs
     /**
      * @var BookAudio
      */
-    private $bookAudio;
+    protected $bookAudio;
 
     /**
      * @return int

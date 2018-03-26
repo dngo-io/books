@@ -1,6 +1,7 @@
 App\Entities\SteemLogs:
     type: entity
     table: steem_logs
+    repositoryClass: App\Repositories\SteemLogRepository
     id:
       id:
           type: integer

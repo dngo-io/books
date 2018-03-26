@@ -3,12 +3,14 @@
 namespace App\Http\Controllers\Staff;
 
 use App\Entities\BookAudio;
+use App\Entities\SteemLogs;
 use App\Events\AudioApproved;
 use App\Repositories\BookAudioRepository;
 use App\Support\AppController;
 use App\Service\BookAudioService;
 use Doctrine\ORM\EntityManagerInterface;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 
 class ModeratorController extends AppController
@@ -137,5 +139,21 @@ class ModeratorController extends AppController
             ];
 
         return response($response);
+    }
+
+    public function steemLogs(Request $request)
+    {
+
+        /** @var LengthAwarePaginator $logs */
+        $logs = $this->entityManager->getRepository(SteemLogs::class)->findApprovedAudios($request);
+//        dd($logs);
+        return view('moderation-logs',
+            [
+                'paginate'   => $logs->appends($request->except('page')),
+                'content'    => $logs->getCollection(),
+                'total'      => $logs->total(),
+                'count'      => $logs->count(),
+            ]
+        );
     }
 }
