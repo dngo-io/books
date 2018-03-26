@@ -54,7 +54,7 @@ class PostToSteemListener
                 $this->log($response,$exec,'post',$em, $this->bookAudio);
             }else{
                 //update steem slug and post first comment
-                $response = $response['result']['operations'][0]['comment'];
+                $response = $response['result']['operations'][0][1]; // orul orul orospu çocukluğu bu
                 $slug = sprintf("@%s/%s",$response['author'],$response['permlink']);
 
                 $this->bookAudio->setSteemSlug($slug);
