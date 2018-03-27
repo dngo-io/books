@@ -51,7 +51,7 @@ class PostToSteemListener
                     $user->getAccount(),
                     $this->bookAudio->getName(),
                     $this->bookAudio->getBody(), //burada body'yi transform edebiliriz. ek metin ekleme vs.
-                    array_merge(['dngo'],$tags),
+                    array_merge([config('steem.tag')],$tags),
                     config('services.steem.client_id')
                 ];
 
