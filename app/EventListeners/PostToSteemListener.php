@@ -20,10 +20,12 @@ class PostToSteemListener
 
 
     /**
-     * Handle the event.
+     * Handle Steem Post
      *
-     * @param  AudioApproved  $event
-     * @return void
+     * @param AudioApproved $event
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     * @throws \Throwable
      */
     public function handle(AudioApproved $event)
     {
@@ -50,7 +52,7 @@ class PostToSteemListener
                 [
                     $user->getAccount(),
                     $this->bookAudio->getName(),
-                    $this->bookAudio->getBody(), //burada body'yi transform edebiliriz. ek metin ekleme vs.
+                    view('posts.signature',['post' => $this->bookAudio->getBody()])->render(),
                     array_merge([config('steem.tag')],$tags),
                     config('services.steem.client_id')
                 ];
@@ -77,7 +79,7 @@ class PostToSteemListener
                         $response['permlink'],
                         $user->getAccount(),
                         "approved-{$this->bookAudio->getName()}",
-                        $this->bookAudio->getModComment(),
+                        view('posts.moderator-approve', ['comment' => $this->bookAudio->getModComment()])->render(),
                         config('services.steem.client_id')
                     ];
 
