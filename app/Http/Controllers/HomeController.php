@@ -32,8 +32,9 @@ class HomeController extends AppController
     }
 
     /**
-     * Index page
+     * Home page
      *
+     * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function root_index(Request $request)
