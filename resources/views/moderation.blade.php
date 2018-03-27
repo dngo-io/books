@@ -51,7 +51,7 @@
                                 </div>
                             </div>
                         </div>
-                        <input type="text" id="moderation-action" value="{{ url("moderation/action") }}">
+                        <input type="hidden" id="moderation-action" value="{{ url("moderation/action") }}">
                         <div class="m--space-30"></div>
                         <blockquote class="blockquote blockquote-reverse">
                             <p class="mb-0"><i class="fa fa-book"></i> <span id="moderation-book-name"></span></p>
