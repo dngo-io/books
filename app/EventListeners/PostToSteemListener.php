@@ -38,12 +38,20 @@ class PostToSteemListener
 
             $steem = new Steemit();
 
+            $tags = [];
+
+            if(!empty($this->bookAudio->getTags()->getValues())){
+                foreach ($this->bookAudio->getTags()->toArray() as $item) {
+                    $tags[] = $item->getName();
+                }
+            }
+
             $exec =
                 [
                     $user->getAccount(),
                     $this->bookAudio->getName(),
                     $this->bookAudio->getBody(), //burada body'yi transform edebiliriz. ek metin ekleme vs.
-                    array_merge(['dngo'],$this->bookAudio->getTags()->toArray()),
+                    array_merge(['dngo'],$tags),
                     config('services.steem.client_id')
                 ];
 
