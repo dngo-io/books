@@ -81,7 +81,7 @@
                         </div>
                     </div>
                     <div class="m--space-30"></div>
-                    <a href="#" class="btn btn-block btn-lg btn-accent m-btn m-btn--custom m-btn--outline-2x m-btn--uppercase">Contribute!</a>
+                    <a href="#" class="btn btn-block btn-lg btn-accent m-btn m-btn--custom m-btn--outline-2x m-btn--uppercase d-none">Contribute!</a>
                     <div class="m--space-30"></div>
                     <p class="lead text-justify d-none">
                         {{ $book->getDescription() }}
@@ -130,7 +130,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-12">
+        <div class="col-md-12 d-none">
             <div class="progress mt-5" style="height: 1px">
                 <div class="progress-bar bg-success" role="progressbar" style="width: 36.36%" aria-valuenow="36.36" aria-valuemin="0" aria-valuemax="100">
                 </div>
@@ -140,7 +140,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-12">
+        <div class="col-md-12 d-none">
             <div class="m-portlet">
                 <div class="m-portlet__body m-portlet__body--no-padding">
                     <div class="row m-row--no-padding m-row--col-separator-xl">
