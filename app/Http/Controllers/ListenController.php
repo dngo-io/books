@@ -83,7 +83,12 @@ class ListenController extends AppController
 
         $result['fileSource'] = Storage::disk('s3')->temporaryUrl(remote_path($bookAudio->getFileSource()), now()->addMinutes(30));
 
-        return view('audio-listen', ['id' => $id, 'audio' => $bookAudio, 'data' => $result, 'is_playable' => $is_playable]);
+        return view('audio-listen', [
+            'id'          => $id,
+            'audio'       => $bookAudio,
+            'data'        => $result,
+            'is_playable' => $is_playable
+        ]);
     }
 
     /**
@@ -94,7 +99,19 @@ class ListenController extends AppController
      */
     public function embed($id)
     {
-        $bookAudio = $this->bookAudioService->find($id);
-        return view('audio-embed', ['data' => $bookAudio]);
+        /** @var BookAudio $bookAudio */
+        $bookAudio = $this->audioRepository->find($id);
+
+        if(is_null($bookAudio) || $bookAudio->getStatus() != BookAudioRepository::STATUS_APPROVED)
+        {
+            return view('errors.404-embed');
+        }
+
+        $file      = Storage::disk('s3')->temporaryUrl(remote_path($bookAudio->getFileSource()), now()->addMinutes(30));
+
+        return view('audio-embed', [
+            'audio' => $bookAudio,
+            'file'  => $file
+        ]);
     }
 }

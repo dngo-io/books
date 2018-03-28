@@ -1,13 +1,14 @@
+@php /** @var \App\Entities\BookAudio $audio */ @endphp
 @extends("layout.metronic")
-@section("title", $data['book']['name'].' - Chapter #'.$data['audio']['chapter'].' by '.$data['author']['name'])
+@section("title", $audio->getName().' - Chapter #'.$audio->getChapter().' by '.$audio->getBook()->getAuthor()->getName())
 @section("script")
     Amplitude.init({
         "songs": [
             {
-                "name": "{{ $data['audio']['name'] }}",
-                "artist": "{{ $data['author']['name'] }}",
-                "album": "{{ $data['book']['name'] }}",
-                "url": "{{ $data['audio']['file'] }}"
+                "name": "{{ $audio->getName() }}",
+                "artist": "{{ $audio->getBook()->getAuthor()->getName()}}",
+                "album": "{{ $audio->getBook()->getName() }}",
+                "url": "{{ $file }}"
             }
         ]
     });
