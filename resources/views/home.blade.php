@@ -14,7 +14,7 @@
                 get <span class="m--font-accent">paid!</span>
             </p>
             <hr class="mt-5">
-            <a class="mt-3 btn m-btn--pill m-btn--air btn-info btn-lg m-btn m-btn--custom" href="{{ url("/road-map") }}">Road Map</a>
+            <a class="mt-3 btn m-btn--pill m-btn--air btn-info btn-lg m-btn m-btn--custom" href="{{ asset("dngo-documents/dngo-and-dngo-books-bluepaper.pdf") }}">Bluepaper</a>
             <span class="d-none d-sm-inline">&nbsp;</span>
             <a class="mt-3 btn m-btn--pill m-btn--air btn-danger btn-lg m-btn m-btn--custom" href="{{ url("/login") }}">Join now!</a>
             <p class="m-5">Not a Steemian yet? Join <a href="{{ url("https://signup.steemit.com/") }}" class="m-link m--font-boldest m-link--success">Steemit!</a></p>
