@@ -1,20 +1,13 @@
 {!! $post !!}
 <hr>
-<table border="0" style="width: 100%">
-    <tr>
-        <td style="text-align: center">
-            <a href="{{ url("") }}" title="{{ config("app.name") }}">
-                <img src="{{ asset("assets/custom/img/dngo-hq-logo.png") }}" alt="{{ config("app.name") }}" width="250">
-            </a>
-        </td>
-    </tr>
-    <tr>
-        <td style="text-align: center">
-            <br>
-
-            This is signature! {{ config("app.name") }}
-
-            <br>
-        </td>
-    </tr>
-</table>
+<center>
+    This contribution is created for {{ config("app.name") }} project.
+    <br>
+    <a href="{{ url("login") }}">Join Us!</a>
+    |
+    <a href="{{ url("about") }}">About The Project</a>
+    |
+    <a href="{{ url("road-map") }}">Road Map</a>
+    <br>
+    {{ asset("assets/custom/img/dngo-hq-square-logo.png") }}
+</center>
