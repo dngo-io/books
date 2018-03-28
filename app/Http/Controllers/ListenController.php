@@ -51,38 +51,39 @@ class ListenController extends AppController
             return abort(404);
         }
 
-        if($bookAudio->getStatus() == BookAudioRepository::STATUS_PENDING) {
-            return view('audio-listen', ['id' => $id, 'audio' => $bookAudio]);
-        }
+        $is_playable = $bookAudio->getStatus() == BookAudioRepository::STATUS_APPROVED || $bookAudio->getUser()->getId() == auth()->id();
 
-        if (Cache::has("book_audio_{$id}") && 0) {
-            $result = Cache::get("book_audio_{$id}");
-        } else {
+        $result = [];
+        if($bookAudio->getStatus() == BookAudioRepository::STATUS_APPROVED)
+        {
+            if (Cache::has("book_audio_{$id}") && 0) {
+                $result = Cache::get("book_audio_{$id}");
+            } else {
 
-            $result['replies'] = NULL;
-            $result['body'] = NULL;
+                $result['replies'] = NULL;
+                $result['body'] = NULL;
 
-            if( NULL !== $bookAudio->getSteemSlug()) {
-                $steem     = new SteemAPI();
+                if( NULL !== $bookAudio->getSteemSlug()) {
+                    $steem     = new SteemAPI();
 
-                $slug = explode('/',$bookAudio->getSteemSlug());
-                $slug = end($slug);
-                $replies   = $steem->getPost()->getContentAllReplies($bookAudio->getUser()->getAccount(), $slug);
-                $result    = [
-                    'body'    => $steem->getPost()->getContent($bookAudio->getUser()->getAccount(), $slug),
-                    'replies' => $replies,
-                ];
+                    $slug = explode('/',$bookAudio->getSteemSlug());
+                    $slug = end($slug);
+                    $replies   = $steem->getPost()->getContentAllReplies($bookAudio->getUser()->getAccount(), $slug);
+                    $result    = [
+                        'body'    => $steem->getPost()->getContent($bookAudio->getUser()->getAccount(), $slug),
+                        'replies' => $replies,
+                    ];
 
-                Cache::put("book_audio_{$id}", $result, config('cache.expire'));
-            }else {
-                return abort(500);
+                    Cache::put("book_audio_{$id}", $result, config('cache.expire'));
+                }else {
+                    return abort(500);
+                }
             }
-
         }
 
         $result['fileSource'] = Storage::disk('s3')->temporaryUrl(remote_path($bookAudio->getFileSource()), now()->addMinutes(30));
 
-        return view('audio-listen', ['id' => $id, 'audio' => $bookAudio, 'data' => $result]);
+        return view('audio-listen', ['id' => $id, 'audio' => $bookAudio, 'data' => $result, 'is_playable' => $is_playable]);
     }
 
     /**
