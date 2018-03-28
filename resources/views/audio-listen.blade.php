@@ -118,6 +118,10 @@
                 <div class="m-portlet__body">
                     @if(isset($data['replies']))
                         @each("layout.partials.comments", $data['replies'], 'reply', "layout.partials.comments-none")
+                    @else
+                        <h3 class="text-center">
+                            No comment found.
+                        </h3>
                     @endif
                 </div>
             </div>
