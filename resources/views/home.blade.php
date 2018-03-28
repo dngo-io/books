@@ -6,7 +6,7 @@
             <h1 class="presentation-title mt-5">
                 <img src="{{ asset("assets/custom/img/dngo-negative-hq-logo.png") }}" alt="{{ config("app.name") }}" style="width:50%">
             </h1>
-            <h3>Watch out! Here comes the slogan...</h3>
+            <h3>Serves Civil Society Purposes</h3>
             <br>
             <p class="lead m-5">
                 We let you revoice public e-books to broadcast with your voice. Join the
