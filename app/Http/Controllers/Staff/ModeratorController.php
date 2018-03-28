@@ -127,7 +127,7 @@ class ModeratorController extends AppController
     {
         $bookAudio = $this->bookAudioService->find($id);
 
-        if(is_null($bookAudio))
+        if(is_null($bookAudio) || $bookAudio['audio']['status'] != BookAudioRepository::STATUS_PENDING)
             $response = [
                 'success' => false,
                 'message' => 'No matching record found'

@@ -278,9 +278,15 @@
                                                 </tr>
                                                 <tr class="fc-list-item m-fc-event--{{ $status[$post->getStatus()]['color'] }}">
                                                     <td class="fc-list-item-time fc-widget-content">
+                                                    @if($post->getStatus() == \App\Repositories\BookAudioRepository::STATUS_PENDING)
                                                         <a href="#" data-href="{{ url("moderation/audio/{$post->getId()}") }}" data-toggle="modal" data-target="#mod-modal" class="btn btn-accent m-btn m-btn--uppercase mod-check">
                                                             <i class="fa fa-search"></i>
                                                         </a>
+                                                    @else
+                                                        <a class="btn btn-secondary m-btn m-btn--uppercase mod-check">
+                                                            <i class="fa fa-ban"></i>
+                                                        </a>
+                                                    @endif
                                                     </td>
                                                     <td class="fc-list-item-marker fc-widget-content align-middle">
                                                         <span data-toggle="m-tooltip" data-placement="top" data-original-title="{{ config("app.languages.{$post->getBook()->getLanguage()}") }}">
