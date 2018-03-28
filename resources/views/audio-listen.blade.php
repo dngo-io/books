@@ -1,8 +1,25 @@
-<?php /** @var \App\Entities\BookAudio $audio */?>
+@php /** @var \App\Entities\BookAudio $audio */ @endphp
 @extends("layout.page")
 @section("title", $audio->getName().' - Chapter #'.$audio->getChapter().' by '.$audio->getBook()->getAuthor()->getName())
+@section("script")
+    @if ($audio->getStatus() != \App\Repositories\BookAudioRepository::STATUS_APPROVED)
+        Amplitude.init({
+        "songs": [
+                {
+                    "name": "{{ $audio->getName() }}",
+                    "artist": "{{ $audio->getBook()->getAuthor()->getName()}}",
+                    "album": "{{ $audio->getBook()->getName() }}",
+                    "url": "{{ $data['fileSource'] }}"
+                }
+            ]
+        });
+        new Clipboard('[data-clipboard=true]').on('success', function(e) {
+            e.clearSelection();
+            alert('Copied!');
+        });
+    @endif
+@endsection
 @section("content")
-
     @if ($audio->getStatus() != \App\Repositories\BookAudioRepository::STATUS_APPROVED)
         <div class="row">
             <div class="col-md-12 col-sm-12">
@@ -75,21 +92,5 @@
         </div>
     </div>
     <textarea id="embed-code" style="width: 0;height: 0; border: 0; opacity: 0"><iframe src="{{ url("/listen/embed/{$id}") }}" style="border:0px #ffffff none;" name="DNGOBooks" scrolling="no" frameborder="0" marginheight="0px" marginwidth="0px" height="200px" width="600px" allowfullscreen></iframe></textarea>
-    @section("script")
-        Amplitude.init({
-        "songs": [
-        {
-        "name": "{{ $audio->getName() }}",
-        "artist": "{{ $audio->getBook()->getAuthor()->getName()}}",
-        "album": "{{ $audio->getBook()->getName() }}",
-        "url": "{{ $data['fileSource'] }}"
-        }
-        ]
-        });
-        new Clipboard('[data-clipboard=true]').on('success', function(e) {
-        e.clearSelection();
-        alert('Copied!');
-        });
-    @endsection
     @endif
 @endsection
