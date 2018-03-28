@@ -8,7 +8,7 @@
                     <div class="m-portlet__head-caption">
                         <div class="m-portlet__head-title">
                             <h3 class="m-portlet__head-text">
-                                {{ $book->getName() }}
+                                {{ strip_tags($book->getName()) }}
                             </h3>
                         </div>
                     </div>
@@ -17,7 +17,7 @@
                 <div class="m-portlet__body">
                     <blockquote class="blockquote">
                         <p>
-                            {{ $book->getDescription() }}
+                            {{ strip_tags($book->getDescription()) }}
                         </p>
                         <footer class="blockquote-footer">{{ format_date($book->getReleaseDate()) }}</footer>
                     </blockquote>
