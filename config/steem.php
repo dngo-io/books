@@ -19,13 +19,13 @@ return [
      * - https://seed.bitcoiner.me/
      * - https://steemd.privex.io/
      */
-    'bot' => env('STEEM_BOT'),
-    'account' => env('STEEM_ACCOUNT'),
-    'about' => env('STEEM_ABOUT'),
-    'rules' => env('STEEM_RULES'),
-    'how_to' => env('STEEM_HOW_TO'),
+    'bot' => env('STEEM_BOT', 'dngo-io'),
+    'account' => env('STEEM_ACCOUNT','dngo'),
+    'about' => env('STEEM_ABOUT','about'),
+    'rules' => env('STEEM_RULES','rules'),
+    'how_to' => env('STEEM_HOW_TO',''),
 
 
-    'tag' => env('STEEM_TAG'),
+    'tag' => env('STEEM_TAG','dngo-io'),
 
 ];
