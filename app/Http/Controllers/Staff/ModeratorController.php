@@ -47,7 +47,7 @@ class ModeratorController extends AppController
 
         if(!isset($filters['status']))
         {
-            $filters['status'] = ['pending'];
+            $filters['status'] = ['0'];
         }
         if(!isset($filters['order_by']))
         {
