@@ -72,7 +72,7 @@ class BookAudioService
         $audio->setChapter($request->get('chapter'));
         $audio->setLength(0); //js ile gelecek bu
 
-        $tags = is_array($request->get('tags')) ? $request->get('tags') : [$request->get('tags')];
+        $tags = is_array($request->get('tags')) ? $request->get('tags') : null;
 
         //set tags
         if ($tags) {
