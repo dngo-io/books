@@ -148,7 +148,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group m-form__group row">
-                                    <label class="col-xl-3 col-lg-3 col-form-label">* Tags:</label>
+                                    <label class="col-xl-3 col-lg-3 col-form-label">Tags:</label>
                                     <div class="col-xl-9 col-lg-9">
                                         <select class="form-control m-select2" id="tags" name="tags[]" multiple>
                                         @foreach($tags as $tag)
