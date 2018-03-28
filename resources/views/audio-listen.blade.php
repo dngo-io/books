@@ -20,18 +20,54 @@
     @endif
 @endsection
 @section("content")
-    <div class="row">
-        @if ($audio->getStatus() == \App\Repositories\BookAudioRepository::STATUS_PENDING)
-        <div class="col-md-12 col-sm-12">
-            <div class="m-alert m-alert--outline m-alert--outline-2x alert alert-danger" role="alert">
-                <strong>Attention!</strong> This content is under moderator review.
-                @if($audio->getUser()->getId() == auth()->id())
-                    The player is only available for you.
-                @else
-                    Listening, commenting, upvoting operations are not available until moderator approval.
-                @endif
+
+<div class="row">
+    <div class="col-md-4 col-sm-12">
+        <div class="thumbnail">
+            <a href="{{ url("book/".$audio->getBook()->getId()) }}">
+                <img src="{{ $audio->getBook()->getCover() }}" alt="{{ $audio->getBook()->getName() }}" style="width:100%">
+            </a>
+        </div>
+
+        @if ($audio->getStatus() == \App\Repositories\BookAudioRepository::STATUS_APPROVED)
+        <div class="m-nav-grid mt-0 mb-3">
+            <div class="m-nav-grid__row">
+                <a href="#" class="m-nav-grid__item">
+                    <i class="m-nav-grid__icon fa fa-thumbs-o-up"></i>
+                    <span class="m-nav-grid__text m--font-metal">Up Vote</span>
+                </a>
+                <a href="#" class="m-nav-grid__item">
+                    <i class="m-nav-grid__icon fa fa-comment-o"></i>
+                    <span class="m-nav-grid__text m--font-metal">Comment</span>
+                </a>
+            </div>
+            <div class="m-nav-grid__row">
+                <a href="#" class="m-nav-grid__item" data-clipboard="true" data-clipboard-target="#embed-code">
+                    <i class="m-nav-grid__icon fa fa-volume-up"></i>
+                    <span class="m-nav-grid__text m--font-metal">Embed</span>
+                </a>
+                <a href="#" class="m-nav-grid__item">
+                    <i class="m-nav-grid__icon fa fa-microphone"></i>
+                    <span class="m-nav-grid__text m--font-metal">Read</span>
+                </a>
             </div>
         </div>
+        @endif
+    </div>
+
+
+    <div class="col-md-8 col-sm-12">
+        @if ($audio->getStatus() == \App\Repositories\BookAudioRepository::STATUS_PENDING)
+            <div class="col-md-12 col-sm-12">
+                <div class="m-alert m-alert--outline m-alert--outline-2x alert alert-danger" role="alert">
+                    <strong>Attention!</strong> This content is under moderator review.
+                    @if($audio->getUser()->getId() == auth()->id())
+                        The player is only available for you.
+                    @else
+                        Listening, commenting, upvoting operations are not available until moderator approval.
+                    @endif
+                </div>
+            </div>
         @endif
 
         @if ($is_playable)
@@ -52,63 +88,40 @@
             </div>
         </div>
 
-        @if ($audio->getStatus() == \App\Repositories\BookAudioRepository::STATUS_APPROVED)
-        <div class="col-md-12 col-sm-12">
-            <div class="m-nav-grid mt-0 mb-3">
-                <div class="m-nav-grid__row">
-                    <a href="#" class="m-nav-grid__item">
-                        <i class="m-nav-grid__icon fa fa-thumbs-o-up"></i>
-                        <span class="m-nav-grid__text m--font-metal">Up Vote</span>
-                    </a>
-                    <a href="#" class="m-nav-grid__item">
-                        <i class="m-nav-grid__icon fa fa-comment-o"></i>
-                        <span class="m-nav-grid__text m--font-metal">Comment</span>
-                    </a>
-                    <a href="#" class="m-nav-grid__item" data-clipboard="true" data-clipboard-target="#embed-code">
-                        <i class="m-nav-grid__icon fa fa-volume-up"></i>
-                        <span class="m-nav-grid__text m--font-metal">Embed</span>
-                    </a>
-                    <a href="#" class="m-nav-grid__item">
-                        <i class="m-nav-grid__icon fa fa-microphone"></i>
-                        <span class="m-nav-grid__text m--font-metal">Read</span>
-                    </a>
-                </div>
-            </div>
-        </div>
         <textarea id="embed-code" style="width: 0;height: 0; border: 0; opacity: 0"><iframe src="{{ url("/listen/embed/{$id}") }}" style="border:0px #ffffff none;" name="DNGOBooks" scrolling="no" frameborder="0" marginheight="0px" marginwidth="0px" height="200px" width="600px" allowfullscreen></iframe></textarea>
         <div class="col-md-12">
-        <div class="m-portlet  m-portlet--tabs">
-            <div class="m-portlet__head">
-                <div class="m-portlet__head-caption">
-                    <div class="m-portlet__head-title">
-                        <h3 class="m-portlet__head-text">
-                            Comments
-                        </h3>
+            <div class="m-portlet  m-portlet--tabs">
+                <div class="m-portlet__head">
+                    <div class="m-portlet__head-caption">
+                        <div class="m-portlet__head-title">
+                            <h3 class="m-portlet__head-text">
+                                Comments
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="m-portlet__head-tools">
+                        <ul class="nav nav-tabs m-tabs m-tabs-line m-tabs-line--success m-tabs-line--right" role="tablist">
+                            <li class="nav-item m-tabs__item d-none">
+                                <a class="nav-link m-tabs__link">
+                                    <i class="fa fa-chevron-up"></i>
+                                    Up Vote
+                                </a>
+                            </li>
+                            @if(isset($data['body']))
+                                <li class="nav-item dropdown m-tabs__item">
+                                    <a class="nav-link mgit status-tabs__link" href="{{ url("https://steemit.com/{$data['body']['parent_permlink']}/@{$data['body']['author']}/{$data['body']['permlink']}#comments") }}" ><i class="fa fa-comment-o"></i> Comment</a>
+                                </li>
+                            @endif
+                        </ul>
                     </div>
                 </div>
-                <div class="m-portlet__head-tools">
-                    <ul class="nav nav-tabs m-tabs m-tabs-line m-tabs-line--success m-tabs-line--right" role="tablist">
-                        <li class="nav-item m-tabs__item d-none">
-                            <a class="nav-link m-tabs__link">
-                                <i class="fa fa-chevron-up"></i>
-                                Up Vote
-                            </a>
-                        </li>
-                        @if($data['body'])
-                        <li class="nav-item dropdown m-tabs__item">
-                            <a class="nav-link mgit status-tabs__link" href="{{ url("https://steemit.com/{$data['body']['parent_permlink']}/@{$data['body']['author']}/{$data['body']['permlink']}#comments") }}" ><i class="fa fa-comment-o"></i> Comment</a>
-                        </li>
-                        @endif
-                    </ul>
+                <div class="m-portlet__body">
+                    @if(isset($data['replies']))
+                        @each("layout.partials.comments", $data['replies'], 'reply', "layout.partials.comments-none")
+                    @endif
                 </div>
-            </div>
-            <div class="m-portlet__body">
-                @if ($data['replies'])
-                @each("layout.partials.comments", $data['replies'], 'reply', "layout.partials.comments-none")
-                @endif
             </div>
         </div>
     </div>
-        @endif
-    </div>
+</div>
 @endsection
