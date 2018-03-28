@@ -2,9 +2,9 @@
 @extends("layout.page")
 @section("title", $audio->getName().' - Chapter #'.$audio->getChapter().' by '.$audio->getBook()->getAuthor()->getName())
 @section("script")
-    @if ($audio->getStatus() != \App\Repositories\BookAudioRepository::STATUS_APPROVED)
+    @if ($audio->getStatus() == \App\Repositories\BookAudioRepository::STATUS_APPROVED)
         Amplitude.init({
-        "songs": [
+            "songs": [
                 {
                     "name": "{{ $audio->getName() }}",
                     "artist": "{{ $audio->getBook()->getAuthor()->getName()}}",
