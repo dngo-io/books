@@ -1,3 +1,4 @@
+@php /** @var \App\Entities\Book $book */ @endphp
 @extends("layout.page")
 @section("title", $book->getName())
 @section("content")
@@ -52,28 +53,28 @@
                             <table class="table table-inverse col-md-9">
                                 <tbody>
                                     <tr>
-                                        <th scope="row">EBook</th>
-                                        <td>#56641</td>
+                                        <th scope="row">Book</th>
+                                        <td>#{{ $book->getId() }}</td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">Commentator</th>
-                                        <td>Löwenberg, J.</td>
+                                        <th scope="row">Author</th>
+                                        <td>{{ $book->getAuthor()->getName() }}</td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">Illustrator</th>
-                                        <td>Konewka, Paul, 1840-1871</td>
+                                        <th scope="row">Released on</th>
+                                        <td>{{ format_date($book->getReleaseDate()) }}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Language</th>
                                         <td>{{ $book->getLanguage() }}</td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">EBook-No.</th>
-                                        <td>56641</td>
+                                        <th scope="row">Collection</th>
+                                        <td>{{ $book->getCollection() }}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Copyright Status</th>
-                                        <td>Public domain in the USA</td>
+                                        <td>{{ $book->getLicence() }}</td>
                                     </tr>
                                 </tbody>
                             </table>
