@@ -1,9 +1,12 @@
 <div class="media mt-3">
-    <a class="pr-3" href="#">
-        <img src="{{ asset("assets/custom/img/profile-picture.jpg") }}" class="m--img-rounded" width="64" alt="{{ $_reply['author'] }}">
-    </a>
+    <img src="{{ asset("assets/custom/img/profile-picture.jpg") }}" class="mr-3 m--img-rounded" width="40" alt="{{ $_reply['author'] }}">
     <div class="media-body">
-        <h5 class="mt-0">{{ author($_reply) }}</h5>
+        <h6 class="mt-0">
+            {{ author($_reply) }}
+            @if($_reply['author'] == $_reply['root_author'])
+                @include("layout.partials.comment-op")
+            @endif
+        </h6>
         <div class="comment-body">{!! parse_md($_reply['body']) !!}</div>
         <p class="comment-body">
             <i class="fa fa-chevron-up m--font-success d-none"></i> {{ payout($_reply['pending_payout_value']) }}
