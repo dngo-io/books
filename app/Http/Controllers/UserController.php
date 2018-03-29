@@ -102,12 +102,15 @@ class UserController extends AppController
     public function show($id, Request $request)
     {
         if (Cache::has("user_{$id}")) {
-            $follows = Cache::get("user_{$id}");
+            $steem_data = Cache::get("user_{$id}");
         } else {
-            $steem   = new SteemAPI();
-            $follows = $follows = $steem->getAccount()->followCount($id);
+            $steem = new SteemAPI();
+            $steem_data  = [
+                'follows' => $steem->getAccount()->followCount($id),
+                'user'    => array_get($steem->getAccount()->accounts([$id]), 0),
+            ];
 
-            Cache::put("user_{$id}", $follows, config('cache.expire'));
+            Cache::put("user_{$id}", $steem_data, config('cache.expire'));
         }
 
         /** @var UserRepository $repo */
@@ -123,7 +126,7 @@ class UserController extends AppController
 
         return view('profile', [
             'user'         => $user[0],
-            'follows'      => $follows,
+            'steem_data'   => $steem_data,
             'feed'         => $feed->getCollection(),
             'pagination'   => $feed->appends($request->except('page')),
             'contribution' => $user['contribution']
