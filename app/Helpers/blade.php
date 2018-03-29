@@ -29,3 +29,12 @@ if (! function_exists('parse_md')) {
     }
 }
 
+
+
+if (! function_exists('get_steem_pp')) {
+
+    function get_steem_pp($profileImg){
+        return sprintf("https://steemitimages.com/0x0/%s",$profileImg);
+    }
+}
+

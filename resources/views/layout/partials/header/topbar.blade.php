@@ -57,7 +57,7 @@
                         {{ Auth::user()->getName() }}
                     </span>
                     <span class="m-topbar__userpic">
-                        <img src="{{ asset(Auth::user()->getProfileImage()) }}" class="m--img-rounded m--marginless m--img-centered" alt="{{ Auth::user()->getName() }}"/>
+                        <img src="{{ get_steem_pp(Auth::user()->getProfileImage()) }}" class="m--img-rounded m--marginless m--img-centered" alt="{{ Auth::user()->getName() }}"/>
                     </span>
                     <span class="m-nav__link-icon m-topbar__usericon  m--hide">
                         <span class="m-nav__link-icon-wrapper">
@@ -71,7 +71,7 @@
                         <div class="m-dropdown__header m--align-center">
                             <div class="m-card-user m-card-user--skin-light">
                                 <div class="m-card-user__pic">
-                                    <img src="{{ asset(Auth::user()->getProfileImage()) }}" class="m--img-rounded m--marginless" alt="{{ Auth::user()->getName() }}"/>
+                                    <img src="{{ get_steem_pp(Auth::user()->getProfileImage()) }}" class="m--img-rounded m--marginless" alt="{{ Auth::user()->getName() }}"/>
                                 </div>
                                 <div class="m-card-user__details">
                                     <span class="m-card-user__name m--font-weight-500">
