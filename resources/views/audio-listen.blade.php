@@ -104,9 +104,7 @@
                     @if(isset($data['replies']))
                         @each("layout.partials.comments", $data['replies'], 'reply', "layout.partials.comments-none")
                     @else
-                        <h3 class="text-center">
-                            No comment found.
-                        </h3>
+                        @include("layout.partials.comments-none")
                     @endif
                 </div>
             </div>
