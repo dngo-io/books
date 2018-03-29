@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Entities\Book;
+use App\Entities\BookAudio;
 use App\Http\Requests\StoreBookAudio;
 use App\Repositories\BookRepository;
 use App\Service\BookAudioService;
@@ -140,5 +141,67 @@ class AudioController extends AppController
     public function destroy($id)
     {
         //
+    }
+
+    public function image($id)
+    {
+
+        /** @var BookAudio $audio */
+        $audio = $this->entityManager->getRepository(BookAudio::class)->find($id);
+
+        if (!$audio) {
+            abort(404);
+        }
+
+        //Set the Content Type
+        header('Content-type: image/jpeg');
+
+        // Create Image From Existing File
+        $jpg_image = imagecreatefrompng(resource_path('assets/img/audio-bg.png'));
+
+        // Allocate A Color For The Text
+        $text_color = imagecolorallocate($jpg_image, 0, 0, 0);
+
+        // Set Text to Be Printed On Image
+        $text = $audio->getName() . "\n" . $audio->getBook()->getName();
+
+        $font_size = 16;
+        $angle = 0;
+
+        // Get image dimensions
+        $width = imagesx($jpg_image);
+        $height = imagesy($jpg_image);
+
+        // Get center coordinates of image
+        $centerX = $width / 2;
+        $centerY = $height / 2;
+
+        // Set Path to Font File
+        $font_path = resource_path('assets/font/Roboto-Bold.ttf');
+
+        // Get size of text
+        list($left, $bottom, $right, , , $top) = imageftbbox($font_size, $angle, $font_path, $text);
+
+        // Determine offset of text
+        $left_offset = ($right - $left) / 2;
+        $top_offset = ($bottom - $top) / 2;
+
+        // Generate coordinates
+        $x = $centerX - $left_offset;
+        $y = $centerY - $top_offset;
+
+
+        // Add text to image
+        imagettftext($jpg_image, $font_size, $angle, $x, $y+80, $text_color, $font_path, $audio->getName());
+
+        $font_path = resource_path('assets/font/Roboto-Italic.ttf');
+        imagettftext($jpg_image, $font_size, $angle, $x, $y+110, $text_color, $font_path, 'by ' . $audio->getBook()->getName());
+
+        // Send Image to Browser
+        imagejpeg($jpg_image);
+
+        // Clear Memory
+        imagedestroy($jpg_image);
+
     }
 }
