@@ -65,8 +65,8 @@
                 </div>
                 <div class="m-portlet__body">
                     <div class="m-widget25">
-                        <span class="m-widget25__price m--font-brand">$237,650</span>
-                        <span class="m-widget25__desc">Total Rewards This Month</span>
+                        <span class="m-widget25__price m--font-brand d-none">$237,650</span>
+                        <span class="m-widget25__desc d-none">Total Rewards This Month</span>
                         <div class="m-widget25--progress">
                             <div class="m-widget25__progress">
                                 <span class="m-widget25__progress-number">
