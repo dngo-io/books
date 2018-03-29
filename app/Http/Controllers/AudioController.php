@@ -192,10 +192,10 @@ class AudioController extends AppController
 
 
         // Add text to image
-        imagettftext($jpg_image, $font_size, $angle, $x, $y+80, $text_color, $font_path, $audio->getName());
+        imagettftext($jpg_image, $font_size, $angle, $x, $y+80, $text_color, $font_path, $audio->getBook()->getName());
 
         $font_path = resource_path('assets/font/Roboto-Italic.ttf');
-        imagettftext($jpg_image, $font_size, $angle, $x, $y+110, $text_color, $font_path, 'by ' . $audio->getBook()->getName());
+        imagettftext($jpg_image, $font_size, $angle, $x, $y+110, $text_color, $font_path, 'by ' . $audio->getBook()->getAuthor());
 
         // Send Image to Browser
         imagejpeg($jpg_image);
