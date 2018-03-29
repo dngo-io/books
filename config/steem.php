@@ -21,7 +21,7 @@ return [
      */
     'bot' => env('STEEM_BOT', 'dngo-io'),
     'account' => env('STEEM_ACCOUNT','dngo'),
-    'about' => env('STEEM_ABOUT','about'),
+    'about' => env('STEEM_ABOUT','https://steemit.com/dngo-io/@dngo-io/dngo-and-dngo-books-proje-tanitimi'),
     'rules' => env('STEEM_RULES','rules'),
     'how_to' => env('STEEM_HOW_TO',''),
 
