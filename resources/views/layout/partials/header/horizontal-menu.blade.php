@@ -45,7 +45,7 @@
                 <span class="m-menu__arrow m-menu__arrow--adjust"></span>
                 <ul class="m-menu__subnav">
                     <li class="m-menu__item" aria-haspopup="true">
-                        <a href="{{ url("/") }}" class="m-menu__link ">
+                        <a href="{{ asset("dngo-documents/dngo-and-dngo-books-whitepaper.pdf") }}" class="m-menu__link ">
                             <i class="m-menu__link-icon fa fa-file-o"></i>
                             <span class="m-menu__link-text">Whitepaper</span>
                         </a>

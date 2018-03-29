@@ -166,7 +166,7 @@
                                 </span>
                             </div>
                             <div class="m-widget4__ext">
-                                <a href="{{ asset("public/dngo-documents/dngo-and-dngo-books-bluepaper.pdf") }}" class="m-widget4__icon">
+                                <a href="{{ asset("dngo-documents/dngo-and-dngo-books-bluepaper.pdf") }}" class="m-widget4__icon">
                                     <i class="la la-download"></i>
                                 </a>
                             </div>
