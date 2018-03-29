@@ -50,18 +50,20 @@
                                             {{ str_limit($item->getBody(), 200, '...') }}
                                     </span>
                                         <div class="m-widget5__info">
-                                        <span class="m-widget5__author">
-                                            by
-                                        </span>
+                                            <span class="m-widget5__author">
+                                                by
+                                            </span>
                                             <span class="m-widget5__info-author-name">
-                                            {{ $item->getUser()->getAccount() }}
-                                        </span>
+                                                <a href="{{ url("user/{$item->getUser()->getAccount()}") }}" class="m-link">
+                                                    {{ author($item->getUser()) }}
+                                                </a>
+                                            </span>
                                             <span class="m-widget5__info-label">
-                                            on
-                                        </span>
+                                                on
+                                            </span>
                                             <span class="m-widget5__info-date">
-                                            {{ format_date($item->getCreatedAt()) }}
-                                        </span>
+                                                {{ format_date($item->getCreatedAt()) }}
+                                            </span>
                                         </div>
                                     </div>
                                     <div class="m-widget5__stats1 text-center pl-0">
