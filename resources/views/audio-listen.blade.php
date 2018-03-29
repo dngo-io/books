@@ -32,11 +32,11 @@
         @if ($audio->getStatus() == \App\Repositories\BookAudioRepository::STATUS_APPROVED)
         <div class="m-nav-grid mt-0 mb-3">
             <div class="m-nav-grid__row">
-                <a href="#" class="m-nav-grid__item">
+                <a href="javascript: alert('You will be able to upvote here, soon!');" class="m-nav-grid__item">
                     <i class="m-nav-grid__icon fa fa-thumbs-o-up"></i>
                     <span class="m-nav-grid__text m--font-metal">Up Vote</span>
                 </a>
-                <a href="#" class="m-nav-grid__item">
+                <a href="{{ url("https://steemit.com/{$audio->getSteemSlug()}#comments") }}" class="m-nav-grid__item">
                     <i class="m-nav-grid__icon fa fa-comment-o"></i>
                     <span class="m-nav-grid__text m--font-metal">Comment</span>
                 </a>
@@ -46,9 +46,9 @@
                     <i class="m-nav-grid__icon fa fa-volume-up"></i>
                     <span class="m-nav-grid__text m--font-metal">Embed</span>
                 </a>
-                <a href="#" class="m-nav-grid__item">
-                    <i class="m-nav-grid__icon fa fa-microphone"></i>
-                    <span class="m-nav-grid__text m--font-metal">Read</span>
+                <a href="{{ url("https://steemit.com/{$audio->getSteemSlug()}") }}" class="m-nav-grid__item">
+                    <i class="m-nav-grid__icon fa fa-paper-plane-o m--font-success"></i>
+                    <span class="m-nav-grid__text m--font-success">Steemit</span>
                 </a>
             </div>
         </div>
