@@ -21,4 +21,18 @@ class Account extends Query
 
         return parent::call($request);
     }
+
+    /**
+     * Get account count
+     *
+     * @return array
+     */
+    public function accountCount()
+    {
+        $request = [
+            'route' => 'get_account_count'
+        ];
+
+        return parent::call($request);
+    }
 }

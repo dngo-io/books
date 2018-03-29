@@ -71,6 +71,11 @@ class Query
      */
     protected function call($request)
     {
+        if(!isset($request['query']))
+        {
+            $request['query'] = [];
+        }
+
         $method  = 'GET';
         $headers = $this->getHeaders();
         $query   = http_build_query($request['query']);
