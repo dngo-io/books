@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Support\AppController;
+use App\Repositories\UserRepository;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Cache;
+use SteemAPI\SteemAPI;
 
 class AboutController extends AppController
 {
@@ -34,16 +36,35 @@ class AboutController extends AppController
         $this->client = $client;
     }
 
-    public function index()
+    /**
+     * About page
+     *
+     * @param UserRepository $userRepository
+     * @param SteemAPI $steemAPI
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws \Doctrine\ORM\NoResultException
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
+    public function index(UserRepository $userRepository, SteemAPI $steemAPI)
     {
+
         if (Cache::has('about')) {
             $about = Cache::get('about');
         } else {
             $about = [];
             $bot   = $this->client->get("https://steemit.com/@".config('steem.bot').".json")->getBody()->getContents();
             $bot   = json_decode($bot, true);
+            $users = [
+                (int) array_get($userRepository->countAccounts(), 1, 0),
+                $steemAPI->getAccount()->accountCount()
+            ];
 
-            $about['bot'] = array_get($bot, 'user');
+            $about['bot']   = array_get($bot, 'user');
+            $about['users'] = [
+                'local' => $users[0],
+                'steem' => $users[1],
+                'ratio' => round(($users[0] / $users[1]), 5).'%',
+            ];
 
             foreach ($this->founders as $key => $founder)
             {

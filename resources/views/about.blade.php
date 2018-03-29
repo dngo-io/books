@@ -82,17 +82,17 @@
                             </div>
                             <div class="m-widget25__progress">
                                 <span class="m-widget25__progress-number">
-                                    39%
+                                    {{ $about['users']['ratio'] }}
                                 </span>
                                 <div class="m--space-10"></div>
                                 <div class="progress m-progress--sm">
-                                    <div class="progress-bar m--bg-accent" role="progressbar" style="width: 39%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="progress-bar m--bg-accent" role="progressbar" style="width: {{ $about['users']['ratio'] }}%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                                 <span class="m-widget25__progress-sub">
-                                    Product Growth
+                                    Community in Steemit ({{ "{$about['users']['local']} / {$about['users']['steem']}" }})
                                 </span>
                             </div>
-                            <div class="m-widget25__progress" >
+                            <div class="m-widget25__progress d-none" >
                                 <span class="m-widget25__progress-number">
                                     54%
                                 </span>
@@ -101,7 +101,7 @@
                                     <div class="progress-bar m--bg-warning" role="progressbar" style="width: 54%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                                 <span class="m-widget25__progress-sub">
-                                    Community Growth
+
                                 </span>
                             </div>
                         </div>
