@@ -113,6 +113,8 @@ class BookAudioRepository extends AppEntityRepository
         $status = NULL !== $request->request->get('status') ? $request->request->get('status') : self::STATUS_APPROVED;
         $qb->setParameter('status',$status);
 
+        $qb->orderBy('ba.id','desc');
+
         $result = $qb->getQuery()->useQueryCache(true);
 
         return $this->paginate($result, $perPage, $pageName);

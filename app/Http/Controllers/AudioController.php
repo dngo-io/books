@@ -162,17 +162,13 @@ class AudioController extends AppController
         // Allocate A Color For The Text
         $text_color = imagecolorallocate($image, 0, 0, 0);
 
-        // Set Text to Be Printed On Image
-        $text = $audio->getBook()->getName();
-
         $font_size = 16;
         $angle = 0;
 
-        // Set Path to Font File
-        $font_path = resource_path('assets/font/Roboto-Light.ttf');
-
-        $center = $this->calculateImageCenter($image,$font_size,$angle,$font_path,$text);
         // book name
+        $text = $audio->getBook()->getName();
+        $font_path = resource_path('assets/font/Roboto-Light.ttf');
+        $center = $this->calculateImageCenter($image,$font_size,$angle,$font_path,$text);
         imagettftext($image, $font_size, $angle, $center['x'], $center['y']+80, $text_color, $font_path, $text);
 
         // author name
