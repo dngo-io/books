@@ -132,7 +132,7 @@
                             </div>
                             <div class="m-widget4__info">
                                 <span class="m-widget4__text">
-                                Steem Post
+                                Steem Post [TR]
                                 </span>
                             </div>
                             <div class="m-widget4__ext">
