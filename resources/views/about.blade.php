@@ -82,7 +82,7 @@
                             </div>
                             <div class="m-widget25__progress">
                                 <span class="m-widget25__progress-number">
-                                    {{ $about['users']['ratio'] }}
+                                    {{ $about['users']['ratio'] }}%
                                 </span>
                                 <div class="m--space-10"></div>
                                 <div class="progress m-progress--sm">

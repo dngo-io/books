@@ -48,7 +48,7 @@ class AboutController extends AppController
     public function index(UserRepository $userRepository, SteemAPI $steemAPI)
     {
 
-        if (Cache::has('about')) {
+        if (Cache::has('about') && 0) {
             $about = Cache::get('about');
         } else {
             $about = [];
@@ -63,7 +63,7 @@ class AboutController extends AppController
             $about['users'] = [
                 'local' => $users[0],
                 'steem' => $users[1],
-                'ratio' => round(($users[0] / $users[1]), 3).'%',
+                'ratio' => (float) round(($users[0] / $users[1]), 3),
             ];
 
             foreach ($this->founders as $key => $founder)
