@@ -157,27 +157,47 @@ class AudioController extends AppController
         header('Content-type: image/jpeg');
 
         // Create Image From Existing File
-        $jpg_image = imagecreatefrompng(resource_path('assets/img/audio-bg.png'));
+        $image = imagecreatefrompng(resource_path('assets/img/audio-bg.png'));
 
         // Allocate A Color For The Text
-        $text_color = imagecolorallocate($jpg_image, 0, 0, 0);
+        $text_color = imagecolorallocate($image, 0, 0, 0);
 
         // Set Text to Be Printed On Image
-        $text = $audio->getName() . "\n" . $audio->getBook()->getName();
+        $text = $audio->getBook()->getName();
 
         $font_size = 16;
         $angle = 0;
 
+        // Set Path to Font File
+        $font_path = resource_path('assets/font/Roboto-Light.ttf');
+
+        $center = $this->calculateImageCenter($image,$font_size,$angle,$font_path,$text);
+        // book name
+        imagettftext($image, $font_size, $angle, $center['x'], $center['y']+80, $text_color, $font_path, $text);
+
+        // author name
+        $text = 'by '.$audio->getBook()->getAuthor()->getName();
+        $font_path = resource_path('assets/font/Roboto-ThinItalic.ttf');
+        $center = $this->calculateImageCenter($image,$font_size,$angle,$font_path,$text);
+        imagettftext($image, $font_size, $angle, $center['x'], $center['y']+110, $text_color, $font_path, $text);
+
+        // Send Image to Browser
+        imagejpeg($image);
+
+        // Clear Memory
+        imagedestroy($image);
+
+    }
+
+    private function calculateImageCenter($image, $font_size, $angle, $font_path, $text)
+    {
         // Get image dimensions
-        $width = imagesx($jpg_image);
-        $height = imagesy($jpg_image);
+        $width = imagesx($image);
+        $height = imagesy($image);
 
         // Get center coordinates of image
         $centerX = $width / 2;
         $centerY = $height / 2;
-
-        // Set Path to Font File
-        $font_path = resource_path('assets/font/Roboto-Bold.ttf');
 
         // Get size of text
         list($left, $bottom, $right, , , $top) = imageftbbox($font_size, $angle, $font_path, $text);
@@ -190,18 +210,6 @@ class AudioController extends AppController
         $x = $centerX - $left_offset;
         $y = $centerY - $top_offset;
 
-
-        // Add text to image
-        imagettftext($jpg_image, $font_size, $angle, $x, $y+80, $text_color, $font_path, $audio->getBook()->getName());
-
-        $font_path = resource_path('assets/font/Roboto-Italic.ttf');
-        imagettftext($jpg_image, $font_size, $angle, $x, $y+110, $text_color, $font_path, 'by ' . $audio->getBook()->getAuthor()->getName());
-
-        // Send Image to Browser
-        imagejpeg($jpg_image);
-
-        // Clear Memory
-        imagedestroy($jpg_image);
-
+        return ['x' => $x, 'y' => $y];
     }
 }
