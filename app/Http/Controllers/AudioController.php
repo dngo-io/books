@@ -177,7 +177,7 @@ class AudioController extends AppController
 
         // author name
         $text = 'by '.$audio->getBook()->getAuthor()->getName();
-        $font_path = resource_path('assets/font/Roboto-ThinItalic.ttf');
+        $font_path = resource_path('assets/font/RobotoCondensed-Italic.ttf');
         $center = $this->calculateImageCenter($image,$font_size,$angle,$font_path,$text);
         imagettftext($image, $font_size, $angle, $center['x'], $center['y']+110, $text_color, $font_path, $text);
 
