@@ -5,4 +5,4 @@ Your contribution cannot be approved because it does not follow the
 <br>
 You can contact us on Discord, join us!
 <br>
-**[MODERATOR]**
+**[DNGO.IO MODERATOR]**
