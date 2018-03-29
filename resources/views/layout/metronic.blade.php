@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8"/>
     <title>@yield("title") | {{ config("app.name") }}</title>
-    <meta name="description" content="Latest updates and statistic charts">
+    <meta name="description" content="Decentralized NGO - The Future of Social Impact">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="google-site-verification" content="KkaUbgl3IwPy0Ruj257q6ZNVP8-ytzhTM57DtwLmaOw" />
