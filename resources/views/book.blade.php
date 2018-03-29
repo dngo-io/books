@@ -37,14 +37,6 @@
                     </div>
                 </div>
                 <div class="m-portlet__body">
-                    <div class="alert alert-warning text-justify" role="alert">
-                        <strong>Attention!</strong>
-                        This eBook is for the use of anyone anywhere at no cost and with
-                        almost no restrictions whatsoever.  You may copy it, give it away or
-                        re-use it under the terms of the Project Gutenberg License included
-                        with this eBook or online at
-                        <a href="www.gutenberg.org/license" class="m-link m--font-light">www.gutenberg.org/license</a>.
-                    </div>
                     <div class="row">
                         <div class="col-md-3">
                             <img src="{{ $book->getCover() }}" alt="{{ $book->getName() }}" class="img-fluid img-rounded img-thumbnail">
