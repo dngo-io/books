@@ -56,7 +56,7 @@ class ListenController extends AppController
         $result = [];
         if($bookAudio->getStatus() == BookAudioRepository::STATUS_APPROVED)
         {
-            if (Cache::has("book_audio_{$id}") && 0) {
+            if (Cache::has("book_audio_{$id}")) {
                 $result = Cache::get("book_audio_{$id}");
             } else {
 
