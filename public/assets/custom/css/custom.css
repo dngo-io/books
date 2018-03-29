@@ -63,3 +63,26 @@ body.booky-background
 .fa-8x {
     font-size: 7em !important;
 }
+
+.comment-body h1{font-size: 1.250em;}
+.comment-body h2{font-size: 1.225em;}
+.comment-body h3{font-size: 1.200em;}
+.comment-body h4{font-size: 1.175em;}
+.comment-body h5{font-size: 1.150em;}
+.comment-body h6{font-size: 1.125em;}
+
+@media (min-width: 576px) {
+    .comment-body img{max-width:100%;}
+}
+
+@media (min-width: 768px) {
+    .comment-body img{max-width:75%;}
+}
+
+@media (min-width: 992px) {
+    .comment-body img{max-width:60%;}
+}
+
+@media (min-width: 1200px) {
+    .comment-body img{max-width:50%;}
+}
