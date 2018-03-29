@@ -84,6 +84,12 @@
             <div class="m-portlet m-portlet--bordered">
                 <div class="m-portlet__body">
                     {!! parse_md($audio->getBody()) !!}
+                    <br>
+                    @foreach($audio->getTags() as $tag)
+                        <a class="btn btn-secondary m-btn m-btn--custom m-btn--label-accent" href="{{ url("https://steemit.com/trending/{$tag->getSlug()}") }}">
+                            {{ $tag->getName() }}
+                        </a>
+                    @endforeach
                 </div>
             </div>
         </div>
