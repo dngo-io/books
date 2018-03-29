@@ -82,6 +82,15 @@
 
         <div class="col-md-12 col-sm-12">
             <div class="m-portlet m-portlet--bordered">
+                <div class="m-portlet__head">
+                    <div class="m-portlet__head-caption">
+                        <div class="m-portlet__head-title">
+                            <h3 class="m-portlet__head-text">
+                                {{ author($audio->getUser()) }}
+                            </h3>
+                        </div>
+                    </div>
+                </div>
                 <div class="m-portlet__body">
                     {!! parse_md($audio->getBody()) !!}
                     <br>
@@ -96,7 +105,7 @@
 
         <textarea id="embed-code" style="width: 0;height: 0; border: 0; opacity: 0"><iframe src="{{ url("/listen/embed/{$id}") }}" style="border:0px #ffffff none;" name="DNGOBooks" scrolling="no" frameborder="0" marginheight="0px" marginwidth="0px" height="200px" width="600px" allowfullscreen></iframe></textarea>
         <div class="col-md-12">
-            <div class="m-portlet  m-portlet--tabs">
+            <div class="m-portlet">
                 <div class="m-portlet__head">
                     <div class="m-portlet__head-caption">
                         <div class="m-portlet__head-title">
