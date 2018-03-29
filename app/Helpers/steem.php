@@ -17,7 +17,12 @@ if (! function_exists('reputation')) {
 
         if(is_null($rep))
         {
-            return 0;
+            $rep = array_get($account,'author_reputation');
+
+            if(is_null($rep))
+            {
+                return 0;
+            }
         }
 
         if ($rep < 0)
