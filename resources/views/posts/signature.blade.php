@@ -1,3 +1,6 @@
+<center>
+    [![Listen on {{ config("app.name") }}]({{ asset("audio/image/{$id}") }})]({{ url("listen/{$id}") }})
+</center>
 {!! $post !!}
 <hr>
 <center>

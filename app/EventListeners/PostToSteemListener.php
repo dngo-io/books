@@ -52,7 +52,10 @@ class PostToSteemListener
                 [
                     $user->getAccount(),
                     $this->bookAudio->getName(),
-                    view('posts.signature',['post' => $this->bookAudio->getBody()])->render(),
+                    view('posts.signature',[
+                        'id'   => $this->bookAudio->getId(),
+                        'post' => $this->bookAudio->getBody()
+                    ])->render(),
                     array_merge([config('steem.tag')],$tags),
                     config('services.steem.client_id')
                 ];
