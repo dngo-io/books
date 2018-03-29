@@ -16,7 +16,13 @@ class AboutController extends AppController
     /**
      * @var array
      */
-    private $founders = ['bencagri', 'ikidnapmyself', 'meskoze', 'tubi'];
+    private $founders = [
+        'bencagri'      => 'Founder',
+        'ikidnapmyself' => 'Founder',
+        'meskoze'       => 'Founder',
+        'tubi'          => 'Founder',
+        'omeratagun'    => 'Supervisor'
+    ];
 
     /**
      * AboutController constructor.
@@ -39,11 +45,12 @@ class AboutController extends AppController
 
             $about['bot'] = array_get($bot, 'user');
 
-            foreach ($this->founders as $founder)
+            foreach ($this->founders as $key => $founder)
             {
-                $account = $this->client->get("https://steemit.com/@{$founder}.json")->getBody()->getContents();
+                $account = $this->client->get("https://steemit.com/@{$key}.json")->getBody()->getContents();
                 $account = json_decode($account, true);
-                $about['founders'][$founder] = [
+                $about['founders'][$key] = [
+                    'position'   => $founder,
                     'name'       => array_get($account, 'user.name'),
                     'reputation' => array_get($account, 'user.reputation'),
                     'created'    => array_get($account, 'user.created'),

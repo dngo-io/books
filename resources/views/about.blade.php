@@ -241,7 +241,7 @@
             </div>
         </div>
     </div>
-    <h3 class="mt-5 mb-5">Founders</h3>
+    <h3 class="mt-5 mb-5">Team</h3>
     <div class="row">
         @foreach($about['founders'] as $founder)
         <div class="col">
@@ -250,75 +250,16 @@
                 <div class="card-block p-5">
                     <h5 class="card-title">{{ author($founder) }}</h5>
                     <p class="card-text">
+                        <strong>{{ $founder['position'] }}</strong>
+                        <br>
                         {{ $founder['location'] }}
                         <br>
-                        {{ $founder['about'] }}
+                        <small>{{ $founder['about'] }}</small>
                     </p>
                     <a href="https://steemit.com/{{ author($founder, false) }}" class="btn btn-block btn-success">Steem Profile</a>
                 </div>
             </div>
         </div>
         @endforeach
-    </div>
-    <h3 class="mt-5 mb-5">Special Thanks To...</h3>
-    <div class="row">
-        <div class="col">
-            <div class="card">
-                <img class="card-img-top" src="{{ asset("assets/app/media/img/users/300_2.jpg") }}" alt="Card image cap">
-                <div class="card-block p-5">
-                    <h5 class="card-title">Denny J. Choi</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-block btn-secondary">
-                        <i class="fa fa-linkedin"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card">
-                <img class="card-img-top" src="{{ asset("assets/app/media/img/users/300_3.jpg") }}" alt="Card image cap">
-                <div class="card-block p-5">
-                    <h5 class="card-title">William Dawson</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-block btn-secondary">
-                        <i class="fa fa-envelope"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card">
-                <img class="card-img-top" src="{{ asset("assets/app/media/img/users/300_4.jpg") }}" alt="Card image cap">
-                <div class="card-block p-5">
-                    <h5 class="card-title">Philip A. Garrison</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-block btn-secondary">
-                        <i class="fa fa-github"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card">
-                <img class="card-img-top" src="{{ asset("assets/app/media/img/users/300_6.jpg") }}" alt="Card image cap">
-                <div class="card-block p-5">
-                    <h5 class="card-title">Donn A. Vargas</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-block btn-secondary">
-                        <i class="fa fa-twitter"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card">
-                <img class="card-img-top" src="{{ asset("assets/app/media/img/users/300_7.jpg") }}" alt="Card image cap">
-                <div class="card-block p-5">
-                    <h5 class="card-title">Fred Cameron</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-block btn-success">Steem Profile</a>
-                </div>
-            </div>
-        </div>
     </div>
 @endsection
