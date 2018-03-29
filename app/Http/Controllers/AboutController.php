@@ -63,7 +63,7 @@ class AboutController extends AppController
             $about['users'] = [
                 'local' => $users[0],
                 'steem' => $users[1],
-                'ratio' => round(($users[0] / $users[1]), 5).'%',
+                'ratio' => round(($users[0] / $users[1]), 3).'%',
             ];
 
             foreach ($this->founders as $key => $founder)
