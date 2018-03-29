@@ -48,7 +48,7 @@ class AboutController extends AppController
     public function index(UserRepository $userRepository, SteemAPI $steemAPI)
     {
 
-        if (Cache::has('about') && 0) {
+        if (Cache::has('about')) {
             $about = Cache::get('about');
         } else {
             $about = [];
