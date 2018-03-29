@@ -22,6 +22,8 @@ use LaravelDoctrine\ORM\Pagination\PaginatesFromRequest;
 class UserRepository extends AppEntityRepository implements UserRepositoryContract
 {
 
+    const ACTIVE = 1;
+
     use FindByName;
     use FindByUUID;
     use PaginatesFromRequest;
@@ -91,5 +93,21 @@ class UserRepository extends AppEntityRepository implements UserRepositoryContra
         return [];
     }
 
+    /**
+     * Count users
+     *
+     * @return mixed
+     * @throws \Doctrine\ORM\NoResultException
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
+    public function countAccounts()
+    {
+        $qb = $this->createQueryBuilder('u');
+        $qb->select($qb->expr()->count('u'));
+
+        $query = $qb->getQuery();
+
+        return $query->getSingleResult();
+    }
 
 }
