@@ -48,6 +48,28 @@ class UserController extends AppController
     }
 
     /**
+     * User List
+     *
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function user_list(Request $request)
+    {
+        /** @var UserRepository $userRepository */
+        $userRepository = $this->entityManager->getRepository(User::class);
+
+        $users = $userRepository->userList();
+
+        return view('users',
+            [
+                'paginate'   => $users->appends($request->except('page')),
+                'users'      => $users->getCollection(),
+                'total'      => $users->total(),
+            ]
+        );
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response

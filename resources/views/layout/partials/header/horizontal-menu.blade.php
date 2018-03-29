@@ -22,6 +22,15 @@
                 </span>
             </a>
         </li>
+        <li class="m-menu__item m-menu__item--rel">
+            <a  href="{{ url("/contributors") }}" class="m-menu__link">
+                <span class="m-menu__item-here"></span>
+                <i class="m-menu__link-icon fa fa-user"></i>
+                <span class="m-menu__link-text">
+                    Contributors
+                </span>
+            </a>
+        </li>
         @if (!Auth::guest())
         <li class="m-menu__item m-menu__item--rel">
             <a  href="{{ url("/audio/create") }}" class="m-menu__link">

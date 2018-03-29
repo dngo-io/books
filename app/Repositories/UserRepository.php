@@ -110,4 +110,17 @@ class UserRepository extends AppEntityRepository implements UserRepositoryContra
         return $query->getSingleResult();
     }
 
+    /**
+     * @param int $perPage
+     * @param string $pageName
+     * @return \Illuminate\Pagination\LengthAwarePaginator
+     */
+    public function userList($perPage = 10, $pageName = 'page')
+    {
+        $qb = $this->createQueryBuilder('u');
+
+        $result = $qb->getQuery()->useQueryCache(true);
+
+        return $this->paginate($result, $perPage, $pageName);
+    }
 }
