@@ -78,7 +78,7 @@
                                         {{ Auth::user()->getName() }}
                                     </span>
                                     <a href="{{ url("https://steemit.com/@".Auth::user()->getAccount()) }}" class="m-card-user__email m--font-weight-300 m-link">
-                                        {{ Auth::user()->getAccount() }}
+                                        {{ author(Auth::user()) }}
                                     </a>
                                 </div>
                             </div>
