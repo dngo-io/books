@@ -245,7 +245,7 @@
     <h3 class="mt-5 mb-5">Team</h3>
     <div class="row">
         @foreach($about['founders'] as $founder)
-        <div class="col-sm-6 col-md-4 mb-5">
+        <div class="col-sm-6 col-md-4 col-xl-3 mb-5">
             <div class="card">
                 <img class="card-img-top" src="{{ get_steem_pp($founder['picture']) }}" alt="{{ author($founder, false) }}">
                 <div class="card-block p-5">
