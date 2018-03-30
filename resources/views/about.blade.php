@@ -29,13 +29,14 @@
                     </div>
                 </div>
                 <div class="m-portlet__body">
-                    <p> Dngo is the first blockchain based and decentralized NGO of the world to serve civil society purposes. Dngo aims to increase civil society participation by incentivizing every contribution with cryptocurrencies. By creating its own blockchain based community, Dngo also seeks for providing an open room for deliberative democracy on Steem blockchain.
+                    <p>
+                        DNGO is a pioneer in the field of blockchain-based, decentralised NGOs. Dngo aims to increase civil society participation by incentivizing every contribution with cryptocurrencies. By creating its own blockchain based community, Dngo also seeks for providing an open room for deliberative democracy on Steem blockchain.
                     </p>
                     <p>
-                        Dngo runs on project based model. It creates various projects to incentivize people to provide valuable outputs. The project outputs, say audiobook archive or language learning database, are publicly accessible. Apart from gifting those valuable contents to the humanity, Dngo dedicates a decent share of its curation rewards and its Community Fund to make donations and charities to support people who are depriving resources.
+                        DNGO runs on project based model. It creates various projects to incentivize people to provide valuable outputs. The project outputs, say audiobook archive or language learning database, are publicly accessible. Apart from gifting those valuable contents to the humanity, DNGO dedicates a decent share of its curation rewards and its Community Fund to make donations and charities to support people who are depriving resources.
                     </p>
                     <p>
-                        To achieve these goals, Dngo has four founding principles guiding and framing its activities:<br>
+                        To achieve these goals, DNGO has four founding principles guiding and framing its activities:<br>
                         <br>
                         - Open Democracy Principle<br>
                         - Accountability Principle<br>
@@ -223,10 +224,10 @@
                     </div>
                 </div>
                 <div class="m-portlet__body">
-                    <p> Dngo books is Dngo’s first project specifically aims to incentivize people to collectively create multilingual audiobook archive, mainly to serve visually impaired people. Dngo Books is also based on Fair Share Script.
+                    <p> DNGO books is DNGO’s first project specifically aims to incentivize people to collectively create multilingual audiobook archive, mainly to serve visually impaired people. DNGO Books is also based on Fair Share Script.
                     </p>
                     <p>
-                        As Fair Share Script guides, the following result are expected to be achieved within Dngo Books projects:
+                        As Fair Share Script guides, the following result are expected to be achieved within DNGO Books projects:
                     </p>
                     <p>
                         1) Creating a publicly accessible, multilingual and collectively produced audiobook archive mainly for the public. A special emphasis will be given to the visually impaired people
