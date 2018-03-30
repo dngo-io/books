@@ -14,10 +14,10 @@
                     </div>
                     <div class="m-timeline-1__item-body">
                         <div class="m-list-pics">
-                            <a href="{{ url("user/bencagri") }}"><img src="{{ asset($map['bencagri']['picture']) }}" title="bencagri"></a>
-                            <a href="{{ url("user/ikidnapmyself") }}"><img src="{{ asset($map['ikidnapmyself']['picture']) }}" title="ikidnapmyself"></a>
-                            <a href="{{ url("user/meskoze") }}"><img src="{{ asset($map['meskoze']['picture']) }}" title="meskoze"></a>
-                            <a href="{{ url("user/tubi") }}"><img src="{{ asset($map['tubi']['picture']) }}" title="tubi"></a>
+                            <a href="{{ url("user/bencagri") }}"><img src="{{ get_steem_pp($map['bencagri']['picture'], 100) }}" title="bencagri"></a>
+                            <a href="{{ url("user/ikidnapmyself") }}"><img src="{{ get_steem_pp($map['ikidnapmyself']['picture'], 100) }}" title="ikidnapmyself"></a>
+                            <a href="{{ url("user/meskoze") }}"><img src="{{ get_steem_pp($map['meskoze']['picture'], 100) }}" title="meskoze"></a>
+                            <a href="{{ url("user/tubi") }}"><img src="{{ get_steem_pp($map['tubi']['picture'], 100) }}" title="tubi"></a>
                         </div>
                         <div class="m-timeline-1__item-body m--margin-top-15">
                             Exploration of DNGO Concept.
@@ -103,7 +103,7 @@
                     </div>
                     <div class="m-timeline-1__item-body">
                         <div class="m-list-pics">
-                            <a href="{{ url("user/omeratagun") }}"><img src="{{ asset($map['omeratagun']['picture']) }}" title="omeratagun"></a>
+                            <a href="{{ url("user/omeratagun") }}"><img src="{{ get_steem_pp($map['omeratagun']['picture']) }}" title="omeratagun"></a>
                         </div>
                         <div class="m-timeline-1__item-body m--margin-top-15">
                             <a href="{{ url("user/omeratagun") }}" class="m-link">@omeratagun</a> joined project as Supervisor.
