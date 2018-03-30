@@ -38,6 +38,8 @@ Route::get('/logout', 'Auth\LoginController@logout');
 Route::get('/home', 'HomeController@home');
 Route::get('/books', 'BooksController@index');
 
+Route::get('/image', 'ImageController@crop');
+
 /** Actions */
 Route::prefix('action')->group(function () {
     Route::get('book', 'ActionController@book');
