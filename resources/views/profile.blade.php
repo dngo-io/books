@@ -11,7 +11,7 @@
                         </div>
                         <div class="m-card-profile__pic">
                             <div class="m-card-profile__pic-wrapper">
-                                <img src="{{ get_steem_pp($user->getProfileImage())}}" alt="@{{ $user->getAccount() }}">
+                                <img src="{{ get_steem_pp($user->getProfileImage())}}" alt="{{ author($user, false) }}">
                             </div>
                         </div>
                         <div class="m-card-profile__details">
