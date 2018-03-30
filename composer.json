@@ -27,6 +27,8 @@
         "erusev/parsedown": "^1.7",
         "frnxstd/steem-api": "@dev",
         "frnxstd/steem-connect": "@dev",
+        "intervention/image": "^2.4",
+        "intervention/imagecache": "^2.3",
         "laravel-doctrine/acl": "~1.0",
         "laravel-doctrine/migrations": "~1.1",
         "laravel-doctrine/orm": "~1.3",
