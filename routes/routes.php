@@ -26,21 +26,10 @@ Route::prefix('listen')->group(function () {
     Route::get('/embed/{id}', 'ListenController@embed');
 });
 
-
 Route::get('/', 'HomeController@root_index');
 Route::get('/rules', 'RulesController@index');
-
 Route::get('/road-map', 'RoadMapController@index');
 Route::get('/about', 'AboutController@index');
-
-
-Route::get('/profile', function () {
-    return view('profile');
-});
-Route::get('/feed', function () {
-    return view('feed');
-});
-
 
 Route::get('/login', 'Auth\LoginController@redirectToProvider');
 Route::get('/login/callback', 'Auth\LoginController@handleProviderCallback');
