@@ -20,15 +20,16 @@
                     <div class="m-portlet__body">
                         <nav aria-label="Search result pagination">
                             {{ $paginate->render('pagination::bootstrap-4') }}
+                            Total {{ $total }} {{ str_plural('contributor', $total)}} found
                         </nav>
-
+                        <hr>
                         <div class="m-widget5">
                             <div class="m-widget4">
                             @foreach($users as $item)
                                     <div class="m-widget4__item">
                                         <div class="m-widget4__img m-widget4__img--pic">
                                             <a href="{{ url("user/{$item->getAccount()}") }}">
-                                                <img src="{{ asset($item->getProfileImage()) }}" alt="{{ $item->getAccount() }}">
+                                                <img src="{{ get_steem_pp($item->getProfileImage()) }}" alt="{{ $item->getAccount() }}">
                                             </a>
                                         </div>
                                         <div class="m-widget4__info">
@@ -49,9 +50,10 @@
                             @endforeach
                             </div>
                         </div>
-
+                        <hr>
                         <nav aria-label="Search result pagination">
                             {{ $paginate->render('pagination::bootstrap-4') }}
+                            Total {{ $total }} {{ str_plural('contributor', $total)}} found
                         </nav>
                     </div>
                 </div>
