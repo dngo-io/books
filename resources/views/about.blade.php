@@ -244,11 +244,15 @@
     <h3 class="mt-5 mb-5">Team</h3>
     <div class="row">
         @foreach($about['founders'] as $founder)
-        <div class="col">
+        <div class="col-sm-6 col-md-4 mb-5">
             <div class="card">
-                <img class="card-img-top" src="{{ asset($founder['picture']) }}" alt="{{ author($founder, false) }}">
+                <img class="card-img-top" src="{{ get_steem_pp($founder['picture']) }}" alt="{{ author($founder, false) }}">
                 <div class="card-block p-5">
-                    <h5 class="card-title">{{ author($founder) }}</h5>
+                    <h6 class="card-title">
+                        <a href="{{ url("/user/".author($founder, false)) }}" class="m-link">
+                            {{ author($founder) }}
+                        </a>
+                    </h6>
                     <p class="card-text">
                         <strong>{{ $founder['position'] }}</strong>
                         <br>
