@@ -77,17 +77,11 @@
             {{ Form::close() }}
         </div>
         <div class="col-md-9">
-            <div class="row">
-                <div class="col-md-8">
-                    <nav aria-label="Search result pagination">
-                        {{ $paginate->render('pagination::bootstrap-4') }}
-                    </nav>
-                </div>
-                <div class="col-md-4">
-                    <div class="pull-right"> Total {{ $total }} books found</div>
-                </div>
-            </div>
-
+            <nav aria-label="Search result pagination">
+                {{ $paginate->render('pagination::bootstrap-4') }}
+                Total {{ $total }} {{ str_plural('book', $total)}} found
+            </nav>
+            <hr>
             <div class="row">
                 <div class="card-columns">
                     @foreach ($books as $book)
@@ -110,8 +104,10 @@
                     @endforeach
                 </div>
             </div>
+            <hr>
             <nav aria-label="Search result pagination">
                 {{ $paginate->render('pagination::bootstrap-4') }}
+                Total {{ $total }} {{ str_plural('book', $total)}} found
             </nav>
         </div>
     </div>
