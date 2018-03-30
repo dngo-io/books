@@ -250,7 +250,7 @@
                 <img class="card-img-top" src="{{ get_steem_pp($founder['picture']) }}" alt="{{ author($founder, false) }}">
                 <div class="card-block p-5">
                     <h6 class="card-title">
-                        <a href="{{ url("/user/".author($founder, false)) }}" class="m-link">
+                        <a href="{{ url("/user/".author($founder, false)) }}" class="m-link m--font-dark">
                             {{ author($founder) }}
                         </a>
                     </h6>
