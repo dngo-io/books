@@ -9,7 +9,6 @@
                 <span class="m-menu__item-here"></span>
                 <i class="m-menu__link-icon fa fa-home"></i>
                 <span class="m-menu__link-text">
-                    Home
                 </span>
             </a>
         </li>
@@ -84,6 +83,7 @@
                 <i class="m-menu__link-icon fa fa-sign-in m--font-danger"></i>
                 <span class="m-menu__link-text m--font-danger">Login</span>
             </a>
+        </li>
         @endif
     </ul>
 </div>
