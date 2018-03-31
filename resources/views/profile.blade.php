@@ -87,7 +87,7 @@
                     </div>
                 </div>
                 <div class="m-portlet__body">
-                    @if($contribution == 0)
+                    @if($contribution > 0)
                     <nav aria-label="Search result pagination">
                         {{ $pagination->render('pagination::bootstrap-4') }}
                     </nav>
