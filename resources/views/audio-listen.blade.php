@@ -23,10 +23,11 @@
         if($(this).attr('data-upvote') == "true")
         {
             mApp.blockPage();
-            if(Steem.upvote($(this).data('slug')).success == true)
+            var vote = Steem.upvote($(this).data('slug'));
+            if(vote == true)
             {
                 alert('Upvoted!');
-                $(".main-add-class").removeClass("m--font-metal").addClass("m--font-success");
+                $(".main-add-class").addClass("m--font-success");
                 mApp.unblockPage();
                 $(this).attr('data-upvote', "false");
             } else {

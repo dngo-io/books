@@ -1,19 +1,6 @@
 //== Class definition
 var Steem = function() {
 
-    var Parser = {
-        //== Slug parser
-        slug: function (slug) {
-            var $slug   = slug.split("/");
-            var $author = $slug[0].substring(1);
-
-            return {
-                author: $author,
-                slug  : $slug[1]
-            }
-        }
-    }
-
     return {
         //== Init demos
         init: function() {
@@ -33,4 +20,5 @@ var Steem = function() {
 //== Class initialization on page load
 jQuery(document).ready(function() {
     Steem.init();
+    Steem.upvote('sadsad');
 });
