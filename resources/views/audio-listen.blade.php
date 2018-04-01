@@ -91,7 +91,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="m-portlet__body">
+                <div class="m-portlet__body post-body">
                     {!! parse_md($audio->getBody()) !!}
                     <br>
                     @foreach($audio->getTags() as $tag)

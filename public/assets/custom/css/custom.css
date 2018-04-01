@@ -75,17 +75,21 @@ body.booky-background
 a:hover.m--font-dark{color: #111111;}
 
 @media (min-width: 576px) {
+    .post-body img{max-width:100%;}
     .comment-body img{max-width:100%;}
 }
 
 @media (min-width: 768px) {
+    .post-body img{max-width:100%;}
     .comment-body img{max-width:75%;}
 }
 
 @media (min-width: 992px) {
+    .post-body img{max-width:100%;}
     .comment-body img{max-width:60%;}
 }
 
 @media (min-width: 1200px) {
+    .post-body img{max-width:100%;}
     .comment-body img{max-width:50%;}
 }
