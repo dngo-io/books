@@ -64,14 +64,19 @@ class ListenController extends AppController
                 $result['body'] = NULL;
 
                 if( NULL !== $bookAudio->getSteemSlug()) {
-                    $steem     = new SteemAPI();
+                    $steem   = new SteemAPI();
+                    $author  = $bookAudio->getUser()->getAccount();
 
-                    $slug = explode('/',$bookAudio->getSteemSlug());
-                    $slug = end($slug);
-                    $replies   = $steem->getPost()->getContentAllReplies($bookAudio->getUser()->getAccount(), $slug);
-                    $result    = [
-                        'body'    => $steem->getPost()->getContent($bookAudio->getUser()->getAccount(), $slug),
+                    $slug    = explode('/',$bookAudio->getSteemSlug());
+                    $slug    = end($slug);
+
+                    $body    = $steem->getPost()->getContent(  $author, $slug);
+                    $votes   = $steem->getPost()->getVotes(  $author, $slug);
+                    $replies = $steem->getPost()->getContentAllReplies(  $author, $slug);
+                    $result  = [
+                        'body'    => $body,
                         'replies' => $replies,
+                        'votes'   => $votes,
                     ];
 
                     Cache::put("book_audio_{$id}", $result, config('cache.expire'));
