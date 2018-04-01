@@ -128,8 +128,6 @@ class UserRepository extends AppEntityRepository implements UserRepositoryContra
             $qb->setParameter('username', "%$account%");
         }
 
-        dd($qb->getQuery());
-
         $result = $qb->getQuery()->useQueryCache(true);
 
         return $this->paginate($result, $perPage, $pageName);
