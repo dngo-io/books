@@ -24,7 +24,7 @@
         {
             var $slug = $(this).data('slug');
             mApp.blockPage();
-            if(Steem.upvote($slug) == true)
+            if(Steem.upvote($slug).success == true)
             {
                 alert('Upvoted!');
                 $(".main-add-class").addClass("m--font-success");
