@@ -70,9 +70,9 @@ class ListenController extends AppController
                     $slug    = explode('/',$bookAudio->getSteemSlug());
                     $slug    = end($slug);
 
-                    $body    = $steem->getPost()->getContent(  $author, $slug);
-                    $votes   = $steem->getPost()->getVotes(  $author, $slug);
-                    $replies = $steem->getPost()->getContentAllReplies(  $author, $slug);
+                    $body    = $steem->getPost()->getContent($author, $slug);
+                    $votes   = $steem->getPost()->getVotes($author, $slug);
+                    $replies = $steem->getPost()->getContentAllReplies($author, $slug);
                     $result  = [
                         'body'    => $body,
                         'replies' => $replies,
