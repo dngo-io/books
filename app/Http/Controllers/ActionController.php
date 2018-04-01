@@ -110,6 +110,11 @@ class ActionController extends AppController
             $account = $user->getAccount();
             $token   = $user->getAccessToken();
 
+            if(starts_with($author, '@'))
+            {
+                $author = substr($author,1, strlen($author));
+            }
+
             $upvote = $steem->setToken($token)->exec(
                 'vote',
                 [
