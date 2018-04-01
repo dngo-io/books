@@ -22,9 +22,9 @@
     $(".post-upvote").click(function () {
         if($(this).attr('data-upvote') == "true")
         {
+            var $slug = $(this).data('slug');
             mApp.blockPage();
-            var vote = Steem.upvote($(this).data('slug'));
-            if(vote == true)
+            if(Steem.upvote($slug) == true)
             {
                 alert('Upvoted!');
                 $(".main-add-class").addClass("m--font-success");
