@@ -58,7 +58,9 @@ class UserController extends AppController
         /** @var UserRepository $userRepository */
         $userRepository = $this->entityManager->getRepository(User::class);
 
-        $users = $userRepository->userList();
+        $search = $request->get('account') ? $request->get('account') : '';
+
+        $users  = $userRepository->userList($search);
 
         return view('users',
             [

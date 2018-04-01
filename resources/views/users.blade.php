@@ -8,12 +8,19 @@
                     <div class="m-portlet__head">
                         <div class="m-portlet__head-caption">
                             <div class="m-portlet__head-title">
-                            <span class="m-portlet__head-icon m--hide">
-                                <i class="la la-gear"></i>
-                            </span>
+                                <span class="m-portlet__head-icon m--hide">
+                                    <i class="la la-gear"></i>
+                                </span>
                                 <h3 class="m-portlet__head-text">
                                     Contributors
                                 </h3>
+                            </div>
+                        </div>
+                        <div class="m-portlet__head-tools">
+                            <div class="col-xs-12 col-md-6 col-lg-4 pull-right">
+                                <form action="{{ url("/contributors") }}" method="GET">
+                                    <input name="account" class="form-control m-input m-input--air m-input--pill" placeholder="Search..." type="text">
+                                </form>
                             </div>
                         </div>
                     </div>

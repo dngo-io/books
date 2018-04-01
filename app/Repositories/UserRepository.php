@@ -111,13 +111,24 @@ class UserRepository extends AppEntityRepository implements UserRepositoryContra
     }
 
     /**
-     * @param int $perPage
-     * @param string $pageName
+     * User list
+     *
+     * @param string $account  Filter by account name
+     * @param int    $perPage  Show per page
+     * @param string $pageName Page index
      * @return \Illuminate\Pagination\LengthAwarePaginator
      */
-    public function userList($perPage = 10, $pageName = 'page')
+    public function userList(string $account = '', int $perPage = 10, string $pageName = 'page')
     {
         $qb = $this->createQueryBuilder('u');
+
+        if($account)
+        {
+            $qb->where('u.account LIKE :username');
+            $qb->setParameter('username', "%$account%");
+        }
+
+        dd($qb->getQuery());
 
         $result = $qb->getQuery()->useQueryCache(true);
 
