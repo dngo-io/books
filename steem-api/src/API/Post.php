@@ -26,6 +26,25 @@ class Post extends Query
     }
 
     /**
+     * Get votes
+     *
+     * @param string $author    Author's account name
+     * @param string $permalink Post's permalink
+     * @return array
+     */
+    public function getVotes(string $author, string $permalink)
+    {
+        $request = self::getContent($author, $permalink);
+
+        if(isset($request['active_votes']) && is_array($request['active_votes']))
+        {
+            return $request['active_votes'];
+        }
+
+        return [];
+    }
+
+    /**
      * Get content replies
      *
      * @param string $author    Author's account name
