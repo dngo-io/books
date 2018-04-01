@@ -18,9 +18,25 @@
             alert('Copied!');
         });
     @endif
+
+    $(".post-upvote").click(function () {
+        if($(this).attr('data-upvote') == "true")
+        {
+            mApp.blockPage();
+            if(Steem.upvote($(this).data('slug')).success == true)
+            {
+                alert('Upvoted!');
+                $(".main-add-class").removeClass("m--font-metal").addClass("m--font-success");
+                mApp.unblockPage();
+                $(this).attr('data-upvote', "false");
+            } else {
+                alert('An error occurred!');
+                mApp.unblockPage();
+            }
+        }
+    });
 @endsection
 @section("content")
-
 <div class="row">
     <div class="col-md-4 col-sm-12">
         <div class="thumbnail">
@@ -32,14 +48,29 @@
         @if ($audio->getStatus() == \App\Repositories\BookAudioRepository::STATUS_APPROVED)
         <div class="m-nav-grid mt-0 mb-3">
             <div class="m-nav-grid__row">
-                <a href="javascript: alert('You will be able to upvote here, soon!');" class="m-nav-grid__item">
-                    <i class="m-nav-grid__icon fa fa-thumbs-o-up"></i>
-                    <span class="m-nav-grid__text m--font-metal">Up Vote</span>
+                @if(is_upvoted(Auth::user(), $data['votes']))
+                <a href="javascript:;" class="m-nav-grid__item">
+                    <i class="m-nav-grid__icon fa fa-thumbs-o-up m--font-accent"></i>
+                    <span class="m-nav-grid__text m--font-metal m--font-accent">Upvote</span>
                 </a>
+                @else
+                <a href="javascript:;" class="m-nav-grid__item post-upvote" data-slug="{{ $audio->getSteemSlug() }}" data-upvote="true">
+                    <i class="m-nav-grid__icon fa fa-thumbs-o-up main-add-class"></i>
+                    <span class="m-nav-grid__text m--font-metal main-add-class">Upvote</span>
+                </a>
+                @endif
+
+                @if(is_commented(Auth::user(), $data['replies']))
+                <a href="{{ url("https://steemit.com/{$audio->getSteemSlug()}#comments") }}" class="m-nav-grid__item">
+                    <i class="m-nav-grid__icon fa fa-comment-o m--font-accent"></i>
+                    <span class="m-nav-grid__text m--font-accent">Comment</span>
+                </a>
+                @else
                 <a href="{{ url("https://steemit.com/{$audio->getSteemSlug()}#comments") }}" class="m-nav-grid__item">
                     <i class="m-nav-grid__icon fa fa-comment-o"></i>
                     <span class="m-nav-grid__text m--font-metal">Comment</span>
                 </a>
+                @endif
             </div>
             <div class="m-nav-grid__row">
                 <a href="#" class="m-nav-grid__item" data-clipboard="true" data-clipboard-target="#embed-code">
@@ -113,6 +144,16 @@
                                 Comments
                             </h3>
                         </div>
+                    </div>
+                    <div class="m-portlet__head-tools">
+                        <ul class="m-portlet__nav">
+                            <li class="m-portlet__nav-item">
+                                <i class="fa fa-comment-o"></i> {{ count_comments($data['replies']) }}
+                            </li>
+                            <li class="m-portlet__nav-item">
+                                <i class="fa fa-thumbs-o-up"></i> {{ count($data['votes']) }}
+                            </li>
+                        </ul>
                     </div>
                 </div>
                 <div class="m-portlet__body">

@@ -79,7 +79,7 @@ var Custom = function() {
                     return success(result);
                 },
                 async: false
-            });
+            }).responseJSON;
         }
     };
 }();
