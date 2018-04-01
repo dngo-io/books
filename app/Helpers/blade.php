@@ -39,8 +39,9 @@ if (! function_exists('get_steem_pp')) {
      * @param int $size
      * @return \Illuminate\Contracts\Routing\UrlGenerator|string
      */
-    function get_steem_pp(string $profileImg, int $size = 100){
-        return url('image/?size='.$size.'&src='.urlencode($profileImg));
+    function get_steem_pp(string $profileImg, int $size = 100)
+    {
+        return url("image?src={$profileImg}&size={$size}");
     }
 }
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Support\AppController;
 use Illuminate\Http\Request;
 use Intervention\Image\ImageManager as Image;
+use Illuminate\Support\Facades\Cache;
 
 /**
  * Class ImageController
@@ -38,29 +39,23 @@ class ImageController extends AppController
     /**
      * Image crop & cache
      *
-     * @return mixed
+     * @param Image $image
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
      */
-    public function crop()
+    public function crop(Image $image)
     {
-        $img = $this->image->cache(function($image) {
-            /**
-             * Get source from url
-             */
-            $src  = $this->request->get('src');
+        $src   = $this->request->get('src');
+        $size  = $this->request->get('size', 100);
+        $cache = 'img_'.md5($src).'_'.$size;
 
-            /**
-             * Get size from url
-             */
-            $size = $this->request->get('size', 100);
-            /**
-             * @var Image $image
-             */
-            return $image
-                    ->make($src)
-                    ->fit($size, $size);
+        if (Cache::has($cache)) {
+            $img = Cache::get($cache);
+        } else {
+            $img = $image->make($src)->fit($size, $size)->response('jpg');
 
-        });
+            Cache::put($cache, $img, 43200);
+        }
 
-        return response($img, 200, array('Content-Type' => 'image/jpeg'));
+        return $img;
     }
 }
