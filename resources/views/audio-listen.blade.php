@@ -48,7 +48,7 @@
         @if ($audio->getStatus() == \App\Repositories\BookAudioRepository::STATUS_APPROVED)
         <div class="m-nav-grid mt-0 mb-3">
             <div class="m-nav-grid__row">
-                @if(is_upvoted(Auth::user(), $data['votes']))
+                @if(!Auth::guest() && Auth::user() && is_upvoted(Auth::user(), $data['votes']))
                 <a href="javascript:;" class="m-nav-grid__item">
                     <i class="m-nav-grid__icon fa fa-thumbs-o-up m--font-accent"></i>
                     <span class="m-nav-grid__text m--font-metal m--font-accent">Upvote</span>
@@ -60,7 +60,7 @@
                 </a>
                 @endif
 
-                @if(is_commented(Auth::user(), $data['replies']))
+                @if(!Auth::guest() && Auth::user() && is_commented(Auth::user(), $data['replies']))
                 <a href="{{ url("https://steemit.com/{$audio->getSteemSlug()}#comments") }}" class="m-nav-grid__item">
                     <i class="m-nav-grid__icon fa fa-comment-o m--font-accent"></i>
                     <span class="m-nav-grid__text m--font-accent">Comment</span>
