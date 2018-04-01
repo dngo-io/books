@@ -41,7 +41,7 @@ if (! function_exists('get_steem_pp')) {
      */
     function get_steem_pp(string $profileImg, int $size = 100)
     {
-        return url("image?src={$profileImg}&size={$size}");
+        return url("image?src=".urlencode(sprintf("https://steemitimages.com/0x0/%s",$profileImg))."&size={$size}");
     }
 }
 

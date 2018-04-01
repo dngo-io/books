@@ -51,7 +51,7 @@ class ImageController extends AppController
         if (Cache::has($cache)) {
             $img = Cache::get($cache);
         } else {
-            $img = $image->make($src)->fit($size, $size)->response('jpg');
+            $img = $image->make($src)->fit($size, $size)->response('png');
 
             Cache::put($cache, $img, 43200);
         }
