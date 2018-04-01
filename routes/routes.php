@@ -45,6 +45,9 @@ Route::prefix('action')->group(function () {
     Route::get('book', 'ActionController@book');
     Route::get('audio-tags', 'ActionController@audioTags');
     Route::get('topbar', 'ActionController@topbar');
+
+    Route::get('upvote/{author}/{permlink}/{weight}', 'ActionController@upvote');
+
 });
 
 Route::get('contributors','UserController@user_list');

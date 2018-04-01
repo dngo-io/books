@@ -5,12 +5,12 @@ namespace App\Http\Controllers;
 use App\Entities\Book;
 use App\Entities\BookAudio;
 use App\Entities\User;
-use App\Repositories\BookAudioRepository;
 use App\Repositories\BookRepository;
 use App\Repositories\UserRepository;
 use App\Support\AppController;
 use Doctrine\ORM\EntityManagerInterface;
 use Illuminate\Http\Request;
+use Steem\Steemit;
 
 
 class ActionController extends AppController
@@ -91,5 +91,46 @@ class ActionController extends AppController
             'books' => $books,
             'users' => $users,
         ]);
+    }
+
+    /**
+     * Upvote a content
+     *
+     * @param string  $author   Owner of the post, you will be upvoted
+     * @param string  $permlink Post permalink to identify the post
+     * @param int     $weight   Weight of upvote, up to 100%
+     * @param Steemit $steem    Steem Connect v2 API wrapper to proceed upvote operation
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
+     */
+    public function upvote(string $author, string $permlink, int $weight, Steemit $steem)
+    {
+        if(\Auth::check())
+        {
+            $user    = \Auth::user();
+            $account = $user->getAccount();
+            $token   = $user->getAccessToken();
+
+            $upvote = $steem->setToken($token)->exec(
+                'vote',
+                [
+                    $account,
+                    $author,
+                    $permlink,
+                    $weight * 100
+                ]
+            );
+
+            $response = [
+                'success' => true,
+                'data'    => $upvote,
+            ];
+        } else {
+            $response = [
+                'success' => false,
+                'data'    => [],
+            ];
+        }
+
+        return response($response);
     }
 }
