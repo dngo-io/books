@@ -46,15 +46,14 @@ if (! function_exists('reputation')) {
     }
 }
 
-if (! function_exists('author')) {
+if (! function_exists('source_to_account')) {
     /**
-     * Display author's name with @
+     * Get account name from the source
      *
      * @param array|object $author
-     * @param bool $reputation
      * @return string
      */
-    function author($author, bool $reputation = true)
+    function source_to_account($author)
     {
         $return = '';
 
@@ -74,6 +73,22 @@ if (! function_exists('author')) {
             $return = $author->getAccount();
         }
 
+        return $return;
+    }
+}
+
+if (! function_exists('author')) {
+    /**
+     * Display author's name with @
+     *
+     * @param array|object $author
+     * @param bool $reputation
+     * @return string
+     */
+    function author($author, bool $reputation = true)
+    {
+        $return = source_to_account($author);
+
         $return = "@{$return}";
 
         $rep    = reputation($author);
@@ -91,7 +106,7 @@ if (! function_exists('payout')) {
     /**
      * Display payout,
      *
-     * @param string $payout
+     * @param  string $payout
      * @return string
      */
     function payout($payout)
@@ -143,6 +158,65 @@ if (! function_exists('member_since')) {
         $created = array_get($account, 'created');
 
         return format_date($created);
+    }
+}
+
+if (! function_exists('is_upvoted')) {
+    /**
+     * Checks if the user liked the post
+     *
+     * @param array|object $account Account object or array
+     * @param array        $votes   active_votes array
+     * @return bool
+     */
+    function is_upvoted($account, $votes)
+    {
+        $account = source_to_account($account);
+
+        if(is_array($votes))
+        {
+            foreach ($votes as $vote)
+            {
+                if(array_get($vote, 'voter') == $account)
+                {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+}
+
+if (! function_exists('is_commented')) {
+    /**
+     * Checks if the user commented to the post
+     *
+     * @param array|object $account  Account object or array
+     * @param array        $comments Comment array
+     * @return bool
+     */
+    function is_commented($account, $comments)
+    {
+        $_account = source_to_account($account);
+
+        if(is_array($comments))
+        {
+            foreach ($comments as $comment)
+            {
+                if(array_get($comment, 'author') == $_account)
+                {
+                    return true;
+                }
+
+                if(is_commented($account, $comment) === true)
+                {
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 }
 
