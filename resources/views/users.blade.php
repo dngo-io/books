@@ -19,7 +19,7 @@
                         <div class="m-portlet__head-tools">
                             <div class="col-xs-12 col-md-6 col-lg-4 pull-right">
                                 <form action="{{ url("/contributors") }}" method="GET">
-                                    <input name="account" class="form-control m-input m-input--air m-input--pill" placeholder="Search..." type="text">
+                                    <input name="account" class="form-control m-input m-input--air m-input--pill" placeholder="Search..." value="{{ $search }}" type="text">
                                 </form>
                             </div>
                         </div>

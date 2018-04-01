@@ -67,6 +67,7 @@ class UserController extends AppController
                 'paginate'   => $users->appends($request->except('page')),
                 'users'      => $users->getCollection(),
                 'total'      => $users->total(),
+                'search'     => $search,
             ]
         );
     }
