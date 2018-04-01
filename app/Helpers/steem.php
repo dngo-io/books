@@ -220,3 +220,28 @@ if (! function_exists('is_commented')) {
     }
 }
 
+
+if (! function_exists('count_comments')) {
+    /**
+     * Get total number of the post
+     *
+     * @param array $comments Comment array
+     * @return int
+     */
+    function count_comments($comments)
+    {
+        $total = 0;
+
+        if(is_array($comments))
+        {
+            foreach ($comments as $comment)
+            {
+                $total++;
+                $total += count_comments($comment['replies']);
+            }
+        }
+
+        return $total;
+    }
+}
+
