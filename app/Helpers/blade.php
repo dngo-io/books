@@ -30,7 +30,7 @@ if (! function_exists('parse_md')) {
 }
 
 
-if (! function_exists('parse_md')) {
+if (! function_exists('markdown')) {
     /**
      * Parse markdown content
      *
