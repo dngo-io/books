@@ -47,7 +47,7 @@
                                             </footer>
                                         </blockquote>
 
-                                            {{ str_limit($item->getBody(), 200, '...') }}
+                                            {{ str_limit(strip_tags($item->getBody()), 200, '...') }}
                                     </span>
                                         <div class="m-widget5__info">
                                             <span class="m-widget5__author">
