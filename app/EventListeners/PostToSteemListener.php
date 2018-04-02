@@ -109,6 +109,8 @@ class PostToSteemListener
      */
     public function log($response,$request, $type, EntityManager $em,$post = null)
     {
+        $response = $response ? $response : [];
+
         $log = new SteemLogs();
         $log->setRequest($request);
         $log->setResponse($response);
