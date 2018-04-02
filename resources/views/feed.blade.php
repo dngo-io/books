@@ -46,7 +46,6 @@
                                                 </cite>
                                             </footer>
                                         </blockquote>
-
                                             {{ str_limit(strip_tags(markdown($item->getBody())), 200, '...') }}
                                     </span>
                                         <div class="m-widget5__info">
