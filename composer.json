@@ -22,6 +22,7 @@
     },
     "require": {
         "php": ">=7",
+        "andreasindal/laravel-markdown": "1.1",
         "beberlei/assert": "~2.7",
         "eloquent/enumeration": "~5.1",
         "erusev/parsedown": "^1.7",
@@ -34,7 +35,6 @@
         "laravel/framework": "~5.4",
         "laravelcollective/html": "~5.4",
         "league/flysystem-aws-s3-v3": "^1.0",
-        "michelf/php-markdown": "^1.8",
         "predis/predis": "~1.1",
         "socialiteproviders/steem": "^1.0",
         "somnambulist/laravel-doctrine-behaviours": "~0.5",

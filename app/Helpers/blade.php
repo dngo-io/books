@@ -30,20 +30,6 @@ if (! function_exists('parse_md')) {
 }
 
 
-if (! function_exists('markdown')) {
-    /**
-     * Parse markdown content
-     *
-     * @param $content
-     * @return string
-     */
-    function markdown($content)
-    {
-        return \Michelf\Markdown::defaultTransform($content);
-    }
-}
-
-
 if (! function_exists('get_steem_pp')) {
     /**
      * Gets and fits Steemit profile picture
