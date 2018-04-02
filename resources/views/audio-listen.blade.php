@@ -124,7 +124,7 @@
                     </div>
                 </div>
                 <div class="m-portlet__body post-body">
-                    {!! parse_md($audio->getBody()) !!}
+                    {!! markdown($audio->getBody()) !!}
                     <br>
                     @foreach($audio->getTags() as $tag)
                         <a class="btn btn-secondary m-btn m-btn--custom m-btn--label-accent" href="{{ url("https://steemit.com/trending/{$tag->getSlug()}") }}">
@@ -149,10 +149,18 @@
                     <div class="m-portlet__head-tools">
                         <ul class="m-portlet__nav">
                             <li class="m-portlet__nav-item">
+                                @if (isset($data['replies']))
                                 <i class="fa fa-comment-o"></i> {{ count_comments($data['replies']) }}
+                                @else
+                                <i class="fa fa-comment-o"></i> 0
+                                @endif
                             </li>
                             <li class="m-portlet__nav-item">
+                                @if (isset($data['votes']))
                                 <i class="fa fa-thumbs-o-up"></i> {{ count($data['votes']) }}
+                                @else
+                                <i class="fa fa-thumbs-o-up"></i> {{ count($data['votes']) }}
+                                @endif
                             </li>
                         </ul>
                     </div>
