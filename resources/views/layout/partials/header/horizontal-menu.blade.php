@@ -21,6 +21,7 @@
                 </span>
             </a>
         </li>
+        @if (!Auth::guest())
         <li class="m-menu__item m-menu__item--rel">
             <a  href="{{ url("/contributors") }}" class="m-menu__link">
                 <span class="m-menu__item-here"></span>
@@ -30,7 +31,6 @@
                 </span>
             </a>
         </li>
-        @if (!Auth::guest())
         <li class="m-menu__item m-menu__item--rel">
             <a  href="{{ url("/audio/create") }}" class="m-menu__link">
                 <span class="m-menu__item-here"></span>
@@ -52,6 +52,18 @@
             <div class="m-menu__submenu m-menu__submenu--classic m-menu__submenu--left">
                 <span class="m-menu__arrow m-menu__arrow--adjust"></span>
                 <ul class="m-menu__subnav">
+                    <li class="m-menu__item" aria-haspopup="true">
+                        <a href="{{ url("/contributors") }}" class="m-menu__link ">
+                            <i class="m-menu__link-icon fa fa-user"></i>
+                            <span class="m-menu__link-text">Contributors</span>
+                        </a>
+                    </li>
+                    <li class="m-menu__item" aria-haspopup="true">
+                        <a href="{{ asset("dngo-documents/dngo-and-dngo-books-bluepaper.pdf") }}" class="m-menu__link ">
+                            <i class="m-menu__link-icon fa fa-file m--font-accent"></i>
+                            <span class="m-menu__link-text">Bluepaper</span>
+                        </a>
+                    </li>
                     <li class="m-menu__item" aria-haspopup="true">
                         <a href="{{ asset("dngo-documents/dngo-and-dngo-books-whitepaper.pdf") }}" class="m-menu__link ">
                             <i class="m-menu__link-icon fa fa-file-o"></i>
