@@ -178,7 +178,7 @@ class AudioController extends AppController
         imagettftext($image, $font_size, $angle, $center['x'], $center['y']+110, $text_color, $font_path, $text);
 
         // Send Image to Browser
-        imagejpeg($image);
+        imagejpeg($image, null,95);
 
         // Clear Memory
         imagedestroy($image);
