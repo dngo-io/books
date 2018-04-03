@@ -73,6 +73,10 @@
                             <div class="m-timeline-1__item-body">
                                 Blockchain reading/writing and Steem Connect v2 tests completed.
                             </div>
+                            <div class="m-timeline-1__item-btn m--margin-top-25">
+                                <a href="{{ asset("dngo-documents/dngo-and-dngo-books-bluepaper.pdf") }}" class="btn btn-sm btn-outline-accent m-btn m-btn--pill m-btn--custom">Bluepaper</a>
+                                <a href="{{ asset("dngo-documents/dngo-and-dngo-books-whitepaper.pdf") }}" class="btn btn-sm btn-outline-dark m-btn m-btn--pill m-btn--custom">Whitepaper</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -91,6 +95,15 @@
                             <img src="https://maps.googleapis.com/maps/api/staticmap?center=38.4014762,27.1002453&amp;size=640x300&amp;zoom=11&amp;key=AIzaSyBMlTEcPR5QULmk9QUaS7lwUK7qtabunEI" style="" alt="">
                         </div>
                     </div>
+                    <hr>
+                    <div class="m-list-pics">
+                        <a href="{{ url("user/ikidnapmyself") }}"><img src="{{ get_steem_pp($map['ikidnapmyself']['picture'], 100) }}" title="ikidnapmyself"></a>
+                        <a href="{{ url("user/omeratagun") }}"><img src="{{ get_steem_pp($map['omeratagun']['picture'], 100) }}" title="omeratagun"></a>
+                        <a href="{{ url("user/tubi") }}"><img src="{{ get_steem_pp($map['tubi']['picture'], 100) }}" title="tubi"></a>
+                    </div>
+                    <div class="m-timeline-1__item-body m--margin-top-15">
+                        Talking about DNGO Concept and opportunities of Steem Blockchain.
+                    </div>
                 </div>
             </div>
             <div class="m-timeline-1__item m-timeline-1__item--right">
@@ -99,7 +112,7 @@
                 <span class="m-timeline-1__item-time m--font-brand">March 2018</span>
                 <div class="m-timeline-1__item-content">
                     <div class="m-timeline-1__item-title">
-                        Dngo Team is growing
+                        DNGO Team is growing
                     </div>
                     <div class="m-timeline-1__item-body">
                         <div class="m-list-pics">
@@ -130,6 +143,31 @@
             <div class="m-timeline-1__item m-timeline-1__item--right">
                 <div class="m-timeline-1__item-circle"><div class="m--bg-danger"></div></div>
                 <div class="m-timeline-1__item-arrow"></div>
+                <span class="m-timeline-1__item-time m--font-brand">March 2018</span>
+                <div class="m-timeline-1__item-content">
+                    <div class="m-timeline-1__item-title">
+                        Steemian physical meet up #2 in Izmir, TR
+                    </div>
+                    <hr>
+                    <div style="height:170px;">
+                        <div style="height:100%;overflow:hidden;display:block;background: url(https://maps.googleapis.com/maps/api/staticmap?center=48.858271,2.294264&amp;size=640x300&amp;zoom=5&amp;key=AIzaSyBMlTEcPR5QULmk9QUaS7lwUK7qtabunEI) no-repeat 50% 50%;">
+                            <img src="https://maps.googleapis.com/maps/api/staticmap?center=38.4014762,27.1002453&amp;size=640x300&amp;zoom=11&amp;key=AIzaSyBMlTEcPR5QULmk9QUaS7lwUK7qtabunEI" style="" alt="">
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="m-list-pics">
+                        <a href="{{ url("user/ikidnapmyself") }}"><img src="{{ get_steem_pp($map['ikidnapmyself']['picture'], 100) }}" title="ikidnapmyself"></a>
+                        <a href="{{ url("user/meskoze") }}"><img src="{{ get_steem_pp($map['meskoze']['picture'], 100) }}" title="meskoze"></a>
+                        <a href="{{ url("user/omeratagun") }}"><img src="{{ get_steem_pp($map['omeratagun']['picture'], 100) }}" title="omeratagun"></a>
+                    </div>
+                    <div class="m-timeline-1__item-body m--margin-top-15">
+                        Recheck of the project before multilingual public release.
+                    </div>
+                </div>
+            </div>
+            <div class="m-timeline-1__item m-timeline-1__item--left">
+                <div class="m-timeline-1__item-circle"><div class="m--bg-danger"></div></div>
+                <div class="m-timeline-1__item-arrow"></div>
                 <span class="m-timeline-1__item-time m--font-brand">April 2018</span>
                 <div class="m-timeline-1__item-content">
                     <div class="m-timeline-1__item-title">
@@ -140,7 +178,7 @@
                     </div>
                 </div>
             </div>
-            <div class="m-timeline-1__item m-timeline-1__item--left m--margin-top-10">
+            <div class="m-timeline-1__item m-timeline-1__item--right">
                 <div class="m-timeline-1__item-circle"><div class="m--bg-danger"></div></div>
                 <div class="m-timeline-1__item-arrow"></div>
                 <span class="m-timeline-1__item-time m--font-brand">April 2018</span>
@@ -150,6 +188,62 @@
                     </div>
                     <div class="m-timeline-1__item-body m--margin-top-20">
                         Project announcements from different channels and all users starting to contribute.
+                    </div>
+                </div>
+            </div>
+            <div class="m-timeline-1__item m-timeline-1__item--left">
+                <div class="m-timeline-1__item-circle"><div class="m--bg-danger"></div></div>
+                <div class="m-timeline-1__item-arrow"></div>
+                <span class="m-timeline-1__item-time m--font-brand">Q2 2018</span>
+                <div class="m-timeline-1__item-content">
+                    <div class="m-timeline-1__item-title">
+                        What is next?
+                    </div>
+                    <div class="m-timeline-1__item-body m--margin-top-20">
+                        <div class="m-list-timeline">
+                            <div class="m-list-timeline__items">
+                                <div class="m-list-timeline__item">
+                                    <span class="m-list-timeline__badge"></span>
+                                    <span class="m-list-timeline__text">Advisory Board Building</span>
+                                </div>
+                                <div class="m-list-timeline__item">
+                                    <span class="m-list-timeline__badge"></span>
+                                    <span class="m-list-timeline__text">Crowd Funding for Steem Power Delegations</span>
+                                </div>
+                                <div class="m-list-timeline__item">
+                                    <span class="m-list-timeline__badge"></span>
+                                    <span class="m-list-timeline__text">Including New Team Members</span>
+                                </div>
+                                <div class="m-list-timeline__item">
+                                    <span class="m-list-timeline__badge"></span>
+                                    <span class="m-list-timeline__text">Starting DNGO Community Fund Account</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="m-timeline-1__item m-timeline-1__item--right">
+                <div class="m-timeline-1__item-circle"><div class="m--bg-danger"></div></div>
+                <div class="m-timeline-1__item-arrow"></div>
+                <span class="m-timeline-1__item-time m--font-brand">Q3 2018</span>
+                <div class="m-timeline-1__item-content">
+                    <div class="m-timeline-1__item-title">
+                        And then!
+                    </div>
+                    <div class="m-timeline-1__item-body m--margin-top-20">
+                        <div class="m-list-timeline">
+                            <div class="m-list-timeline__items">
+                                <div class="m-list-timeline__item">
+                                    <span class="m-list-timeline__badge"></span>
+                                    <span class="m-list-timeline__text">Multi-language User Interface</span>
+                                </div>
+                                <div class="m-list-timeline__item">
+                                    <span class="m-list-timeline__badge"></span>
+                                    <span class="m-list-timeline__text">Introducing DNGO Books Project to NGOs Located in Germany, USA and Turkey</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
