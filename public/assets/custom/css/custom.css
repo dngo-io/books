@@ -96,3 +96,10 @@ a:hover.m--font-dark{color: #111111;}
 
 .shadow-light{text-shadow: #fff 0px 0px 5px;}
 .shadow-dark{text-shadow: #999 0px 0px 5px;}
+
+.m-timeline-1 .m-timeline-1__items .m-timeline-1__item.m-timeline-1__item--left .m-timeline-1__item-time {
+
+    right: auto !important;
+    left: 3.57rem;
+
+}

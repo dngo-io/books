@@ -74,8 +74,8 @@
                                 Blockchain reading/writing and Steem Connect v2 tests completed.
                             </div>
                             <div class="m-timeline-1__item-btn m--margin-top-25">
-                                <a href="{{ asset("dngo-documents/dngo-and-dngo-books-bluepaper.pdf") }}" class="btn btn-sm btn-outline-accent m-btn m-btn--pill m-btn--custom">Bluepaper</a>
-                                <a href="{{ asset("dngo-documents/dngo-and-dngo-books-whitepaper.pdf") }}" class="btn btn-sm btn-outline-dark m-btn m-btn--pill m-btn--custom">Whitepaper</a>
+                                <a href="{{ asset("dngo-documents/dngo-and-dngo-books-bluepaper.pdf") }}" class="mt-1 btn btn-sm btn-outline-accent m-btn m-btn--pill m-btn--custom">Bluepaper</a>
+                                <a href="{{ asset("dngo-documents/dngo-and-dngo-books-whitepaper.pdf") }}" class="mt-1 btn btn-sm btn-outline-dark m-btn m-btn--pill m-btn--custom">Whitepaper</a>
                             </div>
                         </div>
                     </div>
