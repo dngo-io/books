@@ -25,6 +25,9 @@
                         <div class="m-widget5">
                             @foreach($content as $item)
                                 <div class="m-widget5__item">
+                                    <div class="m-widget5__pic">
+                                        <img class="m-widget7__img" src="{{ url($item->getBook()->getCover()) }}" width="100" alt="{{ $item->getBook()->getName() }}">
+                                    </div>
                                     <div class="m-widget5__content">
                                         <h4 class="m-widget5__title">
                                             <a href="{{ url("listen/{$item->getId()}") }}" title="{{ $item->getName() }}" class="m-link">
@@ -33,12 +36,17 @@
                                         </h4>
                                         <span class="m-widget5__desc">
                                         <blockquote class="blockquote blockquote-reverse">
-                                            <p class="mb-0"><i class="fa fa-book"></i> {{ $item->getBook()->getName() }}</p>
+                                            <p class="mb-0">
+                                                <i class="fa fa-book"></i>
+                                                <a href="{{ url("book/{$item->getBook()->getId()}") }}" class="m-link m-link--dark" title="{{ $item->getBook()->getName() }}">
+                                                    {{ str_limit($item->getBook()->getName(), 80, '...') }}
+                                                </a>
+                                            </p>
                                             <footer class="blockquote-footer">By
                                                 <cite title="{{ $item->getBook()->getAuthor()->getName() }}">
-                                                    <a href="{{ url("author/{$item->getBook()->getAuthor()->getId()}") }}" class="m-link">
+                                                    <span>
                                                         {{ $item->getBook()->getAuthor()->getName() }}
-                                                    </a>
+                                                    </span>
                                                 </cite>
                                                 in
                                                 <cite title="{{ $item->getBook()->getYear() }}">
