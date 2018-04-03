@@ -100,6 +100,7 @@
                     </div>
                 </div>
                 <div class="m-portlet__body">
+                    @if(0 and count(downloadable($book->getGutenbergFiles())) > 0)
                     <div class="m-widget4">
                         @foreach(downloadable($book->getGutenbergFiles()) as $item)
                             <div class="m-widget4__item">
@@ -119,6 +120,11 @@
                             </div>
                         @endforeach
                     </div>
+                    @else
+                        <div class="m-alert m-alert--outline m-alert--outline-2x alert alert-warning" role="alert">
+                            <strong>Attention!</strong> No downloadable file available for this book.
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>
