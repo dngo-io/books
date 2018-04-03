@@ -48,6 +48,16 @@ class LoginController extends AppController
 
 
     /**
+     * Show user a warning message about EU Cookie Law and Steem Connect third party authentication redirection.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function warning()
+    {
+        return view('login');
+    }
+
+    /**
      * Redirect the user to the Steem Connect authentication page.
      *
      * @return \Illuminate\Http\Response

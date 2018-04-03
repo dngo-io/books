@@ -31,7 +31,8 @@ Route::get('/rules', 'RulesController@index');
 Route::get('/road-map', 'RoadMapController@index');
 Route::get('/about', 'AboutController@index');
 
-Route::get('/login', 'Auth\LoginController@redirectToProvider');
+Route::get('/login', 'Auth\LoginController@warning');
+Route::get('/login/redirect', 'Auth\LoginController@redirectToProvider');
 Route::get('/login/callback', 'Auth\LoginController@handleProviderCallback');
 Route::get('/logout', 'Auth\LoginController@logout');
 
