@@ -1,9 +1,11 @@
+@php $first = 0; @endphp
 <div class="m-list-search__results">
     @if((count($books) + count($users)) === 0)
         <span class="m-list-search__result-message">No record found</span>
     @else
         @if(count($books) > 0)
-            <span class="m-list-search__result-category m-list-search__result-category--first">
+            @php $first++; @endphp
+            <span class="m-list-search__result-category @php if($first === 1) echo 'm-list-search__result-category--first'; @endphp">
                 Books
             </span>
             @foreach($books as $book)
@@ -14,11 +16,12 @@
             @endforeach
         @endif
         @if(count($users) > 0)
-            <span class="m-list-search__result-category">Users</span>
+            @php $first++; @endphp
+            <span class="m-list-search__result-category @php if($first === 1) echo 'm-list-search__result-category--first'; @endphp">Users</span>
             @foreach($users as $user)
                 <a href="{{ url("/user/{$user['account']}") }}" class="m-list-search__result-item">
-                    <span class="m-list-search__result-item-pic"><img class="m--img-rounded" src="{{ asset($user['profileImage']) }}" title="{{ $user['name'] }}"/></span>
-                    <span class="m-list-search__result-item-text">{{ $user['name'] }}<br><small>{{ author($user['account']) }}</small></span>
+                    <span class="m-list-search__result-item-pic"><img class="m--img-rounded" src="{{ get_steem_pp($user['profileImage']) }}" title="{{ $user['name'] }}"/></span>
+                    <span class="m-list-search__result-item-text">{{ $user['name'] }}<br><small>{{ author($user) }}</small></span>
                 </a>
             @endforeach
         @endif
