@@ -103,3 +103,16 @@ a:hover.m--font-dark{color: #111111;}
     left: 3.57rem;
 
 }
+
+.m-link.m-link--dark {
+    color: #222222;
+}
+
+.m-link.m-link--dark:hover {
+    color: #111111
+}
+
+.m-link.m-link--dark:hover:after {
+    border-bottom: 1px solid #111111;
+    opacity: .3
+}
