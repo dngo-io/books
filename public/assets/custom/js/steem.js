@@ -20,5 +20,4 @@ var Steem = function() {
 //== Class initialization on page load
 jQuery(document).ready(function() {
     Steem.init();
-    Steem.upvote('sadsad');
 });
