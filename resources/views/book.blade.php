@@ -100,7 +100,7 @@
                     </div>
                 </div>
                 <div class="m-portlet__body">
-                    @if(0 and count(downloadable($book->getGutenbergFiles())) > 0)
+                    @if(count(downloadable($book->getGutenbergFiles())) > 0)
                     <div class="m-widget4">
                         @foreach(downloadable($book->getGutenbergFiles()) as $item)
                             <div class="m-widget4__item">
