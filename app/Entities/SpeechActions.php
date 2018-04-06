@@ -10,7 +10,7 @@ class SpeechActions
     protected $id;
 
     /** @var  Speech */
-    protected $speech;
+    protected $parent;
 
     /** @var  string */
     protected $do;
@@ -20,6 +20,9 @@ class SpeechActions
 
     /** @var  string */
     protected $error;
+
+    /** @var  int */
+    protected $sort;
 
     /**
      * @return int
@@ -32,17 +35,17 @@ class SpeechActions
     /**
      * @return Speech
      */
-    public function getSpeech()
+    public function getParent()
     {
-        return $this->speech;
+        return $this->parent;
     }
 
     /**
-     * @param Speech $speech
+     * @param Speech $parent
      */
-    public function setSpeech($speech)
+    public function setParent($parent)
     {
-        $this->speech = $speech;
+        $this->parent = $parent;
     }
 
     /**
@@ -91,6 +94,22 @@ class SpeechActions
     public function setError($error)
     {
         $this->error = $error;
+    }
+
+    /**
+     * @return int
+     */
+    public function getSort()
+    {
+        return $this->sort;
+    }
+
+    /**
+     * @param int $sort
+     */
+    public function setSort($sort)
+    {
+        $this->sort = $sort;
     }
 
 }

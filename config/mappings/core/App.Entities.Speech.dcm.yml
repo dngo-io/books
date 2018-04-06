@@ -1,0 +1,24 @@
+App\Entities\Speech:
+    type: entity
+    table: dngo_speech
+
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: auto
+            options:
+                unsigned: true
+
+    fields:
+        module:
+          type: string
+          length: 255
+
+        language:
+          type: string
+          length: 10
+
+        keywords:
+          type: string
+          length: 255
