@@ -2,6 +2,12 @@ App\Entities\Speech:
     type: entity
     table: dngo_speech
 
+    indexes:
+        idx_module_name:
+            columns: [ module ]
+        idx_language:
+            columns: [ language ]
+
     id:
         id:
             type: integer

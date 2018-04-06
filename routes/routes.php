@@ -58,6 +58,13 @@ Route::resource('category','CategoryController');
 Route::resource('audio','AudioController');
 Route::get('audio/image/{id}','AudioController@image');
 
+
+/** Api */
+Route::prefix('api')->group(function () {
+    Route::get('speech', 'Api\SpeechController@index');
+});
+
+
 // Sitemap for Google
 Route::get('sitemap', 'SitemapsController@index');
 
