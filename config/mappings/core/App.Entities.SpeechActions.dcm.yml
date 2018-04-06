@@ -1,7 +1,6 @@
 App\Entities\SpeechActions:
     type: entity
     table: dngo_speech_actions
-    repositoryClass: App\Repositories\SpeechRepository
 
     id:
         id:
@@ -18,11 +17,12 @@ App\Entities\SpeechActions:
 
         action:
           type: string
-          length: 10
+          length: 255
 
         error:
           type: string
           length: 255
+          nullable: true
 
         sort:
           type: integer
@@ -32,3 +32,4 @@ App\Entities\SpeechActions:
     manyToOne:
         parent:
           targetEntity: App\Entities\Speech
+          inversedBy: actions

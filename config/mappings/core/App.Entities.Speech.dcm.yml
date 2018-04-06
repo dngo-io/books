@@ -1,6 +1,7 @@
 App\Entities\Speech:
     type: entity
     table: dngo_speech
+    repositoryClass: App\Repositories\SpeechRepository
 
     indexes:
         idx_module_name:
@@ -28,3 +29,11 @@ App\Entities\Speech:
         keywords:
           type: string
           length: 255
+
+
+    oneToMany:
+        actions:
+          targetEntity: App\Entities\SpeechActions
+          cascade: [ 'persist' ]
+          fetch: LAZY
+          mappedBy: parent

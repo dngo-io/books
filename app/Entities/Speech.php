@@ -2,6 +2,7 @@
 
 namespace App\Entities;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Somnambulist\Doctrine\Traits\Timestampable;
 
 class Speech
@@ -20,6 +21,10 @@ class Speech
 
     /** @var  string */
     protected $keywords;
+
+    /** @var  ArrayCollection|SpeechActions[] */
+    protected $actions;
+
 
     /**
      * @return int
@@ -75,6 +80,22 @@ class Speech
     public function setKeywords($keywords)
     {
         $this->keywords = $keywords;
+    }
+
+    /**
+     * @return SpeechActions[]|ArrayCollection
+     */
+    public function getActions()
+    {
+        return $this->actions;
+    }
+
+    /**
+     * @param SpeechActions[]|ArrayCollection $actions
+     */
+    public function setActions($actions)
+    {
+        $this->actions = $actions;
     }
 
 }

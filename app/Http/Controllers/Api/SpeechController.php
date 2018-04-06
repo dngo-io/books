@@ -4,7 +4,7 @@
 namespace App\Http\Controllers\Api;
 
 
-use App\Repositories\SpeechRepository;
+use App\Entities\Speech;
 use App\Service\SpeechService;
 use App\Support\AppController;
 use Doctrine\ORM\EntityManagerInterface;
@@ -31,7 +31,7 @@ class SpeechController extends AppController
         $language = $request->get("language");
         $module = $request->get("module");
 
-        $speechRepo = $this->entityManager->getRepository(SpeechRepository::class);
+        $speechRepo = $this->entityManager->getRepository(Speech::class);
 
         $speeches = $speechRepo->findBy(["module" => $module, "language" => $language]);
 
