@@ -9,12 +9,12 @@ var Dngo = function (config, module)
         throw new Error("no config found for dngo speech api");
     }
 
-    var language = isset(config['language']) ? config['language'] : "en-GB";
+    var language = isset(config.language) ? config.language : "en-US";
 
     var recognizing = false;
-
     var recognition = new webkitSpeechRecognition();
-    recognition.continuous = true;
+
+    recognition.continuous = false;
     recognition.interimResults = true;
 
     /**
@@ -26,17 +26,13 @@ var Dngo = function (config, module)
         if (typeof(event.results) == 'undefined') {
             recognition.onend = null;
             recognition.stop();
-            upgrade();
             return;
         }
 
         //write what user said to somewhere
         for (var i = event.resultIndex; i < event.results.length; ++i) {
             if (event.results[i].isFinal) {
-                var createdText =jQuery('<input />')
-                    .attr("type", "hidden")
-                    .attr("class", "dngo-dynamic-speech")
-                    .attr("name", "dngo-dynamic-speech");
+                var createdText =jQuery('.dngo-dynamic-speech');
                 createdText.val(event.results[i][0].transcript);
             }
         }
@@ -47,16 +43,15 @@ var Dngo = function (config, module)
      * @param event
      */
     recognition.onend = function(event) {
-        var whatUserSaid = jQuery.(".dngo-dynamic-speech").val();
+        var whatUserSaid = jQuery('.dngo-dynamic-speech').val();
 
         doSomeAction(whatUserSaid, function(actions){
-
             jQuery.each(actions, function(key,value) {
                 //oku, yaradanın adıyla oku.
-                if (value['do'] == "read") {
+                if (value.do == "read") {
                     //burda selectorun tüm elementlerini al, innerText'lerini oku.
-                    jQuery(value['action']).each(function(index) {
-                        var text = jQuery(this).innerText();
+                    jQuery(value.action).each(function(index) {
+                        var text = jQuery(this).text();
                         var speech = new SpeechSynthesisUtterance(text);
                         speech.lang = language;
                         window.speechSynthesis.speak(speech);
@@ -64,13 +59,17 @@ var Dngo = function (config, module)
                 }
 
                 //log here
-                if (value['do'] == "log") {
-                    console.log(value['action']);
+                if (value.do == "log") {
+                    console.log(value.action);
                 }
 
                 //click action
-                if (value['do'] == "click") {
-                    jQuery(value['action']).click();
+                if (value.do == "click") {
+                    console.log(value.action);
+                    console.log(jQuery(value.action));
+                    setTimeout(function () {
+                        jQuery(value.action).first().trigger('click');
+                    }, 500);
                 }
             });
 
@@ -103,24 +102,48 @@ var Dngo = function (config, module)
      */
     var doSomeAction = function(iSaid,callback) {
         //here will be some special replies or actions based on module (feed, book, listen pages etc)
-        str = question.toLowerCase();
         jQuery.ajax({
-            url : SITE_URL + "/api/speech?text="+ encodeURI(question)+ "&language=" + language +"&module="+ module,
+            url : SITE_URL + "/api/speech?text="+ encodeURI(iSaid)+ "&language=" + language +"&module="+ module,
             dataType :  "json",
-            async: false,
             success: function(response){
-                callback(response.actions);
+                //response = jQuery.parseJSON(response);
+                if(response.success == true){
+                    callback(response.actions);
+                }else{
+                    var speech = new SpeechSynthesisUtterance(response.message);
+                    speech.lang = language;
+                    window.speechSynthesis.speak(speech);
+                }
+            }
+        });
+    }
+
+    this.init = function(){
+        console.log("Ready. Press Ctrl+Shift+D!");
+        // action on key up
+        jQuery(document).keyup(function(e) {
+            if(e.which == 17) {
+                isCtrl = false;
+            }
+            if(e.which == 16) {
+                isShift = false;
             }
         });
 
-
-        callback("dngo action will be here");
+        // action on key down
+        jQuery(document).keydown(function(e) {
+            if(e.which == 17) {
+                isCtrl = true;
+            }
+            if(e.which == 16) {
+                isShift = true;
+            }
+            if(e.which == 68 && isCtrl && isShift) {
+                console.log("------- catching Ctrl+Shift+D");
+                start();
+            }else{
+                stop();
+            }
+        });
     }
-
 }
-
-
-var config = {"language" : "en-GB"};
-console.log(config);
-dngo  = new Dngo(config, "feed");
-dngo.start();
