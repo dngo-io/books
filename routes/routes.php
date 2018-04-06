@@ -51,7 +51,7 @@ Route::prefix('action')->group(function () {
 
 });
 
-Route::get('contributors','UserController@user_list');
+Route::get('users','UserController@user_list');
 Route::resource('user','UserController');
 Route::resource('book','BookController');
 Route::resource('category','CategoryController');

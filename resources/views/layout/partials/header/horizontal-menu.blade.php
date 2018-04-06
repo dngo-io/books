@@ -23,11 +23,11 @@
         </li>
         @if (!Auth::guest())
         <li class="m-menu__item m-menu__item--rel">
-            <a  href="{{ url("/contributors") }}" class="m-menu__link">
+            <a  href="{{ url("/users") }}" class="m-menu__link">
                 <span class="m-menu__item-here"></span>
                 <i class="m-menu__link-icon fa fa-user"></i>
                 <span class="m-menu__link-text">
-                    Contributors
+                    Users
                 </span>
             </a>
         </li>
@@ -53,9 +53,9 @@
                 <span class="m-menu__arrow m-menu__arrow--adjust"></span>
                 <ul class="m-menu__subnav">
                     <li class="m-menu__item" aria-haspopup="true">
-                        <a href="{{ url("/contributors") }}" class="m-menu__link ">
+                        <a href="{{ url("/users") }}" class="m-menu__link ">
                             <i class="m-menu__link-icon fa fa-user"></i>
-                            <span class="m-menu__link-text">Contributors</span>
+                            <span class="m-menu__link-text">Users</span>
                         </a>
                     </li>
                     <li class="m-menu__item" aria-haspopup="true">

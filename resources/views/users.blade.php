@@ -1,5 +1,5 @@
 @extends("layout.page")
-@section("title", "Contributors")
+@section("title", "Users")
 @section("content")
     <div class="row">
         <div class="col-md-12">
@@ -11,13 +11,13 @@
                                 <i class="la la-gear"></i>
                             </span>
                             <h3 class="m-portlet__head-text">
-                                Contributors
+                                Users
                             </h3>
                         </div>
                     </div>
                     <div class="m-portlet__head-tools">
                         <div class="col-xs-12 col-md-6 col-lg-4 pull-right">
-                            <form action="{{ url("/contributors") }}" method="GET">
+                            <form action="{{ url("/users") }}" method="GET">
                                 <input name="account" class="form-control m-input m-input--air m-input--pill" placeholder="Search..." value="{{ $search }}" type="text">
                             </form>
                         </div>
