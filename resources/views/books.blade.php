@@ -11,8 +11,12 @@
         input: 'year'
     });
 
+    var config = {"language" : "en-US"};
+    console.log(config);
+    dngo  = new Dngo(config, "feed");
+    dngo.init();
 @endsection
-@section("content")
+@section("content")"
     <div class="row">
         <div class="col-md-3">
             {{ Form::open(array('method' => 'GET', 'id' => 'book-filters')) }}
@@ -91,7 +95,7 @@
                             </div>
                             <img class="card-img-top" src="{{ $book->getCover() }}" alt="{{ $book->getName() }} Cover Image">
                             <div class="card-body">
-                                <h6 class="card-title"><a href="{{ url('book') }}/{{ $book->getId() }}" class="m-link">{{ $book->getName() }}</a></h6>
+                                <h6 class="card-title read-this"><a href="{{ url('book') }}/{{ $book->getId() }}" class="m-link">{{ $book->getName() }}</a></h6>
                                 <p class="card-text">by <a href="{{ url("author/{$book->getAuthor()->getId()}") }}" class="m-link">{{ $book->getAuthor()->getName() }}</a></p>
                             </div>
                             <ul class="list-group list-group-flush">

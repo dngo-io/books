@@ -43,7 +43,7 @@ class SpeechController extends AppController
             ->resolve()
             ->getResponse();
 
-        header('content-type: application/json; charset=utf-8');
+        header('Access-Control-Allow-Origin', '*'); // ben sana ne diyim bilemedimki amk
         return new JsonResponse($response);
 
     }
