@@ -67,9 +67,8 @@ var Dngo = function (config, module)
                 if (value.do == "click") {
                     console.log(value.action);
                     console.log(jQuery(value.action));
-                    setTimeout(function () {
-                        jQuery(value.action).first().trigger('click');
-                    }, 500);
+                    window.self.location = jQuery(value.action).attr("href");
+
                 }
             });
 
@@ -82,9 +81,9 @@ var Dngo = function (config, module)
      * @param event
      */
     var start = function (event) {
-        recognition.language = config[language];
+        recognition.language = config.language;
         recognition.start();
-    }
+    };
 
     /**
      * Stops webkitSpeech
@@ -92,7 +91,7 @@ var Dngo = function (config, module)
      */
     var stop =  function (event){
         recognition.stop();
-    }
+    };
 
     /**
      * this is the function that we will use on recognition end event.
@@ -116,7 +115,7 @@ var Dngo = function (config, module)
                 }
             }
         });
-    }
+    };
 
     this.init = function(){
         console.log("Ready. Press Ctrl+Shift+D!");
