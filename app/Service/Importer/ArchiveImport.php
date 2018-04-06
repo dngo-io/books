@@ -68,6 +68,7 @@ class ArchiveImport
      */
     public function scanAndImport($limit = 0)
     {
+
         /** @var User $user */
         $user = $this->entityManager->getRepository(User::class)->findOneBy(["account" => "dngotester"]);
 
@@ -191,7 +192,7 @@ class ArchiveImport
 
                 //add categories
                 if ($value = $this->checkDataAgainstPayload($payload, 'subject')) {
-                    $book->setCategories($value);
+                    $book->setCategories(str_limit($value,255));
                 }
 
                 //add isbn
