@@ -37,6 +37,7 @@
                     </div>
                 </div>
                 <div class="m-portlet__body">
+                    @include("layout.partials.copyright-alert")
                     <div class="row">
                         <div class="col-md-3">
                             <img src="{{ $book->getCover() }}" alt="{{ $book->getName() }}" class="img-fluid img-rounded img-thumbnail">

@@ -77,6 +77,7 @@
             {{ Form::close() }}
         </div>
         <div class="col-md-9">
+            @include("layout.partials.copyright-alert")
             <nav aria-label="Search result pagination">
                 {{ $paginate->render('pagination::bootstrap-4') }}
                 Total {{ $total }} {{ str_plural('book', $total)}} found

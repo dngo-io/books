@@ -101,6 +101,7 @@
                 <form class="m-form m-form--label-align-right" action="{{ url("audio") }}" method="post" enctype="multipart/form-data" id="audio-create-form">
                     {{ csrf_field() }}
                     <div class="m-portlet__body">
+                        @include("layout.partials.copyright-alert")
                         <div class="row">
                             <div class="col-xl-10 offset-xl-1">
                                 <div class="form-group m-form__group row">
