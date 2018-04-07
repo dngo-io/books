@@ -67,6 +67,8 @@ class BookRepository extends AppEntityRepository
             $qb->groupBy('b.id');
         }
 
+        $qb->andWhere("b.cover NOT LIKE :cover")->setParameter("cover","%services/img/gutenberg&fallback=1%");
+
         /** TODO Request'den al bunu */
         $qb->orderBy("b.name");
 
