@@ -9,7 +9,7 @@ var Dngo = function (config, module)
         throw new Error("no config found for dngo speech api");
     }
 
-    var language = isset(config.language) ? config.language : "en-US";
+    var language = config.language;
 
     var recognizing = false;
     var recognition = new webkitSpeechRecognition();
@@ -67,7 +67,13 @@ var Dngo = function (config, module)
                 if (value.do == "click") {
                     console.log(value.action);
                     console.log(jQuery(value.action));
-                    window.self.location = jQuery(value.action).attr("href");
+                    if(jQuery(value.action).length > 0) {
+                        window.self.location = jQuery(value.action).attr("href");
+                    }else{
+                        var speech = new SpeechSynthesisUtterance(value.error);
+                        speech.lang = language;
+                        window.speechSynthesis.speak(speech);
+                    }
 
                 }
             });
