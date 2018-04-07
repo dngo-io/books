@@ -113,6 +113,12 @@ class BookAudioRepository extends AppEntityRepository
         $status = NULL !== $request->request->get('status') ? $request->request->get('status') : self::STATUS_APPROVED;
         $qb->setParameter('status',$status);
 
+        if($request->request->get('book'))
+        {
+            $qb->andWhere('b.id = :book');
+            $qb->setParameter('book',$request->request->get('book'));
+        }
+
         $qb->orderBy('ba.id','desc');
 
         $result = $qb->getQuery()->useQueryCache(true);

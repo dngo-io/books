@@ -129,6 +129,84 @@
                 </div>
             </div>
         </div>
+        <div class="col-md-12">
+            @if($count > 0)
+                <div class="m-portlet m--bg-secondary m-portlet--bordered-semi">
+                    <div class="m-portlet__head">
+                        <div class="m-portlet__head-caption">
+                            <div class="m-portlet__head-title">
+                            <span class="m-portlet__head-icon m--hide">
+                                <i class="la la-gear"></i>
+                            </span>
+                                <h3 class="m-portlet__head-text">
+                                    Contributions
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="m-portlet__body">
+                        <nav aria-label="Search result pagination">
+                            {{ $pagination->render('pagination::bootstrap-4') }}
+                            Total {{ $total }} {{ str_plural('contribution', $total)}} found
+                        </nav>
+                        <hr>
+                        <div class="m-widget5">
+                            @foreach($content as $item)
+                                <div class="m-widget5__item">
+                                    <div class="m-widget5__content">
+                                        <h4 class="m-widget5__title">
+                                            <a href="{{ url("listen/{$item->getId()}") }}" title="{{ $item->getName() }}" class="m-link m-link--dark">
+                                                {{ $item->getName() }}
+                                            </a>
+                                        </h4>
+                                        <span class="m-widget5__desc">
+                                            {{ str_limit(strip_tags(markdown($item->getBody())), 200, '...') }}
+                                        </span>
+                                        <div class="m-widget5__info">
+                                            <span class="m-widget5__author">
+                                                by
+                                            </span>
+                                            <span class="m-widget5__info-author-name">
+                                                <a href="{{ url("user/{$item->getUser()->getAccount()}") }}" class="m-link m-link--dark">
+                                                    {{ author($item->getUser()) }}
+                                                </a>
+                                            </span>
+                                            <span class="m-widget5__info-label">
+                                                on
+                                            </span>
+                                            <span class="m-widget5__info-date">
+                                                {{ format_date($item->getCreatedAt()) }}
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="m-widget5__stats1 text-center pl-0">
+                                        <a class="m-link m-link--dark" href="{{ url("user/{$item->getUser()->getAccount()}") }}">
+                                            <span><i class="fa fa-3x fa-user"></i></span><br>
+                                            <span>User</span>
+                                        </a>
+                                    </div>
+                                    <div class="m-widget5__stats2 text-center pl-0">
+                                        <a class="m-link m-link--success" href="{{ url("listen/{$item->getId()}") }}">
+                                            <span><i class="fa fa-3x fa-play"></i></span><br>
+                                            <span>Listen</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                        <hr>
+                        <nav aria-label="Search result pagination">
+                            {{ $pagination->render('pagination::bootstrap-4') }}
+                            Total {{ $total }} {{ str_plural('contribution', $total)}} found
+                        </nav>
+                    </div>
+                </div>
+            @else
+                <div class="m-alert m-alert--outline m-alert--outline-2x alert alert-warning fade show" role="alert">
+                    <strong>Warning!</strong> No contribution found.
+                </div>
+            @endif
+        </div>
         <div class="col-md-12 d-none">
             <div class="progress mt-5" style="height: 1px">
                 <div class="progress-bar bg-success" role="progressbar" style="width: 36.36%" aria-valuenow="36.36" aria-valuemin="0" aria-valuemax="100">

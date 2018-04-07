@@ -6,20 +6,29 @@ use App\Entities\Book;
 use App\Http\Requests\StoreBook;
 use App\Service\BookService;
 use App\Support\AppController;
+use App\Repositories\BookAudioRepository;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class BookController extends AppController
 {
-
     /**
      * @var BookService
      */
     private $bookService;
 
+    /**
+     * @var BookAudioRepository
+     */
+    private $audioRepository;
+
+    /**
+     * BookController constructor
+     *
+     * @param BookService $bookService
+     */
     public function __construct(BookService $bookService)
     {
-
         $this->bookService = $bookService;
     }
 
@@ -65,17 +74,30 @@ class BookController extends AppController
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified resource
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param $id
+     * @param BookAudioRepository $audioRepository
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function show($id)
+    public function show($id, BookAudioRepository $audioRepository, Request $request)
     {
         /** @var Book $book */
         $book = $this->bookService->getBook($id);
-        if ($book) {
-            return view('book',['book' => $book]);
+        if ($book)
+        {
+            $request->request->set('book', $id);
+
+            $feed = $audioRepository->getUserFeed($request, null, 5);
+
+            return view('book',[
+                'book'       => $book,
+                'count'      => $feed->count(),
+                'total'      => $feed->total(),
+                'content'    => $feed->getCollection(),
+                'pagination' => $feed->appends($request->except('page'))
+            ]);
         }
 
         return abort(404);
