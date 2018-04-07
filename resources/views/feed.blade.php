@@ -92,7 +92,7 @@
                         <hr>
                         <nav aria-label="Search result pagination">
                             {{ $pagination->render('pagination::bootstrap-4') }}
-                            Total {{ $total }} {{ str_plural('book', $total)}} found
+                            Total {{ $total }} {{ str_plural('contribution', $total)}} found
                         </nav>
                     </div>
                 </div>
