@@ -12,7 +12,7 @@ class ImporterArchiveCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'dngo:import:archive {--limit=}';
+    protected $signature = 'dngo:import:archive {--limit=0} {--remember=0}';
 
     /**
      * The console command description.
@@ -44,11 +44,11 @@ class ImporterArchiveCommand extends Command
     public function handle()
     {
         $limit = $this->input->getOption('limit');
-        if(!$limit) $limit = 0;
+        $remember = $this->input->getOption('remember');
 
         try {
             $this->archiveImport->setBaseUrl("http://archive.org/details/gutenberg");
-            $this->archiveImport->scanAndImport($limit);
+            $this->archiveImport->scanAndImport($limit,$remember);
 
             $this->output->writeln("Finished!");
         }catch (\Exception $e) {
