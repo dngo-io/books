@@ -151,105 +151,103 @@ class ArchiveImport
         foreach ($urls as $crawl) {
             $url = sprintf("%s?output=json",$crawl->getUrl());
 
-            try {
-                $payload = file_get_contents($url);
 
-                $payload = json_decode($payload, true);
+            $payload = file_get_contents($url);
 
-                if (! $this->bookRepository->findOneBy(['isbn' => $crawl->getIdentifier()])) {
-                    //create book
-                    $book = new Book();
-                    $post = new Post();
-                    $post->setUser($user);
+            $payload = json_decode($payload, true);
 
-                    //add title
-                    if ($value = $this->checkDataAgainstPayload($payload, 'title')) {
-                        $value = str_limit($value,255,'');
-                        $book->setName($value);
-                        $post->setTitle($value);
+            if (! $this->bookRepository->findOneBy(['isbn' => $crawl->getIdentifier()])) {
+                //create book
+                $book = new Book();
+                $post = new Post();
+                $post->setUser($user);
 
-                        echo " > importing ". $value ." \n";
-                    }
+                //add title
+                if ($value = $this->checkDataAgainstPayload($payload, 'title')) {
+                    $value = str_limit($value,255,'');
+                    $book->setName($value);
+                    $post->setTitle($value);
 
-                    //add description
-                    if ($value = $this->checkDataAgainstPayload($payload, 'description')) {
-                        $book->setDescription($value);
-                    }
-
-                    //add contributor
-                    if ($value = $this->checkDataAgainstPayload($payload, 'contributor')) {
-                        $book->setCollection($value);
-                    }
-
-                    //add language
-                    if ($value = $this->checkDataAgainstPayload($payload, 'language')) {
-                        $language = substr($value, 0, 2);
-                        $book->setLanguage($language);
-                    }
-
-                    //add licence
-                    if ($value = $this->checkDataAgainstPayload($payload, 'licenseurl')) {
-                        $book->setLicence($value);
-                    }
-
-                    //add rights
-                    if ($value = $this->checkDataAgainstPayload($payload, 'rights')) {
-                        $book->setRights($value);
-                    }
-
-                    //add source
-                    if ($value = $this->checkDataAgainstPayload($payload, 'source')) {
-                        $book->setSource($value);
-                    }
-
-                    //add author
-                    if ($value = $this->checkDataAgainstPayload($payload, 'creator')) {
-                        $book->setAuthor($this->setAuthorFromSource($value));
-                    }
-
-                    //add release date
-                    if ($value = $this->checkDataAgainstPayload($payload, 'publicdate')) {
-                        $book->setReleaseDate(new Carbon($value));
-                        $book->setYear((new Carbon($value))->year);
-                    }
-
-                    //add files
-                    if ($value = $this->setFilesFromSource($payload, $crawl->getUrl())) {
-
-                        $book->setGutenbergFiles($value);
-                    }
-
-                    //add cover
-                    if (NULL !== $payload["misc"]["image"]) {
-                        $book->setCover($payload["misc"]["image"]);
-                    }
-
-                    //add categories
-                    if ($value = $this->checkDataAgainstPayload($payload, 'subject')) {
-                        $book->setCategories(str_limit($value,255));
-                    }
-
-                    //add isbn
-                    if ($value = $this->checkDataAgainstPayload($payload, 'identifier')) {
-                        $book->setIsbn($value);
-                    }
-
-                    $book->setPost($post);
-
-                    if ($this->entityValidationFactory->validate($book)) {
-                        $this->entityManager->persist($book);
-                        $this->entityManager->flush();
-                    }else{
-                        Log::debug($book->getName() . ' -Valid Değil');
-                    }
-                }else{
-                    $crawl->setStatus(Crawler::STATUS_ALREADY_IMPORTED);
-                    $this->entityManager->persist($crawl);
-                    $this->entityManager->flush();
+                    echo " > importing ". $value ." \n";
                 }
-            }catch (\ErrorException $e){
-                info($url . " not found");
+
+                //add description
+                if ($value = $this->checkDataAgainstPayload($payload, 'description')) {
+                    $book->setDescription($value);
+                }
+
+                //add contributor
+                if ($value = $this->checkDataAgainstPayload($payload, 'contributor')) {
+                    $book->setCollection($value);
+                }
+
+                //add language
+                if ($value = $this->checkDataAgainstPayload($payload, 'language')) {
+                    $language = substr($value, 0, 2);
+                    $book->setLanguage($language);
+                }
+
+                //add licence
+                if ($value = $this->checkDataAgainstPayload($payload, 'licenseurl')) {
+                    $book->setLicence($value);
+                }
+
+                //add rights
+                if ($value = $this->checkDataAgainstPayload($payload, 'rights')) {
+                    $book->setRights($value);
+                }
+
+                //add source
+                if ($value = $this->checkDataAgainstPayload($payload, 'source')) {
+                    $book->setSource($value);
+                }
+
+                //add author
+                if ($value = $this->checkDataAgainstPayload($payload, 'creator')) {
+                    $book->setAuthor($this->setAuthorFromSource($value));
+                }
+
+                //add release date
+                if ($value = $this->checkDataAgainstPayload($payload, 'publicdate')) {
+                    $book->setReleaseDate(new Carbon($value));
+                    $book->setYear((new Carbon($value))->year);
+                }
+
+                //add files
+                if ($value = $this->setFilesFromSource($payload, $crawl->getUrl())) {
+
+                    $book->setGutenbergFiles($value);
+                }
+
+                //add cover
+                if (NULL !== $payload["misc"]["image"]) {
+                    $book->setCover($payload["misc"]["image"]);
+                }
+
+                //add categories
+                if ($value = $this->checkDataAgainstPayload($payload, 'subject')) {
+                    $book->setCategories(str_limit($value,255));
+                }
+
+                //add isbn
+                if ($value = $this->checkDataAgainstPayload($payload, 'identifier')) {
+                    $book->setIsbn($value);
+                }
+
+                $book->setPost($post);
+
+                if ($this->entityValidationFactory->validate($book)) {
+                    $this->entityManager->persist($book);
+                    $this->entityManager->flush();
+                }else{
+                    Log::debug($book->getName() . ' -Valid Değil');
+                }
+            }else{
+                $crawl->setStatus(Crawler::STATUS_ALREADY_IMPORTED);
+                $this->entityManager->persist($crawl);
+                $this->entityManager->flush();
             }
+
 
 
         }
