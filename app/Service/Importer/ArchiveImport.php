@@ -61,21 +61,13 @@ class ArchiveImport
         $this->entityValidationFactory = $entityValidationFactory;
     }
 
+
     /**
      * @param int $limit
-     * @param integer $rememberPage
-     * @throws EntityNotFoundException
+     * @param int $rememberPage
      */
-    public function scanAndImport($limit = 0, int $rememberPage = 0)
+    public function scan($limit = 0, int $rememberPage = 0)
     {
-
-        /** @var User $user */
-        $user = $this->entityManager->getRepository(User::class)->findOneBy(["account" => "dngotester"]);
-
-        if(!$user){
-            throw  new EntityNotFoundException("system user not found. run php artisan dngo:create:testuser");
-        }
-
         $crawlerRepository = $this->entityManager->getRepository(Crawler::class);
 
         if ($rememberPage){
@@ -132,6 +124,24 @@ class ArchiveImport
 
         }
 
+        echo '>> Scan Done';
+
+    }
+
+
+
+    public function import()
+    {
+
+        $crawlerRepository = $this->entityManager->getRepository(Crawler::class);
+
+        /** @var User $user */
+        $user = $this->entityManager->getRepository(User::class)->findOneBy(["account" => "dngotester"]);
+
+        if(!$user){
+            throw  new EntityNotFoundException("system user not found. run php artisan dngo:create:testuser");
+        }
+
         // get url's from db and scan
         // update status on db.
         // crawler.identifier should be  book.isbn (uniq)
@@ -140,7 +150,6 @@ class ArchiveImport
         /** @var Crawler $crawl */
         foreach ($urls as $crawl) {
             $url = sprintf("%s?output=json",$crawl->getUrl());
-
 
             try {
                 $payload = file_get_contents($url);
@@ -158,6 +167,8 @@ class ArchiveImport
                         $value = str_limit($value,255,'');
                         $book->setName($value);
                         $post->setTitle($value);
+
+                        echo " > importing ". $value ." \n";
                     }
 
                     //add description
