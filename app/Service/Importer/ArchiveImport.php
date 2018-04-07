@@ -226,7 +226,7 @@ class ArchiveImport
 
                 //add categories
                 if ($value = $this->checkDataAgainstPayload($payload, 'subject')) {
-                    $book->setCategories(str_limit($value,255));
+                    $book->setCategories(str_limit($value,250));
                 }
 
                 //add isbn
