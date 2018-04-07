@@ -20,8 +20,9 @@
                     <div class="m-portlet__body">
                         <nav aria-label="Search result pagination">
                             {{ $pagination->render('pagination::bootstrap-4') }}
+                            Total {{ $total }} {{ str_plural('book', $total)}} found
                         </nav>
-
+                        <hr>
                         <div class="m-widget5">
                             @foreach($content as $item)
                                 <div class="m-widget5__item">
@@ -88,9 +89,10 @@
                                 </div>
                             @endforeach
                         </div>
-
+                        <hr>
                         <nav aria-label="Search result pagination">
                             {{ $pagination->render('pagination::bootstrap-4') }}
+                            Total {{ $total }} {{ str_plural('book', $total)}} found
                         </nav>
                     </div>
                 </div>

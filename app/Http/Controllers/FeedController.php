@@ -41,6 +41,7 @@ class FeedController extends AppController
 
         return view('feed', [
             'count'      => $feed->count(),
+            'total'      => $feed->total(),
             'content'    => $feed->getCollection(),
             'pagination' => $feed->appends($request->except('page'))
         ]);
