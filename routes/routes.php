@@ -37,6 +37,7 @@ Route::get('/login/callback', 'Auth\LoginController@handleProviderCallback');
 Route::get('/logout', 'Auth\LoginController@logout');
 
 Route::get('/home', 'HomeController@home');
+Route::get('/feed', 'FeedController@index');
 Route::get('/books', 'BooksController@index');
 
 Route::get('/image', 'ImageController@crop');

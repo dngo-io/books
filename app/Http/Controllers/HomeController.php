@@ -41,13 +41,7 @@ class HomeController extends AppController
     {
         if(\Auth::check())
         {
-            $feed = $this->audioRepository->getUserFeed($request);
-
-            return view('feed', [
-                'count'      => $feed->count(),
-                'content'    => $feed->getCollection(),
-                'pagination' => $feed->appends($request->except('page'))
-            ]);
+            return redirect('feed');
         }
         else
             return view('home');
