@@ -110,4 +110,13 @@ return [
 
     'attributes' => [],
 
+    /*
+    |--------------------------------------------------------------------------
+    | File Upload Validation
+    |--------------------------------------------------------------------------
+    |
+    */
+
+    'mimetypes'  => 'Please, check your file format. Only .mp3, .mp4(audio), .ogg and quicktime formats are supported.',
+
 ];
