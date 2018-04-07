@@ -20,7 +20,7 @@
                     <div class="m-portlet__body">
                         <nav aria-label="Search result pagination">
                             {{ $pagination->render('pagination::bootstrap-4') }}
-                            Total {{ $total }} {{ str_plural('book', $total)}} found
+                            Total {{ $total }} {{ str_plural('contribution', $total)}} found
                         </nav>
                         <hr>
                         <div class="m-widget5">
@@ -31,7 +31,7 @@
                                     </div>
                                     <div class="m-widget5__content">
                                         <h4 class="m-widget5__title">
-                                            <a href="{{ url("listen/{$item->getId()}") }}" title="{{ $item->getName() }}" class="m-link">
+                                            <a href="{{ url("listen/{$item->getId()}") }}" title="{{ $item->getName() }}" class="m-link m-link--dark">
                                                 {{ $item->getName() }}
                                             </a>
                                         </h4>
@@ -62,7 +62,7 @@
                                                 by
                                             </span>
                                             <span class="m-widget5__info-author-name">
-                                                <a href="{{ url("user/{$item->getUser()->getAccount()}") }}" class="m-link">
+                                                <a href="{{ url("user/{$item->getUser()->getAccount()}") }}" class="m-link m-link--dark">
                                                     {{ author($item->getUser()) }}
                                                 </a>
                                             </span>
@@ -75,13 +75,13 @@
                                         </div>
                                     </div>
                                     <div class="m-widget5__stats1 text-center pl-0">
-                                        <a class="m-link" href="{{ url("book/{$item->getBook()->getId()}") }}">
+                                        <a class="m-link m-link--dark" href="{{ url("book/{$item->getBook()->getId()}") }}">
                                             <span><i class="fa fa-3x fa-book"></i></span><br>
                                             <span>Book</span>
                                         </a>
                                     </div>
                                     <div class="m-widget5__stats2 text-center pl-0">
-                                        <a class="m-link" href="{{ url("listen/{$item->getId()}") }}">
+                                        <a class="m-link m-link--success" href="{{ url("listen/{$item->getId()}") }}">
                                             <span><i class="fa fa-3x fa-play"></i></span><br>
                                             <span>Listen</span>
                                         </a>
