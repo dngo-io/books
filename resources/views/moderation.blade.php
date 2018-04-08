@@ -59,7 +59,7 @@
                                 <cite id="moderation-book-author"></cite>
                             </footer>
                         </blockquote>
-                        <div class="m-scrollable" data-scrollable="true" data-max-height="300" data-scrollbar-shown="true" id="moderation-modal-body">
+                        <div id="moderation-modal-body">
                         </div>
                     </div>
                     <div id="mod-reject" class="d-none">

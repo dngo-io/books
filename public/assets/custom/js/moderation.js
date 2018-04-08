@@ -8,7 +8,6 @@ var Moderation = function() {
         });
     }
     var clickApprove = function () {
-
         $("#mod-approve-button").click(function () {
             $("#mod-readable-zone, #mod-controls").hide();
             $("#mod-approve").removeClass("d-none");
@@ -26,10 +25,19 @@ var Moderation = function() {
                 });
 
                 e.preventDefault();
+
+                $("#mod-readable-zone, #mod-controls").show();
+                if(! $("#mod-approve").hasClass("d-none"))
+                {
+                    $("#mod-approve").addClass("d-none");
+                }
+                if(! $("#mod-reject").hasClass("d-none"))
+                {
+                    $("#mod-reject").addClass("d-none");
+                }
+
                 Custom.GET($(this).data("href"), function (success) {
                     mApp.unblockPage();
-                    console.log(success.data);
-
                     Amplitude.init({
                         "songs": [
                             {
