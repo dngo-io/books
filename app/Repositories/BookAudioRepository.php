@@ -78,7 +78,7 @@ class BookAudioRepository extends AppEntityRepository
                 $qb->orderBy('b.id');
 
             if ($request->get('order_by') == self::ORDER_BY_DATE)
-                $qb->orderBy('a.createdAt');
+                $qb->orderBy('a.createdAt',"desc");
 
             if ($request->get('order_by') == self::ORDER_BY_LANGUAGE)
                 $qb->orderBy('b.language');
