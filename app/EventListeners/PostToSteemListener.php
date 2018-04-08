@@ -89,7 +89,7 @@ class PostToSteemListener
                 $response = $steem->setToken($user->getAccessToken())->exec('comment',$exec);
 
                 if(isset($response['error']) || !isset($response['result'])){
-                    $this->log($response,$exec,'comment',$em);
+                    $this->log($response,$exec,'comment',$em, $this->bookAudio);
                 }
 
             }
