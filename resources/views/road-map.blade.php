@@ -171,10 +171,10 @@
                 <span class="m-timeline-1__item-time m--font-brand">April 2018</span>
                 <div class="m-timeline-1__item-content">
                     <div class="m-timeline-1__item-title">
-                        Moderation Team Building
+                        Project announcement and open beta release
                     </div>
                     <div class="m-timeline-1__item-body m--margin-top-20">
-                        Moderators joining team to be ready for public beta.
+                        Project announcements from different channels and all users starting to contribute.
                     </div>
                 </div>
             </div>
@@ -184,10 +184,10 @@
                 <span class="m-timeline-1__item-time m--font-brand">April 2018</span>
                 <div class="m-timeline-1__item-content">
                     <div class="m-timeline-1__item-title">
-                        Project announcement and open beta release
+                        Moderation Team Building
                     </div>
                     <div class="m-timeline-1__item-body m--margin-top-20">
-                        Project announcements from different channels and all users starting to contribute.
+                        Moderators joining team to accelerate growth.
                     </div>
                 </div>
             </div>
@@ -216,7 +216,11 @@
                                 </div>
                                 <div class="m-list-timeline__item">
                                     <span class="m-list-timeline__badge"></span>
-                                    <span class="m-list-timeline__text">Starting DNGO Community Fund Account</span>
+                                    <span class="m-list-timeline__text">Starting DNGO Community Fund Account and Making Our First Donation</span>
+                                </div>
+                                <div class="m-list-timeline__item">
+                                    <span class="m-list-timeline__badge"></span>
+                                    <span class="m-list-timeline__text">Releasing Final Version of Kali and Integrating It to Our System</span>
                                 </div>
                             </div>
                         </div>
@@ -241,6 +245,10 @@
                                 <div class="m-list-timeline__item">
                                     <span class="m-list-timeline__badge"></span>
                                     <span class="m-list-timeline__text">Introducing DNGO Books Project to NGOs Located in Germany, USA and Turkey</span>
+                                </div>
+                                <div class="m-list-timeline__item">
+                                    <span class="m-list-timeline__badge"></span>
+                                    <span class="m-list-timeline__text">Becoming an Open-Source project</span>
                                 </div>
                             </div>
                         </div>
