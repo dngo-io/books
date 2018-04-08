@@ -9,9 +9,7 @@
             <h3>The Future of Social Impact</h3>
             <br>
             <p class="lead m-5">
-                We let you revoice public e-books to broadcast with your voice. Join the
-                <span class="m--font-accent">community</span>, do a <span class="m--font-accent">favour</span>,
-                get <span class="m--font-accent">paid!</span>
+                Join Us! Together we create world’s <span class="m--font-accent">first blockhcain-based</span> auidobooks archive.
             </p>
             <hr class="mt-5">
             <a class="mt-3 btn m-btn--pill m-btn--air btn-info btn-lg m-btn m-btn--custom" href="{{ asset("dngo-documents/dngo-and-dngo-books-bluepaper.pdf") }}">Bluepaper</a>
