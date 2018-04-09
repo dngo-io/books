@@ -166,7 +166,7 @@
                     </div>
                 </div>
                 <div class="m-portlet__body">
-                    @if(isset($data['replies']))
+                    @if(isset($data['replies']) && is_array($data['replies']))
                         @each("layout.partials.comments", $data['replies'], 'reply', "layout.partials.comments-none")
                     @else
                         @include("layout.partials.comments-none")
