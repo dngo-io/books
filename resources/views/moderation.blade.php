@@ -268,41 +268,43 @@
                                 </div>
                                 <div class="fc-view fc-listWeek-view fc-list-view fc-widget-content">
                                     <div class="fc-scroller">
-                                        <table class="fc-list-table ">
-                                            <tbody>
-                                            @foreach($content as $post)
-                                                <tr class="fc-list-heading">
-                                                    <td class="fc-widget-header" colspan="4">
-                                                        {{ $post->getBook()->getName() }} <a class="fc-list-heading-alt">{{ $post->getBook()->getAuthor()->getName() }}</a>
-                                                    </td>
-                                                </tr>
-                                                <tr class="fc-list-item m-fc-event--{{ $status[$post->getStatus()]['color'] }}">
-                                                    <td class="fc-list-item-time fc-widget-content">
-                                                    @if($post->getStatus() == \App\Repositories\BookAudioRepository::STATUS_PENDING)
-                                                        <a href="#" data-href="{{ url("moderation/audio/{$post->getId()}") }}" data-toggle="modal" data-target="#mod-modal" class="btn btn-accent m-btn m-btn--uppercase mod-check">
-                                                            <i class="fa fa-search"></i>
-                                                        </a>
-                                                    @else
-                                                        <a class="btn btn-secondary m-btn m-btn--uppercase mod-check">
-                                                            <i class="fa fa-ban"></i>
-                                                        </a>
-                                                    @endif
-                                                    </td>
-                                                    <td class="fc-list-item-marker fc-widget-content align-middle">
+                                        <div class="table-responsive">
+                                            <table class="fc-list-table">
+                                                <tbody>
+                                                @foreach($content as $post)
+                                                    <tr class="fc-list-heading">
+                                                        <td class="fc-widget-header" colspan="4">
+                                                            {{ $post->getBook()->getName() }} <a class="fc-list-heading-alt">{{ $post->getBook()->getAuthor()->getName() }}</a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="fc-list-item m-fc-event--{{ $status[$post->getStatus()]['color'] }}">
+                                                        <td class="fc-list-item-time fc-widget-content align-middle">
+                                                            @if($post->getStatus() == \App\Repositories\BookAudioRepository::STATUS_PENDING)
+                                                                <a href="#" data-href="{{ url("moderation/audio/{$post->getId()}") }}" data-toggle="modal" data-target="#mod-modal" class="btn btn-accent m-btn m-btn--uppercase mod-check">
+                                                                    <i class="fa fa-search"></i>
+                                                                </a>
+                                                            @else
+                                                                <a class="btn btn-secondary m-btn m-btn--uppercase mod-check">
+                                                                    <i class="fa fa-ban"></i>
+                                                                </a>
+                                                            @endif
+                                                        </td>
+                                                        <td class="fc-list-item-marker fc-widget-content align-middle">
                                                         <span data-toggle="m-tooltip" data-placement="top" data-original-title="{{ config("app.languages.{$post->getBook()->getLanguage()}") }}">
                                                             <img src="{{ asset("assets/custom/img/flags/{$post->getBook()->getLanguage()}.png") }}" width="50" alt="{{ config("app.languages.{$post->getBook()->getLanguage()}") }}">
                                                         </span>
-                                                    </td>
-                                                    <td class="fc-list-item-marker fc-widget-content align-middle">
-                                                        <span class="fc-event-dot" data-toggle="m-tooltip" data-placement="top" data-original-title="{{ $status[$post->getStatus()]['text'] }}"></span>
-                                                    </td>
-                                                    <td class="fc-list-item-title fc-widget-content">Chapter #{{ $post->getChapter() }} | <a class="m-link" href="{{ url("listen/{$post->getId()}") }}">{{ $post->getName() }}</a>
-                                                        <div class="fc-description">By <strong>{{ '@'.$post->getUser()->getAccount() }}</strong>, on {{ format_date($post->getCreatedAt()) }}</div>
-                                                    </td>
-                                                </tr>
-                                            @endforeach
-                                            </tbody>
-                                        </table>
+                                                        </td>
+                                                        <td class="fc-list-item-marker fc-widget-content align-middle">
+                                                            <span class="fc-event-dot" data-toggle="m-tooltip" data-placement="top" data-original-title="{{ $status[$post->getStatus()]['text'] }}"></span>
+                                                        </td>
+                                                        <td class="fc-list-item-title fc-widget-content">Chapter #{{ $post->getChapter() }} | <a class="m-link" href="{{ url("listen/{$post->getId()}") }}">{{ $post->getName() }}</a>
+                                                            <div class="fc-description">By <strong>{{ '@'.$post->getUser()->getAccount() }}</strong>, on {{ format_date($post->getCreatedAt()) }}</div>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
