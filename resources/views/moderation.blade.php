@@ -296,7 +296,7 @@
                                                     <td class="fc-list-item-marker fc-widget-content align-middle">
                                                         <span class="fc-event-dot" data-toggle="m-tooltip" data-placement="top" data-original-title="{{ $status[$post->getStatus()]['text'] }}"></span>
                                                     </td>
-                                                    <td class="fc-list-item-title fc-widget-content">Chapter #{{ $post->getChapter() }} | <a class="m-link" href="https://steemit.com/">{{ $post->getName() }}</a>
+                                                    <td class="fc-list-item-title fc-widget-content">Chapter #{{ $post->getChapter() }} | <a class="m-link" href="{{ url("listen/{$post->getId()}") }}">{{ $post->getName() }}</a>
                                                         <div class="fc-description">By <strong>{{ '@'.$post->getUser()->getAccount() }}</strong>, on {{ format_date($post->getCreatedAt()) }}</div>
                                                     </td>
                                                 </tr>
