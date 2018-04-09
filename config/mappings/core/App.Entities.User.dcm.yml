@@ -40,6 +40,11 @@ App\Entities\User:
             length: 65535
             nullable: true
 
+        refreshToken:
+            type: text
+            length: 65535
+            nullable: true
+
         rememberToken:
             type: string
             length: 100

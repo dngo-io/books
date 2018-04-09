@@ -92,12 +92,14 @@ class LoginController extends AppController
             $user->setAccount($steem->nickname);
             $user->setProfileImage($avatar);
             $user->setAccessToken($steem->token);
+            $user->setRefreshToken($steem->refreshToken);
             $this->em->persist($user);
         } else {
             /** @var User $user */
             $user->setName($steem->name);
             $user->setProfileImage($avatar);
             $user->setAccessToken($steem->token);
+            $user->setRefreshToken($steem->refreshToken);
         }
 
         $this->em->flush();

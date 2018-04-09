@@ -87,6 +87,11 @@ class User implements
     /**
      * @var string
      */
+    protected $refreshToken;
+
+    /**
+     * @var string
+     */
     protected $account;
 
     /**
@@ -409,6 +414,22 @@ class User implements
     public function setAccessToken($accessToken)
     {
         $this->accessToken = $accessToken;
+    }
+
+    /**
+     * @return string $refreshToken
+     */
+    public function getRefreshToken()
+    {
+        return $this->refreshToken;
+    }
+
+    /**
+     * @param string $refreshToken
+     */
+    public function setRefreshToken($refreshToken)
+    {
+        $this->refreshToken = $refreshToken;
     }
 
     /**
