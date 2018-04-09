@@ -76,13 +76,17 @@ class Post extends Query
     {
         $request = $this->getContentReplies($author, $permalink);
 
-        foreach ($request as $key => $item)
+        if(is_array($request))
         {
-            if($item['children'] > 0)
-                $request[$key]['replies'] = $this->getContentAllReplies($item['author'], $item['permlink']);
-            else
-                $request[$key]['replies'] = [];
+            foreach ($request as $key => $item)
+            {
+                if($item['children'] > 0)
+                    $request[$key]['replies'] = $this->getContentAllReplies($item['author'], $item['permlink']);
+                else
+                    $request[$key]['replies'] = [];
+            }
         }
+
 
         return $request;
     }
