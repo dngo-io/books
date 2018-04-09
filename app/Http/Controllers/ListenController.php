@@ -53,15 +53,16 @@ class ListenController extends AppController
 
         $is_playable = $bookAudio->getStatus() == BookAudioRepository::STATUS_APPROVED || $bookAudio->getUser()->getId() == auth()->id();
 
-        $result = [];
+        $result = [
+            'body'    => null,
+            'replies' => [],
+            'votes'   => [],
+        ];
         if($bookAudio->getStatus() == BookAudioRepository::STATUS_APPROVED)
         {
             if (Cache::has("book_audio_{$id}")) {
                 $result = Cache::get("book_audio_{$id}");
             } else {
-
-                $result['replies'] = NULL;
-                $result['body'] = NULL;
 
                 if( NULL !== $bookAudio->getSteemSlug()) {
                     $steem   = new SteemAPI();
@@ -80,7 +81,7 @@ class ListenController extends AppController
                     ];
 
                     Cache::put("book_audio_{$id}", $result, config('cache.expire'));
-                }else {
+                } else {
                     return abort(500);
                 }
             }
