@@ -25,6 +25,8 @@ return [
     'rules' => env('STEEM_RULES','rules'),
     'how_to' => env('STEEM_HOW_TO',''),
 
+    'expire' => env('STEEM_EXPIRES',24), // Refreshes access token and profile in every 24 hours
+
 
     'tag' => env('STEEM_TAG','dngo-io'),
 
