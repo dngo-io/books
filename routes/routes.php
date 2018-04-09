@@ -56,7 +56,7 @@ Route::get('users','UserController@user_list');
 Route::resource('user','UserController');
 Route::resource('book','BookController');
 Route::resource('category','CategoryController');
-Route::resource('audio','AudioController');
+Route::resource('audio','AudioController')->middleware(['auth']);
 Route::get('audio/image/{id}','AudioController@image');
 
 // Sitemap for Google
