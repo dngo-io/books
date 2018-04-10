@@ -42,6 +42,64 @@ class Account extends Query
     }
 
     /**
+     * Get followers
+     *
+     * @param string $following     Account name
+     * @param string $startFollower Account name from followers for pagination
+     * @param string $followType    Follow type
+     * @param float  $limit         Size of array for pagination
+     * @return array
+     */
+    public function followers(string $following, string $startFollower = null, string $followType = null, double $limit = null)
+    {
+        $startFollower = is_null($startFollower) ? ''     : $startFollower;
+        $followType    = is_null($followType)    ? 'blog' : $followType;
+        $limit         = is_null($limit)         ? 10     : $limit;
+
+        $request = [
+            'route' => 'get_followers',
+            'query' =>
+                [
+                    'following'     => $following,
+                    'startFollower' => $startFollower,
+                    'followType'    => $followType,
+                    'limit'         => $limit,
+                ]
+        ];
+
+        return parent::call($request);
+    }
+
+    /**
+     * Get following
+     *
+     * @param string $follower      Account name
+     * @param string $startFollower Account name from followers for pagination
+     * @param string $followType    Follow type
+     * @param float  $limit         Size of array for pagination
+     * @return array
+     */
+    public function following(string $follower, string $startFollower = null, string $followType = null, double $limit = null)
+    {
+        $startFollower = is_null($startFollower) ? ''     : $startFollower;
+        $followType    = is_null($followType)    ? 'blog' : $followType;
+        $limit         = is_null($limit)         ? 10     : $limit;
+
+        $request = [
+            'route' => 'get_following',
+            'query' =>
+                [
+                    'follower'      => $follower,
+                    'startFollower' => $startFollower,
+                    'followType'    => $followType,
+                    'limit'         => $limit,
+                ]
+        ];
+
+        return parent::call($request);
+    }
+
+    /**
      * Get account count
      *
      * @return array
