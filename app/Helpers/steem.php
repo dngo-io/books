@@ -1,5 +1,90 @@
 <?php
 
+if (! function_exists('refresh_token')) {
+    /**
+     * Refresh access token by User Entity
+     *
+     * @param \App\Entities\User $user
+     * @return false|string
+     */
+    function refresh_token(\App\Entities\User $user)
+    {
+        $http = new \GuzzleHttp\Client;
+
+        try
+        {
+            $response = $http->post('https://v2.steemconnect.com/api/oauth2/token', [
+                'form_params' => [
+                    'grant_type'    => 'refresh_token',
+                    'refresh_token' => $user->getRefreshToken(),
+                    'client_id'     => config('services.steem.client_id'),
+                    'client_secret' => config('services.steem.client_secret'),
+                    'scope'         => '',
+                ],
+            ])->getBody()->getContents();
+
+            $return = json_decode($response, true);
+
+        } catch (\GuzzleHttp\Exception\ClientException $e) {
+            return false;
+        }
+
+        return (string) array_get($return, 'access_token');
+    }
+}
+
+if (! function_exists('steem_expired')) {
+    /**
+     * Checks if Steem data expired
+     *
+     * @param \App\Entities\User $user
+     * @return bool
+     */
+    function steem_expired(\App\Entities\User $user)
+    {
+        $carbon = new \Carbon\Carbon();
+        $expire = $carbon->subHour(config('steem.expire'));
+
+        return $user->getUpdatedAt()->lte($expire);
+    }
+}
+
+if (! function_exists('steem_update')) {
+    /**
+     * Update user profile
+     *
+     * @param \App\Entities\User $user
+     * @param \Laravel\Socialite\Two\User $steem
+     * @param Doctrine\ORM\EntityManager|Illuminate\Foundation\Application|mixed|null $em
+     * @return \App\Entities\User|null
+     */
+    function steem_update(\App\Entities\User $user, \Laravel\Socialite\Two\User $steem, $em = null)
+    {
+        if(is_null($em))
+        {
+            $em = app('em');
+        }
+
+        /** @var \App\Repositories\UserRepository $repo */
+        $repo = $em->getRepository(\App\Entities\User::class);
+        $user = $repo->findOneByAccount($user->getAccount());
+
+        $avatar = empty($steem->avatar) ? asset('assets/custom/img/profile-picture.jpg') : $steem->avatar;
+
+        $user->setName($steem->name);
+        $user->setProfileImage($avatar);
+        $user->setAccessToken($steem->token);
+        if(!empty($steem->refreshToken))
+        {
+            $user->setRefreshToken($steem->refreshToken);
+        }
+
+        $em->flush();
+
+        return $user;
+    }
+}
+
 if (! function_exists('reputation')) {
     /**
      * Calculates Steem reputation
@@ -220,7 +305,6 @@ if (! function_exists('is_commented')) {
     }
 }
 
-
 if (! function_exists('count_comments')) {
     /**
      * Get total number of the post
@@ -244,4 +328,3 @@ if (! function_exists('count_comments')) {
         return $total;
     }
 }
-
