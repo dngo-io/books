@@ -47,10 +47,10 @@ class Account extends Query
      * @param string $following     Account name
      * @param string $startFollower Account name from followers for pagination
      * @param string $followType    Follow type
-     * @param float  $limit         Size of array for pagination
+     * @param int    $limit         Size of array for pagination
      * @return array
      */
-    public function followers(string $following, string $startFollower = null, string $followType = null, double $limit = null)
+    public function followers(string $following, string $startFollower = null, string $followType = null, int $limit = null)
     {
         $startFollower = is_null($startFollower) ? ''     : $startFollower;
         $followType    = is_null($followType)    ? 'blog' : $followType;
@@ -76,10 +76,10 @@ class Account extends Query
      * @param string $follower      Account name
      * @param string $startFollower Account name from followers for pagination
      * @param string $followType    Follow type
-     * @param float  $limit         Size of array for pagination
+     * @param int    $limit         Size of array for pagination
      * @return array
      */
-    public function following(string $follower, string $startFollower = null, string $followType = null, double $limit = null)
+    public function following(string $follower, string $startFollower = null, string $followType = null, int $limit = null)
     {
         $startFollower = is_null($startFollower) ? ''     : $startFollower;
         $followType    = is_null($followType)    ? 'blog' : $followType;
