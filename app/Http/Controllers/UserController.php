@@ -24,6 +24,16 @@ class UserController extends AppController
     private $audioRepository;
 
     /**
+     * @var array
+     */
+    private $remoteData = [];
+
+    /**
+     * @var string
+     */
+    private $partial = 'feed';
+
+    /**
      * UserController constructor.
      * @param EntityManagerInterface $entityManager
      * @param BookAudioRepository $audioRepository
@@ -104,23 +114,23 @@ class UserController extends AppController
      */
     public function show($id, Request $request)
     {
-        if (Cache::has("user_{$id}")) {
-            $steem_data = Cache::get("user_{$id}");
+        if (Cache::has("user_bar_{$id}")) {
+            $user_bar = Cache::get("user_bar_{$id}");
         } else {
             $steem = new SteemAPI();
-            $steem_data  = [
+            $user_bar  = [
                 'follows' => $steem->getAccount()->followCount($id),
                 'user'    => array_get($steem->getAccount()->accounts([$id]), 0),
             ];
 
-            Cache::put("user_{$id}", $steem_data, config('cache.expire'));
+            Cache::put("user_bar_{$id}", $user_bar, config('cache.expire'));
         }
 
         /** @var UserRepository $repo */
         $repo = $this->entityManager->getRepository(User::class);
         $user = $repo->findProfileByAccount($id);
 
-        if(is_null($user))
+        if(is_null($user[0]))
         {
             abort(404);
         }
@@ -129,10 +139,12 @@ class UserController extends AppController
 
         return view('profile', [
             'user'         => $user[0],
-            'steem_data'   => $steem_data,
+            'steem_data'   => $this->remoteData,
+            'user_bar'     => $user_bar,
             'feed'         => $feed->getCollection(),
             'pagination'   => $feed->appends($request->except('page')),
-            'contribution' => $user['contribution']
+            'contribution' => $user['contribution'],
+            'partial'      => $this->partial
         ]);
     }
 
@@ -168,5 +180,53 @@ class UserController extends AppController
     public function destroy($id)
     {
         //
+    }
+
+
+    /**
+     * Display following
+     *
+     * @param string $id
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws \Doctrine\ORM\NoResultException
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
+    public function following(string $id, Request $request)
+    {
+        if (Cache::has("user_following_{$id}")) {
+            $this->remoteData = Cache::get("user_following_{$id}");
+        } else {
+            $steem = new SteemAPI();
+            $this->remoteData  = $steem->getAccount()->following($id,'','blog',50);
+
+            Cache::put("user_following_{$id}", $this->remoteData, config('cache.expire'));
+        }
+        $this->partial = 'following';
+        return $this->show($id, $request);
+    }
+
+    /**
+     * Display followers
+     *
+     * @param string $id
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws \Doctrine\ORM\NoResultException
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
+    public function followers(string $id, Request $request)
+    {
+        if (Cache::has("user_followers_{$id}")) {
+            $this->remoteData = Cache::get("user_followers_{$id}");
+        } else {
+            $steem = new SteemAPI();
+            $this->remoteData  = $steem->getAccount()->followers($id,'','blog',50);
+
+            Cache::put("user_followers_{$id}", $this->remoteData, config('cache.expire'));
+        }
+
+        $this->partial = 'followers';
+        return $this->show($id, $request);
     }
 }

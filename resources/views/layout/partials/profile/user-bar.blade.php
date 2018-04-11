@@ -11,13 +11,13 @@
             </div>
             <div class="m-card-profile__details">
                 <span class="m-card-profile__name">{{ $user->getName() }}</span>
-                <a href="{{ url("https://steemit.com/@{$user->getAccount()}") }}" class="m-card-profile__email m-link">{{ author($steem_data['user']) }}</a>
+                <a href="{{ url("https://steemit.com/@{$user->getAccount()}") }}" class="m-card-profile__email m-link">{{ author($user_bar['user']) }}</a>
             </div>
             <br>
             <div class="text-center">
-                {{ voting_power($steem_data['user']) }}%
+                {{ voting_power($user_bar['user']) }}%
                 <div class="progress m-progress--sm">
-                    <div class="progress-bar m--bg-accent" role="progressbar" style="width: {{ voting_power($steem_data['user']) }}%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="progress-bar m--bg-accent" role="progressbar" style="width: {{ voting_power($user_bar['user']) }}%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
             </div>
         </div>
@@ -33,20 +33,20 @@
                 </a>
             </li>
             <li class="m-nav__item">
-                <a href="{{ url("https://steemit.com/@{$user->getAccount()}/followed") }}" class="m-nav__link m-tabs__item">
+                <a href="{{ url("user/{$user->getAccount()}/following") }}" class="m-nav__link m-tabs__item">
                     <i class="m-nav__link-icon fa fa-arrow-left"></i>
                     <span class="m-nav__link-text">Following</span>
                     <span class="m-nav__link-badge">
-                                    <span class="m-badge m-badge--metal">{{ $steem_data['follows']['following_count'] }}</span>
+                                    <span class="m-badge m-badge--metal">{{ $user_bar['follows']['following_count'] }}</span>
                                 </span>
                 </a>
             </li>
             <li class="m-nav__item">
-                <a href="{{ url("https://steemit.com/@{$user->getAccount()}/followers") }}" class="m-nav__link m-tabs__item">
+                <a href="{{ url("user/{$user->getAccount()}/followers") }}" class="m-nav__link m-tabs__item">
                     <i class="m-nav__link-icon fa fa-arrow-right"></i>
                     <span class="m-nav__link-text">Followers</span>
                     <span class="m-nav__link-badge">
-                                    <span class="m-badge m-badge--metal">{{ $steem_data['follows']['follower_count'] }}</span>
+                                    <span class="m-badge m-badge--metal">{{ $user_bar['follows']['follower_count'] }}</span>
                                 </span>
                 </a>
             </li>

@@ -21,6 +21,18 @@ Route::middleware(['moderator'])->prefix('moderation')->group(function () {
 });
 
 
+Route::get('users','UserController@user_list');
+Route::resource('user','UserController');
+Route::prefix('user')->group(function () {
+    Route::get('/{id}/following', 'UserController@following');
+    Route::get('/{id}/followers', 'UserController@followers');
+});
+
+
+
+
+
+
 Route::prefix('listen')->group(function () {
     Route::get('/{id}', 'ListenController@index');
     Route::get('/embed/{id}', 'ListenController@embed');
@@ -52,8 +64,6 @@ Route::prefix('action')->group(function () {
 
 });
 
-Route::get('users','UserController@user_list');
-Route::resource('user','UserController');
 Route::resource('book','BookController');
 Route::resource('category','CategoryController');
 Route::resource('audio','AudioController')->middleware(['auth']);

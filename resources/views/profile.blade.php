@@ -11,13 +11,19 @@
                     <div class="m-portlet__head-caption">
                         <div class="m-portlet__head-title">
                             <h3 class="m-portlet__head-text">
-                                {{ author($steem_data['user']) }}
+                                {{ author($user_bar['user']) }}
                             </h3>
                         </div>
                     </div>
                 </div>
                 <div class="m-portlet__body">
-                    @include("layout.partials.profile.feed")
+                    @if($partial == 'feed')
+                        @include("layout.partials.profile.feed")
+                    @elseif($partial == 'followers')
+                        @include("layout.partials.profile.followers")
+                    @elseif($partial == 'following')
+                        @include("layout.partials.profile.following")
+                    @endif
                 </div>
             </div>
         </div>
