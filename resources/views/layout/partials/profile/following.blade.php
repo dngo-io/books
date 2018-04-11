@@ -15,13 +15,13 @@
                 </div>
             </div>
         @endforeach
-        @if(count($steem_data) > 50)
+        @if($user_bar['follows']['following_count'] > 50)
             <div class="text-center">
                 <a href="{{ url("https://steemit.com/".author($user_bar['user'], false)."/followed") }}" class="btn btn-success">
                     View all on Steemit
                 </a>
             </div>
-        @elseif(count($steem_data) === 0)
+        @elseif($user_bar['follows']['following_count'] === 0)
             <p class="text-center">No user found</p>
         @endif
     </div>
