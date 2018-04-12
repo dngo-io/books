@@ -4,7 +4,7 @@ if (! function_exists('refresh_token')) {
     /**
      * Refresh access token by User Entity
      *
-     * @param \App\Entities\User $user
+     * @param \App\Entities\User $user User entity
      * @return false|string
      */
     function refresh_token(\App\Entities\User $user)
@@ -37,7 +37,7 @@ if (! function_exists('steem_expired')) {
     /**
      * Checks if Steem data expired
      *
-     * @param \App\Entities\User $user
+     * @param \App\Entities\User $user User entity
      * @return bool
      */
     function steem_expired(\App\Entities\User $user)
@@ -51,12 +51,10 @@ if (! function_exists('steem_expired')) {
 
 if (! function_exists('steem_update')) {
     /**
-     * Update user profile
-     *
-     * @param \App\Entities\User $user
-     * @param \Laravel\Socialite\Two\User $steem
-     * @param Doctrine\ORM\EntityManager|Illuminate\Foundation\Application|mixed|null $em
-     * @return \App\Entities\User|null
+     * @param \App\Entities\User                                                      $user  User entity
+     * @param \Laravel\Socialite\Two\User                                             $steem The response handled by Socialite
+     * @param Doctrine\ORM\EntityManager|Illuminate\Foundation\Application|mixed|null $em    Entity manager
+     * @return \App\Entities\User
      */
     function steem_update(\App\Entities\User $user, \Laravel\Socialite\Two\User $steem, $em = null)
     {
@@ -65,19 +63,14 @@ if (! function_exists('steem_update')) {
             $em = app('em');
         }
 
-        /** @var \App\Repositories\UserRepository $repo */
-        $repo = $em->getRepository(\App\Entities\User::class);
-        $user = $repo->findOneByAccount($user->getAccount());
-
-        $avatar = empty($steem->avatar) ? asset('assets/custom/img/profile-picture.jpg') : $steem->avatar;
-
         $user->setName($steem->name);
-        $user->setProfileImage($avatar);
+        $user->setProfileImage($steem->avatar);
         $user->setAccessToken($steem->token);
-        if(!empty($steem->refreshToken))
+        if(!is_null($steem->refreshToken))
         {
             $user->setRefreshToken($steem->refreshToken);
         }
+        $user->setUpdatedAt(new \Carbon\Carbon());
 
         $em->flush();
 
