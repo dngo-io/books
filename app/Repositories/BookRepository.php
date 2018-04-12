@@ -39,6 +39,8 @@ class BookRepository extends AppEntityRepository
         if($request->get('language')){
             $qb->andWhere('b.language IN (:language)');
             $qb->setParameter('language',$request->get('language'));
+        }else{
+            $qb->andWhere('b.language IN ("tr,"en")'); // will be deleted in future
         }
 
         //set year
