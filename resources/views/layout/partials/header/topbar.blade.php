@@ -3,8 +3,7 @@
     <div class="m-stack__item m-topbar__nav-wrapper">
         <ul class="m-topbar__nav m-nav m-nav--inline">
             @if (!Auth::guest())
-            <li class="
-	m-nav__item m-nav__item--focus m-dropdown m-dropdown--large m-dropdown--arrow m-dropdown--align-center m-dropdown--mobile-full-width m-dropdown--skin-light	m-list-search m-list-search--skin-light"
+            <li class="m-nav__item m-nav__item--focus m-dropdown m-dropdown--large m-dropdown--arrow m-dropdown--align-center m-dropdown--mobile-full-width m-dropdown--skin-light	m-list-search m-list-search--skin-light"
                 data-dropdown-toggle="click" data-dropdown-persistent="true" id="topbar_quicksearch"
                 data-search-type="dropdown">
                 <a href="#" class="m-nav__link m-dropdown__toggle">
@@ -34,6 +33,56 @@
                         <div class="m-dropdown__body">
                             <div class="m-dropdown__scrollable m-scrollable" data-max-height="300" data-mobile-max-height="200">
                                 <div class="m-dropdown__content"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="m-nav__item m-nav__item--danger m-dropdown m-dropdown--skin-light m-dropdown--large m-dropdown--arrow m-dropdown--align-right m-dropdown--align-push m-dropdown--mobile-full-width m-dropdown--skin-light"
+                data-dropdown-toggle="click">
+                <a href="#" class="m-nav__link m-dropdown__toggle">
+                    <span class="m-nav__link-badge m-badge m-badge--dot m-badge--info m--hide"></span>
+                    <span class="m-nav__link-icon"><span class="m-nav__link-icon-wrapper"><i class="fa fa-bolt"></i></span></span>
+                </a>
+                <div class="m-dropdown__wrapper">
+                    <span class="m-dropdown__arrow m-dropdown__arrow--right m-dropdown__arrow--adjust"></span>
+                    <div class="m-dropdown__inner">
+                        <div class="m-dropdown__header m--align-center">
+                            <span class="m-dropdown__header-title">Delegate Us!</span>
+                            <span class="m-dropdown__header-subtitle">
+                                Help us to serve better content.
+                                <br>
+                                <a href="{{ url("https://discord.gg/Hvb8vpq") }}" class="m-link">
+                                    {{ config("app.name") }} @ Discord.
+                                </a>
+                            </span>
+                        </div>
+                        <div class="m-dropdown__body m-dropdown__body--paddingless">
+                            <div class="m-dropdown__content">
+                                <div class="m-scrollable" data-scrollable="false" data-max-height="380" data-mobile-max-height="200">
+                                    <div class="m-nav-grid m-nav-grid--skin-light">
+                                        <div class="m-nav-grid__row">
+                                            <a href="https://steemconnect.com/sign/delegateVestingShares?delegator={{ Auth::user()->getAccount() }}&amp;delegatee={{ config("steem.bot") }}&amp;vesting_shares=50%20SP" class="m-nav-grid__item">
+                                                <i class="m-nav-grid__icon fa fa-thermometer-1"></i>
+                                                <span class="m-nav-grid__text m--font-dark">50 SP</span>
+                                            </a>
+                                            <a href="https://steemconnect.com/sign/delegateVestingShares?delegator={{ Auth::user()->getAccount() }}&amp;delegatee={{ config("steem.bot") }}&amp;vesting_shares=250%20SP" class="m-nav-grid__item">
+                                                <i class="m-nav-grid__icon fa fa-thermometer-2"></i>
+                                                <span class="m-nav-grid__text m--font-dark">250 SP</span>
+                                            </a>
+                                        </div>
+                                        <div class="m-nav-grid__row">
+                                            <a href="https://steemconnect.com/sign/delegateVestingShares?delegator={{ Auth::user()->getAccount() }}&amp;delegatee={{ config("steem.bot") }}&amp;vesting_shares=1000%20SP" class="m-nav-grid__item">
+                                                <i class="m-nav-grid__icon fa fa-thermometer-3"></i>
+                                                <span class="m-nav-grid__text m--font-dark">1000 SP</span>
+                                            </a>
+                                            <a href="https://steemconnect.com/sign/delegateVestingShares?delegator={{ Auth::user()->getAccount() }}&amp;delegatee={{ config("steem.bot") }}&amp;vesting_shares=5000%20SP" class="m-nav-grid__item">
+                                                <i class="m-nav-grid__icon fa fa-thermometer-4"></i>
+                                                <span class="m-nav-grid__text m--font-dark">5000 SP</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
