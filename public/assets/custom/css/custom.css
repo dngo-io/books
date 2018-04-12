@@ -71,8 +71,8 @@ body.booky-background
 .comment-body h5{font-size: 1.150em;}
 .comment-body h6{font-size: 1.125em;}
 
-.m--font-dark{color: #333333;}
-a:hover.m--font-dark{color: #111111;}
+.m--font-dark{color: #333333 !important;}
+a:hover.m--font-dark{color: #111111 !important;}
 
 @media (min-width: 576px) {
     .post-body img{max-width:100%;}
