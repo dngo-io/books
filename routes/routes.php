@@ -26,6 +26,8 @@ Route::resource('user','UserController');
 Route::prefix('user')->group(function () {
     Route::get('/{id}/following', 'UserController@following');
     Route::get('/{id}/followers', 'UserController@followers');
+    Route::get('/{id}/pending-approval', 'UserController@pendingApproval');
+    Route::get('/{id}/rejected', 'UserController@rejected');
 });
 
 

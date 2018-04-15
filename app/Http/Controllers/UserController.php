@@ -28,6 +28,8 @@ class UserController extends AppController
      */
     private $remoteData = [];
 
+    private $feed;
+
     /**
      * @var string
      */
@@ -106,13 +108,13 @@ class UserController extends AppController
     /**
      * User's profile
      *
-     * @param $id
+     * @param string  $id
      * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      * @throws \Doctrine\ORM\NoResultException
      * @throws \Doctrine\ORM\NonUniqueResultException
      */
-    public function show($id, Request $request)
+    public function show(string $id, Request $request)
     {
         if (Cache::has("user_bar_{$id}")) {
             $user_bar = Cache::get("user_bar_{$id}");
@@ -135,6 +137,30 @@ class UserController extends AppController
             abort(404);
         }
 
+        switch ($this->partial)
+        {
+            case 'feed':
+                $title = "{$user[0]->getAccount()} - Feed";
+                break;
+            case 'pending-approval':
+                $title = "{$user[0]->getAccount()} - Pending Approval";
+                $request->request->set('status', BookAudioRepository::STATUS_PENDING);
+                break;
+            case 'rejected':
+                $title = "{$user[0]->getAccount()} - Rejected";
+                $request->request->set('status', BookAudioRepository::STATUS_REJECTED);
+                break;
+            case 'followers':
+                $title = "{$user[0]->getAccount()} - Followers";
+                break;
+            case 'following':
+                $title = "{$user[0]->getAccount()} - Following";
+                break;
+            default:
+                $title = $user[0]->getAccount();
+                break;
+        }
+
         $feed = $this->audioRepository->getUserFeed($request, $id);
 
         return view('profile', [
@@ -144,7 +170,8 @@ class UserController extends AppController
             'feed'         => $feed->getCollection(),
             'pagination'   => $feed->appends($request->except('page')),
             'contribution' => $user['contribution'],
-            'partial'      => $this->partial
+            'partial'      => $this->partial,
+            'title'        => $title
         ]);
     }
 
@@ -182,6 +209,35 @@ class UserController extends AppController
         //
     }
 
+    /**
+     * Display pending approvals on feed
+     *
+     * @param string $id
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws \Doctrine\ORM\NoResultException
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
+    public function pendingApproval(string $id, Request $request)
+    {
+        $this->partial = 'pending-approval';
+        return $this->show($id, $request);
+    }
+
+    /**
+     * Display pending approvals on feed
+     *
+     * @param string $id
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws \Doctrine\ORM\NoResultException
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
+    public function rejected(string $id, Request $request)
+    {
+        $this->partial = 'rejected';
+        return $this->show($id, $request);
+    }
 
     /**
      * Display following

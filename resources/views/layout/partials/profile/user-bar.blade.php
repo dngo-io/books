@@ -27,6 +27,12 @@
                 <span class="m-nav__section-text">Section</span>
             </li>
             <li class="m-nav__item">
+                <a href="{{ url("user/{$user->getAccount()}") }}" class="m-nav__link">
+                    <i class="m-nav__link-icon fa fa-user"></i>
+                    <span class="m-nav__link-text">Feed</span>
+                </a>
+            </li>
+            <li class="m-nav__item">
                 <a href="{{ url("https://steemit.com/@{$user->getAccount()}") }}" class="m-nav__link">
                     <i class="m-nav__link-icon fa fa-user"></i>
                     <span class="m-nav__link-text">Steemit Profile</span>
@@ -37,8 +43,8 @@
                     <i class="m-nav__link-icon fa fa-arrow-left"></i>
                     <span class="m-nav__link-text">Following</span>
                     <span class="m-nav__link-badge">
-                                    <span class="m-badge m-badge--metal">{{ $user_bar['follows']['following_count'] }}</span>
-                                </span>
+                        <span class="m-badge m-badge--metal">{{ $user_bar['follows']['following_count'] }}</span>
+                    </span>
                 </a>
             </li>
             <li class="m-nav__item">
@@ -46,8 +52,8 @@
                     <i class="m-nav__link-icon fa fa-arrow-right"></i>
                     <span class="m-nav__link-text">Followers</span>
                     <span class="m-nav__link-badge">
-                                    <span class="m-badge m-badge--metal">{{ $user_bar['follows']['follower_count'] }}</span>
-                                </span>
+                        <span class="m-badge m-badge--metal">{{ $user_bar['follows']['follower_count'] }}</span>
+                    </span>
                 </a>
             </li>
         </ul>
