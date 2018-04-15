@@ -28,8 +28,6 @@ class UserController extends AppController
      */
     private $remoteData = [];
 
-    private $feed;
-
     /**
      * @var string
      */
