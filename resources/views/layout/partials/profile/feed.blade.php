@@ -6,6 +6,9 @@
     <div class="m-widget5">
         @foreach($feed as $item)
             <div class="m-widget5__item">
+                <div class="m-widget5__pic">
+                    <img class="m-widget7__img" src="{{ url($item->getBook()->getCover()) }}" width="100" alt="{{ $item->getBook()->getName() }}">
+                </div>
                 <div class="m-widget5__content">
                     <h4 class="m-widget5__title">
                         <a href="{{ url("listen/{$item->getId()}") }}" title="{{ $item->getName() }}" class="m-link m--font-dark">
@@ -50,13 +53,13 @@
                     </div>
                 </div>
                 <div class="m-widget5__stats1 text-center pl-0">
-                    <a class="m-link" href="{{ url("book/{$item->getBook()->getId()}") }}">
+                    <a class="m-link m-link--dark" href="{{ url("book/{$item->getBook()->getId()}") }}">
                         <span><i class="fa fa-3x fa-book"></i></span><br>
                         <span>Book</span>
                     </a>
                 </div>
                 <div class="m-widget5__stats2 text-center pl-0">
-                    <a class="m-link" href="{{ url("listen/{$item->getId()}") }}">
+                    <a class="m-link m-link--success" href="{{ url("listen/{$item->getId()}") }}">
                         <span><i class="fa fa-3x fa-play"></i></span><br>
                         <span>Listen</span>
                     </a>
