@@ -2,22 +2,20 @@
 @extends("layout.page")
 @section("title", $audio->getName().' - Chapter #'.$audio->getChapter().' by '.$audio->getBook()->getAuthor()->getName())
 @section("script")
-    @if ($is_playable)
-        Amplitude.init({
-            "songs": [
-                {
-                    "name": "{{ $audio->getName() }}",
-                    "artist": "{{ $audio->getBook()->getAuthor()->getName()}}",
-                    "album": "{{ $audio->getBook()->getName() }}",
-                    "url": "{{ $data['fileSource'] }}"
-                }
-            ]
-        });
-        new Clipboard('[data-clipboard=true]').on('success', function(e) {
-            e.clearSelection();
-            alert('Copied!');
-        });
-    @endif
+    Amplitude.init({
+        "songs": [
+            {
+                "name": "{{ $audio->getName() }}",
+                "artist": "{{ $audio->getBook()->getAuthor()->getName()}}",
+                "album": "{{ $audio->getBook()->getName() }}",
+                "url": "{{ $data['fileSource'] }}"
+            }
+        ]
+    });
+    new Clipboard('[data-clipboard=true]').on('success', function(e) {
+        e.clearSelection();
+        alert('Copied!');
+    });
 
     $(".post-upvote").click(function () {
         if($(this).attr('data-upvote') == "true")
@@ -102,15 +100,13 @@
             </div>
         @endif
 
-        @if ($is_playable)
         <div class="col-md-12 col-sm-12">
             <div class="m-portlet m-portlet--bordered bg-secondary">
-            <div class="m-portlet__body">
-                @include("layout.partials.audio-player")
+                <div class="m-portlet__body">
+                    @include("layout.partials.audio-player")
+                </div>
             </div>
         </div>
-        </div>
-        @endif
 
         <div class="col-md-12 col-sm-12">
             <div class="m-portlet m-portlet--bordered">
