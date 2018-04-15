@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-md-12">
             @if($count > 0)
-                <div class="m-portlet m--bg-secondary m-portlet--bordered-semi">
+                <div class="m-portlet m-portlet--tabs">
                     <div class="m-portlet__head">
                         <div class="m-portlet__head-caption">
                             <div class="m-portlet__head-title">
@@ -15,6 +15,28 @@
                                     Feed
                                 </h3>
                             </div>
+                        </div>
+                        <div class="m-portlet__head-tools">
+                            <ul class="nav nav-tabs m-tabs m-tabs-line m-tabs-line--right">
+                                <li class="nav-item m-tabs__item">
+                                    <a class="nav-link m-tabs__link" href="{{ url("/feed") }}">
+                                        <i class="fa fa-list"></i>
+                                        Feed
+                                    </a>
+                                </li>
+                                <li class="nav-item m-tabs__item">
+                                    <a class="nav-link m-tabs__link" href="{{ url("/feed/pending-approval") }}">
+                                        <i class="fa fa-clock-o"></i>
+                                        Pending
+                                    </a>
+                                </li>
+                                <li class="nav-item m-tabs__item">
+                                    <a class="nav-link m-tabs__link" href="{{ url("/feed/rejected") }}">
+                                        <i class="fa fa-times"></i>
+                                        Rejected
+                                    </a>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                     <div class="m-portlet__body">
@@ -31,9 +53,21 @@
                                     </div>
                                     <div class="m-widget5__content">
                                         <h4 class="m-widget5__title">
+                                        @if($partial == 'feed')
                                             <a href="{{ url("listen/{$item->getId()}") }}" title="{{ $item->getName() }}" class="m-link m-link--dark">
                                                 {{ $item->getName() }}
                                             </a>
+                                        @elseif($partial == 'pending-approval')
+                                            <a href="{{ url("listen/{$item->getId()}") }}" title="{{ $item->getName() }}" class="m-link m-link--warning">
+                                                <i class="fa fa-clock-o"></i>
+                                                {{ $item->getName() }}
+                                            </a>
+                                        @elseif($partial == 'rejected')
+                                            <a href="{{ url("listen/{$item->getId()}") }}" title="{{ $item->getName() }}" class="m-link m-link--danger">
+                                                <i class="fa fa-times"></i>
+                                                {{ $item->getName() }}
+                                            </a>
+                                        @endif
                                         </h4>
                                         <span class="m-widget5__desc">
                                         <blockquote class="blockquote blockquote-reverse">
