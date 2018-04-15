@@ -298,7 +298,7 @@
                                                             <span class="fc-event-dot" data-toggle="m-tooltip" data-placement="top" data-original-title="{{ $status[$post->getStatus()]['text'] }}"></span>
                                                         </td>
                                                         <td class="fc-list-item-title fc-widget-content">Chapter #{{ $post->getChapter() }} | <a class="m-link" href="{{ url("listen/{$post->getId()}") }}">{{ $post->getName() }}</a>
-                                                            <div class="fc-description">By <strong>{{ '@'.$post->getUser()->getAccount() }}</strong>, on {{ format_date($post->getCreatedAt()) }}</div>
+                                                            <div class="fc-description">By <strong><a href="{{ url("user/{$post->getUser()->getAccount()}") }}" class="m-link">{{ '@'.$post->getUser()->getAccount() }}</a></strong>, on {{ format_date($post->getCreatedAt()) }}</div>
                                                         </td>
                                                     </tr>
                                                 @endforeach
