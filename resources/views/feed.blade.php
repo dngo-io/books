@@ -3,46 +3,46 @@
 @section("content")
     <div class="row">
         <div class="col-md-12">
-            @if($count > 0)
-                <div class="m-portlet m-portlet--tabs">
-                    <div class="m-portlet__head">
-                        <div class="m-portlet__head-caption">
-                            <div class="m-portlet__head-title">
-                            <span class="m-portlet__head-icon m--hide">
-                                <i class="la la-gear"></i>
-                            </span>
-                                <h3 class="m-portlet__head-text">
-                                    Feed
-                                </h3>
-                            </div>
-                        </div>
-                        <div class="m-portlet__head-tools">
-                            <ul class="nav nav-tabs m-tabs m-tabs-line m-tabs-line--right">
-                                <li class="nav-item m-tabs__item">
-                                    <a class="nav-link m-tabs__link" href="{{ url("/feed") }}">
-                                        <i class="fa fa-list"></i>
-                                        Feed
-                                    </a>
-                                </li>
-                                <li class="nav-item m-tabs__item">
-                                    <a class="nav-link m-tabs__link" href="{{ url("/feed/pending-approval") }}">
-                                        <i class="fa fa-clock-o"></i>
-                                        Pending
-                                    </a>
-                                </li>
-                                <li class="nav-item m-tabs__item">
-                                    <a class="nav-link m-tabs__link" href="{{ url("/feed/rejected") }}">
-                                        <i class="fa fa-times"></i>
-                                        Rejected
-                                    </a>
-                                </li>
-                            </ul>
+            <div class="m-portlet m-portlet--tabs">
+                <div class="m-portlet__head">
+                    <div class="m-portlet__head-caption">
+                        <div class="m-portlet__head-title">
+                        <span class="m-portlet__head-icon m--hide">
+                            <i class="la la-gear"></i>
+                        </span>
+                            <h3 class="m-portlet__head-text">
+                                Feed
+                            </h3>
                         </div>
                     </div>
-                    <div class="m-portlet__body">
+                    <div class="m-portlet__head-tools">
+                        <ul class="nav nav-tabs m-tabs m-tabs-line m-tabs-line--right">
+                            <li class="nav-item m-tabs__item">
+                                <a class="nav-link m-tabs__link" href="{{ url("/feed") }}">
+                                    <i class="fa fa-list"></i>
+                                    Feed
+                                </a>
+                            </li>
+                            <li class="nav-item m-tabs__item">
+                                <a class="nav-link m-tabs__link" href="{{ url("/feed/pending-approval") }}">
+                                    <i class="fa fa-clock-o"></i>
+                                    Pending
+                                </a>
+                            </li>
+                            <li class="nav-item m-tabs__item">
+                                <a class="nav-link m-tabs__link" href="{{ url("/feed/rejected") }}">
+                                    <i class="fa fa-times"></i>
+                                    Rejected
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="m-portlet__body">
+                    @if($count > 0)
                         <nav aria-label="Search result pagination">
-                            {{ $pagination->render('pagination::bootstrap-4') }}
-                            Total {{ $total }} {{ str_plural('contribution', $total)}} found
+                        {{ $pagination->render('pagination::bootstrap-4') }}
+                        Total {{ $total }} {{ str_plural('contribution', $total)}} found
                         </nav>
                         <hr>
                         <div class="m-widget5">
@@ -128,13 +128,13 @@
                             {{ $pagination->render('pagination::bootstrap-4') }}
                             Total {{ $total }} {{ str_plural('contribution', $total)}} found
                         </nav>
-                    </div>
+                    @else
+                        <div class="m-alert m-alert--outline m-alert--outline-2x alert alert-warning fade show" role="alert">
+                            <strong>Warning!</strong> No matching record found.
+                        </div>
+                    @endif
                 </div>
-            @else
-                <div class="m-alert m-alert--outline m-alert--outline-2x alert alert-warning fade show" role="alert">
-                    <strong>Warning!</strong> No matching record found.
-                </div>
-            @endif
+            </div>
         </div>
     </div>
 @endsection
