@@ -47,11 +47,7 @@
             <li class="m-menu__item" aria-haspopup="true">
                 <a href="{{ url("/road-map") }}" class="m-menu__link ">
                     <i class="m-menu__link-icon fa fa-road"></i>
-                    <span class="m-menu__link-title">
-                                <span class="m-menu__link-wrap">
-                                    <span class="m-menu__link-text">Road Map</span>
-                                </span>
-                            </span>
+                    <span class="m-menu__link-text">Road Map</span>
                 </a>
             </li>
             <li class="m-menu__item" data-redirect="true" aria-haspopup="true">

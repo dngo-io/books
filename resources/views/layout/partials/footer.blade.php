@@ -26,10 +26,24 @@
                         </a>
                     </li>
                     <li class="m-nav__item">
+                        <a href="{{ url("https://discord.gg/Hvb8vpq") }}" class="m-nav__link">
+                            <span class="m-nav__link-text">
+                                Discord
+                            </span>
+                        </a>
+                    </li>
+                    <li class="m-nav__item">
                         <a href="{{ url("/road-map") }}" class="m-nav__link">
                             <span class="m-nav__link-text">
                                 Road Map
                             </span>
+                        </a>
+                    </li>
+                    <li class="m-nav__item">
+                        <a href="{{ asset("dngo-documents/dngo-and-dngo-books-bluepaper.pdf") }}" class="m-nav__link">
+                        <span class="m-nav__link-text">
+                            Bluepaper
+                        </span>
                         </a>
                     </li>
                     <li class="m-nav__item">
@@ -39,7 +53,7 @@
                             </span>
                         </a>
                     </li>
-                    <li class="m-nav__item">
+                    <li class="m-nav__item d-none">
                         <a href="{{ url(config("steem.how_to")) }}" class="m-nav__link">
                             <span class="m-nav__link-text">
                                 How to Contribute?
