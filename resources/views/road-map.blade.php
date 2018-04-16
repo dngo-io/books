@@ -219,7 +219,7 @@
                                 </div>
                                 <div class="m-list-timeline__item">
                                     <span class="m-list-timeline__badge"></span>
-                                    <span class="m-list-timeline__text">Releasing Final Version of Kali and Integrating It to Our System</span>
+                                    <span class="m-list-timeline__text">Releasing Kali and Integrating It to Our System</span>
                                 </div>
                             </div>
                         </div>
