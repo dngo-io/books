@@ -93,7 +93,7 @@
                             <img class="card-img-top" src="{{ $book->getCover() }}" alt="{{ $book->getName() }} Cover Image">
                             <div class="card-body">
                                 <h6 class="card-title"><a href="{{ url('book') }}/{{ $book->getId() }}" class="m-link">{{ $book->getName() }}</a></h6>
-                                <p class="card-text">by <a href="{{ url("author/{$book->getAuthor()->getId()}") }}" class="m-link">{{ $book->getAuthor()->getName() }}</a></p>
+                                <p class="card-text">by <i>{{ $book->getAuthor()->getName() }}</i></p>
                             </div>
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item">{{ config("app.languages.{$book->getLanguage()}") }}</li>

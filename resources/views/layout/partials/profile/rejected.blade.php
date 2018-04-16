@@ -20,7 +20,7 @@
                         <blockquote class="blockquote blockquote-reverse">
                             <p class="mb-0">
                                 <i class="fa fa-book"></i>
-                                <a href="{{ url("author/{$item->getBook()->getId()}") }}" class="m-link m--font-dark">
+                                <a href="{{ url("book/{$item->getBook()->getId()}") }}" class="m-link m--font-dark">
                                     {{ $item->getBook()->getName() }}
                                 </a>
                             </p>
