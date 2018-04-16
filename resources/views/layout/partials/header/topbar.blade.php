@@ -38,6 +38,16 @@
                     </div>
                 </div>
             </li>
+            <li class="m-nav__item m-nav__item--danger">
+                <a href="{{ url("https://discord.gg/Hvb8vpq") }}" class="m-nav__link">
+                    <span class="m-nav__link-badge m-badge m-badge--dot m-badge--info m--hide"></span>
+                    <span class="m-nav__link-icon">
+                    <span class="m-nav__link-icon-wrapper">
+                        <i class="fa fa-comments"></i>
+                    </span>
+                </span>
+                </a>
+            </li>
             <li class="m-nav__item m-nav__item--danger m-dropdown m-dropdown--skin-light m-dropdown--large m-dropdown--arrow m-dropdown--align-right m-dropdown--align-push m-dropdown--mobile-full-width m-dropdown--skin-light"
                 data-dropdown-toggle="click">
                 <a href="#" class="m-nav__link m-dropdown__toggle">
