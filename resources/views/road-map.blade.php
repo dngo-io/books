@@ -55,6 +55,9 @@
                             <div class="m-timeline-1__item-body">
                                 Detailed information about DNGO Concept and Books Project.
                             </div>
+                            <div class="m-timeline-1__item-btn m--margin-top-25">
+                                <a href="{{ asset("dngo-documents/dngo-and-dngo-books-bluepaper.pdf") }}" class="mt-1 btn btn-sm btn-outline-primary m-btn m-btn--pill m-btn--custom">Bluepaper</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -73,8 +76,6 @@
                             <div class="m-timeline-1__item-body">
                                 Blockchain reading/writing and Steem Connect v2 tests completed.
                             </div>
-                            <div class="m-timeline-1__item-btn m--margin-top-25">
-                                <a href="{{ asset("dngo-documents/dngo-and-dngo-books-bluepaper.pdf") }}" class="mt-1 btn btn-sm btn-outline-accent m-btn m-btn--pill m-btn--custom">Bluepaper</a>
                         </div>
                     </div>
                 </div>
@@ -89,8 +90,8 @@
                     </div>
                     <hr>
                     <div style="height:170px;">
-                        <div style="height:100%;overflow:hidden;display:block;background: url(https://maps.googleapis.com/maps/api/staticmap?center=48.858271,2.294264&amp;size=640x300&amp;zoom=5&amp;key=AIzaSyBMlTEcPR5QULmk9QUaS7lwUK7qtabunEI) no-repeat 50% 50%;">
-                            <img src="https://maps.googleapis.com/maps/api/staticmap?center=38.4014762,27.1002453&amp;size=640x300&amp;zoom=11&amp;key=AIzaSyBMlTEcPR5QULmk9QUaS7lwUK7qtabunEI" style="" alt="">
+                        <div style="height:100%;overflow:hidden;display:block;background: url('{{ url("https://maps.googleapis.com/maps/api/staticmap?center=48.858271,2.294264&amp;size=640x300&amp;zoom=5&amp;key=AIzaSyBMlTEcPR5QULmk9QUaS7lwUK7qtabunEI") }}') no-repeat 50% 50%;">
+                            <img src="{{ url("https://maps.googleapis.com/maps/api/staticmap?center=38.4014762,27.1002453&amp;size=640x300&amp;zoom=11&amp;key=AIzaSyBMlTEcPR5QULmk9QUaS7lwUK7qtabunEI") }}" alt="Google Maps Static Image">
                         </div>
                     </div>
                     <hr>
