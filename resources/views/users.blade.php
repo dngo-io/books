@@ -41,7 +41,7 @@
                                     </div>
                                     <div class="m-widget4__info">
                                         <span class="m-widget4__title">
-                                            <a href="{{ url("user/{$item->getAccount()}") }}" class="m-link">
+                                            <a href="{{ url("user/{$item->getAccount()}") }}" class="m-link m--font-dark">
                                                 {{ author($item) }}
                                             </a>
                                         </span>
