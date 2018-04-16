@@ -33,13 +33,6 @@
                         </a>
                     </li>
                     <li class="m-nav__item">
-                        <a href="{{ asset("dngo-documents/dngo-and-dngo-books-whitepaper.pdf") }}" class="m-nav__link">
-                            <span class="m-nav__link-text">
-                                Whitepaper
-                            </span>
-                        </a>
-                    </li>
-                    <li class="m-nav__item">
                         <a href="{{ url(config("steem.rules")) }}" class="m-nav__link">
                             <span class="m-nav__link-text">
                                 Rules

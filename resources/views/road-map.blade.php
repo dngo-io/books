@@ -50,7 +50,7 @@
                     <div class="media">
                         <div class="media-body">
                             <div class="m-timeline-1__item-title">
-                                DNGO Whitepaper Genesis Released
+                                DNGO Bluepaper Genesis Released
                             </div>
                             <div class="m-timeline-1__item-body">
                                 Detailed information about DNGO Concept and Books Project.
@@ -75,8 +75,6 @@
                             </div>
                             <div class="m-timeline-1__item-btn m--margin-top-25">
                                 <a href="{{ asset("dngo-documents/dngo-and-dngo-books-bluepaper.pdf") }}" class="mt-1 btn btn-sm btn-outline-accent m-btn m-btn--pill m-btn--custom">Bluepaper</a>
-                                <a href="{{ asset("dngo-documents/dngo-and-dngo-books-whitepaper.pdf") }}" class="mt-1 btn btn-sm btn-outline-dark m-btn m-btn--pill m-btn--custom">Whitepaper</a>
-                            </div>
                         </div>
                     </div>
                 </div>

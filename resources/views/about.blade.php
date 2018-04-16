@@ -45,7 +45,7 @@
 
                     </p>
                     <p>
-                        More information about DNGO can be found in Whitepaper or Bluepaper.
+                        More information about DNGO can be found in Bluepaper.
                     </p>
                 </div>
             </div>
@@ -142,21 +142,7 @@
                                 </a>
                             </div>
                         </div>
-                        <div class="m-widget4__item">
-                            <div class="m-widget4__img m-widget4__img--icon">
-                                <img src="{{ asset("assets/app/media/img/files/pdf.svg") }}" alt="{{ config("app.name") }} Whitepaper PDF">
-                            </div>
-                            <div class="m-widget4__info">
-                                <span class="m-widget4__text">
-                                Whitepaper
-                                </span>
-                            </div>
-                            <div class="m-widget4__ext">
-                                <a href="{{ asset("dngo-documents/dngo-and-dngo-books-whitepaper.pdf") }}" class="m-widget4__icon">
-                                    <i class="la la-download"></i>
-                                </a>
-                            </div>
-                        </div>
+
                         <div class="m-widget4__item">
                             <div class="m-widget4__img m-widget4__img--icon">
                                 <img src="{{ asset("assets/app/media/img/files/pdf.svg") }}" alt="{{ config("app.name") }} Bluepaper PDF">

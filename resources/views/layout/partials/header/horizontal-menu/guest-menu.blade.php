@@ -45,12 +45,6 @@
                 </a>
             </li>
             <li class="m-menu__item" aria-haspopup="true">
-                <a href="{{ asset("dngo-documents/dngo-and-dngo-books-whitepaper.pdf") }}" class="m-menu__link ">
-                    <i class="m-menu__link-icon fa fa-file-o"></i>
-                    <span class="m-menu__link-text">Whitepaper</span>
-                </a>
-            </li>
-            <li class="m-menu__item" aria-haspopup="true">
                 <a href="{{ url("/road-map") }}" class="m-menu__link ">
                     <i class="m-menu__link-icon fa fa-road"></i>
                     <span class="m-menu__link-title">
