@@ -39,6 +39,12 @@
                 </a>
             </li>
             <li class="m-menu__item" aria-haspopup="true">
+                <a href="{{ config("steem.how_to") }}" class="m-menu__link ">
+                    <i class="m-menu__link-icon fa fa-file"></i>
+                    <span class="m-menu__link-text">Steem Post</span>
+                </a>
+            </li>
+            <li class="m-menu__item" aria-haspopup="true">
                 <a href="{{ asset("dngo-documents/dngo-and-dngo-books-bluepaper.pdf") }}" class="m-menu__link ">
                     <i class="m-menu__link-icon fa fa-file m--font-accent"></i>
                     <span class="m-menu__link-text">Bluepaper</span>

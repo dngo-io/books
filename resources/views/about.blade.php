@@ -133,6 +133,21 @@
                             </div>
                             <div class="m-widget4__info">
                                 <span class="m-widget4__text">
+                                Steem Post [EN]
+                                </span>
+                            </div>
+                            <div class="m-widget4__ext">
+                                <a href="{{ url(config("steem.how_to")) }}" class="m-widget4__icon">
+                                    <i class="la la-external-link"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="m-widget4__item">
+                            <div class="m-widget4__img m-widget4__img--icon">
+                                <img src="{{ asset("assets/app/media/img/files/html.svg") }}" alt="{{ config("app.name") }} Steem Post">
+                            </div>
+                            <div class="m-widget4__info">
+                                <span class="m-widget4__text">
                                 Steem Post [TR]
                                 </span>
                             </div>
