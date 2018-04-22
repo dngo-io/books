@@ -1,33 +1,25 @@
 {
-    "name": "somnambulist/laravel-doctrine-project",
-    "description": "Laravel 5.3 with Doctrine, Twig and other Goodies",
+    "name": "dngo-io/books",
+    "description": "Dngo Book Project",
     "keywords": ["framework", "laravel", "doctrine", "twig"],
     "license": "MIT",
     "type": "project",
-    "repositories": {
-        "dev-package": {
-            "type": "path",
-            "url": "./steem-connect",
-            "options": {
-                "symlink": true
-            }
+    "authors": [
+        {
+            "name": "Cagri S.",
+            "email": "hi@bencagri.com"
         },
-        "dev-steem-api-package": {
-            "type": "path",
-            "url": "./steem-api",
-            "options": {
-                "symlink": true
-            }
+        {
+            "name": "Burak",
+            "email": "burak@myself.com"
         }
-    },
+    ],
     "require": {
-        "php": ">=7",
+        "php": ">=7.0",
         "andreasindal/laravel-markdown": "1.1",
         "beberlei/assert": "~2.7",
         "eloquent/enumeration": "~5.1",
         "erusev/parsedown": "^1.7",
-        "frnxstd/steem-api": "@dev",
-        "frnxstd/steem-connect": "@dev",
         "intervention/image": "^2.4",
         "laravel-doctrine/acl": "~1.0",
         "laravel-doctrine/migrations": "~1.1",
@@ -43,7 +35,8 @@
         "somnambulist/laravel-doctrine-entity-validation": "~0.1",
         "somnambulist/laravel-domain-input-mapper": "~0.5",
         "somnambulist/laravel-environment-loader": "~0.1",
-        "watson/sitemap": "^2.0"
+        "dngo-io/steem-api": "^1.0",
+        "dngo-io/steem-connect": "^1.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "~2.3",
