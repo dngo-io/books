@@ -1,13 +1,10 @@
-# Doctrine Laravel Project
+<p align="center">
+<img src="https://steemitimages.com/DQmb9Y6u1JEWetJi3TMsk35UjXgWvgWAom4p9qGCF9Bex5p/dngo-hq-logo.png" />
+</p>
 
-A kick-starter project that pre-configures Doctrine, Twig, behaviours and some other stuff
-because bootstrapping projects with the same requirements is tedious.
+# DNGO Books Project
 
 Use this to kick-start a Doctrine based Laravel app.
-
- * 1.X Laravel 5.2.* based project
- * 2.X Laravel 5.3.* based project
- * 3.X Laravel 5.4.* based project
 
 Included are the following:
 
@@ -23,8 +20,6 @@ Included are the following:
  * Environment Loader
  * HTML Builder
  * Homestead
- * Twig
- * Twig Extensions
 
 ## Entities
 
@@ -33,9 +28,6 @@ The default namespace is "App".
 The following entities and matching repositories are provided, together with YAML mapping
 files, pre-configured:
 
- * Address
- * Country
- * Organization
  * Permission
  * Role
  * User
@@ -66,7 +58,7 @@ The User and Organization entities support Domain Events:
 
 ## Getting Started
 
- * `composer create-project somnambulist/laravel-doctrine-project my-project`
+ * `composer create-project dngo-io/books dngo-project`
  * setup your database settings / configure the other options
  * `./artisan doctrine:schema:validate`
  * `./artisan doctrine:schema:create`
