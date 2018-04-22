@@ -21,7 +21,6 @@ bin/
 tests/_output/*
 .phpstorm.meta.php
 _ide_helper.php
-composer.lock
 Homestead.yaml
 public/css
 
