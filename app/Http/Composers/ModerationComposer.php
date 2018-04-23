@@ -29,7 +29,7 @@ class ModerationComposer {
         {
             $moderation = [
                 'is_mod'  => true,
-                'pending' => 0, $this->bookAudioRepository->count(['status' => $this->bookAudioRepository::STATUS_PENDING]),
+                'pending' => $this->bookAudioRepository->count(['status' => $this->bookAudioRepository::STATUS_PENDING]),
             ];
         } else {
             $moderation = [
