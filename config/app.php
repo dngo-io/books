@@ -184,6 +184,12 @@ return [
         //App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+
+        /*
+         * Composer Service Provider
+         */
+        App\Providers\ComposerServiceProvider::class,
+
         /*
          * Helper Service Provider
          */
