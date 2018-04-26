@@ -453,7 +453,7 @@ class User implements
      */
     public function getProfileImage()
     {
-        return $this->profileImage;
+        return(string) $this->profileImage;
     }
 
     /**
