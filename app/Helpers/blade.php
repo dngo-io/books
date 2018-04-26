@@ -34,11 +34,11 @@ if (! function_exists('get_steem_pp')) {
     /**
      * Gets and fits Steemit profile picture
      *
-     * @param string $profileImg
+     * @param string|null $profileImg
      * @param int $size
      * @return \Illuminate\Contracts\Routing\UrlGenerator|string
      */
-    function get_steem_pp(string $profileImg, int $size = 100)
+    function get_steem_pp($profileImg, int $size = 100)
     {
         return url("image?src=".urlencode(sprintf("https://steemitimages.com/0x0/%s",$profileImg))."&size={$size}");
     }
