@@ -38,8 +38,7 @@ class AudioController extends AppController
      */
     public function index()
     {
-        //
-        dd('index');
+        return redirect('audio/create');
     }
 
     /**
