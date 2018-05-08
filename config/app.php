@@ -176,6 +176,8 @@ return [
         Somnambulist\EntityAudit\ServiceProvider::class,
         Somnambulist\EntityValidation\ValidationServiceProvider::class,
 
+        Bugsnag\BugsnagLaravel\BugsnagServiceProvider::class,
+
         /*
          * Application Service Providers...
          */
