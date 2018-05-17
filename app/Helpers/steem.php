@@ -147,8 +147,10 @@ if (! function_exists('source_to_account')) {
             {
                 $return .= array_get($author, 'author');
             }
-        } else {
+        } else if(is_object($author)) {
             $return = $author->getAccount();
+        } else {
+            $return = $author;
         }
 
         return $return;
