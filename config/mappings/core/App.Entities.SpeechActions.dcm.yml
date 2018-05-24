@@ -1,0 +1,35 @@
+App\Entities\SpeechActions:
+    type: entity
+    table: dngo_speech_actions
+
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: auto
+            options:
+                unsigned: true
+
+    fields:
+        do:
+          type: string
+          length: 255
+
+        action:
+          type: string
+          length: 255
+
+        error:
+          type: string
+          length: 255
+          nullable: true
+
+        sort:
+          type: integer
+          options:
+            default:  0
+
+    manyToOne:
+        parent:
+          targetEntity: App\Entities\Speech
+          inversedBy: actions
