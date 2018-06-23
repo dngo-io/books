@@ -21,7 +21,7 @@
             @foreach($users as $user)
                 <a href="{{ url("/user/{$user['account']}") }}" class="m-list-search__result-item">
                     <span class="m-list-search__result-item-pic"><img class="m--img-rounded" src="{{ get_steem_pp($user['profileImage']) }}" title="{{ $user['name'] }}"/></span>
-                    <span class="m-list-search__result-item-text">{{ $user['name'] }}<br><small>{{ author($user) }}</small></span>
+                    <span class="m-list-search__result-item-text">{{ $user['name'] }}<br><small>{{ "@{$user['account']}" }}</small></span>
                 </a>
             @endforeach
         @endif

@@ -119,6 +119,7 @@ class BookAudioService
                 'created_at' => $bookAudio->getCreatedAt(),
             ],
             'user'    => [
+                'entity'  => $bookAudio->getUser(),
                 'account' => $bookAudio->getUser()->getAccount(),
                 'name'    => $bookAudio->getUser()->getName()
             ],

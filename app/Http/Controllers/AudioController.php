@@ -38,8 +38,7 @@ class AudioController extends AppController
      */
     public function index()
     {
-        //
-        dd('index');
+        return redirect('audio/create');
     }
 
     /**
@@ -166,13 +165,13 @@ class AudioController extends AppController
         $angle = 0;
 
         // book name
-        $text = $audio->getBook()->getName();
+        $text = str_limit($audio->getBook()->getName(), 50);
         $font_path = resource_path('assets/font/Roboto-Light.ttf');
         $center = $this->calculateImageCenter($image,$font_size,$angle,$font_path,$text);
         imagettftext($image, $font_size, $angle, $center['x'], $center['y']+80, $text_color, $font_path, $text);
 
         // author name
-        $text = 'by '.$audio->getBook()->getAuthor()->getName();
+        $text = 'by '.str_limit($audio->getBook()->getAuthor()->getName(), 50);
         $font_path = resource_path('assets/font/RobotoCondensed-Italic.ttf');
         $center = $this->calculateImageCenter($image,$font_size,$angle,$font_path,$text);
         imagettftext($image, $font_size, $angle, $center['x'], $center['y']+110, $text_color, $font_path, $text);

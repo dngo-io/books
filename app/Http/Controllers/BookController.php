@@ -7,6 +7,7 @@ use App\Http\Requests\StoreBook;
 use App\Service\BookService;
 use App\Support\AppController;
 use App\Repositories\BookAudioRepository;
+use Doctrine\ORM\EntityManager;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -18,18 +19,20 @@ class BookController extends AppController
     private $bookService;
 
     /**
-     * @var BookAudioRepository
+     * @var EntityManager
      */
-    private $audioRepository;
+    private $entityManager;
 
     /**
      * BookController constructor
      *
      * @param BookService $bookService
+     * @param EntityManager $entityManager
      */
-    public function __construct(BookService $bookService)
+    public function __construct(BookService $bookService, EntityManager $entityManager)
     {
         $this->bookService = $bookService;
+        $this->entityManager = $entityManager;
     }
 
     /**
@@ -101,6 +104,38 @@ class BookController extends AppController
         }
 
         return abort(404);
+    }
+
+    /**
+     * @param int $id
+     */
+    public function image(int $id)
+    {
+        $config = file_get_contents(resource_path('assets/covers/config.json'));
+        $config = json_decode($config, true);
+
+        /** @var Book $book */
+        $book   = $this->entityManager->getRepository(Book::class)->find($id);
+        $rand   = ($id % 9) + 1;
+
+        if (!$book) {
+            abort(404);
+        }
+
+        $config[$rand]['text1']['font-type']       = resource_path('assets/covers/'.$config[$rand]['text1']['font-type']);
+        $config[$rand]['text2']['font-type']       = resource_path('assets/covers/'.$config[$rand]['text2']['font-type']);
+        $config[$rand]['config']['background-url'] = resource_path('assets/covers/'.$config[$rand]['config']['background-url']);
+
+        try {
+            $generator = new \DngoIO\CoverCreator\Generator();
+            $generator->setConfig($config[$rand]['config']); //or new Generator($config)
+            $generator->addLine($book->getName(), $config[$rand]['text1']);
+            $generator->addLine($book->getAuthor()->getName(), $config[$rand]['text2']);
+            $generator->generate();
+        }catch (\Exception $e) {
+            echo $e->getMessage();
+        }
+
     }
 
     /**

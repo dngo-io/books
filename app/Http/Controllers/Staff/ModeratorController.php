@@ -126,18 +126,23 @@ class ModeratorController extends AppController
     public function modal($id)
     {
         $bookAudio = $this->bookAudioService->find($id);
+        $token     = refresh_token($bookAudio['user']['entity']);
 
-        if(is_null($bookAudio) || $bookAudio['audio']['status'] != BookAudioRepository::STATUS_PENDING)
+        if($token !== false && ( is_null($bookAudio) || $bookAudio['audio']['status'] != BookAudioRepository::STATUS_PENDING ))
             $response = [
                 'success' => false,
                 'message' => 'No matching record found'
             ];
-        else
+        else {
             $response = [
                 'success' => true,
                 'csrf'    => csrf_token(),
                 'data'    => $bookAudio
             ];
+
+            $bookAudio['user']['entity']->setAccessToken($token);
+            app('em')->flush();
+        }
 
         return response($response);
     }

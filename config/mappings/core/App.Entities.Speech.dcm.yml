@@ -1,0 +1,39 @@
+App\Entities\Speech:
+    type: entity
+    table: dngo_speech
+    repositoryClass: App\Repositories\SpeechRepository
+
+    indexes:
+        idx_module_name:
+            columns: [ module ]
+        idx_language:
+            columns: [ language ]
+
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: auto
+            options:
+                unsigned: true
+
+    fields:
+        module:
+          type: string
+          length: 255
+
+        language:
+          type: string
+          length: 10
+
+        keywords:
+          type: string
+          length: 255
+
+
+    oneToMany:
+        actions:
+          targetEntity: App\Entities\SpeechActions
+          cascade: [ 'persist' ]
+          fetch: LAZY
+          mappedBy: parent

@@ -88,6 +88,9 @@ class Book
     /** @var  string */
     protected $language;
 
+    /** @var  int */
+    protected $priority;
+
     /**
      * @return string
      */
@@ -344,6 +347,22 @@ class Book
     public function setCategories($categories)
     {
         $this->categories = $categories;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPriority()
+    {
+        return $this->priority;
+    }
+
+    /**
+     * @param int $priority
+     */
+    public function setPriority($priority)
+    {
+        $this->priority = $priority;
     }
 
 }

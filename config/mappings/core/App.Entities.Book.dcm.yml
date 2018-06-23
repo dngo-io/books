@@ -78,6 +78,11 @@ App\Entities\Book:
         releaseDate:
             type: datetime
 
+        priority:
+            type: integer
+            options:
+                default: 99999
+
       oneToOne:
         post:
           targetEntity: App\Entities\Post

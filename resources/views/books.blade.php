@@ -83,27 +83,45 @@
                 Total {{ $total }} {{ str_plural('book', $total)}} found
             </nav>
             <hr>
-            <div class="row">
-                <div class="card-columns">
-                    @foreach ($books as $book)
-                        <div class="card mb-5">
-                            <div class="card-header text-center bg-secondary">
-                                {{ $book->getCollection() }}
-                            </div>
-                            <img class="card-img-top" src="{{ $book->getCover() }}" alt="{{ $book->getName() }} Cover Image">
-                            <div class="card-body">
-                                <h6 class="card-title"><a href="{{ url('book') }}/{{ $book->getId() }}" class="m-link">{{ $book->getName() }}</a></h6>
-                                <p class="card-text">by <i>{{ $book->getAuthor()->getName() }}</i></p>
-                            </div>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">{{ config("app.languages.{$book->getLanguage()}") }}</li>
-                            </ul>
-                            <div class="card-body text-center bg-secondary">
-                                <a href="{{ url("book/{$book->getId()}") }}" class="btn btn-outline-brand m-btn m-btn--outline-2x">More</a>
-                            </div>
+            <div class="m-widget5">
+                @foreach($books as $book)
+                    <div class="m-widget5__item">
+                        <div class="m-widget5__pic">
+                            <img class="m-widget7__img" src="{{ url($book->getCover()) }}" width="100" alt="{{ $book->getName() }}">
                         </div>
-                    @endforeach
-                </div>
+                        <div class="m-widget5__content">
+                            <span class="m-widget5__desc">
+                                <blockquote class="blockquote blockquote-reverse">
+                                    <p class="mb-0">
+                                        <i class="fa fa-book"></i>
+                                        <a href="{{ url("book/{$book->getId()}") }}" class="m-link m-link--dark" title="{{ $book->getName() }}">
+                                            {{ $book->getName() }}
+                                        </a>
+                                    </p>
+                                    <footer class="blockquote-footer">By
+                                        <cite title="{{ $book->getAuthor()->getName() }}">
+                                            <span>
+                                                {{ $book->getAuthor()->getName() }}
+                                            </span>
+                                        </cite>
+                                        in
+                                        <cite title="{{ $book->getYear() }}">
+                                            {{ $book->getYear() }}
+                                        </cite>
+                                    </footer>
+                                </blockquote>
+                                {{ str_limit(strip_tags($book->getDescription()), 500, '...') }}
+                            </span>
+                        </div>
+
+                        <div class="m-widget5__stats1 text-center pl-0">
+                            <a class="m-link m-link--dark" href="{{ url("book/{$book->getId()}") }}">
+                                <span><i class="fa fa-3x fa-book"></i></span><br>
+                                <span>Book</span>
+                            </a>
+                        </div>
+                    </div>
+                @endforeach
             </div>
             <hr>
             <nav aria-label="Search result pagination">

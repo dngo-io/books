@@ -98,17 +98,29 @@
                     </div>
                 </div>
             </li>
-            @if (Auth::user()->checkRole('moderator'))
-            <li class="m-nav__item m-nav__item--danger">
-                <a href="{{ url("/moderation") }}" class="m-nav__link">
-                    <span class="m-nav__link-badge m-badge m-badge--dot m-badge--info m--hide"></span>
-                    <span class="m-nav__link-icon">
-                        <span class="m-nav__link-icon-wrapper">
-                            <i class="fa fa-shield"></i>
+            @if ($moderation['is_mod'])
+                @if ($moderation['pending'] > 0)
+                <li class="m-nav__item m-nav__item--danger">
+                    <a href="{{ url("/moderation") }}" class="m-nav__link">
+                        <span class="m-nav__link-badge m-badge m-badge--dot m-badge--dot-small m-badge--danger m-animate-blink"></span>
+                        <span class="m-nav__link-icon m-animate-shake">
+                            <span class="m-nav__link-icon-wrapper">
+                                <i class="fa fa-shield"></i>
+                            </span>
                         </span>
-                    </span>
-                </a>
-            </li>
+                    </a>
+                </li>
+                @else
+                <li class="m-nav__item m-nav__item--danger">
+                    <a href="{{ url("/moderation") }}" class="m-nav__link">
+                        <span class="m-nav__link-icon">
+                            <span class="m-nav__link-icon-wrapper">
+                                <i class="fa fa-shield"></i>
+                            </span>
+                        </span>
+                    </a>
+                </li>
+                @endif
             @endif
             <li class="m-nav__item m-dropdown m-dropdown--medium m-dropdown--arrow  m-dropdown--align-right m-dropdown--mobile-full-width m-dropdown--skin-light" data-dropdown-toggle="click">
                 <a href="#" class="m-nav__link m-dropdown__toggle">

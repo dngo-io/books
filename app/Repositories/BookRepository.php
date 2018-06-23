@@ -71,7 +71,7 @@ class BookRepository extends AppEntityRepository
         }
 
         /** TODO Request'den al bunu */
-        $qb->orderBy("b.name");
+        $qb->orderBy("b.priority");
 
         $result = $qb->getQuery()->useQueryCache(false);
 
