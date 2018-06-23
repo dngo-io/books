@@ -1,0 +1,284 @@
+{
+  "1": {
+    "text1": {
+      "font-size": 65,
+      "font-type": "fonts\/MavenPro-Bold.ttf",
+      "text-color": [
+        255,
+        255,
+        255
+      ],
+      "left": 50,
+      "top": 350,
+      "wrap": 20
+    },
+    "text2": {
+      "font-size": 30,
+      "font-type": "fonts\/MavenPro-Bold.ttf",
+      "text-color": [
+        255,
+        255,
+        255
+      ],
+      "left": 50,
+      "top": 1500
+    },
+    "config": {
+      "auto-center": false,
+      "angle": 0,
+      "header": "Content-type: image\/jpeg",
+      "background-url": "backgrounds\/cover-1.png"
+    }
+  },
+  "2": {
+    "text1": {
+      "font-size": 65,
+      "font-type": "fonts\/MavenPro-Bold.ttf",
+      "text-color": [
+        225,
+        225,
+        225
+      ],
+      "left": 100,
+      "top": 450,
+      "wrap": 20
+    },
+    "text2": {
+      "font-size": 30,
+      "font-type": "fonts\/MavenPro-Bold.ttf",
+      "text-color": [
+        225,
+        225,
+        225
+      ],
+      "left": 100,
+      "top": 1300
+    },
+    "config": {
+      "auto-center": false,
+      "angle": 0,
+      "header": "Content-type: image\/jpeg",
+      "background-url": "backgrounds\/cover-2.png"
+    }
+  },
+  "3": {
+    "text1": {
+      "font-size": 65,
+      "font-type": "fonts\/MavenPro-Bold.ttf",
+      "text-color": [
+        255,
+        255,
+        255
+      ],
+      "left": 100,
+      "top": 650,
+      "wrap": 20
+    },
+    "text2": {
+      "font-size": 30,
+      "font-type": "fonts\/MavenPro-Bold.ttf",
+      "text-color": [
+        255,
+        255,
+        255
+      ],
+      "left": 0,
+      "top": 650
+    },
+    "config": {
+      "auto-center": true,
+      "angle": 0,
+      "header": "Content-type: image\/jpeg",
+      "background-url": "backgrounds\/cover-3.png"
+    }
+  },
+  "4": {
+    "text1": {
+      "font-size": 65,
+      "font-type": "fonts\/MavenPro-Bold.ttf",
+      "text-color": [
+        255,
+        255,
+        255
+      ],
+      "left": 50,
+      "top": 640,
+      "wrap": 20
+    },
+    "text2": {
+      "font-size": 30,
+      "font-type": "fonts\/MavenPro-Bold.ttf",
+      "text-color": [
+        255,
+        255,
+        255
+      ],
+      "left": 50,
+      "top": 1400
+    },
+    "config": {
+      "auto-center": false,
+      "angle": 0,
+      "header": "Content-type: image\/jpeg",
+      "background-url": "backgrounds\/cover-4.png"
+    }
+  },
+  "5": {
+    "text1": {
+      "font-size": 65,
+      "font-type": "fonts\/MavenPro-Bold.ttf",
+      "text-color": [
+        255,
+        255,
+        255
+      ],
+      "left": 50,
+      "top": 600,
+      "wrap": 20
+    },
+    "text2": {
+      "font-size": 30,
+      "font-type": "fonts\/MavenPro-Bold.ttf",
+      "text-color": [
+        255,
+        255,
+        255
+      ],
+      "left": 50,
+      "top": 1000
+    },
+    "config": {
+      "auto-center": false,
+      "angle": 0,
+      "header": "Content-type: image\/jpeg",
+      "background-url": "backgrounds\/cover-5.png"
+    }
+  },
+  "6": {
+    "text1": {
+      "font-size": 65,
+      "font-type": "fonts\/MavenPro-Bold.ttf",
+      "text-color": [
+        255,
+        255,
+        255
+      ],
+      "left": 50,
+      "top": 500,
+      "wrap": 20
+    },
+    "text2": {
+      "font-size": 30,
+      "font-type": "fonts\/MavenPro-Bold.ttf",
+      "text-color": [
+        255,
+        255,
+        255
+      ],
+      "left": 50,
+      "top": 1000
+    },
+    "config": {
+      "auto-center": false,
+      "angle": 0,
+      "header": "Content-type: image\/jpeg",
+      "background-url": "backgrounds\/cover-6.png"
+    }
+  },
+  "7": {
+    "text1": {
+      "font-size": 65,
+      "font-type": "fonts\/Montserrat-Regular.ttf",
+      "text-color": [
+        0,
+        0,
+        0
+      ],
+      "left": 100,
+      "top": 700,
+      "wrap": 17
+    },
+    "text2": {
+      "font-size": 45,
+      "font-type": "fonts\/Montserrat-Bold.ttf",
+      "text-color": [
+        0,
+        0,
+        0
+      ],
+      "left": 100,
+      "top": 1300,
+      "wrap": 25
+    },
+    "config": {
+      "auto-center": false,
+      "angle": 0,
+      "header": "Content-type: image\/jpeg",
+      "background-url": "backgrounds\/cover-7.png"
+    }
+  },
+  "8": {
+    "text1": {
+      "font-size": 65,
+      "font-type": "fonts\/Montserrat-Regular.ttf",
+      "text-color": [
+        0,
+        0,
+        0
+      ],
+      "left": 100,
+      "top": 500,
+      "wrap": 17
+    },
+    "text2": {
+      "font-size": 45,
+      "font-type": "fonts\/Montserrat-Bold.ttf",
+      "text-color": [
+        0,
+        0,
+        0
+      ],
+      "left": 100,
+      "top": 1300,
+      "wrap": 25
+    },
+    "config": {
+      "auto-center": false,
+      "angle": 0,
+      "header": "Content-type: image\/jpeg",
+      "background-url": "backgrounds\/cover-8.png"
+    }
+  },
+  "9": {
+    "text1": {
+      "font-size": 65,
+      "font-type": "fonts\/Montserrat-Regular.ttf",
+      "text-color": [
+        0,
+        0,
+        0
+      ],
+      "left": 100,
+      "top": 700,
+      "wrap": 17
+    },
+    "text2": {
+      "font-size": 45,
+      "font-type": "fonts\/Montserrat-Bold.ttf",
+      "text-color": [
+        0,
+        0,
+        0
+      ],
+      "left": 100,
+      "top": 1300,
+      "wrap": 25
+    },
+    "config": {
+      "auto-center": false,
+      "angle": 0,
+      "header": "Content-type: image\/jpeg",
+      "background-url": "backgrounds\/cover-9.png"
+    }
+  }
+}

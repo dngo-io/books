@@ -76,6 +76,7 @@ Route::resource('book','BookController');
 Route::resource('category','CategoryController');
 Route::resource('audio','AudioController')->middleware(['auth']);
 Route::get('audio/image/{id}','AudioController@image');
+Route::get('book/image/{id}','BookController@image');
 
 
 /** Api */
