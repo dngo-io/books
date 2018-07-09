@@ -268,7 +268,7 @@ return [
     'languages' => [
         'en' => 'English',
 //        'de' => 'German',
-//        'es' => 'Spanish',
+        'es' => 'Spanish',
         'tr' => 'Turkish'
     ]
 ];
