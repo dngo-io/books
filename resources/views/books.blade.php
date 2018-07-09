@@ -11,6 +11,10 @@
         input: 'year'
     });
 
+    var config = {"language" : "en-US"};
+    console.log(config);
+    dngo  = new Dngo(config, "feed");
+    dngo.init();
 @endsection
 @section("content")
     <div class="row">
