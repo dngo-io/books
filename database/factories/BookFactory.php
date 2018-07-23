@@ -19,6 +19,7 @@ $factory->define(\App\Entities\Book::class, function (Faker $faker) {
         'releaseDate' => new Carbon\Carbon(),
         'page' => $faker->numberBetween(200,300),
         'cover' => $faker->imageUrl($width = 300, $height = 550),
+        'priority' => $faker->randomNumber(),
         'post' => function() {
             return entity(\App\Entities\Post::class)->create();
         },
