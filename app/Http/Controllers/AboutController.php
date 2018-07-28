@@ -23,7 +23,6 @@ class AboutController extends AppController
         'ikidnapmyself' => 'Founder',
         'meskoze'       => 'Founder',
         'tubi'          => 'Founder',
-        'omeratagun'    => 'Supervisor'
     ];
 
     /**
