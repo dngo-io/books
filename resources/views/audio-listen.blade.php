@@ -40,7 +40,7 @@
     <div class="col-md-4 col-sm-12">
         <div class="thumbnail">
             <a href="{{ url("book/".$audio->getBook()->getId()) }}">
-                <img src="{{ $audio->getBook()->getCover() }}" alt="{{ $audio->getBook()->getName() }}" style="width:100%">
+                <img src="{{ url("book/image/{$audio->getBook()->getId()}") }}" alt="{{ $audio->getBook()->getName() }}" style="width:100%">
             </a>
         </div>
 

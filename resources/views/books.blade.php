@@ -87,7 +87,7 @@
                 @foreach($books as $book)
                     <div class="m-widget5__item">
                         <div class="m-widget5__pic">
-                            <img class="m-widget7__img" src="{{ url($book->getCover()) }}" width="100" alt="{{ $book->getName() }}">
+                            <img class="m-widget7__img" src="{{ url("book/image/{$book->getId()}") }}" width="100" alt="{{ $book->getName() }}">
                         </div>
                         <div class="m-widget5__content">
                             <span class="m-widget5__desc">

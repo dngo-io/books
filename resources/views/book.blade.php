@@ -40,7 +40,7 @@
                     @include("layout.partials.copyright-alert")
                     <div class="row">
                         <div class="col-md-3">
-                            <img src="{{ $book->getCover() }}" alt="{{ $book->getName() }}" class="img-fluid img-rounded img-thumbnail">
+                            <img src="{{ url("book/image/{$book->getId()}") }}" alt="{{ $book->getName() }}" class="img-fluid img-rounded img-thumbnail">
                         </div>
                         <div class="col-md-9">
                             <table class="table table-inverse col-md-9">

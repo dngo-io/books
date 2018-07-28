@@ -126,11 +126,14 @@ class BookController extends AppController
         $config[$rand]['text2']['font-type']       = resource_path('assets/covers/'.$config[$rand]['text2']['font-type']);
         $config[$rand]['config']['background-url'] = resource_path('assets/covers/'.$config[$rand]['config']['background-url']);
 
+        $book_name   = iconv ( 'UTF-8', 'ISO-8859-1//TRANSLIT', $book->getName());
+        $author_name = iconv ( 'UTF-8', 'ISO-8859-1//TRANSLIT', $book->getAuthor()->getName());
+
         try {
             $generator = new \DngoIO\CoverCreator\Generator();
             $generator->setConfig($config[$rand]['config']); //or new Generator($config)
-            $generator->addLine($book->getName(), $config[$rand]['text1']);
-            $generator->addLine($book->getAuthor()->getName(), $config[$rand]['text2']);
+            $generator->addLine($book_name, $config[$rand]['text1']);
+            $generator->addLine($author_name, $config[$rand]['text2']);
             $generator->generate();
         }catch (\Exception $e) {
             echo $e->getMessage();

@@ -49,7 +49,7 @@
                             @foreach($content as $item)
                                 <div class="m-widget5__item">
                                     <div class="m-widget5__pic">
-                                        <img class="m-widget7__img" src="{{ url($item->getBook()->getCover()) }}" width="100" alt="{{ $item->getBook()->getName() }}">
+                                        <img class="m-widget7__img" src="{{ url("book/image/{$item->getBook()->getId()}") }}" width="100" alt="{{ $item->getBook()->getName() }}">
                                     </div>
                                     <div class="m-widget5__content">
                                         <h4 class="m-widget5__title">
