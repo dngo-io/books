@@ -97,7 +97,7 @@
                                 <blockquote class="blockquote blockquote-reverse">
                                     <p class="mb-0">
                                         <i class="fa fa-book"></i>
-                                        {{ $bookUrl = $book->getId() .'/' . str_slug($book->getName(), '-') }}
+                                        <?php $bookUrl = $book->getId() .'/' . str_slug($book->getName(), '-'); ?>
                                         <a href="{{ url("book/{$bookUrl}") }}" class="m-link m-link--dark" title="{{ $book->getName() }}">
                                             {{ $book->getName() }}
                                         </a>
