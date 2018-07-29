@@ -72,7 +72,7 @@ Route::prefix('action')->group(function () {
 
 });
 
-Route::resource('book','BookController');
+Route::get('book/{id}/{slug}','BookController@show');
 Route::resource('category','CategoryController');
 Route::resource('audio','AudioController')->middleware(['auth']);
 Route::get('audio/image/{id}','AudioController@image');
