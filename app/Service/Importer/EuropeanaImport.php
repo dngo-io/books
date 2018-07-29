@@ -147,6 +147,7 @@ class EuropeanaImport
 
         /** @var Crawler $crawl */
         foreach ($urls as $crawl) {
+            $file = [];
             $url = sprintf("%s",$crawl->getUrl());
 
             try{
