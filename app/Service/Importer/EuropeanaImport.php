@@ -165,7 +165,7 @@ class EuropeanaImport
                 $post->setUser($user);
 
                 //set title
-                $title = $payload->find(".object-title")[0]->text();
+                $title = str_replace('Title','',$payload->find(".object-title")[0]->text());
                 $title = str_limit($title,250);
 
                 $book->setName($title);
