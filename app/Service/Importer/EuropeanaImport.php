@@ -149,10 +149,11 @@ class EuropeanaImport
         foreach ($urls as $crawl) {
             $url = sprintf("%s",$crawl->getUrl());
 
-            $payload = @new Document($url,true);
-
-            if(!$payload)
+            try{
+                $payload = new Document($url,true);
+            } catch (\Exception $e)
             {
+                echo "Error: {$e->getMessage()}";
                 continue;
             }
 
