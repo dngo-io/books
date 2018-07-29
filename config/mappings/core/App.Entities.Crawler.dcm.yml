@@ -8,6 +8,8 @@ App\Entities\Crawler:
             columns: [ identifier ]
         idx_sttaus:
             columns: [ status ]
+        idx_source:
+            columns: [ source ]
 
     id:
         id:
@@ -26,3 +28,6 @@ App\Entities\Crawler:
         status:
           type: string
           length: 50
+
+        source:
+          type: string
