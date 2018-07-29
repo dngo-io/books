@@ -208,7 +208,7 @@ class EuropeanaImport
                     $author = $this->authorRepository->findOneBy(['name' => $authorName]);
                     if (!$author) {
                         $author = new Author();
-                        $author->setName($authorName);
+                        $author->setName(str_limit($authorName, 250));
                     }
 
                     $book->setAuthor($author);
