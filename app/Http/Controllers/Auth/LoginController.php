@@ -64,7 +64,7 @@ class LoginController extends AppController
      */
     public function redirectToProvider()
     {
-        return Socialite::driver('steem')->scopes(['login', 'vote', 'comment','offline'])->redirect();
+        return Socialite::driver('steem')->scopes(['login', 'vote', 'comment', 'comment_options', 'offline'])->redirect();
     }
 
     /**
