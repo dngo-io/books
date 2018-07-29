@@ -149,7 +149,12 @@ class EuropeanaImport
         foreach ($urls as $crawl) {
             $url = sprintf("%s",$crawl->getUrl());
 
-            $payload = new Document($url,true);
+            $payload = @new Document($url,true);
+
+            if(!$payload)
+            {
+                continue;
+            }
 
             if (! $this->bookRepository->findOneBy(['isbn' => $crawl->getIdentifier()])) {
                 //create book
