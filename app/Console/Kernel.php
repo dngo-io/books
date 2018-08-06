@@ -22,7 +22,8 @@ class Kernel extends ConsoleKernel
         'App\Console\Commands\CreateTestUser',
         'App\Console\Commands\DngoUser',
         'App\Console\Commands\ImporterIsKulturCommand',
-        'App\Console\Commands\ImporterArchiveCommand'
+        'App\Console\Commands\ImporterArchiveCommand',
+        'App\Console\Commands\ImporterEuropeanaCommand'
     ];
 
     /**

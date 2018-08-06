@@ -84,7 +84,7 @@ class BookController extends AppController
      * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function show($id, BookAudioRepository $audioRepository, Request $request)
+    public function show($id, $slug = null, BookAudioRepository $audioRepository, Request $request)
     {
         /** @var Book $book */
         $book = $this->bookService->getBook($id);

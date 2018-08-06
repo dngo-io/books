@@ -72,11 +72,11 @@ Route::prefix('action')->group(function () {
 
 });
 
-Route::resource('book','BookController');
 Route::resource('category','CategoryController');
 Route::resource('audio','AudioController')->middleware(['auth']);
 Route::get('audio/image/{id}','AudioController@image');
 Route::get('book/image/{id}','BookController@image');
+Route::get('book/{id}/{slug}','BookController@show');
 
 
 /** Api */

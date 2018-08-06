@@ -32,6 +32,11 @@ class Crawler
      */
     protected $status;
 
+    /**
+     * @var string
+     */
+    protected $source;
+
     public function __construct()
     {
         $this->setStatus(self::STATUS_SCANNED);
@@ -92,5 +97,22 @@ class Crawler
     {
         $this->status = $status;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getSource()
+    {
+        return $this->source;
+    }
+
+    /**
+     * @param mixed $source
+     */
+    public function setSource($source)
+    {
+        $this->source = $source;
+    }
+
 
 }

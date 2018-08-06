@@ -73,7 +73,8 @@
                                         <blockquote class="blockquote blockquote-reverse">
                                             <p class="mb-0">
                                                 <i class="fa fa-book"></i>
-                                                <a href="{{ url("book/{$item->getBook()->getId()}") }}" class="m-link m-link--dark" title="{{ $item->getBook()->getName() }}">
+                                                <?php $bookUrl =  $item->getBook()->getId() .'/'. str_slug($item->getBook()->getName(), '-'); ?>
+                                                <a href="{{ url("book/{$bookUrl}") }}" class="m-link m-link--dark" title="{{ $item->getBook()->getName() }}">
                                                     {{ str_limit($item->getBook()->getName(), 80, '...') }}
                                                 </a>
                                             </p>

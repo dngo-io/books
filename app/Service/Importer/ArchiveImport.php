@@ -104,13 +104,14 @@ class ArchiveImport
 
                 $identifier = $this->getIdentifier($bookUrl);
 
-                $find = $crawlerRepository->findBy(['identifier' => $identifier]);
+                $find = $crawlerRepository->findBy(['identifier' => $identifier, 'source' => 'archive']);
 
                 if (!$find)
                 {
                     $crawl = new Crawler();
                     $crawl->setUrl($bookUrl);
                     $crawl->setIdentifier($identifier);
+                    $crawl->setSource('archive');
 
                     $this->entityManager->persist($crawl);
                     $this->entityManager->flush();
@@ -145,7 +146,7 @@ class ArchiveImport
         // get url's from db and scan
         // update status on db.
         // crawler.identifier should be  book.isbn (uniq)
-        $urls = $crawlerRepository->findBy(["status" => Crawler::STATUS_SCANNED]);
+        $urls = $crawlerRepository->findBy(["status" => Crawler::STATUS_SCANNED, 'source' => 'archive']);
 
         /** @var Crawler $crawl */
         foreach ($urls as $crawl) {
